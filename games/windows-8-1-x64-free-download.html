@@ -631,6 +631,277 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; }
   border-radius: 8px;
   font-size: 0.95rem;
 }
+
+/* ── 19.5 Download Panel ───────────────────────────────────────────────── */
+.download-panel {
+  position: relative;
+  background: linear-gradient(145deg, var(--surface-2), var(--surface));
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 26px 24px;
+  margin: 24px 0;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.dl-glow {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, var(--primary-glow), transparent 70%);
+  pointer-events: none;
+  animation: dlGlowFloat 6s ease-in-out infinite;
+}
+@keyframes dlGlowFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(-20px, 20px) scale(1.15); opacity: 1; }
+}
+.dl-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.dl-head-icon {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), #a855f7);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px var(--primary-glow);
+  animation: dlIconPop 2.2s ease-in-out infinite;
+}
+@keyframes dlIconPop {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.dl-head-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  background: linear-gradient(90deg, #fff, #c4b5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.dl-head-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 3px;
+}
+.dl-primary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 20px 24px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 50%, #4C1D95 100%);
+  background-size: 200% 200%;
+  color: #fff !important;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-decoration: none !important;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 10px 34px var(--primary-glow), inset 0 1px 0 rgba(255,255,255,0.15);
+  animation: dlBgShift 4s ease infinite;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+@keyframes dlBgShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.dl-primary:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 16px 44px var(--primary-glow), 0 0 80px rgba(124,58,237,0.35);
+}
+.dl-primary:active { transform: translateY(-1px) scale(0.99); }
+.dl-primary-arrow {
+  font-size: 1.5rem;
+  line-height: 1;
+  animation: dlArrowJump 1.6s ease-in-out infinite;
+}
+@keyframes dlArrowJump {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+.dl-primary-shine {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-20deg);
+  animation: dlShine 2.8s ease-in-out infinite;
+}
+@keyframes dlShine {
+  0% { left: -75%; }
+  55% { left: 125%; }
+  100% { left: 125%; }
+}
+.dl-primary-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 0 0 var(--primary-glow);
+  animation: dlPulse 2.4s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes dlPulse {
+  0% { box-shadow: 0 0 0 0 rgba(124,58,237,0.45); }
+  70% { box-shadow: 0 0 0 18px rgba(124,58,237,0); }
+  100% { box-shadow: 0 0 0 0 rgba(124,58,237,0); }
+}
+.dl-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 20px 0 14px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+.dl-divider::before, .dl-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+}
+.dl-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dl-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 16px;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.dl-row::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  transform: scaleY(0);
+  transition: transform var(--transition);
+}
+.dl-row:hover {
+  border-color: var(--primary);
+  transform: translateX(5px);
+  background: linear-gradient(90deg, rgba(124,58,237,0.12), var(--surface-3));
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+.dl-row:hover::after { transform: scaleY(1); }
+.dl-row-num {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--primary), #a855f7);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 12px var(--primary-glow);
+}
+.dl-row-main { display: flex; flex-direction: column; flex: 1; }
+.dl-row-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.dl-row-host {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+}
+.dl-row-arrow {
+  font-size: 1.2rem;
+  color: var(--muted);
+  transition: all var(--transition);
+}
+.dl-row:hover .dl-row-arrow {
+  color: var(--secondary);
+  transform: translateX(4px);
+}
+.dl-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border-light);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.dl-trust span { display: inline-flex; align-items: center; gap: 6px; }
+
+/* Sidebar compact download button */
+.sidebar-dl {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  margin-top: 14px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #7C3AED, #6D28D9);
+  text-decoration: none !important;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px var(--primary-glow);
+  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.sidebar-dl:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--primary-glow), 0 0 60px rgba(124,58,237,0.2);
+}
+.sidebar-dl::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: skewX(-20deg);
+  animation: dlShine 3.4s ease-in-out infinite;
+}
+.sidebar-dl-arrow {
+  font-size: 1.4rem;
+  color: #fff;
+  animation: dlArrowJump 1.8s ease-in-out infinite;
+}
+.sidebar-dl * { text-decoration: none !important; color: #fff !important; }
+.sidebar-dl-top { display: block; font-weight: 800; font-size: 0.95rem; }
+.sidebar-dl-sub { display: block; font-size: 0.68rem; opacity: 0.85; }
+
 .section p {
   color: var(--text-secondary);
   line-height: 1.8;
@@ -1348,10 +1619,6 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; }
       </div>
     </div>
 
-    <a href="https://dl.bobpony.com/windows/unofficial/en_windows_8_with_update_9200.16859_aio_6in1_x64_v22.06.13_by_adguard.iso" class="dl-cta" download>
-      &#11015; Download Now — FREE
-    </a>
-
     <div class="game-layout">
       <div class="game-main">
         
@@ -1368,6 +1635,34 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; }
       </div>
       <div class="compat-result" id="compatResult"></div>
       <div class="compat-form-wrap" id="compatFormWrap" style="display:none"></div>
+    </div>
+
+        
+    <div class="download-panel" id="download">
+      <div class="dl-glow"></div>
+      <div class="dl-head">
+        <div class="dl-head-icon">&#11015;</div>
+        <div>
+          <div class="dl-head-title">Download Windows 8.1 (X64)</div>
+          <div class="dl-head-sub">&#9989; 100% Safe &amp; Virus-Free &middot; Tested by Our Team</div>
+        </div>
+      </div>
+      <a href="https://dl.bobpony.com/windows/unofficial/en_windows_8_with_update_9200.16859_aio_6in1_x64_v22.06.13_by_adguard.iso" class="dl-primary" download>
+        <span class="dl-primary-shine"></span>
+        <span class="dl-primary-arrow">&#11015;</span>
+        <span class="dl-primary-text">Download Now &mdash; FREE</span>
+        <span class="dl-primary-pulse"></span>
+      </a>
+      <div class="dl-divider"><span>OR CHOOSE ANOTHER MIRROR LINK</span></div>
+      <div class="dl-rows">
+        <a class="dl-row" href="https://dl.bobpony.com/windows/unofficial/en_windows_8_with_update_9200.16859_aio_6in1_x64_v22.06.13_by_adguard.iso" target="_blank" rel="noopener">
+          <span class="dl-row-num">1</span>
+          <span class="dl-row-main"><span class="dl-row-name">Download Link 1</span><span class="dl-row-host">Dl</span></span>
+          <span class="dl-row-arrow">&#8594;</span>
+        </a></div>
+      <div class="dl-trust">
+        <span>&#128274; Secure connection</span><span>&#128737; No malware</span><span>&#9889; Fast servers</span>
+      </div>
     </div>
 
         <div class="section">
@@ -1394,7 +1689,6 @@ hosts trusted versions of Windows 8.1 for those who need to revive or repurpose 
         <h2><span class="section-icon">&#128247;</span> Screenshots</h2>
         <div class="screenshots"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGTwx_2RbdCDpoL1W0UQ10qov_zIoPSNIh9SrxVAzgjfr1VXNpQB9VkERRCTUodL6SHOPSM2x-MDDIbuau_xjrUBYXt-ViUQp2Wl1_SaLkp_gl7bAPqHmI09gkIzwqPONOvavArcjQlAUFanFlEz5jvC5zF_8pVISu6CCP1x5yE-n9TKrMALKGnDgiHek/s16000/Windows%208.1%20Download.jpg" alt="Screenshot" loading="lazy"></div>
       </div>
-        
         
       <div class="section">
         <h2><span class="section-icon">&#128293;</span> You May Also Like</h2>
@@ -1439,8 +1733,9 @@ hosts trusted versions of Windows 8.1 for those who need to revive or repurpose 
           </div>
         </div>
 
-        <a href="https://dl.bobpony.com/windows/unofficial/en_windows_8_with_update_9200.16859_aio_6in1_x64_v22.06.13_by_adguard.iso" class="dl-cta" download style="margin-top:0">
-          &#11015; Download Free
+        <a href="#download" class="sidebar-dl" style="margin-top:0">
+          <span class="sidebar-dl-arrow">&#11015;</span>
+          <span><span class="sidebar-dl-top">Download Now</span><span class="sidebar-dl-sub">All mirror links below</span></span>
         </a>
       </aside>
     </div>
