@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pinoysofthub.ph/sitemap.xml
+Sitemap: https://pinoysofthub.pages.dev/sitemap.xml
