@@ -476,14 +476,46 @@ ul, ol { margin: 0; padding: 0; }
 .sw-thumb .placeholder { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2.1rem; }
 .sw-thumb .badge-ver { position: absolute; bottom: 10px; right: 10px; background: rgba(4, 10, 20, .8); color: #dbe7f7; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-thumb .badge-top { position: absolute; top: 10px; left: 10px; }
+.sw-year { position: absolute; top: 10px; left: 10px; background: rgba(4, 10, 20, .8); color: var(--text-2); font-size: .68rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-body { padding: 15px 16px 16px; display: flex; flex-direction: column; flex: 1; gap: 8px; }
 .sw-title { font-size: .99rem; font-weight: 700; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .sw-title a { color: var(--text); }
 .sw-title a:hover { color: var(--primary-strong); }
 .sw-desc { font-size: .83rem; color: var(--text-3); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sw-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .76rem; color: var(--text-3); }
+.sw-row span { display: inline-flex; align-items: center; gap: 4px; }
+.sw-date { color: var(--text-2); font-weight: 500; }
+.sw-dl { color: var(--primary-strong); font-weight: 600; }
+.sw-dev { color: var(--text-3); font-style: italic; }
 .sw-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .74rem; color: var(--text-3); margin-top: auto; }
 .sw-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .sw-card .btn { margin-top: 10px; }
+
+/* Slideshow — latest software carousel */
+.slide-show { position: relative; max-width: 1240px; margin: 26px auto 0; padding: 0 18px; box-sizing: border-box; }
+.slide-show .slides { position: relative; height: 340px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-strong); }
+.slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s ease; pointer-events: none; display: flex; align-items: flex-end; }
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 1; }
+.slide-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 8, 16, .92) 0%, rgba(3, 8, 16, .68) 45%, rgba(3, 8, 16, .18) 100%); }
+.slide-body { position: relative; z-index: 2; max-width: 620px; padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 10px; }
+.slide-badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.slide-title { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin: 0; }
+.slide-title a { color: #fff; }
+.slide-title a:hover { color: var(--primary-soft); }
+.slide-desc { font-size: .92rem; color: rgba(255,255,255,.78); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.slide-cta { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border-radius: var(--radius-full); border: 1px solid var(--border-strong); background: rgba(4, 10, 20, .75); color: #fff; font-size: 1.25rem; cursor: pointer; display: grid; place-items: center; transition: all var(--trans); }
+.slide-arrow:hover { background: var(--primary); border-color: var(--primary-strong); }
+.slide-arrow.prev { left: 14px; }
+.slide-arrow.next { right: 14px; }
+.slide-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+.slide-dots .dot { width: 10px; height: 10px; border-radius: var(--radius-full); border: none; background: var(--border-strong); cursor: pointer; padding: 0; transition: all var(--trans); }
+.slide-dots .dot.on { background: var(--primary); width: 22px; }
+@media (max-width: 760px) {
+  .slide-show .slides { height: 300px; }
+  .slide-body { padding: 18px; }
+  .slide-title { font-size: 1.15rem; }
+}
 
 /* Compact list item (staff picks / related) */
 .related-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
@@ -896,14 +928,16 @@ ul, ol { margin: 0; padding: 0; }
     </select>
   </div>
   <div id="swList" class="sw-grid">
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="aiseesoft video editor 1.0.30 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="aiseesoft video editor 1.0.30 with crack" data-listed="202606" data-year="2026" data-date="Jun 6, 2026">
   <a href="../../software/aiseesoft-video-editor-1030-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/01/Aiseesoft-Video-Editor-Cover.avif" alt="Aiseesoft Video Editor 1.0.30 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.0.30</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/aiseesoft-video-editor-1030-with-crack.html">Aiseesoft Video Editor 1.0.30 with Crack</a></h3>
     <p class="sw-desc">Aiseesoft Video Editor is the best free video editing software to rotate, clip, crop, watermark, and convert v</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -912,14 +946,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/aiseesoft-video-editor-1030-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="apowersoft video editor 1.6.3.4 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="apowersoft video editor 1.6.3.4 with crack" data-listed="202402" data-year="2024" data-date="Feb 11, 2024">
   <a href="../../software/apowersoft-video-editor-1634-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/06/Apowersoft-Video-Editor-Cover.avif" alt="Apowersoft Video Editor 1.6.3.4 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.6.3.4</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/apowersoft-video-editor-1634-with-crack.html">Apowersoft Video Editor 1.6.3.4 with Crack</a></h3>
     <p class="sw-desc">Apowersoft Video Editor is a breeze to create your own professional videos or entertaining home movies of any </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Feb 11, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -928,14 +964,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/apowersoft-video-editor-1634-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="avs video editor 26.0.2.17 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="avs video editor 26.0.2.17 with crack" data-listed="202602" data-year="2026" data-date="Feb 20, 2026">
   <a href="../../software/avs-video-editor-260217-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/10/AVS-Video-Editor-Cover.avif" alt="AVS Video Editor 26.0.2.17 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v26.0.2.17</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avs-video-editor-260217-with-crack.html">AVS Video Editor 26.0.2.17 with Crack</a></h3>
     <p class="sw-desc">AVS Video Editor is a full-featured editor for creating professional video processing. With the help of AVS Vi</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Feb 20, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -944,14 +982,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avs-video-editor-260217-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="capcut video editor free download" data-listed="202506">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="capcut video editor free download" data-listed="202506" data-year="" data-date="Jun 2025">
   <a href="../../software/capcut-video-editor-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEg3j8CY45Io01MW7DM6FASMpMULxpgvkucxa-xcwFu4iJvVrcP1eQ9mwveWLBYTJDvPaa_w-MHq1DimBKyXDUpREhIgLhpr2sJJFupbqvVh4X-C4j2FzperDcpNIbsxAZ-wGXa-4Q5czIF9JlXDmTqQAV5s3ob-7hiVYjB6ExXDJaHXKMb0rb_CH4TBgIo" alt="CapCut Video Editor Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.3M</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/capcut-video-editor-free-download.html">CapCut Video Editor Free Download</a></h3>
     <p class="sw-desc">CapCut is a popular and powerful video editing tool designed for both beginners and content creators. Whether </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -960,14 +1000,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/capcut-video-editor-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="easeus video editor pro 2.4.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="easeus video editor pro 2.4.1 with crack" data-listed="202511" data-year="2025" data-date="Nov 23, 2025">
   <a href="../../software/easeus-video-editor-pro-241-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/EaseUS-Video-Editor-Cover.avif" alt="EaseUS Video Editor Pro 2.4.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.4.1</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/easeus-video-editor-pro-241-with-crack.html">EaseUS Video Editor Pro 2.4.1 with Crack</a></h3>
     <p class="sw-desc">EaseUS Video Editor is stunning video editor software to express your inspiration. Pro-level video editor soft</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Nov 23, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -976,14 +1018,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/easeus-video-editor-pro-241-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="gilisoft video editor 18.7.0 x64 free download" data-listed="202605">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="gilisoft video editor 18.7.0 x64 free download" data-listed="202605" data-year="" data-date="May 2026">
   <a href="../../software/gilisoft-video-editor-1870-x64-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgqY79oFs7ejwDBOyup-bRX3ZZaxES-HYzEjz94HevrhRuzXQBh4qThtZi7eG9kgub6S8PTm2PrrscJeGg8cCnk-RbguIWMxi6ZfQda0ueMMu_c1X1041uJz1lvXD4_sInJlbIR33k39Kn6qgdhr1mFtUTnUVvTpjYuu9r2x80H003dawRSTTjW2lPa9zI=w241-h320" alt="Gilisoft Video Editor 18.7.0 x64 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v18.7.0 x64</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/gilisoft-video-editor-1870-x64-free-download.html">Gilisoft Video Editor 18.7.0 x64 Free Download</a></h3>
     <p class="sw-desc">Gilisoft Video Editor 18.7.0 x64 is a comprehensive video editing software that allows users to cut, merge, sp</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -992,14 +1036,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/gilisoft-video-editor-1870-x64-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="gilisoft video editor pro 19.0.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="gilisoft video editor pro 19.0.0 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/gilisoft-video-editor-pro-1900-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/01/GiliSoft-Video-Editor-Pro-Cover.avif" alt="GiliSoft Video Editor Pro 19.0.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v19.0.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/gilisoft-video-editor-pro-1900-with-crack.html">GiliSoft Video Editor Pro 19.0.0 with Crack</a></h3>
     <p class="sw-desc">Nearly everyone can shoot video, whether using a digital camera, smartphone, or a dedicated camcorder, but raw</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1008,14 +1054,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/gilisoft-video-editor-pro-1900-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="kdenlive 2024 free download" data-listed="202507">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="kdenlive 2024 free download" data-listed="202507" data-year="2024" data-date="Jul 2025">
   <a href="../../software/kdenlive-2024-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilBx2olWT9FsjvFx7YVMMMxKapYykFgcmIqYY21HCRT-7nVhZY4yISShe1AQOPdk_usw4PQdZxPFjwT7IJC0f8uopVqAuy8WcRUd1kJWZ6POhiOHtQNLUcwR2-IQeY_q3qK2SMfZCOQr01HVOOokdQEv6_4zbB7ABgDl3BFUle8EUNFSXnz9ofpNFOL3o/s320/Kdenlive-free-download.png" alt="Kdenlive 2024 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/kdenlive-2024-free-download.html">Kdenlive 2024 Free Download</a></h3>
     <p class="sw-desc">Kdenlive 2024 is a robust, open-source video editor for creators seeking non-linear editing (NLE) with profess</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-opensource">Open Source</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1024,14 +1072,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/kdenlive-2024-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi academic 22.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi academic 22.0 with crack" data-listed="202309" data-year="2023" data-date="Sep 6, 2023">
   <a href="../../software/movavi-academic-220-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/12/Movavi-Academic-Cover.avif" alt="Movavi Academic 22.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v22.0</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/movavi-academic-220-with-crack.html">Movavi Academic 22.0 with Crack</a></h3>
     <p class="sw-desc">Movavi Academic is provides teachers and students with a powerful tool for making comprehensive educational vi</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2023</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1040,14 +1090,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/movavi-academic-220-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="arm64" data-title="movavi gecata 6.1.2 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="arm64" data-title="movavi gecata 6.1.2 with crack" data-listed="202406" data-year="2024" data-date="Jun 27, 2024">
   <a href="../../software/movavi-gecata-612-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/03/Movavi-Gecata-Cover.avif" alt="Movavi Gecata 6.1.2 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.1.2</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/movavi-gecata-612-with-crack.html">Movavi Gecata 6.1.2 with Crack</a></h3>
     <p class="sw-desc">Movavi Gecata the world of video games is packed with highs and lows, insane headshots, and epic raids. Armed </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 27, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1056,14 +1108,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/movavi-gecata-612-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi pdfchef 22.2 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi pdfchef 22.2 with crack" data-listed="202308" data-year="2023" data-date="Aug 3, 2023">
   <a href="../../software/movavi-pdfchef-222-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/12/Movavi-PDFChef-Cover.avif" alt="Movavi PDFChef 22.2 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v22.2</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/movavi-pdfchef-222-with-crack.html">Movavi PDFChef 22.2 with Crack</a></h3>
     <p class="sw-desc">Movavi PDFChef now the Brand-New PDFChef. We’re all about making managing PDFs easy and convenient. Our softwa</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 3, 2023</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1072,14 +1126,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/movavi-pdfchef-222-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi picverse 1.11.0 with crack {repack}" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi picverse 1.11.0 with crack {repack}" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/movavi-picverse-1110-with-crack-repack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/08/Movavi-Picverse-Cover.avif" alt="Movavi Picverse 1.11.0 with Crack {RePack}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.11.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/movavi-picverse-1110-with-crack-repack.html">Movavi Picverse 1.11.0 with Crack {RePack}</a></h3>
     <p class="sw-desc">Movavi Picverse Photo Editor for PCs is designed for photographers of any skill level. This desktop picture-ed</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1088,14 +1144,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/movavi-picverse-1110-with-crack-repack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi screen recorder 24.8.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi screen recorder 24.8.0 with crack" data-listed="202608" data-year="2026" data-date="Aug 22, 2026">
   <a href="../../software/movavi-screen-recorder-2480-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/Movavi-Screen-Recorder-Cover.avif" alt="Movavi Screen Recorder 24.8.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v24.8.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/movavi-screen-recorder-2480-with-crack.html">Movavi Screen Recorder 24.8.0 with Crack</a></h3>
     <p class="sw-desc">Movavi Screen Recorder: the Ultimate Screen Recorder for Windows. Movavi Screen Recorder is a lightweight yet </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 22, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1104,14 +1162,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/movavi-screen-recorder-2480-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi screen recorder for mac" data-listed="201906">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi screen recorder for mac" data-listed="201906" data-year="" data-date="Jun 2019">
   <a href="../../software/movavi-screen-recorder-for-mac.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIm9sav0D18qce0I20-tJecs2xqJAIkXNMa2ArLf8esmrWFDJ0TNpmQNYkfThKbSNUo8_OKAMyzSHY_sXJS8j8SueDZXGGdEwyM34KxpdQvhM5F-l-wBHQa5sEfZ9fkpyaXzVpehs6Qjc/s320/Movavi+Screen+Recorder.png" alt="Movavi Screen Recorder for Mac" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v10.7</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/movavi-screen-recorder-for-mac.html">Movavi Screen Recorder for Mac</a></h3>
     <p class="sw-desc">Movavi Screen Recorder lets you grab any screen video from your Mac with a single button click. Capture webina</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1120,14 +1180,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/movavi-screen-recorder-for-mac.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi slideshow maker 2025 v25.0.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi slideshow maker 2025 v25.0.1 with crack" data-listed="202607" data-year="2025" data-date="Jul 5, 2026">
   <a href="../../software/movavi-slideshow-maker-2025-v2501-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/Movavi-Slideshow-Maker-Cover.avif" alt="Movavi Slideshow Maker 2025 v25.0.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv25.0.1</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/movavi-slideshow-maker-2025-v2501-with-crack.html">Movavi Slideshow Maker 2025 v25.0.1 with Crack</a></h3>
     <p class="sw-desc">Movavi Slideshow Maker: creating a stunning video from your memories on your computer is as easy as 1-2-3 with</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1136,14 +1198,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/movavi-slideshow-maker-2025-v2501-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi video editor 26.21.3 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi video editor 26.21.3 with crack" data-listed="202608" data-year="2026" data-date="Aug 18, 2026">
   <a href="../../software/movavi-video-editor-26213-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/08/Movavi-Video-Editor-Plus-Cover.avif" alt="Movavi Video Editor 26.21.3 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v26.21.3</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/movavi-video-editor-26213-with-crack.html">Movavi Video Editor 26.21.3 with Crack</a></h3>
     <p class="sw-desc">Movavi Video Editor is the perfect tool to bring your creative ideas to life and share them with the world. Ma</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 18, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1152,14 +1216,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/movavi-video-editor-26213-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="movavi video editor plus 2025 free download" data-listed="202506">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="movavi video editor plus 2025 free download" data-listed="202506" data-year="2025" data-date="Jun 2025">
   <a href="../../software/movavi-video-editor-plus-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjFPZjQ7KXBEElt2zJrLUoXBce-aYTSvCWirudbDimitVuPknFD-1cyjJM6_tBgpn6sIrY1o6IfQoBgEXM5NqSx72WTuCik7zA5czykcTRHqqMjZ_jF532KavvWVuzUPY5vaTA5lRZ95-tXemhRN9aSvhUoBVlkWUUsqYV8-ckhu6SHpY9czVkL5JCBVmc=w229-h320" alt="Movavi Video Editor Plus 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/movavi-video-editor-plus-2025-free-download.html">Movavi Video Editor Plus 2025 Free Download</a></h3>
     <p class="sw-desc">Movavi Video Editor Plus 2025 is a beginner-friendly yet powerful video editing software. It offers a wide arr</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1168,14 +1234,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/movavi-video-editor-plus-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="movavi video editor plus 23 free download" data-listed="202506">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="movavi video editor plus 23 free download" data-listed="202506" data-year="" data-date="Jun 2025">
   <a href="../../software/movavi-video-editor-plus-23-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjFPZjQ7KXBEElt2zJrLUoXBce-aYTSvCWirudbDimitVuPknFD-1cyjJM6_tBgpn6sIrY1o6IfQoBgEXM5NqSx72WTuCik7zA5czykcTRHqqMjZ_jF532KavvWVuzUPY5vaTA5lRZ95-tXemhRN9aSvhUoBVlkWUUsqYV8-ckhu6SHpY9czVkL5JCBVmc=w229-h320" alt="Movavi Video Editor Plus 23 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/movavi-video-editor-plus-23-free-download.html">Movavi Video Editor Plus 23 Free Download</a></h3>
     <p class="sw-desc">is an ideal choice for content creators who want professional results with a minimal learning curve. With a cl</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1184,14 +1252,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/movavi-video-editor-plus-23-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi video suite 2026 v2026.1.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="movavi video suite 2026 v2026.1.1 with crack" data-listed="202608" data-year="2026" data-date="Aug 31, 2026">
   <a href="../../software/movavi-video-suite-2026-v202611-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2019/11/Movavi-Video-Suite-Full-Crack.avif" alt="Movavi Video Suite 2026 v2026.1.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv2026.1.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/movavi-video-suite-2026-v202611-with-crack.html">Movavi Video Suite 2026 v2026.1.1 with Crack</a></h3>
     <p class="sw-desc">Movavi Video Suite is a comprehensive video-making software that helps you create professional-looking movies </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 31, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1200,14 +1270,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/movavi-video-suite-2026-v202611-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="moviemator video editor pro 3.2.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="moviemator video editor pro 3.2.0 with crack" data-listed="202409" data-year="2024" data-date="Sep 28, 2024">
   <a href="../../software/moviemator-video-editor-pro-320-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/02/MovieMator-Video-Editor-Pro-Cover.avif" alt="MovieMator Video Editor Pro 3.2.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.2.0</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/moviemator-video-editor-pro-320-with-crack.html">MovieMator Video Editor Pro 3.2.0 with Crack</a></h3>
     <p class="sw-desc">MovieMator Video Editor Pro turn your memories into stylish-looking stories with this easy-to-use video editor</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 28, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1216,14 +1288,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/moviemator-video-editor-pro-320-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="nch videopad pro 18.16 with crack" data-listed="000000">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="nch videopad pro 18.16 with crack" data-listed="202604" data-year="2026" data-date="Apr 15, 2026">
   <a href="../../software/nch-videopad-pro-1816-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/07/NCH-VideoPad-Pro-Cover.avif" alt="NCH VideoPad Pro 18.16 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v18.16</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/nch-videopad-pro-1816-with-crack.html">NCH VideoPad Pro 18.16 with Crack</a></h3>
     <p class="sw-desc">NCH VideoPad Pro, working with video files, especially editing them, is a task that requires a specialized app</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Apr 15, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1232,14 +1306,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/nch-videopad-pro-1816-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="nch videopad video editor free download" data-listed="202507">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="nch videopad video editor free download" data-listed="202507" data-year="" data-date="Jul 2025">
   <a href="../../software/nch-videopad-video-editor-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjeExk79rXi__EFnwCsIws4K6d9Zsk3YlYXpA02puEnc570Ww58xX1BKmmYdhNnXcEzdipK0oB8mdvlT0BnTKlZnNq8d78_D8Mf6RyigDBuNASgSK_qU0gLlNOsXNaE8MQJ08i4fu6PHesAhtwvJH8wnX845cHhlYhtJogn6MJ01UpeMM2F0vwLIZOMZS4/w200-h200/VideoPad%20Free%20Download.png" alt="NCH VideoPad Video Editor Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v10.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/nch-videopad-video-editor-free-download.html">NCH VideoPad Video Editor Free Download</a></h3>
     <p class="sw-desc">VideoPad Video Editor by NCH Software is a lightweight yet powerful video editing tool tailored for content cr</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1248,14 +1324,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/nch-videopad-video-editor-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="wondershare filmora 2023 free download" data-listed="202606">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="wondershare filmora 2023 free download" data-listed="202606" data-year="2023" data-date="Jun 2026">
   <a href="../../software/wondershare-filmora-2023-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhSncp1BKt-wDqQ2sKxB8bxZVNUAuiCmVtgKJXCGves2To7tzdqZz_Maat4KitdreZZe2YLYuwjMZtwTXa6TUcZsYNwITzY2CbMFSEZwxKvgSMcrhayWIPOd3VgFf22eVY0lVGBKE8ZzNEiTHOq746vMA7RM5iQCc2f1YejBe3koevxADMthGOQ9SOa65c=w320-h320" alt="Wondershare Filmora 2023 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/wondershare-filmora-2023-free-download.html">Wondershare Filmora 2023 Free Download</a></h3>
     <p class="sw-desc">Wondershare Filmora 2023 is a powerful yet easy-to-use video editing solution designed for creators who want p</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1264,14 +1342,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/wondershare-filmora-2023-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="wondershare filmora 2024 free download" data-listed="202606">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="wondershare filmora 2024 free download" data-listed="202606" data-year="2024" data-date="Jun 2026">
   <a href="../../software/wondershare-filmora-2024-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEg0JEHcaf1KFk1gJybzkLYHPaibB6SRu0msCDe74ShpUcmcJvxV25qKDmmoF1V0yHQ9ip5qrgBjKK1jovonVz6eHofzIuF9a3OKkAayYbPv59x8E7scyxMffBj5mn5RzHg8GaKmBtedHQItPRAH3mBS8XWmRG3S0koBHxJold6cKWXxy9ZPFQoHt5w8MkQ=w200-h200" alt="Wondershare Filmora 2024 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/wondershare-filmora-2024-free-download.html">Wondershare Filmora 2024 Free Download</a></h3>
     <p class="sw-desc">Wondershare Filmora 2024 is a feature-rich video editor that combines simplicity with professional editing cap</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1280,14 +1360,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/wondershare-filmora-2024-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="wondershare filmora 2025 free download" data-listed="202606">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="wondershare filmora 2025 free download" data-listed="202606" data-year="2025" data-date="Jun 2026">
   <a href="../../software/wondershare-filmora-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEg9iveiJSSbZ5I6T1rs_KkA95wjf3qL82yKOt1rVWHkErEhqiK8iNhgfKnvE0cYxIYiKWewvCDl_ytZySi7kaZ3wAgOe76W3l50t9x7HbtoMmQ-d1p8tTN_M0SuEhq3AHT5uAc3C-zj19fZDKk9CR0_MvOWmFD7OnG6nJLkqjIXwVsSvwQG9xmNT5D2OSY" alt="Wondershare Filmora 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/wondershare-filmora-2025-free-download.html">Wondershare Filmora 2025 Free Download</a></h3>
     <p class="sw-desc">Wondershare Filmora 2025 is the latest version of the popular video editing software developed by . Designed f</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1296,14 +1378,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/wondershare-filmora-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="wondershare filmora 8.7 free download" data-listed="202506">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="wondershare filmora 8.7 free download" data-listed="202506" data-year="" data-date="Jun 2025">
   <a href="../../software/wondershare-filmora-87-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhd1AujtsEhV46MrMLFq1NRMD91t4NH_pt6xYvagxkpiq3HXQLGP6AxB1d7XJ1VxDWxmGjjKbIsbjiTTRYalzb5UVEhGc_vASUDNUysNFCE_f_95RS2nutqDOp0sy7Kv-6NaafzPUhoQdsPNka63eVwc2DDs0ZY99UOCSXmBtOzBvsZ7P8t5l34h8FMCvs=s16000" alt="Wondershare Filmora 8.7 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.7</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/wondershare-filmora-87-free-download.html">Wondershare Filmora 8.7 Free Download</a></h3>
     <p class="sw-desc">Wondershare Filmora 8 is a user-friendly video editing software designed for beginners and intermediate creato</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1312,14 +1396,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/wondershare-filmora-87-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="wondershare filmora for mac free download" data-listed="201903">
+<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="wondershare filmora for mac free download" data-listed="201903" data-year="" data-date="Mar 2019">
   <a href="../../software/wondershare-filmora-for-mac-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiC4wiV8jrPdi5iwA-zWTAyFr_hVvF0PATq0Y4gsHEXVQx7rhb-BvOO0d1fQKeoj_J-O50s-I1cglb9dvHLQ7CsXouBDmBsc15cSbo4p0FCwVSNIws44EClcIZ_fyMKZJihnEUUkSOPwM0/s400/Wondershare-Filmora-for-Mac.jpg" alt="Wondershare Filmora for Mac Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/wondershare-filmora-for-mac-free-download.html">Wondershare Filmora for Mac Free Download</a></h3>
     <p class="sw-desc">Filmora is an all-in-one video editor with powerful functionality and a fully stacked feature set. It makes pr</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Mar 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎞️ Video Editing</span>
@@ -1488,6 +1574,41 @@ ul, ol { margin: 0; padding: 0; }
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); go(); }
     });
+  }
+
+  /* ---------- Slideshow ---------- */
+  function initSlideshow() {
+    var ss = document.getElementById('latestSlideshow');
+    if (!ss) return;
+    var slides = ss.querySelectorAll('.slide');
+    var dots = ss.querySelectorAll('.dot');
+    if (!slides.length) return;
+    var cur = 0;
+    var timer = null;
+
+    function show(i) {
+      cur = (i + slides.length) % slides.length;
+      for (var j = 0; j < slides.length; j++) {
+        slides[j].classList.toggle('active', j === cur);
+        if (dots[j]) dots[j].classList.toggle('on', j === cur);
+      }
+    }
+    function next() { show(cur + 1); restart(); }
+    function prev() { show(cur - 1); restart(); }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show(cur + 1); }, 6000);
+    }
+    var btnNext = ss.querySelector('#slideNext');
+    var btnPrev = ss.querySelector('#slidePrev');
+    if (btnNext) btnNext.addEventListener('click', next);
+    if (btnPrev) btnPrev.addEventListener('click', prev);
+    for (var i = 0; i < dots.length; i++) {
+      (function (idx) {
+        dots[idx].addEventListener('click', function () { show(idx); restart(); });
+      })(i);
+    }
+    restart();
   }
 
   /* ---------- Listing sort select ---------- */
@@ -1955,7 +2076,8 @@ ul, ol { margin: 0; padding: 0; }
       + (img || ph) + '</a>';
     var tier = TIER_LABELS[it.tier] || '';
     var meta = '<span>&#9989; Windows</span>';
-    if (it.year) meta += '<span>' + escapeHtml(it.year) + '</span>';
+    if (it.year) meta += '<span>&#169; ' + escapeHtml(it.year) + '</span>';
+    if (it.date) meta += '<span>&#128197; ' + escapeHtml(it.date) + '</span>';
     if (it.version) meta += '<span class="badge-ver">' + escapeHtml(it.version) + '</span>';
     return '<article class="sw-card">' + thumb
       + '<div class="sw-body">'
@@ -2045,6 +2167,7 @@ ul, ol { margin: 0; padding: 0; }
     initNavSearchBtn();
     initHeroSearchBtn();
     initSort();
+    initSlideshow();
     initToastLinks();
     initLightbox();
     initSearch('navSearch');

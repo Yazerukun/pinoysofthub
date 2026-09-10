@@ -476,14 +476,46 @@ ul, ol { margin: 0; padding: 0; }
 .sw-thumb .placeholder { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2.1rem; }
 .sw-thumb .badge-ver { position: absolute; bottom: 10px; right: 10px; background: rgba(4, 10, 20, .8); color: #dbe7f7; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-thumb .badge-top { position: absolute; top: 10px; left: 10px; }
+.sw-year { position: absolute; top: 10px; left: 10px; background: rgba(4, 10, 20, .8); color: var(--text-2); font-size: .68rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-body { padding: 15px 16px 16px; display: flex; flex-direction: column; flex: 1; gap: 8px; }
 .sw-title { font-size: .99rem; font-weight: 700; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .sw-title a { color: var(--text); }
 .sw-title a:hover { color: var(--primary-strong); }
 .sw-desc { font-size: .83rem; color: var(--text-3); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sw-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .76rem; color: var(--text-3); }
+.sw-row span { display: inline-flex; align-items: center; gap: 4px; }
+.sw-date { color: var(--text-2); font-weight: 500; }
+.sw-dl { color: var(--primary-strong); font-weight: 600; }
+.sw-dev { color: var(--text-3); font-style: italic; }
 .sw-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .74rem; color: var(--text-3); margin-top: auto; }
 .sw-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .sw-card .btn { margin-top: 10px; }
+
+/* Slideshow — latest software carousel */
+.slide-show { position: relative; max-width: 1240px; margin: 26px auto 0; padding: 0 18px; box-sizing: border-box; }
+.slide-show .slides { position: relative; height: 340px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-strong); }
+.slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s ease; pointer-events: none; display: flex; align-items: flex-end; }
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 1; }
+.slide-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 8, 16, .92) 0%, rgba(3, 8, 16, .68) 45%, rgba(3, 8, 16, .18) 100%); }
+.slide-body { position: relative; z-index: 2; max-width: 620px; padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 10px; }
+.slide-badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.slide-title { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin: 0; }
+.slide-title a { color: #fff; }
+.slide-title a:hover { color: var(--primary-soft); }
+.slide-desc { font-size: .92rem; color: rgba(255,255,255,.78); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.slide-cta { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border-radius: var(--radius-full); border: 1px solid var(--border-strong); background: rgba(4, 10, 20, .75); color: #fff; font-size: 1.25rem; cursor: pointer; display: grid; place-items: center; transition: all var(--trans); }
+.slide-arrow:hover { background: var(--primary); border-color: var(--primary-strong); }
+.slide-arrow.prev { left: 14px; }
+.slide-arrow.next { right: 14px; }
+.slide-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+.slide-dots .dot { width: 10px; height: 10px; border-radius: var(--radius-full); border: none; background: var(--border-strong); cursor: pointer; padding: 0; transition: all var(--trans); }
+.slide-dots .dot.on { background: var(--primary); width: 22px; }
+@media (max-width: 760px) {
+  .slide-show .slides { height: 300px; }
+  .slide-body { padding: 18px; }
+  .slide-title { font-size: 1.15rem; }
+}
 
 /* Compact list item (staff picks / related) */
 .related-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
@@ -896,14 +928,16 @@ ul, ol { margin: 0; padding: 0; }
     </select>
   </div>
   <div id="swList" class="sw-grid">
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="ant download manager 2019 free download" data-listed="201912">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="ant download manager 2019 free download" data-listed="201912" data-year="2019" data-date="Dec 2019">
   <a href="../../software/ant-download-manager-2019-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkq-7ytmsqyEf4CODskvViGn-spxXCPfzWBqwL4H6t_Lnzu_1S9M2_LeAjepyl6qaFNKIIkiYAKnHIRbt5aFN5-3rnBg1nnOYe369l53dCrQJIQARqaqvwYKKvluq9VjxU7vd1QvZX-mY/s0/Ant_Download_Manager.jpg" alt="Ant Download Manager 2019 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2019</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ant-download-manager-2019-free-download.html">Ant Download Manager 2019 Free Download</a></h3>
     <p class="sw-desc">It has drag and drop functionality for ease and reliability. It supports different Network Protocols such as H</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -912,14 +946,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ant-download-manager-2019-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="ant download manager pro 2.17.8.96712 with crack" data-listed="000000">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="ant download manager pro 2.17.8.96712 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
   <a href="../../software/ant-download-manager-pro-217896712-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/Ant-Download-Manager-Pro-Cover.avif" alt="Ant Download Manager Pro 2.17.8.96712 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.17.8.96712</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ant-download-manager-pro-217896712-with-crack.html">Ant Download Manager Pro 2.17.8.96712 with Crack</a></h3>
     <p class="sw-desc">Ant Download Manager Pro is a quick downloader of internet content with support for video downloads! Function:</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -928,14 +964,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ant-download-manager-pro-217896712-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="betternet vpn premium 8.8.1.1322 with crack" data-listed="000000">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="betternet vpn premium 8.8.1.1322 with crack" data-listed="202410" data-year="2024" data-date="Oct 20, 2024">
   <a href="../../software/betternet-vpn-premium-8811322-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2019/10/Betternet-Crack.avif" alt="Betternet VPN Premium 8.8.1.1322 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.8.1.1322</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/betternet-vpn-premium-8811322-with-crack.html">Betternet VPN Premium 8.8.1.1322 with Crack</a></h3>
     <p class="sw-desc">Get the fastest, most secure VPN experience on the web right on your PC. Betternet Premium unlimited VPN for W</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 20, 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -944,14 +982,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/betternet-vpn-premium-8811322-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="bitdefender internet security 2022 free download" data-listed="202507">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="bitdefender internet security 2022 free download" data-listed="202507" data-year="2022" data-date="Jul 2025">
   <a href="../../software/bitdefender-internet-security-2022-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg331RcLGW66CRUHE8pV7V5ZRXcS-9utIDz7pOGCdEUnQE9KFLM8oHsWeuObvExV6YSmsfm6UVVZMg7LNOngnHPTsLX2tp69aEuAi6ZDmVclgLMakOumYuNQje2vp-IcF8uAz96mtX0ULDcDfYscf3et_MaLP2rRVMshYYl8O-tpMAZUV2Vm6Jnsib4Ejw/s320/Bitdefender%20Internet%20Security%202022.webp" alt="Bitdefender Internet Security 2022 Free DOwnload" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.5</span>
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/bitdefender-internet-security-2022-free-download.html">Bitdefender Internet Security 2022 Free DOwnload</a></h3>
     <p class="sw-desc">Bitdefender Internet Security 2022 adds advanced firewall and parental controls on top of standard antivirus p</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -960,14 +1000,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/bitdefender-internet-security-2022-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="bittorrent free download" data-listed="201802">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="bittorrent free download" data-listed="201802" data-year="" data-date="Feb 2018">
   <a href="../../software/bittorrent-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj27Z-zTBH2zTN3i7iu45RT0VsvWf1CjLhsvQ6zuyHN34ZlXKf0tX9RFMebOH6NhXH3F6UfYXIpvzZhaTN3m8qbdjho7q6w_BwjQIrLEUt1awmrwx-Ul0RRkQfM1P1nDcYP-ZjFkgRIS98/s200/bittorrent_logo_2012.png" alt="BitTorrent Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v20.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/bittorrent-free-download.html">BitTorrent Free Download</a></h3>
     <p class="sw-desc">BitTorrent is a communication protocol for peer-to-peer file sharing (&quot;P2P&quot;) which is used to distribute data </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Feb 2018</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -976,14 +1018,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/bittorrent-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="arm64" data-title="bittorrent pro 7.11.0.47255 with crack" data-listed="000000">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="arm64" data-title="bittorrent pro 7.11.0.47255 with crack" data-listed="202607" data-year="2026" data-date="Jul 23, 2026">
   <a href="../../software/bittorrent-pro-711047255-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2026/07/BitTorrent.avif" alt="BitTorrent Pro 7.11.0.47255 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v7.11.0.47255</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/bittorrent-pro-711047255-with-crack.html">BitTorrent Pro 7.11.0.47255 with Crack</a></h3>
     <p class="sw-desc">BitTorrent is a peer-to-peer file sharing (P2P) communications protocol. It is a method of distributing large </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 23, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -992,14 +1036,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/bittorrent-pro-711047255-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="coffeecup responsive site designer 4.0.3340 with crack" data-listed="000000">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="coffeecup responsive site designer 4.0.3340 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/coffeecup-responsive-site-designer-403340-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/07/CoffeeCup-Responsive-Site-Designer-Cover.avif" alt="CoffeeCup Responsive Site Designer 4.0.3340 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.0.3340</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/coffeecup-responsive-site-designer-403340-with-crack.html">CoffeeCup Responsive Site Designer 4.0.3340 with Crack</a></h3>
     <p class="sw-desc">CoffeeCup Responsive Site Designer design and develop digital experiences. No code. Build faster. Design bette</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1008,14 +1054,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/coffeecup-responsive-site-designer-403340-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="cyberghost vpn free download" data-listed="201905">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="cyberghost vpn free download" data-listed="201905" data-year="" data-date="May 2019">
   <a href="../../software/cyberghost-vpn-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxLf7TPK4fTLNnG7OcWzGqCXlSrokZH-uzc0rj0BVwnewkl_NBJVAHmKPgrGMEy71TASyo_37Tdf6wdo_TJvyAcRvu5eoS3WkQUWzreqnT61GQX-QqLZGERnpYqiI2t622ZbuKk5ib9fo/s200/cyberghost_logo_1024.png" alt="CyberGhost VPN Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/cyberghost-vpn-free-download.html">CyberGhost VPN Free Download</a></h3>
     <p class="sw-desc">A VPN, such as CyberGhost, encrypts your online connection and thus greatly increases both your digital privac</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1024,14 +1072,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/cyberghost-vpn-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="dvdvideosoft torrent free download" data-listed="201903">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="dvdvideosoft torrent free download" data-listed="201903" data-year="" data-date="Mar 2019">
   <a href="../../software/dvdvideosoft-torrent-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiT_aAn7T-OIxt8H0941dqGtpB9d3Ax5At39ew3gk4nG3Ut_ZHpvDkCcdHJSzjVOoa4kNLoFy4_ipCACWueY6koAxfKgB2rz7elT9-euxaoAqMoxVLHwn4-eInIBKaJIqsu1NLt498SPKQ/s200/Free+Torrent+Download_256.png" alt="DVDVideoSoft Torrent Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v26.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/dvdvideosoft-torrent-free-download.html">DVDVideoSoft Torrent Free Download</a></h3>
     <p class="sw-desc">Find torrent files and download them to your PC in two steps with Free Torrent Download. This handy applicatio</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Mar 2019</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1040,14 +1090,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/dvdvideosoft-torrent-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="freemake youtube download manager" data-listed="201902">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="freemake youtube download manager" data-listed="201902" data-year="" data-date="Feb 2019">
   <a href="../../software/freemake-youtube-download-manager.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTpIIwdyEG6sEKbPYvqt_qfgFEXoarI06u-yidZmIdqFar4cx3owNzxEeVt6hwXObLOX8hxJv65F1o91qQ6rVdY6aeDHQ_i-LEzxbcprruWyip5YOJpruS08rKMfjKsGFVw1ObOdeO5to/s200/Freemake-Video-Downloader-Free-Download-Logo.png" alt="Freemake YouTube Download Manager" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/freemake-youtube-download-manager.html">Freemake YouTube Download Manager</a></h3>
     <p class="sw-desc">Free YouTube download manager saves any YouTube video, channel or playlist fast and safely. Download manager g</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Feb 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1056,14 +1108,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/freemake-youtube-download-manager.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="idm (internet download manager) 6.42 free download" data-listed="202509">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="idm (internet download manager) 6.42 free download" data-listed="202509" data-year="" data-date="Sep 2025">
   <a href="../../software/idm-internet-download-manager-642-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgaNcPI0wkPyDsJDwZ18hLQTaA47eD8YBRY7ELy7Fk9yC3gkd5h96v71ONxBPfxJUh-wG5F6CFOC8bKsBiyXl0T3AWUw8rSGTBVdHVrVxajnFAWWcbaFhnD39RrfJ0Lepyw4LQsYlBHFIlv0gIJMNPYv1p5pxkX5sfzNLnrIMaETDUZ9mNWAStb-hGQQRI=w232-h320" alt="IDM (Internet Download Manager) 6.42 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.42</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/idm-internet-download-manager-642-free-download.html">IDM (Internet Download Manager) 6.42 Free Download</a></h3>
     <p class="sw-desc">You can easily Download IDM 6.42 from Files2PC to enjoy blazing-fast and stable downloads.</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1072,14 +1126,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/idm-internet-download-manager-642-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="idm uestudio 26.0.0.23 with crack" data-listed="000000">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="idm uestudio 26.0.0.23 with crack" data-listed="202607" data-year="2026" data-date="Jul 10, 2026">
   <a href="../../software/idm-uestudio-260023-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/06/IDM-UEStudio-Cover.avif" alt="IDM UEStudio 26.0.0.23 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v26.0.0.23</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/idm-uestudio-260023-with-crack.html">IDM UEStudio 26.0.0.23 with Crack</a></h3>
     <p class="sw-desc">UEStudio is built upon the world&amp;#8217;s best text editor, UltraEdit, and delivers additional features for tea</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 10, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1088,14 +1144,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/idm-uestudio-260023-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="idm ultracompare professional 25.0.0.10 with crack" data-listed="000000">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="idm ultracompare professional 25.0.0.10 with crack" data-listed="202601" data-year="2026" data-date="Jan 30, 2026">
   <a href="../../software/idm-ultracompare-professional-250010-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/04/IDM-UltraCompare.avif" alt="IDM UltraCompare Professional 25.0.0.10 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v25.0.0.10</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/idm-ultracompare-professional-250010-with-crack.html">IDM UltraCompare Professional 25.0.0.10 with Crack</a></h3>
     <p class="sw-desc">IDM UltraCompare is loaded with features to enable you to easily compare, track, and merge differences between</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 30, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1104,14 +1162,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/idm-ultracompare-professional-250010-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="idm ultraedit 33.0.0.21 with crack" data-listed="000000">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="idm ultraedit 33.0.0.21 with crack" data-listed="202606" data-year="2026" data-date="Jun 9, 2026">
   <a href="../../software/idm-ultraedit-330021-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/04/IDM-UltraEdit-Cover.avif" alt="IDM UltraEdit 33.0.0.21 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v33.0.0.21</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/idm-ultraedit-330021-with-crack.html">IDM UltraEdit 33.0.0.21 with Crack</a></h3>
     <p class="sw-desc">IDM UltraEdit is the world&amp;#8217;s de facto standard text editor. Used as the go-to editor by programmers, pro</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1120,14 +1180,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/idm-ultraedit-330021-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="32-bit" data-title="idm ultraedit x86 free download" data-listed="201905">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="32-bit" data-title="idm ultraedit x86 free download" data-listed="201905" data-year="" data-date="May 2019">
   <a href="../../software/idm-ultraedit-x86-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1pevitG7EgWJv5N-z0l1SizF5xrGw3EHboKj7MLum8eK3sCl2J54Smhq6nCpoOU27ulR_WznNuKl3OfzvNay6KZqHCGQLQPiTzfwNfeTD7fIXTfUacnLP0KkBNbo-vijx6bNmol5jgvg/s200/UltraEdit.png" alt="IDM UltraEdit x86 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v79.6</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/idm-ultraedit-x86-free-download.html">IDM UltraEdit x86 Free Download</a></h3>
     <p class="sw-desc">UltraEdit is a commercial text editor for Microsoft Windows, Linux and OS X created in 1994 by the founder of </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1136,14 +1198,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/idm-ultraedit-x86-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="32-bit" data-title="internet download manager 6.43 build 10 with crack {repack} {portable}" data-listed="000000">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="32-bit" data-title="internet download manager 6.43 build 10 with crack {repack} {portable}" data-listed="202608" data-year="2026" data-date="Aug 22, 2026">
   <a href="../../software/internet-download-manager-643-build-10-with-crack-repack-portable.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/Internet-Download-Manager-Cover.avif" alt="Internet Download Manager 6.43 Build 10 with Crack {Repack} {Portable}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.43</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/internet-download-manager-643-build-10-with-crack-repack-portable.html">Internet Download Manager 6.43 Build 10 with Crack {Repack} {Portable}</a></h3>
     <p class="sw-desc">Internet Download Manager (IDM) is the absolute king of download accelerators for Windows, built specifically </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 22, 2026</span><span class="sw-dl">⬇ 6 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1152,14 +1216,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/internet-download-manager-643-build-10-with-crack-repack-portable.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="internet download manager free download" data-listed="201902">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="internet download manager free download" data-listed="201902" data-year="" data-date="Feb 2019">
   <a href="../../software/internet-download-manager-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtv_zOHQItvygyV5DuqiOBXulLbVbfGKvuNu9JZ4gpLKdcvQ8pQ9tDPucD7-JVE_vvFKDEPXSyRFwZFUgdIbkh42IcM1FmCQxQ42vB7e0EwQWGSOC3Hme4hJzXk9jB_20_oFKIP13Ed7g/s320/Internet_Download_Manager_1_Year_Lifetime.jpg" alt="Internet Download Manager Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/internet-download-manager-free-download.html">Internet Download Manager Free Download</a></h3>
     <p class="sw-desc">Comprehensive error recovery and resume capability will restart broken or interrupted downloads due to lost co</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Feb 2019</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1168,14 +1234,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/internet-download-manager-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="utorrent pro 2019 free download" data-listed="201905">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="utorrent pro 2019 free download" data-listed="201905" data-year="2019" data-date="May 2019">
   <a href="../../software/utorrent-pro-2019-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMtxo-jI0YAd8CKEdVMf_hGV0zBi-8ZTXF4pCVo4p439mxlC5AlVqtpY6DYHIADMMQQbgZiAfuG5y5tiyul8cKwrQVl9QPwTDAiTWxDCMMN9IFlb45lexQ5JpFSj0PdQxSRCAYC17La6g/s200/utorrent+pro+images.png" alt="uTorrent Pro 2019 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v24.8</span>
+    <span class="sw-year">© 2019</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/utorrent-pro-2019-free-download.html">uTorrent Pro 2019 Free Download</a></h3>
     <p class="sw-desc">uTorrent Pro 2019 is one of the best software for downloading the files from the torrent and this software is </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1184,14 +1252,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/utorrent-pro-2019-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="utorrent web installer free download" data-listed="202507">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="utorrent web installer free download" data-listed="202507" data-year="" data-date="Jul 2025">
   <a href="../../software/utorrent-web-installer-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikKw1iFSNkAn7oTohpMmDQJF04KnKBYL3xFVleFkVVY1c1iZqzCifwEJucWhThmC5gz-Fg6ONw9Uzq1hKyVExowTjh3TeEB4Fgch7qlcJWJoFbuFn-tYxgBTf5HFG-spuZwLsX6oDxeYX-pJ8dF_XWRFWD-zz6XMIkMDseEBaQYw0SjE0e5nW8jgq84Lg/s1600/utorrent-web-free-download.png" alt="uTorrent Web Installer Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/utorrent-web-installer-free-download.html">uTorrent Web Installer Free Download</a></h3>
     <p class="sw-desc">uTorrent Web Installer is the lightweight setup for the uTorrent Web client, designed for fast torrent downloa</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1200,14 +1270,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/utorrent-web-installer-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="µtorrent free download" data-listed="201802">
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="µtorrent free download" data-listed="201802" data-year="" data-date="Feb 2018">
   <a href="../../software/µtorrent-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWfq5064qmtviMWu-1c3E7xDbXPiDx6JBOmJHsv0lJlWkqQRZ4AE6G6xpHt0qZ5uj4Jl_z-yrQX0LNUPbw0VQntxUwgh7vVfUNdqcObE0AnkCUmndbjuDHbwcpTNvooGtPN9JZwCATUcg/s200/image-04-535x535.png" alt="µTorrent Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/µtorrent-free-download.html">µTorrent Free Download</a></h3>
     <p class="sw-desc">µTorrent, or uTorrent is a proprietary adware BitTorrent client owned and developed by BitTorrent, Inc. With o</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Feb 2018</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
@@ -1376,6 +1448,41 @@ ul, ol { margin: 0; padding: 0; }
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); go(); }
     });
+  }
+
+  /* ---------- Slideshow ---------- */
+  function initSlideshow() {
+    var ss = document.getElementById('latestSlideshow');
+    if (!ss) return;
+    var slides = ss.querySelectorAll('.slide');
+    var dots = ss.querySelectorAll('.dot');
+    if (!slides.length) return;
+    var cur = 0;
+    var timer = null;
+
+    function show(i) {
+      cur = (i + slides.length) % slides.length;
+      for (var j = 0; j < slides.length; j++) {
+        slides[j].classList.toggle('active', j === cur);
+        if (dots[j]) dots[j].classList.toggle('on', j === cur);
+      }
+    }
+    function next() { show(cur + 1); restart(); }
+    function prev() { show(cur - 1); restart(); }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show(cur + 1); }, 6000);
+    }
+    var btnNext = ss.querySelector('#slideNext');
+    var btnPrev = ss.querySelector('#slidePrev');
+    if (btnNext) btnNext.addEventListener('click', next);
+    if (btnPrev) btnPrev.addEventListener('click', prev);
+    for (var i = 0; i < dots.length; i++) {
+      (function (idx) {
+        dots[idx].addEventListener('click', function () { show(idx); restart(); });
+      })(i);
+    }
+    restart();
   }
 
   /* ---------- Listing sort select ---------- */
@@ -1843,7 +1950,8 @@ ul, ol { margin: 0; padding: 0; }
       + (img || ph) + '</a>';
     var tier = TIER_LABELS[it.tier] || '';
     var meta = '<span>&#9989; Windows</span>';
-    if (it.year) meta += '<span>' + escapeHtml(it.year) + '</span>';
+    if (it.year) meta += '<span>&#169; ' + escapeHtml(it.year) + '</span>';
+    if (it.date) meta += '<span>&#128197; ' + escapeHtml(it.date) + '</span>';
     if (it.version) meta += '<span class="badge-ver">' + escapeHtml(it.version) + '</span>';
     return '<article class="sw-card">' + thumb
       + '<div class="sw-body">'
@@ -1933,6 +2041,7 @@ ul, ol { margin: 0; padding: 0; }
     initNavSearchBtn();
     initHeroSearchBtn();
     initSort();
+    initSlideshow();
     initToastLinks();
     initLightbox();
     initSearch('navSearch');

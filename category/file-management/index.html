@@ -476,14 +476,46 @@ ul, ol { margin: 0; padding: 0; }
 .sw-thumb .placeholder { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2.1rem; }
 .sw-thumb .badge-ver { position: absolute; bottom: 10px; right: 10px; background: rgba(4, 10, 20, .8); color: #dbe7f7; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-thumb .badge-top { position: absolute; top: 10px; left: 10px; }
+.sw-year { position: absolute; top: 10px; left: 10px; background: rgba(4, 10, 20, .8); color: var(--text-2); font-size: .68rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-body { padding: 15px 16px 16px; display: flex; flex-direction: column; flex: 1; gap: 8px; }
 .sw-title { font-size: .99rem; font-weight: 700; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .sw-title a { color: var(--text); }
 .sw-title a:hover { color: var(--primary-strong); }
 .sw-desc { font-size: .83rem; color: var(--text-3); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sw-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .76rem; color: var(--text-3); }
+.sw-row span { display: inline-flex; align-items: center; gap: 4px; }
+.sw-date { color: var(--text-2); font-weight: 500; }
+.sw-dl { color: var(--primary-strong); font-weight: 600; }
+.sw-dev { color: var(--text-3); font-style: italic; }
 .sw-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .74rem; color: var(--text-3); margin-top: auto; }
 .sw-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .sw-card .btn { margin-top: 10px; }
+
+/* Slideshow — latest software carousel */
+.slide-show { position: relative; max-width: 1240px; margin: 26px auto 0; padding: 0 18px; box-sizing: border-box; }
+.slide-show .slides { position: relative; height: 340px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-strong); }
+.slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s ease; pointer-events: none; display: flex; align-items: flex-end; }
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 1; }
+.slide-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 8, 16, .92) 0%, rgba(3, 8, 16, .68) 45%, rgba(3, 8, 16, .18) 100%); }
+.slide-body { position: relative; z-index: 2; max-width: 620px; padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 10px; }
+.slide-badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.slide-title { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin: 0; }
+.slide-title a { color: #fff; }
+.slide-title a:hover { color: var(--primary-soft); }
+.slide-desc { font-size: .92rem; color: rgba(255,255,255,.78); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.slide-cta { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border-radius: var(--radius-full); border: 1px solid var(--border-strong); background: rgba(4, 10, 20, .75); color: #fff; font-size: 1.25rem; cursor: pointer; display: grid; place-items: center; transition: all var(--trans); }
+.slide-arrow:hover { background: var(--primary); border-color: var(--primary-strong); }
+.slide-arrow.prev { left: 14px; }
+.slide-arrow.next { right: 14px; }
+.slide-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+.slide-dots .dot { width: 10px; height: 10px; border-radius: var(--radius-full); border: none; background: var(--border-strong); cursor: pointer; padding: 0; transition: all var(--trans); }
+.slide-dots .dot.on { background: var(--primary); width: 22px; }
+@media (max-width: 760px) {
+  .slide-show .slides { height: 300px; }
+  .slide-body { padding: 18px; }
+  .slide-title { font-size: 1.15rem; }
+}
 
 /* Compact list item (staff picks / related) */
 .related-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
@@ -896,14 +928,16 @@ ul, ol { margin: 0; padding: 0; }
     </select>
   </div>
   <div id="swList" class="sw-grid">
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="4ddig duplicate file deleter 3.1.2.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="4ddig duplicate file deleter 3.1.2.0 with crack" data-listed="202604" data-year="2026" data-date="Apr 28, 2026">
   <a href="../../software/4ddig-duplicate-file-deleter-3120-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2025/05/4DDiG-Duplicate-File-Deleter-Logo.webp" alt="4DDiG Duplicate File Deleter 3.1.2.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.1.2.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/4ddig-duplicate-file-deleter-3120-with-crack.html">4DDiG Duplicate File Deleter 3.1.2.0 with Crack</a></h3>
     <p class="sw-desc">4DDiG Duplicate File Deleter utilizes advanced MD5 Message-Digest Algorithm to find duplicate files fast with </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Apr 28, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -912,14 +946,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/4ddig-duplicate-file-deleter-3120-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="4ddig file repair 4.4.2.9 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="4ddig file repair 4.4.2.9 with crack" data-listed="202608" data-year="2026" data-date="Aug 7, 2026">
   <a href="../../software/4ddig-file-repair-4429-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2025/05/4DDiG-File-Repair-Logo.webp" alt="4DDiG File Repair 4.4.2.9 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.4.2.9</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/4ddig-file-repair-4429-with-crack.html">4DDiG File Repair 4.4.2.9 with Crack</a></h3>
     <p class="sw-desc">Even when shot with a good phone or camera, photos and videos may still not meet your quality requirements. Ed</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 7, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -928,14 +964,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/4ddig-file-repair-4429-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="64-bit" data-title="active boot disk 26.0.1 with crack {winpe}" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="64-bit" data-title="active boot disk 26.0.1 with crack {winpe}" data-listed="202606" data-year="2026" data-date="Jun 20, 2026">
   <a href="../../software/active-boot-disk-2601-with-crack-winpe.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/07/Active@-Boot-Disk-Cover.avif" alt="Active Boot Disk 26.0.1 with Crack {WinPE}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v26.0.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/active-boot-disk-2601-with-crack-winpe.html">Active Boot Disk 26.0.1 with Crack {WinPE}</a></h3>
     <p class="sw-desc">Active Boot Disk contains a collection of powerful utilities to perform data recovery, data imaging, secure da</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 20, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -944,14 +982,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/active-boot-disk-2601-with-crack-winpe.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="active@ disk image professional 23.0.0 with crack {winpe}" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="active@ disk image professional 23.0.0 with crack {winpe}" data-listed="202308" data-year="2023" data-date="Aug 3, 2023">
   <a href="../../software/active-disk-image-professional-2300-with-crack-winpe.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/Active@-Disk-Image-Professional-Cover.avif" alt="Active@ Disk Image Professional 23.0.0 with Crack {WinPE}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v23.0.0</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/active-disk-image-professional-2300-with-crack-winpe.html">Active@ Disk Image Professional 23.0.0 with Crack {WinPE}</a></h3>
     <p class="sw-desc">Active@ Disk Image Professional makes an exact copy of your PC disks by creating a whole disk backup. Active@ </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 3, 2023</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -960,14 +1000,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/active-disk-image-professional-2300-with-crack-winpe.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="coolmuster mobile transfer 4.1.22 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="coolmuster mobile transfer 4.1.22 with crack" data-listed="202607" data-year="2026" data-date="Jul 20, 2026">
   <a href="../../software/coolmuster-mobile-transfer-4122-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/Coolmuster-Mobile-Transfer.avif" alt="Coolmuster Mobile Transfer 4.1.22 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.1.22</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/coolmuster-mobile-transfer-4122-with-crack.html">Coolmuster Mobile Transfer 4.1.22 with Crack</a></h3>
     <p class="sw-desc">Coolmuster Mobile Transfer has no idea how to copy data from an old phone to a new one since they are coming f</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 20, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -976,14 +1018,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/coolmuster-mobile-transfer-4122-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="disk drill enterprise 6.3.1398.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="disk drill enterprise 6.3.1398.0 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/disk-drill-enterprise-6313980-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/Disk-Drill.avif" alt="Disk Drill Enterprise 6.3.1398.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.3.1398.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/disk-drill-enterprise-6313980-with-crack.html">Disk Drill Enterprise 6.3.1398.0 with Crack</a></h3>
     <p class="sw-desc">Disk Drill Enterprise from high-level business to home relaxation, modern life revolves around data. We all kn</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -992,14 +1036,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/disk-drill-enterprise-6313980-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="ef file catalog 26.05 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="ef file catalog 26.05 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/ef-file-catalog-2605-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/11/EF-File-Catalog-.avif" alt="EF File Catalog 26.05 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v26.05</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ef-file-catalog-2605-with-crack.html">EF File Catalog 26.05 with Crack</a></h3>
     <p class="sw-desc">Catalog whole disks or only single directories with a familiar Explorer-like user interface and make it availa</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1008,14 +1054,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ef-file-catalog-2605-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="64-bit" data-title="file viewer plus 6.2.2.120 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="64-bit" data-title="file viewer plus 6.2.2.120 with crack" data-listed="202604" data-year="2026" data-date="Apr 16, 2026">
   <a href="../../software/file-viewer-plus-622120-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2025/01/File-Viewer-Plus-Cover.avif" alt="File Viewer Plus 6.2.2.120 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.2.2.120</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/file-viewer-plus-622120-with-crack.html">File Viewer Plus 6.2.2.120 with Crack</a></h3>
     <p class="sw-desc">File Viewer Plus. Open hundreds of file types with one easy-to-use program. Edit Office documents, view and co</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Apr 16, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1024,14 +1072,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/file-viewer-plus-622120-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="fonedog phone transfer 1.3.18 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="fonedog phone transfer 1.3.18 with crack" data-listed="202311" data-year="2023" data-date="Nov 26, 2023">
   <a href="../../software/fonedog-phone-transfer-1318-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/05/FoneDog-Phone-Transfer.avif" alt="FoneDog Phone Transfer 1.3.18 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.3.18</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/fonedog-phone-transfer-1318-with-crack.html">FoneDog Phone Transfer 1.3.18 with Crack</a></h3>
     <p class="sw-desc">FoneDog Phone Transfer easily transfers data between iOS, Android, and Computer. Transfer and back up messages</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Nov 26, 2023</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1040,14 +1090,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/fonedog-phone-transfer-1318-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="fonepaw ios transfer 7.0.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="fonepaw ios transfer 7.0.0 with crack" data-listed="202505" data-year="2025" data-date="May 20, 2025">
   <a href="../../software/fonepaw-ios-transfer-700-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/05/FonePaw-iOS-Transfer.avif" alt="FonePaw iOS Transfer 7.0.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v7.0.0</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/fonepaw-ios-transfer-700-with-crack.html">FonePaw iOS Transfer 7.0.0 with Crack</a></h3>
     <p class="sw-desc">FonePaw iOS Transfer is a trustworthy transfer program that empowers you to manage and transfer data between i</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 20, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1056,14 +1108,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/fonepaw-ios-transfer-700-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="icarefone for whatsapp transfer 3.0.0.173 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="icarefone for whatsapp transfer 3.0.0.173 with crack" data-listed="202504" data-year="2025" data-date="Apr 28, 2025">
   <a href="../../software/icarefone-for-whatsapp-transfer-300173-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/Tenorshare-iCareFone-for-WhatsApp-Transfer-Cover.avif" alt="iCareFone for WhatsApp Transfer 3.0.0.173 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.0.0.173</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/icarefone-for-whatsapp-transfer-300173-with-crack.html">iCareFone for WhatsApp Transfer 3.0.0.173 with Crack</a></h3>
     <p class="sw-desc">Tenorshare iCareFone for WhatsApp Transfer is the Quickest Way to Transfer, Backup &amp;amp; Restore Your WhatsApp</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Apr 28, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1072,14 +1126,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/icarefone-for-whatsapp-transfer-300173-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="panfone data transfer 1.5.4 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="panfone data transfer 1.5.4 with crack" data-listed="202512" data-year="2025" data-date="Dec 11, 2025">
   <a href="../../software/panfone-data-transfer-154-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/PanFone-Data-Transfer-Cover.avif" alt="PanFone Data Transfer 1.5.4 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5.4</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/panfone-data-transfer-154-with-crack.html">PanFone Data Transfer 1.5.4 with Crack</a></h3>
     <p class="sw-desc">PanFone Data Transfer did you just get a new phone and have no idea how to sync data from the old phone to the</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 11, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1088,14 +1144,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/panfone-data-transfer-154-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="panfone whatsapp transfer 2.5.3 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="panfone whatsapp transfer 2.5.3 with crack" data-listed="202608" data-year="2026" data-date="Aug 26, 2026">
   <a href="../../software/panfone-whatsapp-transfer-253-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/PanFone-WhatsApp-Transfer.avif" alt="PanFone WhatsApp Transfer 2.5.3 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.5.3</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/panfone-whatsapp-transfer-253-with-crack.html">PanFone WhatsApp Transfer 2.5.3 with Crack</a></h3>
     <p class="sw-desc">PanFone WhatsApp Transfer is the Best Solution to backup, restore, and transfer iOS/Android WhatsApp messages,</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 26, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1104,14 +1162,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/panfone-whatsapp-transfer-253-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="paragon hard disk manager 18.19.0 with crack {winpe} {business}" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="paragon hard disk manager 18.19.0 with crack {winpe} {business}" data-listed="202608" data-year="2026" data-date="Aug 27, 2026">
   <a href="../../software/paragon-hard-disk-manager-18190-with-crack-winpe-business.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2026/05/Paragon-Hard-Disk-Manager-Cover.avif" alt="Paragon Hard Disk Manager 18.19.0 with Crack {WinPE} {Business}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v18.19.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/paragon-hard-disk-manager-18190-with-crack-winpe-business.html">Paragon Hard Disk Manager 18.19.0 with Crack {WinPE} {Business}</a></h3>
     <p class="sw-desc">Best Data Recovery and Disk Management software for Windows 11 and Windows Server. Paragon Hard Disk Manager i</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 27, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1120,14 +1180,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/paragon-hard-disk-manager-18190-with-crack-winpe-business.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="paragon linux file systems 7.0.29 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="paragon linux file systems 7.0.29 with crack" data-listed="202410" data-year="2024" data-date="Oct 28, 2024">
   <a href="../../software/paragon-linux-file-systems-7029-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/Paragon-Linux-File-Systems-for-Windows-Cover.avif" alt="Paragon Linux File Systems 7.0.29 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v7.0.29</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/paragon-linux-file-systems-7029-with-crack.html">Paragon Linux File Systems 7.0.29 with Crack</a></h3>
     <p class="sw-desc">Paragon Linux File Systems for Windows is a unique tool that gives you full access to Linux volumes within Win</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 28, 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1136,14 +1198,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/paragon-linux-file-systems-7029-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="passfab duplicate file deleter 3.1.2.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="passfab duplicate file deleter 3.1.2.0 with crack" data-listed="202607" data-year="2026" data-date="Jul 2, 2026">
   <a href="../../software/passfab-duplicate-file-deleter-3120-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/03/PassFab-Duplicate-File-Deleter-Cover.png" alt="PassFab Duplicate File Deleter 3.1.2.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.1.2.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/passfab-duplicate-file-deleter-3120-with-crack.html">PassFab Duplicate File Deleter 3.1.2.0 with Crack</a></h3>
     <p class="sw-desc">PassFab Duplicate File Deleter will help you quickly target duplicate files and one click to remove them. With</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1152,14 +1216,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/passfab-duplicate-file-deleter-3120-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="reviversoft disk reviver 1.0.0.18480 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="reviversoft disk reviver 1.0.0.18480 with crack" data-listed="202410" data-year="2024" data-date="Oct 20, 2024">
   <a href="../../software/reviversoft-disk-reviver-10018480-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/01/ReviverSoft-Disk-Reviver.avif" alt="ReviverSoft Disk Reviver 1.0.0.18480 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.0.0.18480</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/reviversoft-disk-reviver-10018480-with-crack.html">ReviverSoft Disk Reviver 1.0.0.18480 with Crack</a></h3>
     <p class="sw-desc">ReviverSoft Disk Reviver will scan your hard drive for performance improvements. Disk Reviver can quickly and </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 20, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1168,14 +1234,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/reviversoft-disk-reviver-10018480-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="syncios data transfer 3.5.3 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="syncios data transfer 3.5.3 with crack" data-listed="202512" data-year="2025" data-date="Dec 11, 2025">
   <a href="../../software/syncios-data-transfer-353-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/06/Syncios-Data-Transfer.avif" alt="Syncios Data Transfer 3.5.3 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.5.3</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/syncios-data-transfer-353-with-crack.html">Syncios Data Transfer 3.5.3 with Crack</a></h3>
     <p class="sw-desc">Syncios Data Transfer almost all files, including contacts, video, SMS, photos, call logs, music, Ebook, apps,</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 11, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1184,14 +1252,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/syncios-data-transfer-353-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="syncios whatsapp transfer 2.5.3 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="syncios whatsapp transfer 2.5.3 with crack" data-listed="202608" data-year="2026" data-date="Aug 26, 2026">
   <a href="../../software/syncios-whatsapp-transfer-253-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/12/Syncios-WhatsApp-Transfer-Cover.avif" alt="Syncios WhatsApp Transfer 2.5.3 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.5.3</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/syncios-whatsapp-transfer-253-with-crack.html">Syncios WhatsApp Transfer 2.5.3 with Crack</a></h3>
     <p class="sw-desc">Syncios WhatsApp Transfer when you just switched to a new phone, you can use this program to selectively trans</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 26, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1200,14 +1270,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/syncios-whatsapp-transfer-253-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="winzip disk tools 1.0.100.18460 with crack" data-listed="000000">
+<article class="sw-card" data-category="file-management" data-license="free" data-arch="x64" data-title="winzip disk tools 1.0.100.18460 with crack" data-listed="202309" data-year="2023" data-date="Sep 28, 2023">
   <a href="../../software/winzip-disk-tools-1010018460-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📁&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/12/WinZip-Disk-Tools-Cover.avif" alt="WinZip Disk Tools 1.0.100.18460 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.0.100.18460</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/winzip-disk-tools-1010018460-with-crack.html">WinZip Disk Tools 1.0.100.18460 with Crack</a></h3>
     <p class="sw-desc">WinZip Disk Tool swift and reliable hard drive that is crucial to the function of your PC. WinZip Disk Tools s</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 28, 2023</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📁 File Management</span>
@@ -1376,6 +1448,41 @@ ul, ol { margin: 0; padding: 0; }
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); go(); }
     });
+  }
+
+  /* ---------- Slideshow ---------- */
+  function initSlideshow() {
+    var ss = document.getElementById('latestSlideshow');
+    if (!ss) return;
+    var slides = ss.querySelectorAll('.slide');
+    var dots = ss.querySelectorAll('.dot');
+    if (!slides.length) return;
+    var cur = 0;
+    var timer = null;
+
+    function show(i) {
+      cur = (i + slides.length) % slides.length;
+      for (var j = 0; j < slides.length; j++) {
+        slides[j].classList.toggle('active', j === cur);
+        if (dots[j]) dots[j].classList.toggle('on', j === cur);
+      }
+    }
+    function next() { show(cur + 1); restart(); }
+    function prev() { show(cur - 1); restart(); }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show(cur + 1); }, 6000);
+    }
+    var btnNext = ss.querySelector('#slideNext');
+    var btnPrev = ss.querySelector('#slidePrev');
+    if (btnNext) btnNext.addEventListener('click', next);
+    if (btnPrev) btnPrev.addEventListener('click', prev);
+    for (var i = 0; i < dots.length; i++) {
+      (function (idx) {
+        dots[idx].addEventListener('click', function () { show(idx); restart(); });
+      })(i);
+    }
+    restart();
   }
 
   /* ---------- Listing sort select ---------- */
@@ -1843,7 +1950,8 @@ ul, ol { margin: 0; padding: 0; }
       + (img || ph) + '</a>';
     var tier = TIER_LABELS[it.tier] || '';
     var meta = '<span>&#9989; Windows</span>';
-    if (it.year) meta += '<span>' + escapeHtml(it.year) + '</span>';
+    if (it.year) meta += '<span>&#169; ' + escapeHtml(it.year) + '</span>';
+    if (it.date) meta += '<span>&#128197; ' + escapeHtml(it.date) + '</span>';
     if (it.version) meta += '<span class="badge-ver">' + escapeHtml(it.version) + '</span>';
     return '<article class="sw-card">' + thumb
       + '<div class="sw-body">'
@@ -1933,6 +2041,7 @@ ul, ol { margin: 0; padding: 0; }
     initNavSearchBtn();
     initHeroSearchBtn();
     initSort();
+    initSlideshow();
     initToastLinks();
     initLightbox();
     initSearch('navSearch');

@@ -476,14 +476,46 @@ ul, ol { margin: 0; padding: 0; }
 .sw-thumb .placeholder { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2.1rem; }
 .sw-thumb .badge-ver { position: absolute; bottom: 10px; right: 10px; background: rgba(4, 10, 20, .8); color: #dbe7f7; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-thumb .badge-top { position: absolute; top: 10px; left: 10px; }
+.sw-year { position: absolute; top: 10px; left: 10px; background: rgba(4, 10, 20, .8); color: var(--text-2); font-size: .68rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-body { padding: 15px 16px 16px; display: flex; flex-direction: column; flex: 1; gap: 8px; }
 .sw-title { font-size: .99rem; font-weight: 700; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .sw-title a { color: var(--text); }
 .sw-title a:hover { color: var(--primary-strong); }
 .sw-desc { font-size: .83rem; color: var(--text-3); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sw-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .76rem; color: var(--text-3); }
+.sw-row span { display: inline-flex; align-items: center; gap: 4px; }
+.sw-date { color: var(--text-2); font-weight: 500; }
+.sw-dl { color: var(--primary-strong); font-weight: 600; }
+.sw-dev { color: var(--text-3); font-style: italic; }
 .sw-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .74rem; color: var(--text-3); margin-top: auto; }
 .sw-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .sw-card .btn { margin-top: 10px; }
+
+/* Slideshow — latest software carousel */
+.slide-show { position: relative; max-width: 1240px; margin: 26px auto 0; padding: 0 18px; box-sizing: border-box; }
+.slide-show .slides { position: relative; height: 340px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-strong); }
+.slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s ease; pointer-events: none; display: flex; align-items: flex-end; }
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 1; }
+.slide-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 8, 16, .92) 0%, rgba(3, 8, 16, .68) 45%, rgba(3, 8, 16, .18) 100%); }
+.slide-body { position: relative; z-index: 2; max-width: 620px; padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 10px; }
+.slide-badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.slide-title { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin: 0; }
+.slide-title a { color: #fff; }
+.slide-title a:hover { color: var(--primary-soft); }
+.slide-desc { font-size: .92rem; color: rgba(255,255,255,.78); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.slide-cta { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border-radius: var(--radius-full); border: 1px solid var(--border-strong); background: rgba(4, 10, 20, .75); color: #fff; font-size: 1.25rem; cursor: pointer; display: grid; place-items: center; transition: all var(--trans); }
+.slide-arrow:hover { background: var(--primary); border-color: var(--primary-strong); }
+.slide-arrow.prev { left: 14px; }
+.slide-arrow.next { right: 14px; }
+.slide-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+.slide-dots .dot { width: 10px; height: 10px; border-radius: var(--radius-full); border: none; background: var(--border-strong); cursor: pointer; padding: 0; transition: all var(--trans); }
+.slide-dots .dot.on { background: var(--primary); width: 22px; }
+@media (max-width: 760px) {
+  .slide-show .slides { height: 300px; }
+  .slide-body { padding: 18px; }
+  .slide-title { font-size: 1.15rem; }
+}
 
 /* Compact list item (staff picks / related) */
 .related-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
@@ -896,14 +928,16 @@ ul, ol { margin: 0; padding: 0; }
     </select>
   </div>
   <div id="swList" class="sw-grid">
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="acdsee gemstone photo editor 16.0.0.1820 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="acdsee gemstone photo editor 16.0.0.1820 with crack" data-listed="202607" data-year="2026" data-date="Jul 24, 2026">
   <a href="../../software/acdsee-gemstone-photo-editor-16001820-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/05/ACDSee-Gemstone-Photo-Editor-Logo.webp" alt="ACDSee Gemstone Photo Editor 16.0.0.1820 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v16.0.0.1820</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/acdsee-gemstone-photo-editor-16001820-with-crack.html">ACDSee Gemstone Photo Editor 16.0.0.1820 with Crack</a></h3>
     <p class="sw-desc">ACDSee Gemstone Photo Editor, the comprehensive image creation tool you have been anticipating, is now availab</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 24, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -912,14 +946,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/acdsee-gemstone-photo-editor-16001820-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="arm64" data-title="acdsee photo studio ultimate 2026 v19.1.0.4501 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="arm64" data-title="acdsee photo studio ultimate 2026 v19.1.0.4501 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/acdsee-photo-studio-ultimate-2026-v19104501-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/ACDSee-Photo-Studio-Cover.avif" alt="ACDSee Photo Studio Ultimate 2026 v19.1.0.4501 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv19.1.0.4501</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/acdsee-photo-studio-ultimate-2026-v19104501-with-crack.html">ACDSee Photo Studio Ultimate 2026 v19.1.0.4501 with Crack</a></h3>
     <p class="sw-desc">ACDSee Photo Studio Ultimate is an all-in-one digital asset manager and layered photo editor, that ensures an </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -928,14 +964,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/acdsee-photo-studio-ultimate-2026-v19104501-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe acrobat pro dc 2025 free download" data-listed="202512">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe acrobat pro dc 2025 free download" data-listed="202512" data-year="2025" data-date="Dec 2025">
   <a href="../../software/adobe-acrobat-pro-dc-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhzzVCQq05D3pQwdu0N28WcNsMNENvd299cvc4jnnxr2bQzvwUSMn7RF6Q3hXRYZvku6jNEqvBFIT0ixlEIAvILwoCZYecwKsioEg3P_9wmWgiUJrt5dZnwR7Ivucfr_lXr1h4XPYx_CE5U9GQXoiuBEKAL6TuOTlDGtlfy0jUCzlmww0Zp5-xX5yKnMbI=w320-h320" alt="Adobe Acrobat Pro DC 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.5</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-acrobat-pro-dc-2025-free-download.html">Adobe Acrobat Pro DC 2025 Free Download</a></h3>
     <p class="sw-desc">Adobe Acrobat Pro DC 2025 is the industry-leading PDF solution for creating, editing, converting, signing, and</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -944,14 +982,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-acrobat-pro-dc-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe acrobat pro dc 2026.001.21814 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe acrobat pro dc 2026.001.21814 with crack" data-listed="000000" data-year="2026" data-date="">
   <a href="../../software/adobe-acrobat-pro-dc-202600121814-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/01/Adobe-Acrobat-Pro-Cover.avif" alt="Adobe Acrobat Pro DC 2026.001.21814 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2026.001.21814</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-acrobat-pro-dc-202600121814-with-crack.html">Adobe Acrobat Pro DC 2026.001.21814 with Crack</a></h3>
     <p class="sw-desc">Adobe Acrobat Pro DC is the completely reimagined desktop version of the world’s best PDF solution. It include</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -960,14 +1000,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-acrobat-pro-dc-202600121814-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe acrobat reader dc 2025 free download" data-listed="202506">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe acrobat reader dc 2025 free download" data-listed="202506" data-year="2025" data-date="Jun 2025">
   <a href="../../software/adobe-acrobat-reader-dc-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdlvx-YLTNE5DEk4_KzQY04nVPnjGNZhsUZk2ybtog1sE5dUvNdLLAzPpf6OpGsnwxLGE_PUD2lXyCVur1k7V67AEiyoEz-LYewRKh1YVV-jKkihyphenhyphenOztrbuyqYN2ElqHUKvSAf8ZdMc0cGe7Qvth1mkKutEhx2uwJzEYaiaKi33Sa3lZ_oOxL_0-g7RE4/s320/adobe-acrobat-2025-free-download.jpg" alt="Adobe Acrobat Reader DC 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-acrobat-reader-dc-2025-free-download.html">Adobe Acrobat Reader DC 2025 Free Download</a></h3>
     <p class="sw-desc">Adobe Acrobat Reader DC 2025 is the latest version of Adobe’s free and reliable PDF viewer. Now enhanced with </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -976,14 +1018,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-acrobat-reader-dc-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe after effects 2026 v26.3 with crack {repack}" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe after effects 2026 v26.3 with crack {repack}" data-listed="000000" data-year="2026" data-date="">
   <a href="../../software/adobe-after-effects-2026-v263-with-crack-repack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/Adobe-After-Effects-2020-Cover.avif" alt="Adobe After Effects 2026 v26.3 with Crack {RePack}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv26.3</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-after-effects-2026-v263-with-crack-repack.html">Adobe After Effects 2026 v26.3 with Crack {RePack}</a></h3>
     <p class="sw-desc">Adobe After Effects makes a big scene bigger. Create cinematic movie titles, intros, and transitions. Start a </p>
+    <div class="sw-row"><span class="sw-dl">⬇ 3 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -992,14 +1036,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-after-effects-2026-v263-with-crack-repack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe animate 2020 v20 for mac free download" data-listed="202508">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe animate 2020 v20 for mac free download" data-listed="202508" data-year="2020" data-date="Aug 2025">
   <a href="../../software/adobe-animate-2020-v20-for-mac-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgiIGsPqdW3ZZ3QDS9Ekn80_8BoUYzKlBmy6-xPI7lDzNc6n42gvw7QzAttjFSgLfjeKaV08vinJ7dQ6w_UCClTrLO50jr_f9wKFKn2nCLyqTef3nrpWKr_1mHF8QyPMJOKrJlrca7jqdNeNqeiA9EJrIcXOe77RDYQTjPP_t_ZcSmiAonD2DuszL075Lg" alt="Adobe Animate 2020 v20 for Mac Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv10.13</span>
+    <span class="sw-year">© 2020</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-animate-2020-v20-for-mac-free-download.html">Adobe Animate 2020 v20 for Mac Free Download</a></h3>
     <p class="sw-desc">Adobe Animate 2020 v20 for Mac is the industry-standard software for creating 2D animations, interactive web c</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1008,14 +1054,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-animate-2020-v20-for-mac-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe animate 2020 v20 free download" data-listed="202508">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe animate 2020 v20 free download" data-listed="202508" data-year="2020" data-date="Aug 2025">
   <a href="../../software/adobe-animate-2020-v20-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEha_8-yxO5qSFaAxVcwr-Ez5KU9_fYlnn_BOTqtNHICl8_YH85KNAjELdtzPdwMMR3Zrj7S1mIzyPH6VpBZfHXjJ8c_qLboPoKuz7QUBonziqpYRN908Z2iZsNNU5Nq8nIdU3zVNj80lMnNV1NRMuJj4TH5np_x0mm7MY9yILfnp9cnrvPgWKUx85hrzfA=w320-h320" alt="Adobe Animate 2020 v20 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.52</span>
+    <span class="sw-year">© 2020</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-animate-2020-v20-free-download.html">Adobe Animate 2020 v20 Free Download</a></h3>
     <p class="sw-desc">Adobe Animate 2020 v20 is the industry-standard animation software used to create interactive animations, cart</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1024,14 +1072,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-animate-2020-v20-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe animate 2024 v24.0.14 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe animate 2024 v24.0.14 with crack" data-listed="000000" data-year="2024" data-date="">
   <a href="../../software/adobe-animate-2024-v24014-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/Adobe-Animate-2020-Cover.avif" alt="Adobe Animate 2024 v24.0.14 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv24.0.14</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-animate-2024-v24014-with-crack.html">Adobe Animate 2024 v24.0.14 with Crack</a></h3>
     <p class="sw-desc">Adobe Animate is a new age for animation. Design interactive vector and bitmap animations for games, apps, and</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1040,14 +1090,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-animate-2024-v24014-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe audition 2020 v13 free download" data-listed="202508">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe audition 2020 v13 free download" data-listed="202508" data-year="2020" data-date="Aug 2025">
   <a href="../../software/adobe-audition-2020-v13-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiXBZS9NKCDlhtodG7r0DKhMpSiPhm5NtuOSeQOMhRIQvAUWCFxUhb8fja7WTuDbwOz8DlPIHdbLcWFLt_sYVNvj1lHju5g9r_xCRutcd9-CAjbmpxne2Q45npLgzlbfptZreWHCJkzv3viXWEuaWXfPgzndxs8paD8ilhqaL-MljeWkZ8XghwHhF22Nc4=w320-h320" alt="Adobe Audition 2020 v13 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv13.0</span>
+    <span class="sw-year">© 2020</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-audition-2020-v13-free-download.html">Adobe Audition 2020 v13 Free Download</a></h3>
     <p class="sw-desc">Adobe Audition 2020 v13.0 is a powerful audio editing and sound design software tailored for musicians, podcas</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1056,14 +1108,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-audition-2020-v13-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe audition 2020 v13.0 for mac free download" data-listed="202509">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe audition 2020 v13.0 for mac free download" data-listed="202509" data-year="2020" data-date="Sep 2025">
   <a href="../../software/adobe-audition-2020-v130-for-mac-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhHYMp32xhgy631GssuFEmrkpv8hE3t4UigGqCuX8LlAzigA586oCVOaJCkoMkxX2IZyfIZytW9fpx0H8yqbppKGSD5N1GaC1Z6YHBbHVagNvvGlv8qHR5t2aMIw6rbsZSkmO-X-wu0F6MZlUwzUWcBONhyBsaiabLuDKcmairZXJQ7n09nWQ7aP1H1_3g" alt="Adobe Audition 2020 v13.0 for Mac Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv13.0</span>
+    <span class="sw-year">© 2020</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-audition-2020-v130-for-mac-free-download.html">Adobe Audition 2020 v13.0 for Mac Free Download</a></h3>
     <p class="sw-desc">Adobe Audition 2020 v13.0 for Mac is a professional-grade audio editing and mixing software designed for music</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1072,14 +1126,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-audition-2020-v130-for-mac-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe audition 2026 v26.30.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe audition 2026 v26.30.0 with crack" data-listed="000000" data-year="2026" data-date="">
   <a href="../../software/adobe-audition-2026-v26300-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/Adobe-Audition-2020-Cover.avif" alt="Adobe Audition 2026 v26.30.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv26.30.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-audition-2026-v26300-with-crack.html">Adobe Audition 2026 v26.30.0 with Crack</a></h3>
     <p class="sw-desc">Adobe Audition is a professional audio workstation. Create, mix, and design sound effects with the industry&amp;#8</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1088,14 +1144,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-audition-2026-v26300-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe bridge 2026 v16.0.6 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe bridge 2026 v16.0.6 with crack" data-listed="000000" data-year="2026" data-date="">
   <a href="../../software/adobe-bridge-2026-v1606-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/Adobe-Bridge-Cover.avif" alt="Adobe Bridge 2026 v16.0.6 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv16.0.6</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-bridge-2026-v1606-with-crack.html">Adobe Bridge 2026 v16.0.6 with Crack</a></h3>
     <p class="sw-desc">Adobe Bridge gives you centralized access to all the files and assets you need for your creative projects. Org</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1104,14 +1162,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-bridge-2026-v1606-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe captivate 12.1.0.16 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe captivate 12.1.0.16 with crack" data-listed="000000" data-year="" data-date="">
   <a href="../../software/adobe-captivate-121016-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/Adobe-Captivate-Cover.avif" alt="Adobe Captivate 12.1.0.16 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v12.1.0.16</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-captivate-121016-with-crack.html">Adobe Captivate 12.1.0.16 with Crack</a></h3>
     <p class="sw-desc">Adobe Captivate unlocks the future of smart eLearning design. Conquer new learning landscapes with a smart aut</p>
+    <div class="sw-row"></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1120,14 +1180,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-captivate-121016-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe cc cleaner tool free download" data-listed="201904">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe cc cleaner tool free download" data-listed="201904" data-year="" data-date="Apr 2019">
   <a href="../../software/adobe-cc-cleaner-tool-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwCkYphysdzhoTVL_A4VC3_8MzJ40xeakby5NJxX4O_MKZZzwl7z6MMHtytjDfjRtqOFsJdME7a5h6dm1TD-AL5e5cXc_OW4eTPAyYZllwNzi3VGU2npqOjHaASx7r0si77OSg7n4TxxY/s200/adobe-cc-logo-300x300.png" alt="Adobe CC Cleaner Tool Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-cc-cleaner-tool-free-download.html">Adobe CC Cleaner Tool Free Download</a></h3>
     <p class="sw-desc">Adobe CC Cleaner Tool is an imposing application which is used for removing all the traces of Adobe Creative C</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Apr 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1136,14 +1198,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-cc-cleaner-tool-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe character animator 2026 v26.0.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe character animator 2026 v26.0.0 with crack" data-listed="000000" data-year="2026" data-date="">
   <a href="../../software/adobe-character-animator-2026-v2600-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/Adobe-Character-Animator-cover.avif" alt="Adobe Character Animator 2026 v26.0.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv26.0.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-character-animator-2026-v2600-with-crack.html">Adobe Character Animator 2026 v26.0.0 with Crack</a></h3>
     <p class="sw-desc">Adobe Character Animator in real-time. Really. Create a character and animate it with your own performance. Ch</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1152,14 +1216,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-character-animator-2026-v2600-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe dimension 2020 3.2.0 free download" data-listed="202508">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe dimension 2020 3.2.0 free download" data-listed="202508" data-year="2020" data-date="Aug 2025">
   <a href="../../software/adobe-dimension-2020-320-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhjgPylg3pwzfQd8KAFiGgnd6HRiYkro-oYZrgxo836M4nEAZb8l4ZzPAFUzblr2M8QuDdsRIkoti3cJo3iDyZsbqbL3Nj6KZT8BOanrHtvd80i3Tf0G9GzBfCmNO6TrouYxWufUI8JNUpvhd7mWSbu03rKpiEHsNL738RyV22EOLeaRpPyZmjtvz7kpuU=w312-h320" alt="Adobe Dimension 2020 3.2.0 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.2.0</span>
+    <span class="sw-year">© 2020</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-dimension-2020-320-free-download.html">Adobe Dimension 2020 3.2.0 Free Download</a></h3>
     <p class="sw-desc">Adobe Dimension 2020 3.2.0 is a 3D design and rendering software that allows designers to create realistic pro</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1168,14 +1234,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-dimension-2020-320-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe dimension 2020 for mac free download" data-listed="202509">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe dimension 2020 for mac free download" data-listed="202509" data-year="2020" data-date="Sep 2025">
   <a href="../../software/adobe-dimension-2020-for-mac-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhT6Tq56L2xPdv_uoPGoh8xnPIGSp6tBQX4js8-qM8QX9nsv05etfR8GlR1XHto59i4P1zTPS6MMHfplahFATpEmGITtWQlhBci_JH1Rk-nE4hFRx6GMqRhPLyWf8o8h9CFG-HMoKFyvKOVhYBe4WKcFK3wviVBENfWYfDiP99pmZk4_t80Axqab9HsoIk" alt="Adobe Dimension 2020 for Mac Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v10.13</span>
+    <span class="sw-year">© 2020</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-dimension-2020-for-mac-free-download.html">Adobe Dimension 2020 for Mac Free Download</a></h3>
     <p class="sw-desc">Adobe Dimension 2020 for Mac is the go-to software for creating 3D designs, product mockups, and branding visu</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1184,14 +1252,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-dimension-2020-for-mac-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe dimension 4.3.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe dimension 4.3.1 with crack" data-listed="000000" data-year="" data-date="">
   <a href="../../software/adobe-dimension-431-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/Adobe-Dimension-2020-Cover.avif" alt="Adobe Dimension 4.3.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.3.1</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-dimension-431-with-crack.html">Adobe Dimension 4.3.1 with Crack</a></h3>
     <p class="sw-desc">Adobe Dimension. The product is intuitive and similar to the Photoshop interface and Illustrator. Rendering in</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1200,14 +1270,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-dimension-431-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe dreamweaver 2021 v21.8.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe dreamweaver 2021 v21.8.1 with crack" data-listed="000000" data-year="2021" data-date="">
   <a href="../../software/adobe-dreamweaver-2021-v2181-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/Adobe-Dreamweaver-2020-cover-e1603172299256.avif" alt="Adobe Dreamweaver 2021 v21.8.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv21.8.1</span>
+    <span class="sw-year">© 2021</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-dreamweaver-2021-v2181-with-crack.html">Adobe Dreamweaver 2021 v21.8.1 with Crack</a></h3>
     <p class="sw-desc">Adobe Dreamweaver responsive websites. Really fast. Dreamweaver CC provides faster and easier ways to design, </p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1216,14 +1288,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-dreamweaver-2021-v2181-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe framemaker 2022 v17.0.1.305 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe framemaker 2022 v17.0.1.305 with crack" data-listed="000000" data-year="2022" data-date="">
   <a href="../../software/adobe-framemaker-2022-v1701305-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/Adobe-FrameMaker-Cover.avif" alt="Adobe FrameMaker 2022 v17.0.1.305 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv17.0.1.305</span>
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-framemaker-2022-v1701305-with-crack.html">Adobe FrameMaker 2022 v17.0.1.305 with Crack</a></h3>
     <p class="sw-desc">Adobe FrameMaker is a complete solution for authoring, enriching, managing, and publishing technical documenta</p>
+    <div class="sw-row"></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1232,14 +1306,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-framemaker-2022-v1701305-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe fresco 5.5.5 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe fresco 5.5.5 with crack" data-listed="000000" data-year="" data-date="">
   <a href="../../software/adobe-fresco-555-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/Adobe-Fresco-Cover.avif" alt="Adobe Fresco 5.5.5 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v5.5.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-fresco-555-with-crack.html">Adobe Fresco 5.5.5 with Crack</a></h3>
     <p class="sw-desc">Adobe Fresco is designed for the latest touch and stylus devices, Adobe Fresco contains the largest collection</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1248,14 +1324,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-fresco-555-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe illustrator 2022 free download" data-listed="202505">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe illustrator 2022 free download" data-listed="202505" data-year="2022" data-date="May 2025">
   <a href="../../software/adobe-illustrator-2022-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <div class="placeholder">🎨</div>
     <span class="badge-ver">v1.8</span>
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-illustrator-2022-free-download.html">Adobe Illustrator 2022 Free Download</a></h3>
     <p class="sw-desc">Adobe Illustrator is the go-to vector graphics software for designers and illustrators around the world. Perfe</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1264,14 +1342,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-illustrator-2022-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe illustrator 2024 free download" data-listed="202605">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe illustrator 2024 free download" data-listed="202605" data-year="2024" data-date="May 2026">
   <a href="../../software/adobe-illustrator-2024-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhJK_q_lQAQfQKbWFslO_UGHGsRQ3O_CLfnrgF5s4DiFTpgOwaC4RFE7ikx5bKCfCs-9ovQBRzt522181X7M8x1D0ePZ_PvKyYzXM9oD8nIe3gB2rIUD4LHUj5qqx608AFsNtGKPXREmJbTIssb_7mtwTeRZvUlT3_L-wYy9ZphzdOqLh6BvzSwJinE8nY=w312-h320" alt="Adobe Illustrator 2024 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.2</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-illustrator-2024-free-download.html">Adobe Illustrator 2024 Free Download</a></h3>
     <p class="sw-desc">Adobe Illustrator 2024 is a professional vector graphics design software developed by Adobe for graphic design</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1280,14 +1360,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-illustrator-2024-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe illustrator 2026 v30.8.0 with crack {portable}" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe illustrator 2026 v30.8.0 with crack {portable}" data-listed="000000" data-year="2026" data-date="">
   <a href="../../software/adobe-illustrator-2026-v3080-with-crack-portable.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/12/Adobe-Illustrator-2023-Cover.avif" alt="Adobe Illustrator 2026 v30.8.0 with Crack {Portable}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv30.8.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-illustrator-2026-v3080-with-crack-portable.html">Adobe Illustrator 2026 v30.8.0 with Crack {Portable}</a></h3>
     <p class="sw-desc">Adobe Illustrator, the industry-standard vector graphics software, lets you create logos, icons, drawings, typ</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 3 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1296,14 +1378,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-illustrator-2026-v3080-with-crack-portable.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe incopy 2026 v21.5.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe incopy 2026 v21.5.1 with crack" data-listed="000000" data-year="2026" data-date="">
   <a href="../../software/adobe-incopy-2026-v2151-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/Adobe-InCopy-Cover.avif" alt="Adobe InCopy 2026 v21.5.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv21.5.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-incopy-2026-v2151-with-crack.html">Adobe InCopy 2026 v21.5.1 with Crack</a></h3>
     <p class="sw-desc">Adobe InCopy collaborates with copywriters and editors. InCopy lets copywriters and editors style text, track </p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1312,14 +1396,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-incopy-2026-v2151-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe indesign 2025 free download" data-listed="202506">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe indesign 2025 free download" data-listed="202506" data-year="2025" data-date="Jun 2025">
   <a href="../../software/adobe-indesign-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3pY5CTrrqB867HQauBUZzhhCoqZ7pdW9iOnT_9yLYMds29YfxW8i5BEACGjDiay1vcRYyHM57L2t3XLd0Ge7ve7b7q_9UPdblYa52ONanGP4ORtDGOLrMjWTFxlhaHd3ob2foQQ5U7xJylaBg8Q4SzN-iUB22P9APqtfgLmDGbINMQuHO8fKfbUBo_nw/w400-h225/adobe-indesign_2025.jpg" alt="Adobe InDesign 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-indesign-2025-free-download.html">Adobe InDesign 2025 Free Download</a></h3>
     <p class="sw-desc">Adobe InDesign 2025 is the professional choice for layout and print design. With new AI-powered layout suggest</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1328,14 +1414,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-indesign-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe indesign 2026 v21.5.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe indesign 2026 v21.5.1 with crack" data-listed="000000" data-year="2026" data-date="">
   <a href="../../software/adobe-indesign-2026-v2151-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/Adobe-InDesign-Cover.avif" alt="Adobe InDesign 2026 v21.5.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv21.5.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-indesign-2026-v2151-with-crack.html">Adobe InDesign 2026 v21.5.1 with Crack</a></h3>
     <p class="sw-desc">In Adobe InDesign, the next page is the layout design. The industry-leading page design software and layout ap</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1344,14 +1432,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-indesign-2026-v2151-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe lightroom classic 2020 free download" data-listed="202508">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe lightroom classic 2020 free download" data-listed="202508" data-year="2020" data-date="Aug 2025">
   <a href="../../software/adobe-lightroom-classic-2020-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiTlDaQqB8ullSt3roxmVw-P0-F6DnjkrPtbGSiG0cEQrcf9cp_AzZvPwQwzelxq75xhA5NGOadRjOGqbJjIUu0MqaOYpSVo70EtilIHprRPC2rs9HJGcLAyHsXAWSduDeG6MAeUFbcNAVNHhpzqD6IYSgERbImNhECCLnzIJwWDrw0aFv6MkOr_Xl4RT8=w243-h320" alt="Adobe Lightroom Classic 2020 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.1</span>
+    <span class="sw-year">© 2020</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-lightroom-classic-2020-free-download.html">Adobe Lightroom Classic 2020 Free Download</a></h3>
     <p class="sw-desc">Adobe Lightroom Classic 2020 is a professional photo editing software designed for photographers, designers, a</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1360,14 +1450,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-lightroom-classic-2020-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe lightroom classic 2025 free download" data-listed="202506">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe lightroom classic 2025 free download" data-listed="202506" data-year="2025" data-date="Jun 2025">
   <a href="../../software/adobe-lightroom-classic-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhX4vsNoppSC5sVkrA6vp7hh5jHR82-EG6auwI2cHpaOgaQVS6cmldd3ca7nXBYY_V3zFsGGf9gt9js8VM5BiD1MKmtnvP4rQg2FRSxQs5NQTvgQNAgBv8tOi1A7jUYjZzxswi6NjGuUsc5iSGFglm4MKxRF3XEQxdd0VhnZvHWQhnPdu9Lr1dhllhs4fQ/s320/adobe-lightroom-classic-2025.jpg" alt="Adobe Lightroom Classic 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.0</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-lightroom-classic-2025-free-download.html">Adobe Lightroom Classic 2025 Free Download</a></h3>
     <p class="sw-desc">Adobe Lightroom Classic 2025 is the latest edition of Adobe’s industry-leading photo editing and cataloging so</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1376,14 +1468,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-lightroom-classic-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe lightroom classic 2026 v15.5.1 with crack {portable}" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe lightroom classic 2026 v15.5.1 with crack {portable}" data-listed="000000" data-year="2026" data-date="">
   <a href="../../software/adobe-lightroom-classic-2026-v1551-with-crack-portable.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/Adobe-Photoshop-Lightroom-Classic-Cover.avif" alt="Adobe Lightroom Classic 2026 v15.5.1 with Crack {Portable}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv15.5.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-lightroom-classic-2026-v1551-with-crack-portable.html">Adobe Lightroom Classic 2026 v15.5.1 with Crack {Portable}</a></h3>
     <p class="sw-desc">Adobe Lightroom Classic edits and organizes your photos with an app optimized for desktops. Lightroom Classic </p>
+    <div class="sw-row"><span class="sw-dl">⬇ 4 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1392,14 +1486,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-lightroom-classic-2026-v1551-with-crack-portable.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe muse 2018 v2018.1.1.6 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe muse 2018 v2018.1.1.6 with crack" data-listed="000000" data-year="2018" data-date="">
   <a href="../../software/adobe-muse-2018-v2018116-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/08/Adobe-Muse.avif" alt="Adobe Muse 2018 v2018.1.1.6 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv2018.1.1.6</span>
+    <span class="sw-year">© 2018</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-muse-2018-v2018116-with-crack.html">Adobe Muse 2018 v2018.1.1.6 with Crack</a></h3>
     <p class="sw-desc">Adobe Muse design application that enables graphic designers to design professional websites in a visual, prin</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1408,14 +1504,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-muse-2018-v2018116-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe photoshop 2020 v21 for mac free download" data-listed="202508">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe photoshop 2020 v21 for mac free download" data-listed="202508" data-year="2020" data-date="Aug 2025">
   <a href="../../software/adobe-photoshop-2020-v21-for-mac-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgf_3uqljyPgJTSxrKiVgUFE5TOOkT1MCIMsllQN8v2pDN620UkJr88-nDrYIXTaB6wxZ98_dZ-G6MqjIDGon8ILGV54nMEJDX2EZK2gKPmsxC3SUlVYOhwPh-O8-1MVqDfiTGDHPr-J6Yblec-8hNObiMmI5tJGczEMFZi_Fa8adjjDpqGPHlhcTiQBaA=w289-h320" alt="Adobe Photoshop 2020 v21 for Mac Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv10.13</span>
+    <span class="sw-year">© 2020</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-photoshop-2020-v21-for-mac-free-download.html">Adobe Photoshop 2020 v21 for Mac Free Download</a></h3>
     <p class="sw-desc">Adobe Photoshop 2020 v21 for Mac remains the most powerful photo editing and graphic design software in the wo</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1424,14 +1522,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-photoshop-2020-v21-for-mac-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe photoshop 2020 v21 free download" data-listed="202508">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe photoshop 2020 v21 free download" data-listed="202508" data-year="2020" data-date="Aug 2025">
   <a href="../../software/adobe-photoshop-2020-v21-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhuGzRCQdlW5rv4WJhKMzzXUHrhKcsrzxmjeGF5dxee2pbzDRQz0xaf2h4Cab0WsB9aPcWpyZtNyLjMOJlheWJfpnLCLOgpXH8tRXTk_j2YtwttU1NqvCWcXzuNUTteil_5Flgly__aZp8AkM0CoRU8EfNUzPIAOmQ0uCKgYDDnBbyDbwYSnMIJMhC-aqY=w320-h320" alt="Adobe Photoshop 2020 v21 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.75</span>
+    <span class="sw-year">© 2020</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-photoshop-2020-v21-free-download.html">Adobe Photoshop 2020 v21 Free Download</a></h3>
     <p class="sw-desc">Adobe Photoshop 2020 v21 is the world’s most popular image editing software trusted by millions of designers, </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1440,14 +1540,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-photoshop-2020-v21-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe photoshop 2026 v27.0 multilingual x64 free download" data-listed="202512">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe photoshop 2026 v27.0 multilingual x64 free download" data-listed="202512" data-year="2026" data-date="Dec 2025">
   <a href="../../software/adobe-photoshop-2026-v270-multilingual-x64-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiS4siQla6L1dvDJoMiwiE8sGcYW1P3m6nYDaj51Gc34WddRbOnQ4tuVE-m69_WrSyrjw2rgWnycZs2mSzpkEtmeEWPFY51mmOgoiXykRsX5R76lAjKhtoqG-Sm5Nn8T130Vi5N59_V89AXkm2fS7_ws7DP1_EX4lXh4vUwpfJfpEmdluHxr3Ykc58LsDA" alt="Adobe Photoshop 2026 v27.0 Multilingual x64 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv27.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-photoshop-2026-v270-multilingual-x64-free-download.html">Adobe Photoshop 2026 v27.0 Multilingual x64 Free Download</a></h3>
     <p class="sw-desc">Adobe Photoshop 2026 v27.0 is the latest version of the world’s most powerful image editing software. It deliv</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1456,14 +1558,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-photoshop-2026-v270-multilingual-x64-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe photoshop 2026 v27.9.1 with crack {plugins/portable}" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe photoshop 2026 v27.9.1 with crack {plugins/portable}" data-listed="000000" data-year="2026" data-date="">
   <a href="../../software/adobe-photoshop-2026-v2791-with-crack-pluginsportable.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/08/Adobe-Photoshop-2021-Cover.avif" alt="Adobe Photoshop 2026 v27.9.1 with Crack {Plugins/Portable}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv27.9.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-photoshop-2026-v2791-with-crack-pluginsportable.html">Adobe Photoshop 2026 v27.9.1 with Crack {Plugins/Portable}</a></h3>
     <p class="sw-desc">Adobe Photoshop reimagines reality with Photoshop. Millions of designers, photographers, and artists around th</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 6 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1472,14 +1576,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-photoshop-2026-v2791-with-crack-pluginsportable.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe photoshop elements 2026 v26.3 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe photoshop elements 2026 v26.3 with crack" data-listed="000000" data-year="2026" data-date="">
   <a href="../../software/adobe-photoshop-elements-2026-v263-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/03/Adobe-Photoshop-Elements-Cover.avif" alt="Adobe Photoshop Elements 2026 v26.3 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv26.3</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-photoshop-elements-2026-v263-with-crack.html">Adobe Photoshop Elements 2026 v26.3 with Crack</a></h3>
     <p class="sw-desc">Adobe Photoshop Elements: Amazing photos. Fun creations. Forever memories. It&amp;#8217;s never been easier to cre</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1488,14 +1594,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-photoshop-elements-2026-v263-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe prelude 2022 v22.6.0.6 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe prelude 2022 v22.6.0.6 with crack" data-listed="000000" data-year="2022" data-date="">
   <a href="../../software/adobe-prelude-2022-v22606-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/03/Adobe-Prelude-Cover.avif" alt="Adobe Prelude 2022 v22.6.0.6 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv22.6.0.6</span>
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-prelude-2022-v22606-with-crack.html">Adobe Prelude 2022 v22.6.0.6 with Crack</a></h3>
     <p class="sw-desc">Adobe Prelude metadata ingest, logging, and rough cuts. Rapidly tag and transcode video footage and quickly cr</p>
+    <div class="sw-row"></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1504,14 +1612,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-prelude-2022-v22606-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe premiere cs6 free download" data-listed="202606">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe premiere cs6 free download" data-listed="202606" data-year="" data-date="Jun 2026">
   <a href="../../software/adobe-premiere-cs6-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgFAyhgz03ep4FXgqW0VPYiAF56Wvss_B3s4j4dH0uqSzDVFFKhkp4IM2Zyym4WCiK1PhLSnKBiR4HB5JqdE1ReESkFKhbUge1CcywdspV5xvTnel-99DvnzBiY4T_PuGR6u_7BWgBoWkiAh_GUtdf1p3bZI4D7O_lHu5ZA-5hstN6hB3atfCZGBcBGjHE" alt="Adobe Premiere CS6 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-premiere-cs6-free-download.html">Adobe Premiere CS6 Free Download</a></h3>
     <p class="sw-desc">Adobe Premiere CS6 is one of the most popular video editing applications ever released by Adobe. Designed for </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1520,14 +1630,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-premiere-cs6-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe premiere elements 2026 v26.3 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe premiere elements 2026 v26.3 with crack" data-listed="000000" data-year="2026" data-date="">
   <a href="../../software/adobe-premiere-elements-2026-v263-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/06/Adobe-Premiere-Elements-Cover.avif" alt="Adobe Premiere Elements 2026 v26.3 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv26.3</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-premiere-elements-2026-v263-with-crack.html">Adobe Premiere Elements 2026 v26.3 with Crack</a></h3>
     <p class="sw-desc">Adobe Premiere Elements dive right in and do something incredible with your photos and videos. Auto-generated </p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1536,14 +1648,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-premiere-elements-2026-v263-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2020  for mac free download" data-listed="202509">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2020  for mac free download" data-listed="202509" data-year="2020" data-date="Sep 2025">
   <a href="../../software/adobe-premiere-pro-2020-for-mac-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgo6J2A2m9aabYc9TzIWEhJO8BhX19FQeaSHRrAVblN1oO_lhTOrw2eNsR19mx0pvaYOwJCmaxH_50qgfBauzHpZsOkvNupHv17941wz9B-GsG3JwuIZgpcVMPVsHZujA5Irj-MRfEjKrps_LSe8q3TapZGbJ3oGm_Qg5cFcD1rbKXuabfnY7apBWYPjuA=w320-h320" alt="Adobe Premiere Pro 2020  for Mac Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v10.13</span>
+    <span class="sw-year">© 2020</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-premiere-pro-2020-for-mac-free-download.html">Adobe Premiere Pro 2020  for Mac Free Download</a></h3>
     <p class="sw-desc">Adobe Premiere Pro 2020 for Mac is a powerful video editing software trusted by filmmakers, YouTubers, and pro</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1552,14 +1666,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-premiere-pro-2020-for-mac-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2022 v22.0 free download" data-listed="202606">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2022 v22.0 free download" data-listed="202606" data-year="2022" data-date="Jun 2026">
   <a href="../../software/adobe-premiere-pro-2022-v220-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjQww4nHVWrnw5ZWixdyTyhpXtWnG7DLl9tLyzRqlY-sfd6W0ZPyRSO3OxkoExKG3SDfCDEHay5AhGaVNoqPQNTSgjz5HHW_aQm2JpScCBi1BEKRHW1Lnwgt4X2g0JZYVOuz4z3D8ShLzKwtC30P8xnQ9cRby8yj9SNMmUJGAgMHhKw8D2iou6q622pDqI=w200-h195" alt="Adobe Premiere Pro 2022 v22.0 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv22.0</span>
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-premiere-pro-2022-v220-free-download.html">Adobe Premiere Pro 2022 v22.0 Free Download</a></h3>
     <p class="sw-desc">Adobe Premiere Pro 2022 v22.0 is a professional video editing solution developed by Adobe that combines powerf</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1568,14 +1684,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-premiere-pro-2022-v220-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2024 free download" data-listed="202605">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2024 free download" data-listed="202605" data-year="2024" data-date="May 2026">
   <a href="../../software/adobe-premiere-pro-2024-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgdXwROktcRi6XBMZt7APO50hhsc_q5JR2-F2XFRjHXhN93rjFtsKcnEqXbnxLDUkDMamD6cKLv2wmYoulMGE7lMB77mV2Oz77yoChoaDWpIM7J5jNanllmo0C0tBPfO-PvalnLISv182hP02YxKgEXUHu4D99e87uSHI-podNQHeiMxX2fY2Iue1p-haM=w320-h320" alt="Adobe Premiere Pro 2024 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.1</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-premiere-pro-2024-free-download.html">Adobe Premiere Pro 2024 Free Download</a></h3>
     <p class="sw-desc">Adobe Premiere Pro 2024 is a professional video editing software developed by Adobe for filmmakers, YouTubers,</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1584,14 +1702,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-premiere-pro-2024-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2024 v24.6 free download" data-listed="202606">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2024 v24.6 free download" data-listed="202606" data-year="2024" data-date="Jun 2026">
   <a href="../../software/adobe-premiere-pro-2024-v246-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjAFlqaAb9i_c9njHM-P1xsYZSi_jDanQRX44MUw0kaILz6YyK7ox8xXNiRjWvt1-P0pmvxYcyeXTap0v0w7zaPd2hI5RFlwXmBbvtzUq0t9iev4s1Vyqg7_4yy2fcFesMh_9bq9eAhbkq-XQhG0hb_TEiRCJrysFEaoMsFGAKJHAvjr-42Shc7a2dAWvU=w320-h320" alt="Adobe Premiere Pro 2024 v24.6 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv24.6</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-premiere-pro-2024-v246-free-download.html">Adobe Premiere Pro 2024 v24.6 Free Download</a></h3>
     <p class="sw-desc">Adobe Premiere Pro 2024 v24.6 represents a significant advancement in professional video production software. </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1600,14 +1720,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-premiere-pro-2024-v246-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2025 v25.6 free download" data-listed="202606">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2025 v25.6 free download" data-listed="202606" data-year="2025" data-date="Jun 2026">
   <a href="../../software/adobe-premiere-pro-2025-v256-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEg9WS-DXG0DGZNytzzgY7h1Zy3JzBKpLNrYgp0E0zi8XmB-Nb3r599wz-ggMnF4AzfUInro_ZW_kx_KLBi4M1nUw0TL1_Fmo2ns_GzoT9X-6UL-UFKv6bC_Rdqs9OIKdRg1oCEWDIE_AnqcYT4w8UIQthzvJeRUGpCz0eWuyax14NI4RW5emJfQUFKXYts=w311-h320" alt="Adobe Premiere Pro 2025 v25.6 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv25.6</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-premiere-pro-2025-v256-free-download.html">Adobe Premiere Pro 2025 v25.6 Free Download</a></h3>
     <p class="sw-desc">Adobe Premiere Pro 2025 v25.6 is a next-generation video editing platform built to meet the demands of profess</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1616,14 +1738,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-premiere-pro-2025-v256-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2026 free download" data-listed="202606">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2026 free download" data-listed="202606" data-year="2026" data-date="Jun 2026">
   <a href="../../software/adobe-premiere-pro-2026-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEi3e7m2SbkFueqsUjv_YHqF9ePLBqFuHGAMxjWaY-6DSrAQwDOa5ruZnZotuR-P6QkMykiogUMGGe9RgOlDHxMD1x8t-mYN-W_DX2gzuKM85aWLxbSPF-8n6NQemus1oCUpAiZqltITUn2HoNGHiY9HL49wRwbt1HHR72ZE_G8bXBLB1gnTMQY1QG25jWw=w320-h320" alt="Adobe Premiere Pro 2026 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.8</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-premiere-pro-2026-free-download.html">Adobe Premiere Pro 2026 Free Download</a></h3>
     <p class="sw-desc">Adobe Premiere Pro 2026 is the latest release of Adobe&#x27;s industry-standard video editing software, designed to</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1632,14 +1756,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-premiere-pro-2026-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2026 v26.3.2 with crack {repack}" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2026 v26.3.2 with crack {repack}" data-listed="000000" data-year="2026" data-date="">
   <a href="../../software/adobe-premiere-pro-2026-v2632-with-crack-repack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/Adobe-Premiere-Pro-2020-Cover.avif" alt="Adobe Premiere Pro 2026 v26.3.2 with Crack {RePack}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv26.3.2</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-premiere-pro-2026-v2632-with-crack-repack.html">Adobe Premiere Pro 2026 v26.3.2 with Crack {RePack}</a></h3>
     <p class="sw-desc">Adobe Premiere Pro is a video editing software that’s always a cut above. Premiere Pro is the leading video ed</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1648,14 +1774,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-premiere-pro-2026-v2632-with-crack-repack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere rush 2.10.0.30 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere rush 2.10.0.30 with crack" data-listed="000000" data-year="" data-date="">
   <a href="../../software/adobe-premiere-rush-210030-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/02/Adobe-Premiere-Rush-Cover.avif" alt="Adobe Premiere Rush 2.10.0.30 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.10.0.30</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-premiere-rush-210030-with-crack.html">Adobe Premiere Rush 2.10.0.30 with Crack</a></h3>
     <p class="sw-desc">Adobe Premiere Rush a simplified version of Premiere Pro is an application designed for mobile videoblogerov a</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1664,14 +1792,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-premiere-rush-210030-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe robohelp 2022.3.93 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe robohelp 2022.3.93 with crack" data-listed="000000" data-year="2022" data-date="">
   <a href="../../software/adobe-robohelp-2022393-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/09/Adobe-RoboHelp-2022-Cover.avif" alt="Adobe RoboHelp 2022.3.93 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2022.3.93</span>
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-robohelp-2022393-with-crack.html">Adobe RoboHelp 2022.3.93 with Crack</a></h3>
     <p class="sw-desc">Adobe RoboHelp release empowers you to deliver engaging help and policy content across mobile devices, formats</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1680,14 +1810,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-robohelp-2022393-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe xd 2023 free download" data-listed="202506">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe xd 2023 free download" data-listed="202506" data-year="2023" data-date="Jun 2025">
   <a href="../../software/adobe-xd-2023-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiu63Qeaxn-WqluhX1nDaDkVE4toFLUcTt-QCa_Z2vdC3c8Ch6qAYwYuVLne-t_R4p8bp2SxQl234zInBmm_dtQkcwufr-Qi3hgcdb11c5B7kgl6w0Ksw7nUgPobVwpx2Zq9Wx7Vf4GymCqQhERArs8DVQPJIIELIoHFmQEVX1kCh5EkceYNMNE6RkdmnM/w320-h312/Adobe%20XD%202023.png" alt="Adobe XD 2023 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-xd-2023-free-download.html">Adobe XD 2023 Free Download</a></h3>
     <p class="sw-desc">is a cutting-edge user interface and experience design tool built for designers who value speed, precision, an</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1696,14 +1828,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-xd-2023-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe xd 61.0.12 with crack {repack}" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe xd 61.0.12 with crack {repack}" data-listed="000000" data-year="" data-date="">
   <a href="../../software/adobe-xd-61012-with-crack-repack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/Adobe-XD-2020-Cover.avif" alt="Adobe XD 61.0.12 with Crack {RePack}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v61.0.12</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-xd-61012-with-crack-repack.html">Adobe XD 61.0.12 with Crack {RePack}</a></h3>
     <p class="sw-desc">Adobe XD is the new creative tool from Adobe for the design of high-quality prototypes of user interfaces for </p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1712,14 +1846,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-xd-61012-with-crack-repack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe® dreamweaver® cc 2015 free download" data-listed="201903">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe® dreamweaver® cc 2015 free download" data-listed="201903" data-year="2015" data-date="Mar 2019">
   <a href="../../software/adobe-dreamweaver-cc-2015-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioeA5Jdz0qN_umLwd5z8ut_r5TfFdVwVWFgLWFqkf2UkSst99-YczvVp_zGjA4aXj7cZmiazLE5ivAcTgUYOcDZNnQdLWoFMVf6R3RsX54kzvpYM6JCphEm_NLAAjUz6cZUNnwJNV0x7s/s200/Adobe_Dreamweaver_CS5_Free.png" alt="Adobe® Dreamweaver® CC 2015 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2015</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-dreamweaver-cc-2015-free-download.html">Adobe® Dreamweaver® CC 2015 Free Download</a></h3>
     <p class="sw-desc">Adobe® Dreamweaver® CS5 empowers designers and developers to build standards-based websites with confidence us</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Mar 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1728,14 +1864,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-dreamweaver-cc-2015-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe® dreamweaver® cs3 free download" data-listed="201903">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe® dreamweaver® cs3 free download" data-listed="201903" data-year="" data-date="Mar 2019">
   <a href="../../software/adobe-dreamweaver-cs3-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioeA5Jdz0qN_umLwd5z8ut_r5TfFdVwVWFgLWFqkf2UkSst99-YczvVp_zGjA4aXj7cZmiazLE5ivAcTgUYOcDZNnQdLWoFMVf6R3RsX54kzvpYM6JCphEm_NLAAjUz6cZUNnwJNV0x7s/s200/Adobe_Dreamweaver_CS5_Free.png" alt="Adobe® Dreamweaver® CS3 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/adobe-dreamweaver-cs3-free-download.html">Adobe® Dreamweaver® CS3 Free Download</a></h3>
     <p class="sw-desc">Adobe® Dreamweaver® CS5 empowers designers and developers to build standards-based websites with confidence us</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Mar 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1744,14 +1882,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/adobe-dreamweaver-cs3-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="affinity by canva 3.2.3.4646 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="affinity by canva 3.2.3.4646 with crack" data-listed="202608" data-year="2026" data-date="Aug 18, 2026">
   <a href="../../software/affinity-by-canva-3234646-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2026/07/Affinity-by-Canva-Logo.avif" alt="Affinity by Canva 3.2.3.4646 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.2.3.4646</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/affinity-by-canva-3234646-with-crack.html">Affinity by Canva 3.2.3.4646 with Crack</a></h3>
     <p class="sw-desc">Affinity by Canva is the ultimate, enterprise-grade creative suite engineered to provide a seamless, high-spee</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 18, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1760,14 +1900,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/affinity-by-canva-3234646-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="antenna web design studio 8 free download" data-listed="202506">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="antenna web design studio 8 free download" data-listed="202506" data-year="" data-date="Jun 2025">
   <a href="../../software/antenna-web-design-studio-8-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgx_toHVaF0IFolu5sED1oTrt352oNgXwf-pl40mbU467DhB2TU02O5IgIYbEfNqIoO3Vwreou9ZXFxeQAJ6Fr8y955tLM0SvaGAQut6desqWiaSj0ZN-Tjfe9K36mpjJikpurG0csatFox74Fjle0ZhYqLDY46WkEYXcAMi5J5aELiULutGIRGLvelZtY=s16000" alt="Antenna Web Design Studio 8 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/antenna-web-design-studio-8-free-download.html">Antenna Web Design Studio 8 Free Download</a></h3>
     <p class="sw-desc">Antenna Web Design Studio 8 is a user-friendly website builder designed for professionals and beginners alike.</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1776,14 +1918,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/antenna-web-design-studio-8-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="ashampoo photo commander 19.0.5 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="ashampoo photo commander 19.0.5 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/ashampoo-photo-commander-1905-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/Ashampoo-Photo-Commander-Cover.avif" alt="Ashampoo Photo Commander 19.0.5 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v19.0.5</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ashampoo-photo-commander-1905-with-crack.html">Ashampoo Photo Commander 19.0.5 with Crack</a></h3>
     <p class="sw-desc">Ashampoo Photo Commander has a modern user interface that the modern user can quickly learn their favorite fea</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1792,14 +1936,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ashampoo-photo-commander-1905-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="ashampoo photo optimizer pro 26.0.4 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="ashampoo photo optimizer pro 26.0.4 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/ashampoo-photo-optimizer-pro-2604-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/Ashampoo-Photo-Optimizer-Cover.avif" alt="Ashampoo Photo Optimizer Pro 26.0.4 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v26.0.4</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ashampoo-photo-optimizer-pro-2604-with-crack.html">Ashampoo Photo Optimizer Pro 26.0.4 with Crack</a></h3>
     <p class="sw-desc">Ashampoo Photo Optimizer Pro enhances your photos at the click of a button! The program fully automatically ad</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1808,14 +1954,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ashampoo-photo-optimizer-pro-2604-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autocad 2024 free download" data-listed="202605">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autocad 2024 free download" data-listed="202605" data-year="2024" data-date="May 2026">
   <a href="../../software/autocad-2024-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEieQ1b_Xxb0a2WTIFWtiOTtAtT-azXclBqhT90dxPFneihZ8Eq6mWUz-2yvbJC7TX3ytEkJPRjQNQsi9Eyv06FndYdjzMrUQmHzNzenIHW1fczPauEdq8k1-zfKWqzZznDiPhrq-Bby_IJhdWEyURJ1GXhNerIjYNU8-VmYBCmTfT_3Ihn5xifThm4xufs=w320-h320" alt="AutoCAD 2024 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.5</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/autocad-2024-free-download.html">AutoCAD 2024 Free Download</a></h3>
     <p class="sw-desc">AutoCAD 2024 by Autodesk is a professional CAD software solution designed for engineers, architects, designers</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1824,14 +1972,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/autocad-2024-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autodesk 3ds max 2024 free download" data-listed="202605">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autodesk 3ds max 2024 free download" data-listed="202605" data-year="2024" data-date="May 2026">
   <a href="../../software/autodesk-3ds-max-2024-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiMx0hbojrXphyHBHS8oC351PZOxd7GiBH02k3OpVm6wVMgP0A6pkDmvZdkrFOrnOq7mnJzf7QSTzduGxuJxM1XLr43U8pUo3woAg_-h47pX0Uf6-jPaKsFltFmhUhMLFLSbs1KaF-zl6oywNpZL0ezkkgyutxMH3AVWAjXNXYBO43ifA58YxJxgRNXugY=w227-h320" alt="Autodesk 3ds Max 2024 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.8</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/autodesk-3ds-max-2024-free-download.html">Autodesk 3ds Max 2024 Free Download</a></h3>
     <p class="sw-desc">Autodesk 3ds Max 2024 is a professional 3D modeling, rendering, and animation software widely used in game dev</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1840,14 +1990,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/autodesk-3ds-max-2024-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="autodesk 3ds max 2027 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="autodesk 3ds max 2027 with crack" data-listed="000000" data-year="2027" data-date="">
   <a href="../../software/autodesk-3ds-max-2027-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2026/05/Autodesk-3DS-MAX-Logo.webp" alt="Autodesk 3ds Max 2027 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v5.3</span>
+    <span class="sw-year">© 2027</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/autodesk-3ds-max-2027-with-crack.html">Autodesk 3ds Max 2027 with Crack</a></h3>
     <p class="sw-desc">Autodesk 3ds Max is the industry-standard, powerhouse 3D modeling, animation, and rendering suite trusted by g</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1856,14 +2008,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/autodesk-3ds-max-2027-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="autodesk autocad 2027.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="autodesk autocad 2027.1 with crack" data-listed="202607" data-year="2027" data-date="Jul 31, 2026">
   <a href="../../software/autodesk-autocad-20271-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2025/08/Autodesk-AutoCAD.avif" alt="Autodesk AutoCAD 2027.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2027.1</span>
+    <span class="sw-year">© 2027</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/autodesk-autocad-20271-with-crack.html">Autodesk AutoCAD 2027.1 with Crack</a></h3>
     <p class="sw-desc">AutoCAD LT 2026 is designed to develop and detail 2D drawings. The program automates most of the stages of the</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 31, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1872,14 +2026,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/autodesk-autocad-20271-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autodesk autocad architecture 2026 x64 free download" data-listed="202512">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autodesk autocad architecture 2026 x64 free download" data-listed="202512" data-year="2026" data-date="Dec 2025">
   <a href="../../software/autodesk-autocad-architecture-2026-x64-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjP21iEblPbw3amWgwrlWSTArDmRk3uSnMQ5Bv1DV09iMx0TO_dHgJEcoLUEKvb9BhFAkPLjmRYmU7-v3cXqZqJ70GeqhjBpvq3ydMm4wMXhLXs5-bhIFXJBV2U-0GhNJ5YXLYFRLpJ7s6K1aYMLOOy7fJpkPiQj6g9ZtmmyIN1mhruG5JgNnKVBP8-NyQ=w320-h320" alt="Autodesk AutoCAD Architecture 2026 x64 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.5</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/autodesk-autocad-architecture-2026-x64-free-download.html">Autodesk AutoCAD Architecture 2026 x64 Free Download</a></h3>
     <p class="sw-desc">AutoCAD Architecture 2026 is tailored for architects, providing specialized tools to create architectural draw</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2025</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1888,14 +2044,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/autodesk-autocad-architecture-2026-x64-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autodesk autocad mep 2026 x64 free download" data-listed="202512">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autodesk autocad mep 2026 x64 free download" data-listed="202512" data-year="2026" data-date="Dec 2025">
   <a href="../../software/autodesk-autocad-mep-2026-x64-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgEoc__uYyjy45Pc-sTQ_HLuSEvGXq5lwBsqyys0ZGfiuwR3mCCkafMuL6u_rZWai9LGgB1oJVKoIeU19zX1kfqJIZY-xvebRPT10qWxr7DBXh_DbQdNCQp2za4zxQP0VIwZ5CyVZuwQ1559XvQa2eo9-VPmTU2n3kbrJzWIv_Ps1cKKWc_Gz0QFtRtMPc" alt="Autodesk AutoCAD MEP 2026 x64 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.5</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/autodesk-autocad-mep-2026-x64-free-download.html">Autodesk AutoCAD MEP 2026 x64 Free Download</a></h3>
     <p class="sw-desc">AutoCAD is a general-purpose design and drafting software, while AutoCAD MEP is specifically designed for the </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1904,14 +2062,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/autodesk-autocad-mep-2026-x64-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autodesk autocad raster design 2026 x64 free download" data-listed="202512">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autodesk autocad raster design 2026 x64 free download" data-listed="202512" data-year="2026" data-date="Dec 2025">
   <a href="../../software/autodesk-autocad-raster-design-2026-x64-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhRBX4JvqEAszJsXWVTPaVBCqHo1sVxG1w_K2QmhhIn4xh7H231frFmKjiozSao6pC1aBXz3uFR_SGFWS_FjpzUMYAc0STT11Cwc9Mm89N4gEwZ6BZAPFSKZNs5HuKNZ6Rvy0q7Z1VDRDMTh4a6LnF8nc-jUOSybxtXp0ocSfVFKd166HTPzGvRhZcgP8Q" alt="Autodesk AutoCAD Raster Design 2026 x64 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/autodesk-autocad-raster-design-2026-x64-free-download.html">Autodesk AutoCAD Raster Design 2026 x64 Free Download</a></h3>
     <p class="sw-desc">AutoCAD Raster Design 2026 enhances AutoCAD with advanced raster image editing tools, allowing users to clean,</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1920,14 +2080,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/autodesk-autocad-raster-design-2026-x64-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="autodesk maya 2010 free download" data-listed="201905">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="autodesk maya 2010 free download" data-listed="201905" data-year="2010" data-date="May 2019">
   <a href="../../software/autodesk-maya-2010-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzcsSefiiAwuFJ-vkgDQ2LJhD7vX-hUy4CnPRL2aZzUQZdczIEDiRC5SY0IZaHAoolOw8yklybsVyjvDZoH3JbYDX8YrqzbUK_0WnYm4QoR7ud5xF5FGgNOsGV-H_SDU3POBkmwVq1yuw/s200/Autodesk-Maya-Logo..jpg" alt="Autodesk Maya 2010 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.0</span>
+    <span class="sw-year">© 2010</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/autodesk-maya-2010-free-download.html">Autodesk Maya 2010 Free Download</a></h3>
     <p class="sw-desc">Autodesk Maya, commonly shortened to Maya, is a 3D computer graphics application that runs on Windows, macOS a</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1936,14 +2098,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/autodesk-maya-2010-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autodesk maya 2027.2 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autodesk maya 2027.2 with crack" data-listed="000000" data-year="2027" data-date="">
   <a href="../../software/autodesk-maya-20272-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2026/04/Autodesk-Maya-Logo.webp" alt="Autodesk Maya 2027.2 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2027.2</span>
+    <span class="sw-year">© 2027</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/autodesk-maya-20272-with-crack.html">Autodesk Maya 2027.2 with Crack</a></h3>
     <p class="sw-desc">Maya 3D animation software offers a comprehensive creative feature set for 3D computer animation, modeling, si</p>
+    <div class="sw-row"><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1952,14 +2116,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/autodesk-maya-20272-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autodesk maya 3d free download" data-listed="202505">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autodesk maya 3d free download" data-listed="202505" data-year="" data-date="May 2025">
   <a href="../../software/autodesk-maya-3d-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <div class="placeholder">🎨</div>
     <span class="badge-ver">v3.0</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/autodesk-maya-3d-free-download.html">Autodesk Maya 3D Free Download</a></h3>
     <p class="sw-desc">Maya 3D 2023 by Autodesk is a high-end 3D modeling, animation, simulation, and rendering software used in film</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1968,14 +2134,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/autodesk-maya-3d-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="clip studio paint ex 5.0.4 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="clip studio paint ex 5.0.4 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
   <a href="../../software/clip-studio-paint-ex-504-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/12/Clip-Studio-Paint-EX-Cover.avif" alt="Clip Studio Paint EX 5.0.4 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v5.0.4</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/clip-studio-paint-ex-504-with-crack.html">Clip Studio Paint EX 5.0.4 with Crack</a></h3>
     <p class="sw-desc">Clip Studio Paint EX is the world&amp;#8217;s leading comic and manga creation software and delivers powerful art </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -1984,14 +2152,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/clip-studio-paint-ex-504-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="corel aftershot pro 3.7.0.446 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="corel aftershot pro 3.7.0.446 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/corel-aftershot-pro-370446-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/Corel-AfterShot-Pro-Cover.avif" alt="Corel AfterShot Pro 3.7.0.446 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.7.0.446</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/corel-aftershot-pro-370446-with-crack.html">Corel AfterShot Pro 3.7.0.446 with Crack</a></h3>
     <p class="sw-desc">Corel AfterShot Pro is the photo editor that reveals your true creative potential and frees you: from high cos</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2000,14 +2170,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/corel-aftershot-pro-370446-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="corel painter 2023 v23.0.0.244 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="corel painter 2023 v23.0.0.244 with crack" data-listed="000000" data-year="2023" data-date="">
   <a href="../../software/corel-painter-2023-v2300244-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/01/Corel-Painter-2021-Cover.avif" alt="Corel Painter 2023 v23.0.0.244 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv23.0.0.244</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/corel-painter-2023-v2300244-with-crack.html">Corel Painter 2023 v23.0.0.244 with Crack</a></h3>
     <p class="sw-desc">Corel Painter 2023 offers realistic Natural-Media® and unique digital art brushes that dynamically respond to </p>
+    <div class="sw-row"></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2016,14 +2188,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/corel-painter-2023-v2300244-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="corel paintshop pro 2021 free download" data-listed="202509">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="corel paintshop pro 2021 free download" data-listed="202509" data-year="2021" data-date="Sep 2025">
   <a href="../../software/corel-paintshop-pro-2021-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjUFipFYEjEZMnkaXMTS3ZAs-jA0fmWsrhh4Wg5GyoZVKDT2bagwFsNYy_EOis_ilTrCXOD0vVT_6I8g6EyW6N-Gr4xQ8O-RaHZn4NtNKmLlJZ-FDRNbW8uSLWx2CiGg-0VsOl9erotcNuch2aio9CrWkZrplQWyWlVn_4UNnSpINAug_-JX53YW7BhIGk=w320-h320" alt="Corel PaintShop Pro 2021 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5</span>
+    <span class="sw-year">© 2021</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/corel-paintshop-pro-2021-free-download.html">Corel PaintShop Pro 2021 Free Download</a></h3>
     <p class="sw-desc">Corel PaintShop Pro 2021 Ultimate is the ultimate editing software to bring your photos and graphics to life. </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2032,14 +2206,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/corel-paintshop-pro-2021-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="corel paintshop pro 2023 ultimate 25.2.0.58 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="corel paintshop pro 2023 ultimate 25.2.0.58 with crack" data-listed="202607" data-year="2023" data-date="Jul 5, 2026">
   <a href="../../software/corel-paintshop-pro-2023-ultimate-252058-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/04/Corel-PaintShop-Pro-Cover.avif" alt="Corel PaintShop Pro 2023 Ultimate 25.2.0.58 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v25.2.0.58</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/corel-paintshop-pro-2023-ultimate-252058-with-crack.html">Corel PaintShop Pro 2023 Ultimate 25.2.0.58 with Crack</a></h3>
     <p class="sw-desc">Corel PaintShop Pro create something incredible with photo editing power and intelligence for results as uniqu</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2048,14 +2224,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/corel-paintshop-pro-2023-ultimate-252058-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="corel paintshop pro ultimate 2020 v 22.0 free download" data-listed="202509">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="corel paintshop pro ultimate 2020 v 22.0 free download" data-listed="202509" data-year="2020" data-date="Sep 2025">
   <a href="../../software/corel-paintshop-pro-ultimate-2020-v-220-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEi5g_kuVZoxeTnD1pI9Kt5jkMKgWZwdQ3ICwJKFH96TCQAjtcKMoMlPoi-3vJbAGLPtqR_QfEtD5QGwFfNY2-Vc3-wwVbWW6MdyB0QUHa1jOzP3068Z8Q3O5CIZJ03M91lXKS-_CLRB51oG4YyTDP7C80zZZeefr7BDKYZENzdJvv01r02kqemX2lQzctw" alt="Corel PaintShop Pro Ultimate 2020 V 22.0 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vV 22.0</span>
+    <span class="sw-year">© 2020</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/corel-paintshop-pro-ultimate-2020-v-220-free-download.html">Corel PaintShop Pro Ultimate 2020 V 22.0 Free Download</a></h3>
     <p class="sw-desc">Corel PaintShop Pro 2020 is a professional photo editing and graphic design software. Packed with AI-powered t</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2064,14 +2242,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/corel-paintshop-pro-ultimate-2020-v-220-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="corel photomirage 1.0.0.219 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="corel photomirage 1.0.0.219 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/corel-photomirage-100219-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/08/Corel-PhotoMirage-Cover.avif" alt="Corel PhotoMirage 1.0.0.219 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.0.0.219</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/corel-photomirage-100219-with-crack.html">Corel PhotoMirage 1.0.0.219 with Crack</a></h3>
     <p class="sw-desc">Corel PhotoMirage transforms any image into a captivating animation in three simple steps. Whether you want to</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2080,14 +2260,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/corel-photomirage-100219-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="corel videostudio ultimate 2023 v26.2.0.311 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="corel videostudio ultimate 2023 v26.2.0.311 with crack" data-listed="202503" data-year="2023" data-date="Mar 3, 2025">
   <a href="../../software/corel-videostudio-ultimate-2023-v2620311-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/12/Corel-VideoStudio-Ultimate-2020-Cover.avif" alt="Corel VideoStudio Ultimate 2023 v26.2.0.311 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv26.2.0.311</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/corel-videostudio-ultimate-2023-v2620311-with-crack.html">Corel VideoStudio Ultimate 2023 v26.2.0.311 with Crack</a></h3>
     <p class="sw-desc">Corel VideoStudio Ultimate takes ease of use and creativity one step further, with the addition of new smart m</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Mar 3, 2025</span><span class="sw-dl">⬇ 4 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2096,14 +2278,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/corel-videostudio-ultimate-2023-v2620311-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="corel website creator free download" data-listed="201905">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="corel website creator free download" data-listed="201905" data-year="" data-date="May 2019">
   <a href="../../software/corel-website-creator-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSyc4Jf8QkZ6hsOVwFE_hyphenhyphen4oMDBxTflmW4npKinSFU_-Gk91O3K_NLRRO57Xt9kMpadVcXX-qwHNBHqZRIPWpfYYOudnU79lWXCpApiUPzwGbPPpmNUes1loUK9-chi1BTAkSqAHgK3IY/s400/Corel-Website-Creator-X8-Crack.jpg" alt="Corel Website Creator Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/corel-website-creator-free-download.html">Corel Website Creator Free Download</a></h3>
     <p class="sw-desc">Websites are your source of knowledge and entertainment. You can also present yourself in front of others with</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2112,14 +2296,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/corel-website-creator-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="corel windvd pro 12.0.0.265 sp8 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="corel windvd pro 12.0.0.265 sp8 with crack" data-listed="202405" data-year="2024" data-date="May 19, 2024">
   <a href="../../software/corel-windvd-pro-1200265-sp8-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/Corel-WinDVD-Pro-Cover.avif" alt="Corel WinDVD Pro 12.0.0.265 SP8 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v12.0.0.265</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/corel-windvd-pro-1200265-sp8-with-crack.html">Corel WinDVD Pro 12.0.0.265 SP8 with Crack</a></h3>
     <p class="sw-desc">Corel WinDVD Pro brings Hollywood home with the leading video playback, Blu-ray, and DVD software, Corel® WinD</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 19, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2128,14 +2314,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/corel-windvd-pro-1200265-sp8-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="design davinci resolve studio 21.0.4 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="design davinci resolve studio 21.0.4 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
   <a href="../../software/design-davinci-resolve-studio-2104-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/02/Blackmagic-Design-DaVinci-Resolve-Studio-cover.avif" alt="Design DaVinci Resolve Studio 21.0.4 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v21.0.4</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/design-davinci-resolve-studio-2104-with-crack.html">Design DaVinci Resolve Studio 21.0.4 with Crack</a></h3>
     <p class="sw-desc">DaVinci Resolve is the world’s only solution that combines editing, color correction, visual effects, motion g</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 6 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2144,14 +2332,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/design-davinci-resolve-studio-2104-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="design fusion studio 20.0.0.50 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="design fusion studio 20.0.0.50 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/design-fusion-studio-200050-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/02/Blackmagic-Design-Fusion-Studio-Cover.avif" alt="Design Fusion Studio 20.0.0.50 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v20.0.0.50</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/design-fusion-studio-200050-with-crack.html">Design Fusion Studio 20.0.0.50 with Crack</a></h3>
     <p class="sw-desc">Design Fusion Studio is the world’s most advanced compositing software for visual effects artists, broadcast a</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2160,14 +2350,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/design-fusion-studio-200050-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="arm64" data-title="fliflik klearmax for photo 3.0.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="arm64" data-title="fliflik klearmax for photo 3.0.1 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/fliflik-klearmax-for-photo-301-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/12/FliFlik-KlearMax-for-Photo-Logo.webp" alt="FliFlik KlearMax for Photo 3.0.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.0.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/fliflik-klearmax-for-photo-301-with-crack.html">FliFlik KlearMax for Photo 3.0.1 with Crack</a></h3>
     <p class="sw-desc">A Magic AI Photo Enhancer to Keep Your Memory Clear! The brilliant AI photo enhancer allows you to improve the</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2176,14 +2368,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/fliflik-klearmax-for-photo-301-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="gimp 2.10 (2020) x64 free download" data-listed="202507">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="gimp 2.10 (2020) x64 free download" data-listed="202507" data-year="2020" data-date="Jul 2025">
   <a href="../../software/gimp-210-2020-x64-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimu_iZLFAwwqIcfnY9pK7Y7cJ7FtTYvffT8WChmuG4mmvIZJzmu3yWaRhes7GEViketS8mXz-kW4ki5yVPuTav8TeMjoj0GdpKFIuMFrQqy5PT8soixUct7XoB_tMRovnmgCykU8P33jnzpknnATdT_SWybeM0YgDCkMkLhKk2xugZ3YuLZRGLa0-A1QY/s1600/GIMP%20Free%20Download.png" alt="GIMP 2.10 (2020) x64 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.10</span>
+    <span class="sw-year">© 2020</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/gimp-210-2020-x64-free-download.html">GIMP 2.10 (2020) x64 Free Download</a></h3>
     <p class="sw-desc">is the stable, long-supported release of the GNU Image Manipulation Program. It’s great for editing photos, de</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-opensource">Open Source</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2192,14 +2386,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/gimp-210-2020-x64-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="gimp 2.10.38 (2024) free download" data-listed="202507">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="gimp 2.10.38 (2024) free download" data-listed="202507" data-year="2024" data-date="Jul 2025">
   <a href="../../software/gimp-21038-2024-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimu_iZLFAwwqIcfnY9pK7Y7cJ7FtTYvffT8WChmuG4mmvIZJzmu3yWaRhes7GEViketS8mXz-kW4ki5yVPuTav8TeMjoj0GdpKFIuMFrQqy5PT8soixUct7XoB_tMRovnmgCykU8P33jnzpknnATdT_SWybeM0YgDCkMkLhKk2xugZ3YuLZRGLa0-A1QY/s1600/GIMP%20Free%20Download.png" alt="GIMP 2.10.38 (2024) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.10.38</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/gimp-21038-2024-free-download.html">GIMP 2.10.38 (2024) Free Download</a></h3>
     <p class="sw-desc">GIMP 2.10.38 is a powerful open-source image editor perfect for photo retouching, digital painting, and graphi</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-opensource">Open Source</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2208,14 +2404,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/gimp-21038-2024-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="hitpaw photo enhancer 2.2.3.2 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="hitpaw photo enhancer 2.2.3.2 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/hitpaw-photo-enhancer-2232-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/06/HitPaw-Photo-Enhancer-Cover.avif" alt="HitPaw Photo Enhancer 2.2.3.2 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.2.3.2</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/hitpaw-photo-enhancer-2232-with-crack.html">HitPaw Photo Enhancer 2.2.3.2 with Crack</a></h3>
     <p class="sw-desc">HitPaw Photo Enhancer can help you make your photos much clearer and enlarge them as you want. Take a blurry p</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2224,14 +2422,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/hitpaw-photo-enhancer-2232-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="idimager photo supreme 2026.3.2.9499 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="idimager photo supreme 2026.3.2.9499 with crack" data-listed="202608" data-year="2026" data-date="Aug 22, 2026">
   <a href="../../software/idimager-photo-supreme-2026329499-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/07/IDimager-Photo-Supreme-Cover.avif" alt="IDimager Photo Supreme 2026.3.2.9499 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2026.3.2.9499</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/idimager-photo-supreme-2026329499-with-crack.html">IDimager Photo Supreme 2026.3.2.9499 with Crack</a></h3>
     <p class="sw-desc">IDimager Photo Supreme, the popular Digital Asset Management software, enables you to find that one image you </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 22, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2240,14 +2440,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/idimager-photo-supreme-2026329499-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="nch drawpad graphic design software free download" data-listed="202507">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="nch drawpad graphic design software free download" data-listed="202507" data-year="" data-date="Jul 2025">
   <a href="../../software/nch-drawpad-graphic-design-software-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiOoxD14yCu7fc4oKIL-y6BOcE4CtSG5QpDYQlPhr6Xwhe1chnAZ_fV99wwW_G_QfwjDSqgWvEN0gdyMskeYUz1PCycM9oH60o4EQbX5Oth0nR7bhHStqQntm_Jl3aAZJP8V8_7LLWtmnznq2rPC2DXVuS9wW3F1wsuc5O9IOpXMWztB-98bKdw7AEVtCw=w239-h320" alt="NCH DrawPad Graphic Design Software Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v10.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/nch-drawpad-graphic-design-software-free-download.html">NCH DrawPad Graphic Design Software Free Download</a></h3>
     <p class="sw-desc">DrawPad is a versatile tool for graphic designers, illustrators, and beginners looking to create stunning visu</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2256,14 +2458,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/nch-drawpad-graphic-design-software-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="nch photopad photo editor free download" data-listed="202507">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="nch photopad photo editor free download" data-listed="202507" data-year="" data-date="Jul 2025">
   <a href="../../software/nch-photopad-photo-editor-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiI_il8KF21lQcwCkEasSptG7GnAbE7GZ04fZVDojvNVk36TkXjZZuRX1DyWzTo-AjxaxzgZ23F28sDCGRsxkvsb0QnKw8eVR25uKj0t4ZI0NJX5JQ2sTsR5TOaMsuLyrS9bqiUEHwIhTQfLGVMHejDaBhusxaMw8cV2IBHNJzefbTxy_zAYluaD16yJEc" alt="NCH PhotoPad Photo Editor Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v10.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/nch-photopad-photo-editor-free-download.html">NCH PhotoPad Photo Editor Free Download</a></h3>
     <p class="sw-desc">PhotoPad is a user-friendly photo editor that caters to everyone from hobbyists to professional photographers.</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2272,14 +2476,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/nch-photopad-photo-editor-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="on1 photo raw 2026.5 v20.5.0.19010 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="on1 photo raw 2026.5 v20.5.0.19010 with crack" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
   <a href="../../software/on1-photo-raw-20265-v205019010-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/06/ON1-Photo-RAW-Cover.avif" alt="ON1 Photo RAW 2026.5 v20.5.0.19010 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2026.5</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/on1-photo-raw-20265-v205019010-with-crack.html">ON1 Photo RAW 2026.5 v20.5.0.19010 with Crack</a></h3>
     <p class="sw-desc">ON1 Photo RAW is a professional-grade photo organizer, raw processor, layered editor, and effects app that inc</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2288,14 +2494,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/on1-photo-raw-20265-v205019010-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="paint.net 5.1.6 multilingual x64 free download" data-listed="202512">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="paint.net 5.1.6 multilingual x64 free download" data-listed="202512" data-year="" data-date="Dec 2025">
   <a href="../../software/paintnet-516-multilingual-x64-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjQvWyi8hQBnMm5lueQ0PuCGCDWg9yQ9WiRALO_lzvgBeZCMRDQiHLRQmvbaxz1wrKPgHKlNl5En4SmNKTemVsB1Cyp4HIkObgX1yI9cXBQqTQX7yOhEv7X_X0IegiFyy5qNWWQtXAw-GawJmm-A0349cKl8gd849tsf0Y6SJ5CmJH8YGWlcmlf9PrEVA0" alt="Paint.NET 5.1.6 Multilingual x64 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v5.1.6 Multilingual</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/paintnet-516-multilingual-x64-free-download.html">Paint.NET 5.1.6 Multilingual x64 Free Download</a></h3>
     <p class="sw-desc">Paaint.NET 5.1.6 Multilingual x64 is a fast and lightweight image editing software designed for everyday photo</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2304,14 +2512,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/paintnet-516-multilingual-x64-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="program4pc photo editor 8.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="program4pc photo editor 8.0 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/program4pc-photo-editor-80-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/05/Program4Pc-Photo-Editor-Cover.avif" alt="Program4Pc Photo Editor 8.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/program4pc-photo-editor-80-with-crack.html">Program4Pc Photo Editor 8.0 with Crack</a></h3>
     <p class="sw-desc">Program4Pc Photo Editor is a product for amateurs and professionals (who are in a hurry). This highly intuitiv</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2320,14 +2530,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/program4pc-photo-editor-80-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="radiant photo 2.2.0.818 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="radiant photo 2.2.0.818 with crack" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
   <a href="../../software/radiant-photo-220818-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/07/Radiant-Photo.avif" alt="Radiant Photo 2.2.0.818 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.2.0.818</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/radiant-photo-220818-with-crack.html">Radiant Photo 2.2.0.818 with Crack</a></h3>
     <p class="sw-desc">Radiant Photo Your photos deserve to be radiant. Get superior quality finished photos with perfect color rendi</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2336,14 +2548,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/radiant-photo-220818-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="rcysoft photo recovery pro free download" data-listed="202511">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="rcysoft photo recovery pro free download" data-listed="202511" data-year="" data-date="Nov 2025">
   <a href="../../software/rcysoft-photo-recovery-pro-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEj_VTlMuKwrkR92wUFCxFZd3x7pfUFLuRYze_HqdC6MAxq7JiLRS57fAkmb8SiU1XCccfmicEDbVuTMTj4eQ-G4jqEYqZ744l4TmK_8s2ycke8rAWFztfFrKuopwlO1WJHiT1QZi7VBAW2ssqp22LElNyVoKIHqcTLLb3L6rdzNAWmDSnJ_1vzKiGG1GEY=w320-h218" alt="Rcysoft Photo Recovery Pro Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v10.6</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/rcysoft-photo-recovery-pro-free-download.html">Rcysoft Photo Recovery Pro Free Download</a></h3>
     <p class="sw-desc">Rcysoft Photo Recovery Pro specializes in restoring deleted, formatted, or inaccessible photos from memory car</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Nov 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2352,14 +2566,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/rcysoft-photo-recovery-pro-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="sketchup pro 2020 free download" data-listed="202506">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="sketchup pro 2020 free download" data-listed="202506" data-year="2020" data-date="Jun 2025">
   <a href="../../software/sketchup-pro-2020-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnPf3G8ITfq_l2YeJztpAFQfwMiAkJ5HR78QiAEJmN71rmKN0Ac0ZY5m5k32zsWa90dFLGW_hD158rPVPbSIf5oKKG-8eVMs3UbhoDyL6qqWXf55SyVyhuvpp5KTwL-DwtQ6QKbjhhfSd5cS8tuyaUqITT9XxOFbMCE_K6ba1BsO7z0JldT0uIGhU99jw/s320/sketchup-pro-2020.jpg" alt="SketchUp Pro 2020 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.4</span>
+    <span class="sw-year">© 2020</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/sketchup-pro-2020-free-download.html">SketchUp Pro 2020 Free Download</a></h3>
     <p class="sw-desc">SketchUp Pro 2020 offers enhanced tools and performance for professionals working in architecture, interior de</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2368,14 +2584,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/sketchup-pro-2020-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="sketchup pro 2021 free download" data-listed="202506">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="sketchup pro 2021 free download" data-listed="202506" data-year="2021" data-date="Jun 2025">
   <a href="../../software/sketchup-pro-2021-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1mZTBF3CUuY9W5DclwVnqoDQEfd0yhUu6Rmvewb9alA4ogsKwRxPSjx8R3as1b7ApcgZBwuKROU39HHVPY6tXinumQ20B7dV3gqIoN-hwjc0upkuCmkWWgEQPk8j1eZnjiGam33S63c9GhPKIPBHNgtfLxf1VfmUgdeKn3Lj3LPif1E-hIk6hktHVVr4/s320/SketchUp-Pro-2021-Free-Download.png" alt="SketchUp Pro 2021 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.4</span>
+    <span class="sw-year">© 2021</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/sketchup-pro-2021-free-download.html">SketchUp Pro 2021 Free Download</a></h3>
     <p class="sw-desc">SketchUp Pro 2021 introduces improved model organization and deeper customization tools. With performance boos</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2384,14 +2602,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/sketchup-pro-2021-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="sketchup pro 2023 free download" data-listed="202605">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="sketchup pro 2023 free download" data-listed="202605" data-year="2023" data-date="May 2026">
   <a href="../../software/sketchup-pro-2023-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgXS9ipx6kd9FzdsNDh1z4THP-ZrQkdue1Lo10jCUSYybHZtep91H1eEqBUgQ-rZ4LsvPDkjuWdOExvcrBSnPNoYWPiM9r99vaqS2N-PqglPBWEGzzzYwC1AfYhu8MX3WzOHJySEZMsT-7xVya7UY1PJoeV0WoaHbxOz84taFj4EmIusR8oasx4VAXzOgQ=s16000" alt="SketchUp Pro 2023 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/sketchup-pro-2023-free-download.html">SketchUp Pro 2023 Free Download</a></h3>
     <p class="sw-desc">SketchUp Pro 2023 is a professional 3D modeling software known for its simplicity, speed, and versatility. It </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2400,14 +2620,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/sketchup-pro-2023-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="sketchup pro 2025 free download" data-listed="202605">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="sketchup pro 2025 free download" data-listed="202605" data-year="2025" data-date="May 2026">
   <a href="../../software/sketchup-pro-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjFNs6o6hIseRDV_FFe2u1CL09vFNDcgwx6jt-n6dg_iLX1np80U3M1pBF1JDvJZ-xWSl3k_RDdEtWllD2_aUEnLT7PMLhVT432u0hvKRicnYCmYwb85bas2qVbcwNj-bwORA8MCD7_0y7Kw3j4h6kmFC6pm1gu1EXEgEIZKzNYYwwfyi3AnWyAy_AvCls=w320-h262" alt="SketchUp Pro 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/sketchup-pro-2025-free-download.html">SketchUp Pro 2025 Free Download</a></h3>
     <p class="sw-desc">SketchUp Pro 2025 is the latest professional 3D modeling software designed for architects, engineers, interior</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2416,14 +2638,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/sketchup-pro-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="sketchup pro 2026 v26.2.243 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="sketchup pro 2026 v26.2.243 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/sketchup-pro-2026-v262243-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/SketchUp-Pro-2021-Cover.avif" alt="SketchUp Pro 2026 v26.2.243 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv26.2.243</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/sketchup-pro-2026-v262243-with-crack.html">SketchUp Pro 2026 v26.2.243 with Crack</a></h3>
     <p class="sw-desc">SketchUp Pro it was useful from the earliest stages of design to the end of construction. Programming, diagram</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2432,14 +2656,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/sketchup-pro-2026-v262243-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="sketchup pro v22 (2022) free download" data-listed="202506">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="sketchup pro v22 (2022) free download" data-listed="202506" data-year="2022" data-date="Jun 2025">
   <a href="../../software/sketchup-pro-v22-2022-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgw4VlItCc7J14KKvn0bQ63lTeEsNtYv9sZYO_ztr7InMRgoxPvifbflQAP_8zpCqCsATkBRhRcZQ_J-vkT3cVMboYpmwBOIPZO0dCLvGJi-vflgyWRYLiwszX4NjFptwDwAvPpi-AW2QdB0FJQJYvO4Bdcuk3FFHXQMt6PYaUzsRfoM4Hc47KQlnAz1xw/w320-h320/sketchup-pro-2022-free-download.jpg" alt="SketchUp Pro v22 (2022) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.1</span>
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/sketchup-pro-v22-2022-free-download.html">SketchUp Pro v22 (2022) Free Download</a></h3>
     <p class="sw-desc">SketchUp Pro v22 (2022) combines performance with precision, offering new modeling tools and workflow optimiza</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free-trial">Free Trial</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2448,14 +2674,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/sketchup-pro-v22-2022-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="stellar photo recovery pro 12.5.0.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="stellar photo recovery pro 12.5.0.0 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/stellar-photo-recovery-pro-12500-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2025/02/Stellar-Photo-Recovery-Cover.avif" alt="Stellar Photo Recovery Pro 12.5.0.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v12.5.0.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/stellar-photo-recovery-pro-12500-with-crack.html">Stellar Photo Recovery Pro 12.5.0.0 with Crack</a></h3>
     <p class="sw-desc">Recovers lost/deleted/formatted photos, music, and video files from Windows based system. A photo recovery sof</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2464,14 +2692,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/stellar-photo-recovery-pro-12500-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="summitsoft logo design studio pro 2.0.4.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="summitsoft logo design studio pro 2.0.4.0 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/summitsoft-logo-design-studio-pro-2040-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/R-Wipe-Clean-Cover.avif" alt="Summitsoft Logo Design Studio Pro 2.0.4.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.0.4.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/summitsoft-logo-design-studio-pro-2040-with-crack.html">Summitsoft Logo Design Studio Pro 2.0.4.0 with Crack</a></h3>
     <p class="sw-desc">Logo Design Studio Pro Software. The #1 Selling Logo Design Software for 17 Years! You know your business, we </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2480,14 +2710,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/summitsoft-logo-design-studio-pro-2040-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="topaz photo pro 1.6.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="topaz photo pro 1.6.1 with crack" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
   <a href="../../software/topaz-photo-pro-161-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/01/Topaz-Photo-AI.avif" alt="Topaz Photo Pro 1.6.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.6.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/topaz-photo-pro-161-with-crack.html">Topaz Photo Pro 1.6.1 with Crack</a></h3>
     <p class="sw-desc">Topaz Photo Pro sharpens, removes noise, and increases the resolution of your photos with tomorrow&amp;#8217;s tec</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2496,14 +2728,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/topaz-photo-pro-161-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="wondershare photo recovery free download" data-listed="201912">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="wondershare photo recovery free download" data-listed="201912" data-year="" data-date="Dec 2019">
   <a href="../../software/wondershare-photo-recovery-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh213FDl3RAqmsz4RIC3_15Rcvispfe_O6eHlpcJPkrnQAMqiIilK8LD0NRbXfwYTO0GPjEzqBsxPtj7qW0kgfXw2K-_oD1RWhLEURfZ_wMFsVs6nXWP5BhpNokUPQ8uu_7yUHvlDK27Rg/s0/Wondershare-Photo-Recovery.jpg" alt="Wondershare Photo Recovery Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v7.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/wondershare-photo-recovery-free-download.html">Wondershare Photo Recovery Free Download</a></h3>
     <p class="sw-desc">Recoverit Photo Recovery empowers you to restore images, movies and music from all storage media. Do deleted p</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2512,14 +2746,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/wondershare-photo-recovery-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="xara photo &amp;#038; graphic designer+ 25.1.0.72372 with crack" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="xara photo &amp;#038; graphic designer+ 25.1.0.72372 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/xara-photo-038-graphic-designer-251072372-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/11/Xara-Photo-Graphic-Designer-Cover.avif" alt="Xara Photo &amp;#038; Graphic Designer+ 25.1.0.72372 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v25.1.0.72372</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/xara-photo-038-graphic-designer-251072372-with-crack.html">Xara Photo &amp;#038; Graphic Designer+ 25.1.0.72372 with Crack</a></h3>
     <p class="sw-desc">Xara Photo &amp;amp; Graphic Designer is the perfect software choice for all your photo and graphic design work, w</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2528,14 +2764,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/xara-photo-038-graphic-designer-251072372-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="zoner photo studio x 19.2606.2.702 with crack {repack}" data-listed="000000">
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="zoner photo studio x 19.2606.2.702 with crack {repack}" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
   <a href="../../software/zoner-photo-studio-x-1926062702-with-crack-repack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/Zoner-Photo-Studio-X-Cover.avif" alt="Zoner Photo Studio X 19.2606.2.702 with Crack {RePack}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v19.2606.2.702</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/zoner-photo-studio-x-1926062702-with-crack-repack.html">Zoner Photo Studio X 19.2606.2.702 with Crack {RePack}</a></h3>
     <p class="sw-desc">Zoner Photo Studio X makes every photo better with its features! Your Lightroom® and Photoshop® alternative. Z</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
@@ -2704,6 +2942,41 @@ ul, ol { margin: 0; padding: 0; }
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); go(); }
     });
+  }
+
+  /* ---------- Slideshow ---------- */
+  function initSlideshow() {
+    var ss = document.getElementById('latestSlideshow');
+    if (!ss) return;
+    var slides = ss.querySelectorAll('.slide');
+    var dots = ss.querySelectorAll('.dot');
+    if (!slides.length) return;
+    var cur = 0;
+    var timer = null;
+
+    function show(i) {
+      cur = (i + slides.length) % slides.length;
+      for (var j = 0; j < slides.length; j++) {
+        slides[j].classList.toggle('active', j === cur);
+        if (dots[j]) dots[j].classList.toggle('on', j === cur);
+      }
+    }
+    function next() { show(cur + 1); restart(); }
+    function prev() { show(cur - 1); restart(); }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show(cur + 1); }, 6000);
+    }
+    var btnNext = ss.querySelector('#slideNext');
+    var btnPrev = ss.querySelector('#slidePrev');
+    if (btnNext) btnNext.addEventListener('click', next);
+    if (btnPrev) btnPrev.addEventListener('click', prev);
+    for (var i = 0; i < dots.length; i++) {
+      (function (idx) {
+        dots[idx].addEventListener('click', function () { show(idx); restart(); });
+      })(i);
+    }
+    restart();
   }
 
   /* ---------- Listing sort select ---------- */
@@ -3171,7 +3444,8 @@ ul, ol { margin: 0; padding: 0; }
       + (img || ph) + '</a>';
     var tier = TIER_LABELS[it.tier] || '';
     var meta = '<span>&#9989; Windows</span>';
-    if (it.year) meta += '<span>' + escapeHtml(it.year) + '</span>';
+    if (it.year) meta += '<span>&#169; ' + escapeHtml(it.year) + '</span>';
+    if (it.date) meta += '<span>&#128197; ' + escapeHtml(it.date) + '</span>';
     if (it.version) meta += '<span class="badge-ver">' + escapeHtml(it.version) + '</span>';
     return '<article class="sw-card">' + thumb
       + '<div class="sw-body">'
@@ -3261,6 +3535,7 @@ ul, ol { margin: 0; padding: 0; }
     initNavSearchBtn();
     initHeroSearchBtn();
     initSort();
+    initSlideshow();
     initToastLinks();
     initLightbox();
     initSearch('navSearch');

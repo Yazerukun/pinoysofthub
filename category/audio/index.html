@@ -476,14 +476,46 @@ ul, ol { margin: 0; padding: 0; }
 .sw-thumb .placeholder { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2.1rem; }
 .sw-thumb .badge-ver { position: absolute; bottom: 10px; right: 10px; background: rgba(4, 10, 20, .8); color: #dbe7f7; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-thumb .badge-top { position: absolute; top: 10px; left: 10px; }
+.sw-year { position: absolute; top: 10px; left: 10px; background: rgba(4, 10, 20, .8); color: var(--text-2); font-size: .68rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-body { padding: 15px 16px 16px; display: flex; flex-direction: column; flex: 1; gap: 8px; }
 .sw-title { font-size: .99rem; font-weight: 700; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .sw-title a { color: var(--text); }
 .sw-title a:hover { color: var(--primary-strong); }
 .sw-desc { font-size: .83rem; color: var(--text-3); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sw-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .76rem; color: var(--text-3); }
+.sw-row span { display: inline-flex; align-items: center; gap: 4px; }
+.sw-date { color: var(--text-2); font-weight: 500; }
+.sw-dl { color: var(--primary-strong); font-weight: 600; }
+.sw-dev { color: var(--text-3); font-style: italic; }
 .sw-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .74rem; color: var(--text-3); margin-top: auto; }
 .sw-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .sw-card .btn { margin-top: 10px; }
+
+/* Slideshow — latest software carousel */
+.slide-show { position: relative; max-width: 1240px; margin: 26px auto 0; padding: 0 18px; box-sizing: border-box; }
+.slide-show .slides { position: relative; height: 340px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-strong); }
+.slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s ease; pointer-events: none; display: flex; align-items: flex-end; }
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 1; }
+.slide-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 8, 16, .92) 0%, rgba(3, 8, 16, .68) 45%, rgba(3, 8, 16, .18) 100%); }
+.slide-body { position: relative; z-index: 2; max-width: 620px; padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 10px; }
+.slide-badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.slide-title { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin: 0; }
+.slide-title a { color: #fff; }
+.slide-title a:hover { color: var(--primary-soft); }
+.slide-desc { font-size: .92rem; color: rgba(255,255,255,.78); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.slide-cta { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border-radius: var(--radius-full); border: 1px solid var(--border-strong); background: rgba(4, 10, 20, .75); color: #fff; font-size: 1.25rem; cursor: pointer; display: grid; place-items: center; transition: all var(--trans); }
+.slide-arrow:hover { background: var(--primary); border-color: var(--primary-strong); }
+.slide-arrow.prev { left: 14px; }
+.slide-arrow.next { right: 14px; }
+.slide-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+.slide-dots .dot { width: 10px; height: 10px; border-radius: var(--radius-full); border: none; background: var(--border-strong); cursor: pointer; padding: 0; transition: all var(--trans); }
+.slide-dots .dot.on { background: var(--primary); width: 22px; }
+@media (max-width: 760px) {
+  .slide-show .slides { height: 300px; }
+  .slide-body { padding: 18px; }
+  .slide-title { font-size: 1.15rem; }
+}
 
 /* Compact list item (staff picks / related) */
 .related-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
@@ -896,14 +928,16 @@ ul, ol { margin: 0; padding: 0; }
     </select>
   </div>
   <div id="swList" class="sw-grid">
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="aiseesoft screen recorder 3.1.36 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="aiseesoft screen recorder 3.1.36 with crack" data-listed="202601" data-year="2026" data-date="Jan 9, 2026">
   <a href="../../software/aiseesoft-screen-recorder-3136-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/Aiseesoft-Screen-Recorder-Cover.avif" alt="Aiseesoft Screen Recorder 3.1.36 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.1.36</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/aiseesoft-screen-recorder-3136-with-crack.html">Aiseesoft Screen Recorder 3.1.36 with Crack</a></h3>
     <p class="sw-desc">Aiseesoft Screen Recorder is an easy-to-use screen capture tool to record any video or audio on your computer </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -912,14 +946,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/aiseesoft-screen-recorder-3136-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="anymp4 screen recorder 1.5.70 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="anymp4 screen recorder 1.5.70 with crack" data-listed="202506" data-year="2025" data-date="Jun 1, 2025">
   <a href="../../software/anymp4-screen-recorder-1570-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/AnyMP4-Screen-Recorder.avif" alt="AnyMP4 Screen Recorder 1.5.70 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5.70</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/anymp4-screen-recorder-1570-with-crack.html">AnyMP4 Screen Recorder 1.5.70 with Crack</a></h3>
     <p class="sw-desc">AnyMP4 Screen Recorder The best choice for you is to record screen movements and actions. With its intuitive a</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 1, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -928,14 +964,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/anymp4-screen-recorder-1570-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="apeaksoft screen recorder 2.3.50 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="apeaksoft screen recorder 2.3.50 with crack" data-listed="202507" data-year="2025" data-date="Jul 16, 2025">
   <a href="../../software/apeaksoft-screen-recorder-2350-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/10/Apeaksoft-Screen-Recorder-Cover.avif" alt="Apeaksoft Screen Recorder 2.3.50 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.3.50</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/apeaksoft-screen-recorder-2350-with-crack.html">Apeaksoft Screen Recorder 2.3.50 with Crack</a></h3>
     <p class="sw-desc">Apeaksoft Screen Recorder is a professional tool to record any video/audio and capture screen on your Windows </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 16, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -944,14 +982,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/apeaksoft-screen-recorder-2350-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="ashampoo audio recorder free download" data-listed="201910">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="ashampoo audio recorder free download" data-listed="201910" data-year="" data-date="Oct 2019">
   <a href="../../software/ashampoo-audio-recorder-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpOIeWr4d60VNQ2K4SRcEjGJoA0BJWMRRxVlgSLJAdL9LMZzyWj3NEZ_9FZEcDtFdEVImobZIZh-roLNZTcxLyquRhAFVnv9p5k-C8IunKYSfOXHnEiZU9Lta2KDcFG0jJq4Yytkz1nNw/s320/ashampoo+audio+recorder+boxshot.png" alt="Ashampoo Audio Recorder Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v39.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ashampoo-audio-recorder-free-download.html">Ashampoo Audio Recorder Free Download</a></h3>
     <p class="sw-desc">Ashampoo Audio Recorder Free is the fuss-free voice and music recorder to capture audio from your microphone o</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -960,14 +1000,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ashampoo-audio-recorder-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="audicable 1.7.0.85 with crack {audio recorder}" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="audicable 1.7.0.85 with crack {audio recorder}" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/audicable-17085-with-crack-audio-recorder.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/11/AudiCable-Cover.avif" alt="AudiCable 1.7.0.85 with Crack {Audio Recorder}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.7.0.85</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/audicable-17085-with-crack-audio-recorder.html">AudiCable 1.7.0.85 with Crack {Audio Recorder}</a></h3>
     <p class="sw-desc">AudiCable is a quick and convenient music recorder to record music, playlists, albums, podcasts, audiobooks, a</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -976,14 +1018,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/audicable-17085-with-crack-audio-recorder.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="avs audio editor 9.1 free download" data-listed="201908">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="avs audio editor 9.1 free download" data-listed="201908" data-year="" data-date="Aug 2019">
   <a href="../../software/avs-audio-editor-91-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgljpyhIQbw-n02yDJBDqXzOTt_2IQFoDvLjpoS8_T4G40LqhEP9_1ecqHPJr0z0iJJDwuLZAr6VDzEyyQ3ZIdzYzctPg0l1Jcze1atNb6YnSxctBDZC9qoe-tQ5G-2mmit-yqtdemzIV8/s0/AVS+Audio+Editor.png" alt="AVS Audio Editor 9.1 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v9.1</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avs-audio-editor-91-free-download.html">AVS Audio Editor 9.1 Free Download</a></h3>
     <p class="sw-desc">AVS Audio Editor is an advanced audio production tool which makes a worthy competition to the majority of digi</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -992,14 +1036,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avs-audio-editor-91-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="64-bit" data-title="cyberlink screen recorder deluxe 4.4.1.31540 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="64-bit" data-title="cyberlink screen recorder deluxe 4.4.1.31540 with crack" data-listed="202608" data-year="2026" data-date="Aug 31, 2026">
   <a href="../../software/cyberlink-screen-recorder-deluxe-44131540-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/CyberLink-Screen-Recorder-Deluxe-Cover.avif" alt="CyberLink Screen Recorder Deluxe 4.4.1.31540 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.4.1.31540</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/cyberlink-screen-recorder-deluxe-44131540-with-crack.html">CyberLink Screen Recorder Deluxe 4.4.1.31540 with Crack</a></h3>
     <p class="sw-desc">CyberLink Screen Recorder Deluxe recorder couples the easy-to-use editing features of PowerDirector &amp;#8211; Th</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 31, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1008,14 +1054,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/cyberlink-screen-recorder-deluxe-44131540-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="dfx audio enhancer free download" data-listed="201905">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="dfx audio enhancer free download" data-listed="201905" data-year="" data-date="May 2019">
   <a href="../../software/dfx-audio-enhancer-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPSBee0NB5sfF1BgE66Ocdr6lJXfEqX2FTLQQ5GcrzYlAy8x_H-e2Pbt49jYlfuG6o3sAQoRYrFXwu7Wz959QUda819QGDmiY_-FM4bSzGsJqHVZxhX82_KV2NbGXVZEjy3BNIgKIjSOw/s320/DFX-Audio-Enhancer-Crack.jpg" alt="DFX Audio Enhancer Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.9</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/dfx-audio-enhancer-free-download.html">DFX Audio Enhancer Free Download</a></h3>
     <p class="sw-desc">FxSound designs and distributes FxSound Enhancer, formerly DFX Audio Enhancer, which is the world&#x27;s most popul</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1024,14 +1072,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/dfx-audio-enhancer-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="64-bit" data-title="fl studio 20 free download" data-listed="202509">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="64-bit" data-title="fl studio 20 free download" data-listed="202509" data-year="" data-date="Sep 2025">
   <a href="../../software/fl-studio-20-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiC2JvFyUsr4kTKC9wUCeAmkSDw9gOrPhuyaPtwY5ZG7EW7AnrItP-vi_19E7EHjmgMgAktDp8uCfJciMedG2KUAbuO1jfGECdYU1iKl_V3CoWbhZYC8kb_qm7dbX0w1uo-Y1bg_rCMeTl4LB_GkVrb7iGq3QD_KDurCA9KC2hLQikL-FwDwCcsqJsC3Nc=w239-h320" alt="FL Studio 20 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.1</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/fl-studio-20-free-download.html">FL Studio 20 Free Download</a></h3>
     <p class="sw-desc">FL Studio 20 is a leading digital audio workstation (DAW) for music producers. It provides a complete environm</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1040,14 +1090,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/fl-studio-20-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="fonepaw screen recorder 8.8.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="fonepaw screen recorder 8.8.0 with crack" data-listed="202604" data-year="2026" data-date="Apr 10, 2026">
   <a href="../../software/fonepaw-screen-recorder-880-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/03/FonePaw-Screen-Recorder.avif" alt="FonePaw Screen Recorder 8.8.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.8.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/fonepaw-screen-recorder-880-with-crack.html">FonePaw Screen Recorder 8.8.0 with Crack</a></h3>
     <p class="sw-desc">FonePaw Screen Recorder the professional video screen recording software will capture your screen for Windows </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Apr 10, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1056,14 +1108,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/fonepaw-screen-recorder-880-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="64-bit" data-title="gilisoft audio editor 2025 free download" data-listed="202507">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="64-bit" data-title="gilisoft audio editor 2025 free download" data-listed="202507" data-year="2025" data-date="Jul 2025">
   <a href="../../software/gilisoft-audio-editor-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOmbD47z1bgirYWJV5sf-Je7B1sK5zf5N78Hurpa3N47dNF-5p0vLdPQPSebO4iLmp4UQ9X8on-SjCfbe6NZWO1prrO694-w3Qlb4aHbWQRC9VNGT0NB4soyO4xZ3ucR3MXUX4vCFoBNybfdDwBrycVw7sW8VaaLpOCrEVCaYXXkUurODtihVGzpRPsuQ/s320/Audio-Editor.png" alt="Gilisoft Audio Editor 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/gilisoft-audio-editor-2025-free-download.html">Gilisoft Audio Editor 2025 Free Download</a></h3>
     <p class="sw-desc">Gilisoft Audio Editor 2025 is a versatile tool for recording, editing, and enhancing audio files with professi</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1072,14 +1126,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/gilisoft-audio-editor-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="gilisoft audio recorder pro 2025 free download" data-listed="202507">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="gilisoft audio recorder pro 2025 free download" data-listed="202507" data-year="2025" data-date="Jul 2025">
   <a href="../../software/gilisoft-audio-recorder-pro-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgy18y6emlVN_JNFG8vf4aRAELdf020kuuSABLguMHC70aabzIB8Mn0ac3Y6Tf6rCyFCyskxaY_9w_tj6nSsVKC1dVtiCRgBLGxQqm8EA3F0hLnDuz4-HkFVby41_HCVh45VFwz2hXbwirQIjBb1p0-tLzLRxbKRyAc-f4kqQBJdmVsz2sXJHz34Tk6Afg/s320/audio-recorder-pro-free-download.png" alt="Gilisoft Audio Recorder Pro 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/gilisoft-audio-recorder-pro-2025-free-download.html">Gilisoft Audio Recorder Pro 2025 Free Download</a></h3>
     <p class="sw-desc">Designed for high-fidelity recording, Audio Recorder Pro captures system sound and microphone input simultaneo</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1088,14 +1144,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/gilisoft-audio-recorder-pro-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="gilisoft audio toolbox suite 13.3.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="gilisoft audio toolbox suite 13.3.0 with crack" data-listed="202601" data-year="2026" data-date="Jan 27, 2026">
   <a href="../../software/gilisoft-audio-toolbox-suite-1330-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/05/GiliSoft-Audio-Toolbox-Suite-Cover.avif" alt="GiliSoft Audio Toolbox Suite 13.3.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v13.3.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/gilisoft-audio-toolbox-suite-1330-with-crack.html">GiliSoft Audio Toolbox Suite 13.3.0 with Crack</a></h3>
     <p class="sw-desc">GiliSoft Audio Toolbox Suite is 9 powerful and useful audio programs in one pack, which includes an Audio Reco</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 27, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1104,14 +1162,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/gilisoft-audio-toolbox-suite-1330-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="gilisoft free audio cd burner 2022 free download" data-listed="202507">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="gilisoft free audio cd burner 2022 free download" data-listed="202507" data-year="2022" data-date="Jul 2025">
   <a href="../../software/gilisoft-free-audio-cd-burner-2022-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhghlh_H0Uce4ucoRXfOimp85xLPt5f9gwvov4fyabcWcUpD1VTtFc7xLqWVcPWpVLrcQP2KNTnLNO2fyl3s1sSeEvNvBthe4FYw43Z59HeqHHQQDiQTtl757JpVUBu-gDxRGekaQ3qXyFA4WX8C4YwDlSPHCVh1js07LHRboKcn3jZoCK80HA2z-Up8Eg/s320/Free-Audio-CD-Burner.png" alt="Gilisoft Free Audio CD Burner 2022 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/gilisoft-free-audio-cd-burner-2022-free-download.html">Gilisoft Free Audio CD Burner 2022 Free Download</a></h3>
     <p class="sw-desc">Still rocking CDs for your car stereo or old-school boombox? This tool keeps things ultra-simple and fast. It’</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1120,14 +1180,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/gilisoft-free-audio-cd-burner-2022-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="gilisoft screen recorder pro 13.9.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="gilisoft screen recorder pro 13.9.0 with crack" data-listed="202504" data-year="2025" data-date="Apr 18, 2025">
   <a href="../../software/gilisoft-screen-recorder-pro-1390-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/09/Gilisoft-Screen-Recorder-Cover.avif" alt="GiliSoft Screen Recorder Pro 13.9.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v13.9.0</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/gilisoft-screen-recorder-pro-1390-with-crack.html">GiliSoft Screen Recorder Pro 13.9.0 with Crack</a></h3>
     <p class="sw-desc">Gilisoft Screen Recorder Pro can be useful when you need to record a how-to video to help someone learn how to</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Apr 18, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1136,14 +1198,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/gilisoft-screen-recorder-pro-1390-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="iobit ifun screen recorder pro 1.2.0.261 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="iobit ifun screen recorder pro 1.2.0.261 with crack" data-listed="202308" data-year="2023" data-date="Aug 3, 2023">
   <a href="../../software/iobit-ifun-screen-recorder-pro-120261-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/04/IObit-iFun-Screen-Recorder-Pro-Cover.avif" alt="IObit iFun Screen Recorder Pro 1.2.0.261 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.2.0.261</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/iobit-ifun-screen-recorder-pro-120261-with-crack.html">IObit iFun Screen Recorder Pro 1.2.0.261 with Crack</a></h3>
     <p class="sw-desc">IObit iFun Screen Recorder Pro records any area of your screen, a featured screen with a Facecam. Unlimited re</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 3, 2023</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1152,14 +1216,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/iobit-ifun-screen-recorder-pro-120261-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="macro recorder 3.0.51 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="macro recorder 3.0.51 with crack" data-listed="202501" data-year="2025" data-date="Jan 31, 2025">
   <a href="../../software/macro-recorder-3051-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/07/Macro-Recorder-Cover.avif" alt="Macro Recorder 3.0.51 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.0.51</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/macro-recorder-3051-with-crack.html">Macro Recorder 3.0.51 with Crack</a></h3>
     <p class="sw-desc">Macro Recorder captures mouse events and keystrokes like a tape recorder, allowing you to automate tedious pro</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 31, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1168,14 +1234,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/macro-recorder-3051-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="64-bit" data-title="magix sound forge pro suite 18.0.0.21 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="64-bit" data-title="magix sound forge pro suite 18.0.0.21 with crack" data-listed="202403" data-year="2024" data-date="Mar 26, 2024">
   <a href="../../software/magix-sound-forge-pro-suite-180021-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/05/MAGIX-SOUND-FORGE-Pro-Suite-Cover-1.avif" alt="MAGIX SOUND FORGE Pro Suite 18.0.0.21 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v18.0.0.21</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/magix-sound-forge-pro-suite-180021-with-crack.html">MAGIX SOUND FORGE Pro Suite 18.0.0.21 with Crack</a></h3>
     <p class="sw-desc">MAGIX SOUND FORGE Pro Suite is the complete bundle for spectral editing, sound design, and mastering. The new </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Mar 26, 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1184,14 +1252,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/magix-sound-forge-pro-suite-180021-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="nch mixpad 14.07 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="nch mixpad 14.07 with crack" data-listed="202604" data-year="2026" data-date="Apr 15, 2026">
   <a href="../../software/nch-mixpad-1407-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/02/NCH-MixPad-Cover.avif" alt="NCH MixPad 14.07 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v14.07</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/nch-mixpad-1407-with-crack.html">NCH MixPad 14.07 with Crack</a></h3>
     <p class="sw-desc">NCH MixPad is a powerful, multi-track music mixing software for audio production. Designed with all the audio </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Apr 15, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1200,14 +1270,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/nch-mixpad-1407-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="nch mixpad audio mixing software free download" data-listed="202507">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="nch mixpad audio mixing software free download" data-listed="202507" data-year="" data-date="Jul 2025">
   <a href="../../software/nch-mixpad-audio-mixing-software-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjVUxh-DLsMhNLPi6XLJZNgijFMgMPLHZht5N6lbB5lTHP_IDEhJOpizGG1E8FWsxKfYzIhgQ5i_tE6BynoW4ftJUbqYidX-FHQXIY0qIHu8JDORa3PvfOac-1vGRYj8CnUWgguW4CP1GfSP5kRWTrIKMWyFf7LzoY6igFi9hgX4Zhrw_hAt5uuJTWTO0Y=w232-h320" alt="NCH MixPad Audio Mixing Software Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/nch-mixpad-audio-mixing-software-free-download.html">NCH MixPad Audio Mixing Software Free Download</a></h3>
     <p class="sw-desc">MixPad is a professional multitrack music mixing and recording software. With a clean interface and powerful a</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1216,14 +1288,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/nch-mixpad-audio-mixing-software-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="nch wavepad audio editer free download" data-listed="202507">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="nch wavepad audio editer free download" data-listed="202507" data-year="" data-date="Jul 2025">
   <a href="../../software/nch-wavepad-audio-editer-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgH1bQHCtyor7dqCW5Shu8YOPCqP7geUEnJ05wdsdmbMVKaSLlNh4R0dOkQG5kwOtS9NLFc8S5KzIzqK0ZQNWgZwvu7Jk-249im4raKgMciRB9tVxQoA0-z1SWStUxLHvUCBih83SeTV5mH1pPQDlqAgHhyQ3zCPocvTEIm6ufws-7kScPKc0RZb4dMwj0=s16000" alt="NCH WavePad Audio Editer Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v10.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/nch-wavepad-audio-editer-free-download.html">NCH WavePad Audio Editer Free Download</a></h3>
     <p class="sw-desc">WavePad is a professional audio editing tool for musicians, podcasters, and audio engineers. It supports a wid</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1232,14 +1306,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/nch-wavepad-audio-editer-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="passfab screen recorder 1.3.4 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="passfab screen recorder 1.3.4 with crack" data-listed="202412" data-year="2024" data-date="Dec 9, 2024">
   <a href="../../software/passfab-screen-recorder-134-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/05/PassFab-Screen-Recorder-Cover.avif" alt="PassFab Screen Recorder 1.3.4 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.3.4</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/passfab-screen-recorder-134-with-crack.html">PassFab Screen Recorder 1.3.4 with Crack</a></h3>
     <p class="sw-desc">PassFab Screen Recorder you can record everything on your computer. Really powerful as it features Record Scre</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 9, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1248,14 +1324,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/passfab-screen-recorder-134-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="tunefab screen recorder 2.2.28 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="tunefab screen recorder 2.2.28 with crack" data-listed="202606" data-year="2026" data-date="Jun 29, 2026">
   <a href="../../software/tunefab-screen-recorder-2228-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/TuneFab-Screen-Recorder-Logo.png" alt="TuneFab Screen Recorder 2.2.28 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.2.28</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/tunefab-screen-recorder-2228-with-crack.html">TuneFab Screen Recorder 2.2.28 with Crack</a></h3>
     <p class="sw-desc">TuneFab Screen Recorder a professional video screen recording software will capture your screen for Windows co</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 29, 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1264,14 +1342,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/tunefab-screen-recorder-2228-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="tuneskit audio capture 3.6.0.58 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="tuneskit audio capture 3.6.0.58 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/tuneskit-audio-capture-36058-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2019/09/TunesKit-Audio-Converter-Crack-100x100.avif" alt="TunesKit Audio Capture 3.6.0.58 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.6.0.58</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/tuneskit-audio-capture-36058-with-crack.html">TunesKit Audio Capture 3.6.0.58 with Crack</a></h3>
     <p class="sw-desc">TunesKit Audio Capture is an all-around mighty DRM removal solution to convert DRM-protected Apple Music, iTun</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1280,14 +1360,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/tuneskit-audio-capture-36058-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="video call recorder free download" data-listed="201903">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="video call recorder free download" data-listed="201903" data-year="" data-date="Mar 2019">
   <a href="../../software/video-call-recorder-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7VhQDPMPe2R07P1bYLuRSnSiYs40jgkEvWqqIkOZSHHVy2XsSKVjToKb_I4Q2J7MzDxsLviq2hGhXsxoVfaFgoTfGV48qOI9SjuAjj2M9OPxkgYiOoYBtOFOGEFBdn2Sz5XZT5canp6A/s200/Free-Video-Call-Recorder-for-Skype.png" alt="Video Call Recorder Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v30.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/video-call-recorder-free-download.html">Video Call Recorder Free Download</a></h3>
     <p class="sw-desc">It is the first free Skype video call recorder in the world for recording Skype calls without any limitations.</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Mar 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1296,14 +1378,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/video-call-recorder-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="vidmore screen recorder 2.0.56 with crack" data-listed="000000">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="vidmore screen recorder 2.0.56 with crack" data-listed="202507" data-year="2025" data-date="Jul 18, 2025">
   <a href="../../software/vidmore-screen-recorder-2056-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/02/Vidmore-Screen-Recorder.avif" alt="Vidmore Screen Recorder 2.0.56 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.0.56</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/vidmore-screen-recorder-2056-with-crack.html">Vidmore Screen Recorder 2.0.56 with Crack</a></h3>
     <p class="sw-desc">Vidmore Screen Recorder is a convenient and easy-to-use screen recording software that allows you to capture a</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 18, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1312,14 +1396,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/vidmore-screen-recorder-2056-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="virtual audio cable free download" data-listed="201907">
+<article class="sw-card" data-category="audio" data-license="free" data-arch="x64" data-title="virtual audio cable free download" data-listed="201907" data-year="" data-date="Jul 2019">
   <a href="../../software/virtual-audio-cable-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎧&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9iu9jmfX-ErWGOwZdEwIFejao8YVtSKUNTH8OoTxbhxY4nm3JD1slzMciy_t03pLlHjdv0R2vQ5ZXGAQozqRb1Fw__s9cA3kK6glwc1WJYhxHcVIduDJHbQfbb3NVGpm_HylLrJdMyb0/s400/virtual+cable+free+logo_128x128.png" alt="Virtual Audio Cable Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.57</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/virtual-audio-cable-free-download.html">Virtual Audio Cable Free Download</a></h3>
     <p class="sw-desc">Virtual Audio Cable software (VAC) allows you to connect audio applications to each other. VAC routes audio si</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎧 Audio</span>
@@ -1488,6 +1574,41 @@ ul, ol { margin: 0; padding: 0; }
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); go(); }
     });
+  }
+
+  /* ---------- Slideshow ---------- */
+  function initSlideshow() {
+    var ss = document.getElementById('latestSlideshow');
+    if (!ss) return;
+    var slides = ss.querySelectorAll('.slide');
+    var dots = ss.querySelectorAll('.dot');
+    if (!slides.length) return;
+    var cur = 0;
+    var timer = null;
+
+    function show(i) {
+      cur = (i + slides.length) % slides.length;
+      for (var j = 0; j < slides.length; j++) {
+        slides[j].classList.toggle('active', j === cur);
+        if (dots[j]) dots[j].classList.toggle('on', j === cur);
+      }
+    }
+    function next() { show(cur + 1); restart(); }
+    function prev() { show(cur - 1); restart(); }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show(cur + 1); }, 6000);
+    }
+    var btnNext = ss.querySelector('#slideNext');
+    var btnPrev = ss.querySelector('#slidePrev');
+    if (btnNext) btnNext.addEventListener('click', next);
+    if (btnPrev) btnPrev.addEventListener('click', prev);
+    for (var i = 0; i < dots.length; i++) {
+      (function (idx) {
+        dots[idx].addEventListener('click', function () { show(idx); restart(); });
+      })(i);
+    }
+    restart();
   }
 
   /* ---------- Listing sort select ---------- */
@@ -1955,7 +2076,8 @@ ul, ol { margin: 0; padding: 0; }
       + (img || ph) + '</a>';
     var tier = TIER_LABELS[it.tier] || '';
     var meta = '<span>&#9989; Windows</span>';
-    if (it.year) meta += '<span>' + escapeHtml(it.year) + '</span>';
+    if (it.year) meta += '<span>&#169; ' + escapeHtml(it.year) + '</span>';
+    if (it.date) meta += '<span>&#128197; ' + escapeHtml(it.date) + '</span>';
     if (it.version) meta += '<span class="badge-ver">' + escapeHtml(it.version) + '</span>';
     return '<article class="sw-card">' + thumb
       + '<div class="sw-body">'
@@ -2045,6 +2167,7 @@ ul, ol { margin: 0; padding: 0; }
     initNavSearchBtn();
     initHeroSearchBtn();
     initSort();
+    initSlideshow();
     initToastLinks();
     initLightbox();
     initSearch('navSearch');

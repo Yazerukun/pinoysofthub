@@ -476,14 +476,46 @@ ul, ol { margin: 0; padding: 0; }
 .sw-thumb .placeholder { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2.1rem; }
 .sw-thumb .badge-ver { position: absolute; bottom: 10px; right: 10px; background: rgba(4, 10, 20, .8); color: #dbe7f7; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-thumb .badge-top { position: absolute; top: 10px; left: 10px; }
+.sw-year { position: absolute; top: 10px; left: 10px; background: rgba(4, 10, 20, .8); color: var(--text-2); font-size: .68rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-body { padding: 15px 16px 16px; display: flex; flex-direction: column; flex: 1; gap: 8px; }
 .sw-title { font-size: .99rem; font-weight: 700; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .sw-title a { color: var(--text); }
 .sw-title a:hover { color: var(--primary-strong); }
 .sw-desc { font-size: .83rem; color: var(--text-3); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sw-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .76rem; color: var(--text-3); }
+.sw-row span { display: inline-flex; align-items: center; gap: 4px; }
+.sw-date { color: var(--text-2); font-weight: 500; }
+.sw-dl { color: var(--primary-strong); font-weight: 600; }
+.sw-dev { color: var(--text-3); font-style: italic; }
 .sw-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .74rem; color: var(--text-3); margin-top: auto; }
 .sw-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .sw-card .btn { margin-top: 10px; }
+
+/* Slideshow — latest software carousel */
+.slide-show { position: relative; max-width: 1240px; margin: 26px auto 0; padding: 0 18px; box-sizing: border-box; }
+.slide-show .slides { position: relative; height: 340px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-strong); }
+.slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s ease; pointer-events: none; display: flex; align-items: flex-end; }
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 1; }
+.slide-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 8, 16, .92) 0%, rgba(3, 8, 16, .68) 45%, rgba(3, 8, 16, .18) 100%); }
+.slide-body { position: relative; z-index: 2; max-width: 620px; padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 10px; }
+.slide-badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.slide-title { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin: 0; }
+.slide-title a { color: #fff; }
+.slide-title a:hover { color: var(--primary-soft); }
+.slide-desc { font-size: .92rem; color: rgba(255,255,255,.78); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.slide-cta { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border-radius: var(--radius-full); border: 1px solid var(--border-strong); background: rgba(4, 10, 20, .75); color: #fff; font-size: 1.25rem; cursor: pointer; display: grid; place-items: center; transition: all var(--trans); }
+.slide-arrow:hover { background: var(--primary); border-color: var(--primary-strong); }
+.slide-arrow.prev { left: 14px; }
+.slide-arrow.next { right: 14px; }
+.slide-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+.slide-dots .dot { width: 10px; height: 10px; border-radius: var(--radius-full); border: none; background: var(--border-strong); cursor: pointer; padding: 0; transition: all var(--trans); }
+.slide-dots .dot.on { background: var(--primary); width: 22px; }
+@media (max-width: 760px) {
+  .slide-show .slides { height: 300px; }
+  .slide-body { padding: 18px; }
+  .slide-title { font-size: 1.15rem; }
+}
 
 /* Compact list item (staff picks / related) */
 .related-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
@@ -896,14 +928,16 @@ ul, ol { margin: 0; padding: 0; }
     </select>
   </div>
   <div id="swList" class="sw-grid">
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="7-zip free download" data-listed="201802">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="7-zip free download" data-listed="201802" data-year="" data-date="Feb 2018">
   <a href="../../software/7-zip-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZQatvPhDqC9MkR2xx8wAMPRxMtBe5sgaiFJVkyGTNsSFrR2sfn3JkhxTIxDtehKgWwFf9zIFMrCtTyNL0FCRuM-wM9zrdl-FP1QH3RKcRg1uoM4RRCHgvBCyV4IPR0jMHLWzOd0P2FJE/s200/7-Zip_Logo.png" alt="7-Zip Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.1</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/7-zip-free-download.html">7-Zip Free Download</a></h3>
     <p class="sw-desc">7-Zip is a file archiver utility application with a high compression ratio to help you extract compressed file</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Feb 2018</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-opensource">Open Source</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -912,14 +946,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/7-zip-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="acronis cyber backup 12.5 build 16545 bootcd" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="acronis cyber backup 12.5 build 16545 bootcd" data-listed="202406" data-year="2024" data-date="Jun 6, 2024">
   <a href="../../software/acronis-cyber-backup-125-build-16545-bootcd.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/Acronis-Cyber-Backup-Cover.avif" alt="Acronis Cyber Backup 12.5 Build 16545 BootCD" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v12.5</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/acronis-cyber-backup-125-build-16545-bootcd.html">Acronis Cyber Backup 12.5 Build 16545 BootCD</a></h3>
     <p class="sw-desc">Acronis Cyber Backup delivers the data protection that meets today’s demands. It keeps your business running, </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 6, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -928,14 +964,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/acronis-cyber-backup-125-build-16545-bootcd.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="active file recovery 26.0.3 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="active file recovery 26.0.3 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/active-file-recovery-2603-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/04/Active-File-Recovery-Cover.avif" alt="Active File Recovery 26.0.3 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v26.0.3</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/active-file-recovery-2603-with-crack.html">Active File Recovery 26.0.3 with Crack</a></h3>
     <p class="sw-desc">Active File Recovery efficient &amp;amp; easy-to-use recovery tool for deleted or lost files, and damaged or re-fo</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -944,14 +982,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/active-file-recovery-2603-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="active partition recovery ultimate 26.0.2.2 with crack {winpe}" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="active partition recovery ultimate 26.0.2.2 with crack {winpe}" data-listed="202601" data-year="2026" data-date="Jan 19, 2026">
   <a href="../../software/active-partition-recovery-ultimate-26022-with-crack-winpe.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/Active-Partition-Recovery-Cover.avif" alt="Active Partition Recovery Ultimate 26.0.2.2 with Crack {WinPE}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v26.0.2.2</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/active-partition-recovery-ultimate-26022-with-crack-winpe.html">Active Partition Recovery Ultimate 26.0.2.2 with Crack {WinPE}</a></h3>
     <p class="sw-desc">Active Partition Recovery Ultimate is a freeware toolkit that helps to recover deleted and damaged logical dri</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 19, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -960,14 +1000,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/active-partition-recovery-ultimate-26022-with-crack-winpe.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="advanced system optimizer 3.81.8181.283 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="advanced system optimizer 3.81.8181.283 with crack" data-listed="202506" data-year="2025" data-date="Jun 18, 2025">
   <a href="../../software/advanced-system-optimizer-3818181283-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/03/Advanced-System-Optimizer-Cover.avif" alt="Advanced System Optimizer 3.81.8181.283 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.81.8181.283</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/advanced-system-optimizer-3818181283-with-crack.html">Advanced System Optimizer 3.81.8181.283 with Crack</a></h3>
     <p class="sw-desc">Advanced System Optimizer the program allows users to modify any hidden from the eyes of the operating system </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 18, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -976,14 +1018,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/advanced-system-optimizer-3818181283-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="advanced system protector 2.5.1111.29130 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="advanced system protector 2.5.1111.29130 with crack" data-listed="202502" data-year="2025" data-date="Feb 2, 2025">
   <a href="../../software/advanced-system-protector-25111129130-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2025/02/Advanced-System-Protector-Cover.avif" alt="Advanced System Protector 2.5.1111.29130 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.5.1111.29130</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/advanced-system-protector-25111129130-with-crack.html">Advanced System Protector 2.5.1111.29130 with Crack</a></h3>
     <p class="sw-desc">Protect your PC against Malware Threats. Computer Protection made easy. Protect your Windows PC from malware, </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Feb 2, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -992,14 +1036,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/advanced-system-protector-25111129130-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="arm64" data-title="advanced system repair pro 2.0.1.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="arm64" data-title="advanced system repair pro 2.0.1.1 with crack" data-listed="202512" data-year="2025" data-date="Dec 16, 2025">
   <a href="../../software/advanced-system-repair-pro-2011-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/Advanced-System-Repair-Pro-1.avif" alt="Advanced System Repair Pro 2.0.1.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.0.1.1</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/advanced-system-repair-pro-2011-with-crack.html">Advanced System Repair Pro 2.0.1.1 with Crack</a></h3>
     <p class="sw-desc">Advanced System Repair Pro slows down, freezes, crashes, and security threats are over. Advanced SystemCare Fr</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 16, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1008,14 +1054,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/advanced-system-repair-pro-2011-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="advanced uninstaller pro 13.28.0.69 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="advanced uninstaller pro 13.28.0.69 with crack" data-listed="202510" data-year="2025" data-date="Oct 24, 2025">
   <a href="../../software/advanced-uninstaller-pro-1328069-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/Advanced-Uninstaller-PRO-Cover.avif" alt="Advanced Uninstaller PRO 13.28.0.69 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v13.28.0.69</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/advanced-uninstaller-pro-1328069-with-crack.html">Advanced Uninstaller PRO 13.28.0.69 with Crack</a></h3>
     <p class="sw-desc">Advanced Uninstaller PRO is the perfect tool for uninstalling programs, speeding up your PC, protecting your p</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 24, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1024,14 +1072,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/advanced-uninstaller-pro-1328069-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="aiseesoft data recovery 2.1.16 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="aiseesoft data recovery 2.1.16 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/aiseesoft-data-recovery-2116-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/01/Aiseesoft-Data-Recovery.avif" alt="Aiseesoft Data Recovery 2.1.16 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.1.16</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/aiseesoft-data-recovery-2116-with-crack.html">Aiseesoft Data Recovery 2.1.16 with Crack</a></h3>
     <p class="sw-desc">Aiseesoft Data Recovery is a powerful and safe data recovery software. It can help you recover almost all dele</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1040,14 +1090,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/aiseesoft-data-recovery-2116-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="aiseesoft iphone cleaner 1.0.50 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="aiseesoft iphone cleaner 1.0.50 with crack" data-listed="202501" data-year="2025" data-date="Jan 5, 2025">
   <a href="../../software/aiseesoft-iphone-cleaner-1050-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2025/01/Aiseesoft-iPhone-Cleaner-Cover.avif" alt="Aiseesoft iPhone Cleaner 1.0.50 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.0.50</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/aiseesoft-iphone-cleaner-1050-with-crack.html">Aiseesoft iPhone Cleaner 1.0.50 with Crack</a></h3>
     <p class="sw-desc">The best iOS crap cleaner to clear useless documents and data on your device. It also protects your privacy an</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 5, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1056,14 +1108,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/aiseesoft-iphone-cleaner-1050-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="64-bit" data-title="anyfix 1.2.2.20231204 with crack {ios system recovery}" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="64-bit" data-title="anyfix 1.2.2.20231204 with crack {ios system recovery}" data-listed="202606" data-year="2026" data-date="Jun 7, 2026">
   <a href="../../software/anyfix-12220231204-with-crack-ios-system-recovery.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/09/AnyFix-Free.avif" alt="AnyFix 1.2.2.20231204 with Crack {iOS System Recovery}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.2.2.20231204</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/anyfix-12220231204-with-crack-ios-system-recovery.html">AnyFix 1.2.2.20231204 with Crack {iOS System Recovery}</a></h3>
     <p class="sw-desc">AnyFix is your one-stop solution to fix various iOS/iPadOS/tvOS/iTunes issues in minutes and bring your Apple </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 7, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1072,14 +1126,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/anyfix-12220231204-with-crack-ios-system-recovery.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="anymp4 android data recovery 2.1.58 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="anymp4 android data recovery 2.1.58 with crack" data-listed="202607" data-year="2026" data-date="Jul 13, 2026">
   <a href="../../software/anymp4-android-data-recovery-2158-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/03/AnyMP4-Android-Data-Recovery.avif" alt="AnyMP4 Android Data Recovery 2.1.58 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.1.58</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/anymp4-android-data-recovery-2158-with-crack.html">AnyMP4 Android Data Recovery 2.1.58 with Crack</a></h3>
     <p class="sw-desc">AnyMP4 Android Data Recovery, the best Android Data Recovery software, provides you with powerful data recover</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 13, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1088,14 +1144,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/anymp4-android-data-recovery-2158-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="anymp4 ios cleaner 1.0.30 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="anymp4 ios cleaner 1.0.30 with crack" data-listed="202412" data-year="2024" data-date="Dec 23, 2024">
   <a href="../../software/anymp4-ios-cleaner-1030-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/01/AnyMP4-iOS-Cleaner-Cover.avif" alt="AnyMP4 iOS Cleaner 1.0.30 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.0.30</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/anymp4-ios-cleaner-1030-with-crack.html">AnyMP4 iOS Cleaner 1.0.30 with Crack</a></h3>
     <p class="sw-desc">AnyMP4 iOS Cleaner is the most intelligent iPhone cleaner to free up space handily and clear all data permanen</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 23, 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1104,14 +1162,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/anymp4-ios-cleaner-1030-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="aomei onekey recovery pro 1.7.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="aomei onekey recovery pro 1.7.1 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/aomei-onekey-recovery-pro-171-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/11/AOMEI-OneKey-Recovery-Cover.avif" alt="AOMEI OneKey Recovery Pro 1.7.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.7.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/aomei-onekey-recovery-pro-171-with-crack.html">AOMEI OneKey Recovery Pro 1.7.1 with Crack</a></h3>
     <p class="sw-desc">AOMEI OneKey Recovery Professional backup and restore system for unlimited computers with one key. Allow to pr</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1120,14 +1180,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/aomei-onekey-recovery-pro-171-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="aomei partition assistant 10.12 with crack {winpe}" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="aomei partition assistant 10.12 with crack {winpe}" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
   <a href="../../software/aomei-partition-assistant-1012-with-crack-winpe.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/AOMEI-Partition-Assistant-Cover.avif" alt="AOMEI Partition Assistant 10.12 with Crack {WinPE}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v10.12</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/aomei-partition-assistant-1012-with-crack-winpe.html">AOMEI Partition Assistant 10.12 with Crack {WinPE}</a></h3>
     <p class="sw-desc">AOMEI Partition Assistant an easy-to-use all-in-one Hard Disk Partition Software. It offers various free parti</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1136,14 +1198,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/aomei-partition-assistant-1012-with-crack-winpe.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo backup pro 27.7.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo backup pro 27.7.0 with crack" data-listed="202608" data-year="2026" data-date="Aug 22, 2026">
   <a href="../../software/ashampoo-backup-pro-2770-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/11/Ashampoo-Backup-Pro-Cover.avif" alt="Ashampoo Backup Pro 27.7.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v27.7.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ashampoo-backup-pro-2770-with-crack.html">Ashampoo Backup Pro 27.7.0 with Crack</a></h3>
     <p class="sw-desc">Ashampoo Backup Pro offers you all possible storage options: Back up single files to entire partitions to loca</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 22, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1152,14 +1216,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ashampoo-backup-pro-2770-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo driver updater 2.6.2 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo driver updater 2.6.2 with crack" data-listed="202607" data-year="2026" data-date="Jul 8, 2026">
   <a href="../../software/ashampoo-driver-updater-262-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/11/Ashampoo-Driver-Updater-Cover.avif" alt="Ashampoo Driver Updater 2.6.2 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.6.2</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ashampoo-driver-updater-262-with-crack.html">Ashampoo Driver Updater 2.6.2 with Crack</a></h3>
     <p class="sw-desc">Ashampoo Driver Updater provides updates for a wide variety of components and devices from professional to les</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 8, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1168,14 +1234,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ashampoo-driver-updater-262-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo driver updater free download" data-listed="201901">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo driver updater free download" data-listed="201901" data-year="" data-date="Jan 2019">
   <a href="../../software/ashampoo-driver-updater-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfnq7i6n9jZ-iydAkCvOWXvTIeV_PZao0KAv-Bcms513nkDS6ipI3oJhCs200rlgE9855W7H4R8TVF9R5QpuEM0-N01wv5HFwT8dOXuvM0ee3fNRBSHiPHcqZZ1pOsJokb8OvUvoSMNd8/s200/box_ashampoo_driver_updater_3pcs_800x800.png" alt="Ashampoo Driver Updater Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v11.3</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ashampoo-driver-updater-free-download.html">Ashampoo Driver Updater Free Download</a></h3>
     <p class="sw-desc">Ashampoo Driver Updater provides updates for a wide variety of components and devices from professional to les</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1184,14 +1252,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ashampoo-driver-updater-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo uninstaller 16.00.00 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo uninstaller 16.00.00 with crack" data-listed="202508" data-year="2025" data-date="Aug 6, 2025">
   <a href="../../software/ashampoo-uninstaller-160000-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/07/Ashampoo-UnInstaller-Cover.avif" alt="Ashampoo UnInstaller 16.00.00 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v16.00.00</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ashampoo-uninstaller-160000-with-crack.html">Ashampoo UnInstaller 16.00.00 with Crack</a></h3>
     <p class="sw-desc">Ashampoo UnInstaller helps you install, test, and remove the software without leftovers–and without worries. Y</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 6, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1200,14 +1270,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ashampoo-uninstaller-160000-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo video optimizer pro 2.0.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo video optimizer pro 2.0.1 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/ashampoo-video-optimizer-pro-201-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/Ashampoo-Video-Optimizer-Pro-Cover.avif" alt="Ashampoo Video Optimizer Pro 2.0.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.0.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ashampoo-video-optimizer-pro-201-with-crack.html">Ashampoo Video Optimizer Pro 2.0.1 with Crack</a></h3>
     <p class="sw-desc">Ashampoo Video Optimizer Pro is an effective solution to enhance the quality of your videos. Stabilize shaky f</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1216,14 +1288,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ashampoo-video-optimizer-pro-201-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo zip free download" data-listed="201812">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo zip free download" data-listed="201812" data-year="" data-date="Dec 2018">
   <a href="../../software/ashampoo-zip-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguFA4eA8AXU1rlK0AePvxjpPi5M68OE5F3vh6K9wL4bpYm5NfDNPSURuZRurJGH95AZOf82IcPeVKJ2OTsRCIFxrB-OvXnzecJtPmbHTdLJfPqymOC1BodPwu5rvzhlTWBICZaR12wSd0/s320/box_ashampoo_zip_free_800x800.png" alt="Ashampoo ZIP Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.1</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ashampoo-zip-free-download.html">Ashampoo ZIP Free Download</a></h3>
     <p class="sw-desc">Ashampoo ZIP Free bundles essential features like reading and writing of archives in a single free application</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2018</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1232,14 +1306,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ashampoo-zip-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo zip pro 4.70.01 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ashampoo zip pro 4.70.01 with crack" data-listed="202512" data-year="2025" data-date="Dec 16, 2025">
   <a href="../../software/ashampoo-zip-pro-47001-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/Ashampoo-ZIP-Pro-Cover.avif" alt="Ashampoo ZIP Pro 4.70.01 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.70.01</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ashampoo-zip-pro-47001-with-crack.html">Ashampoo ZIP Pro 4.70.01 with Crack</a></h3>
     <p class="sw-desc">Ashampoo ZIP Pro creating and encrypting archives takes just seconds, thanks to full multi-core support and 25</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 16, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1248,14 +1324,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ashampoo-zip-pro-47001-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="asmwsoft pc optimizer 2022 v13.2.3262 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="asmwsoft pc optimizer 2022 v13.2.3262 with crack" data-listed="202406" data-year="2022" data-date="Jun 26, 2024">
   <a href="../../software/asmwsoft-pc-optimizer-2022-v1323262-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/04/Asmwsoft-PC-Optimizer-Cover.avif" alt="Asmwsoft PC Optimizer 2022 v13.2.3262 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv13.2.3262</span>
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/asmwsoft-pc-optimizer-2022-v1323262-with-crack.html">Asmwsoft PC Optimizer 2022 v13.2.3262 with Crack</a></h3>
     <p class="sw-desc">Asmwsoft PC Optimizer has a collection of over 20 system maintenance and optimization utilities to tune up win</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 26, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1264,14 +1342,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/asmwsoft-pc-optimizer-2022-v1323262-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="auslogics disk defrag ultimate 4.13.0.2 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="auslogics disk defrag ultimate 4.13.0.2 with crack" data-listed="202410" data-year="2024" data-date="Oct 20, 2024">
   <a href="../../software/auslogics-disk-defrag-ultimate-41302-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2019/09/Auslogics-Disk-Defrag-Crack.avif" alt="Auslogics Disk Defrag Ultimate 4.13.0.2 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.13.0.2</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/auslogics-disk-defrag-ultimate-41302-with-crack.html">Auslogics Disk Defrag Ultimate 4.13.0.2 with Crack</a></h3>
     <p class="sw-desc">Auslogics Disk Defrag Ultimate gets your drives optimized for top speed and maximum efficiency with this power</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 20, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1280,14 +1360,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/auslogics-disk-defrag-ultimate-41302-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="auslogics driver updater 2.1.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="auslogics driver updater 2.1.0 with crack" data-listed="202512" data-year="2025" data-date="Dec 11, 2025">
   <a href="../../software/auslogics-driver-updater-210-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/Auslogics-Driver-Updater-Cover.gif" alt="Auslogics Driver Updater 2.1.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.1.0</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/auslogics-driver-updater-210-with-crack.html">Auslogics Driver Updater 2.1.0 with Crack</a></h3>
     <p class="sw-desc">Auslogics Driver Updater updates all drivers on your PC in one click to prevent device conflicts and ensure sm</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 11, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1296,14 +1378,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/auslogics-driver-updater-210-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="auslogics file recovery pro 12.1.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="auslogics file recovery pro 12.1.1 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/auslogics-file-recovery-pro-1211-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/01/Auslogics-File-Recovery.avif" alt="Auslogics File Recovery Pro 12.1.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v12.1.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/auslogics-file-recovery-pro-1211-with-crack.html">Auslogics File Recovery Pro 12.1.1 with Crack</a></h3>
     <p class="sw-desc">Auslogics File Recovery Professional is an effective and easy-to-use program that will recover accidentally de</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1312,14 +1396,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/auslogics-file-recovery-pro-1211-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="arm64" data-title="avira system speedup pro 7.5.0.552 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="arm64" data-title="avira system speedup pro 7.5.0.552 with crack" data-listed="202601" data-year="2026" data-date="Jan 22, 2026">
   <a href="../../software/avira-system-speedup-pro-750552-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/Avira-System-Speedup-Pro-Cover.avif" alt="Avira System Speedup Pro 7.5.0.552 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v7.5.0.552</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avira-system-speedup-pro-750552-with-crack.html">Avira System Speedup Pro 7.5.0.552 with Crack</a></h3>
     <p class="sw-desc">Avira System Speedup Pro rediscover what a fast, smooth-running PC feels like, now complete with one-click pri</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 22, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1328,14 +1414,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avira-system-speedup-pro-750552-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="backup maker professional 8.409 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="backup maker professional 8.409 with crack" data-listed="202608" data-year="2026" data-date="Aug 26, 2026">
   <a href="../../software/backup-maker-professional-8409-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/12/BackUp-Maker-Professional-Cover.avif" alt="BackUp Maker Professional 8.409 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.409</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/backup-maker-professional-8409-with-crack.html">BackUp Maker Professional 8.409 with Crack</a></h3>
     <p class="sw-desc">BackUp Maker: Easy-to-use data backup for Windows. Viruses, user errors, and computer crashes put you at risk </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 26, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1344,14 +1432,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/backup-maker-professional-8409-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="cc cleaner free download" data-listed="201610">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="cc cleaner free download" data-listed="201610" data-year="" data-date="Oct 2016">
   <a href="../../software/cc-cleaner-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj67gRGz6PSwir5QlY6a0zTgzwQbvsAeMwySDDo4Bj_P-uoh0CIfokk4HvEbD65W_OnQo7PXGnF73-HW5MDgbgB0AtGiv4g_hqkiNYNuE7h88ygU18686i2eg13rL7ix-oXZF3VQpV06BM/s400/CCleaner-V-5.4-Free-Download-1-PC-Optimization-Tool2.jpg" alt="CC Cleaner Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv2.27</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/cc-cleaner-free-download.html">CC Cleaner Free Download</a></h3>
     <p class="sw-desc">CCleaner (formerly Crap Cleaner), developed by Piriform, is a utility program used to clean potentially unwant</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 2016</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1360,14 +1450,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/cc-cleaner-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ccleaner professional 7.9.1432.0 with crack {repack}" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ccleaner professional 7.9.1432.0 with crack {repack}" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
   <a href="../../software/ccleaner-professional-7914320-with-crack-repack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2026/04/ccleaner-logo.avif" alt="CCleaner Professional 7.9.1432.0 with Crack {RePack}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v7.9.1432.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ccleaner-professional-7914320-with-crack-repack.html">CCleaner Professional 7.9.1432.0 with Crack {RePack}</a></h3>
     <p class="sw-desc">CCleaner Professional is the world’s most popular and trusted PC optimization utility, engineered to reclaim v</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1376,14 +1468,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ccleaner-professional-7914320-with-crack-repack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="coolmuster android backup manager 3.5.37 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="coolmuster android backup manager 3.5.37 with crack" data-listed="202607" data-year="2026" data-date="Jul 17, 2026">
   <a href="../../software/coolmuster-android-backup-manager-3537-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/Coolmuster-Android-Backup-Manager-Cover.avif" alt="Coolmuster Android Backup Manager 3.5.37 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.5.37</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/coolmuster-android-backup-manager-3537-with-crack.html">Coolmuster Android Backup Manager 3.5.37 with Crack</a></h3>
     <p class="sw-desc">Coolmuster Android Backup Manager worried about losing important files on your Android phone due to unexpected</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 17, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1392,14 +1486,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/coolmuster-android-backup-manager-3537-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="coolmuster data recovery 3.0.59 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="coolmuster data recovery 3.0.59 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/coolmuster-data-recovery-3059-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/Coolmuster-Data-Recovery-Cover.avif" alt="Coolmuster Data Recovery 3.0.59 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.0.59</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/coolmuster-data-recovery-3059-with-crack.html">Coolmuster Data Recovery 3.0.59 with Crack</a></h3>
     <p class="sw-desc">Coolmuster Data Recovery finds back all your lost data now &amp;#8211; for many people, data loss could be a disas</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1408,14 +1504,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/coolmuster-data-recovery-3059-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="coolmuster iphone data recovery 6.0.54 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="coolmuster iphone data recovery 6.0.54 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/coolmuster-iphone-data-recovery-6054-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/05/Coolmuster-iPhone-Data-Recovery-Cover.avif" alt="Coolmuster iPhone Data Recovery 6.0.54 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.0.54</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/coolmuster-iphone-data-recovery-6054-with-crack.html">Coolmuster iPhone Data Recovery 6.0.54 with Crack</a></h3>
     <p class="sw-desc">Coolmuster iPhone Data Recovery accidentally deleted data on your iOS device? Are all files gone after factory</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1424,14 +1522,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/coolmuster-iphone-data-recovery-6054-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="displaylink usb graphics driver free download" data-listed="201903">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="displaylink usb graphics driver free download" data-listed="201903" data-year="" data-date="Mar 2019">
   <a href="../../software/displaylink-usb-graphics-driver-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQQuoYnzLxzXdqdwruaJvPfSGGvN-okLKmNRutpsOpk87T6ljSCuLDbqOcAe8le2-jLnlfO6ELYOj73-VucfJ_nqHZTgLIFaVwWD5WySx6RCPbXWokAA6RqPi3RvrFDXZsGIX-vQB9BGo/s320/DisplayLink.png" alt="DisplayLink USB Graphics Driver Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/displaylink-usb-graphics-driver-free-download.html">DisplayLink USB Graphics Driver Free Download</a></h3>
     <p class="sw-desc">This driver includes support for the USB video and audio and Ethernet drivers for the DisplayLink chip used in</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Mar 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1440,14 +1540,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/displaylink-usb-graphics-driver-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="driver booster free download" data-listed="201610">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="driver booster free download" data-listed="201610" data-year="" data-date="Oct 2016">
   <a href="../../software/driver-booster-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9_zrSy9q0NSh90sRDDH8o2gcd_WIBsmpt_Qlm7nUuxf7V8UqV5izUI7YAH74HON5U9RrYA9fD7g3HXqQjrycklJFmGnThTiKSZ6tu7bkX-jmNgquNp67OqYqaGxUEIaWgoCTbQJBKEu4/w200-h200/Driver+Booster+Free+Download.png" alt="Driver Booster Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.1</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/driver-booster-free-download.html">Driver Booster Free Download</a></h3>
     <p class="sw-desc">Enjoy Top PC Performance &amp; Better Game Experience with Up-to-date Drivers Supported updating 400,000+ drivers </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 2016</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1456,14 +1558,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/driver-booster-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="driver easy pro 7.1.5.5750 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="driver easy pro 7.1.5.5750 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
   <a href="../../software/driver-easy-pro-7155750-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/Driver-Easy-Pro-cover.avif" alt="Driver Easy Pro 7.1.5.5750 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v7.1.5.5750</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/driver-easy-pro-7155750-with-crack.html">Driver Easy Pro 7.1.5.5750 with Crack</a></h3>
     <p class="sw-desc">Driver Easy Pro is an application that allows you to locate missing drivers and download them to your computer</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1472,14 +1576,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/driver-easy-pro-7155750-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="driver magician 6.5 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="driver magician 6.5 with crack" data-listed="202601" data-year="2026" data-date="Jan 20, 2026">
   <a href="../../software/driver-magician-65-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/09/Driver-Magician-Cover.avif" alt="Driver Magician 6.5 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.5</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/driver-magician-65-with-crack.html">Driver Magician 6.5 with Crack</a></h3>
     <p class="sw-desc">Driver Magician offers a professional solution for device driver backup, restoration, and update in the Window</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 20, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1488,14 +1594,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/driver-magician-65-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="driver talent pro 8.1.12.72 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="driver talent pro 8.1.12.72 with crack" data-listed="202506" data-year="2025" data-date="Jun 6, 2025">
   <a href="../../software/driver-talent-pro-811272-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/11/Driver-Talent-Pro-Cover.avif" alt="Driver Talent Pro 8.1.12.72 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.1.12.72</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/driver-talent-pro-811272-with-crack.html">Driver Talent Pro 8.1.12.72 with Crack</a></h3>
     <p class="sw-desc">Driver Talent Pro is the most reliable solution that provides one-click updates, backups, cleaning, and monito</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 6, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1504,14 +1612,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/driver-talent-pro-811272-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="easeus data recovery wizard 19.6.5 with crack {winpe}" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="easeus data recovery wizard 19.6.5 with crack {winpe}" data-listed="202605" data-year="2026" data-date="May 18, 2026">
   <a href="../../software/easeus-data-recovery-wizard-1965-with-crack-winpe.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/11/EaseUS-Data-Recovery-Wizard-Cover.avif" alt="EaseUS Data Recovery Wizard 19.6.5 with Crack {WinPE}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v19.6.5</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/easeus-data-recovery-wizard-1965-with-crack-winpe.html">EaseUS Data Recovery Wizard 19.6.5 with Crack {WinPE}</a></h3>
     <p class="sw-desc">EaseUS Data Recovery Wizard is the best data recovery software to recover deleted, formatted, or lost data fro</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 18, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1520,14 +1630,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/easeus-data-recovery-wizard-1965-with-crack-winpe.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="easeus partition master 20.8.0 with crack {winpe}" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="easeus partition master 20.8.0 with crack {winpe}" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
   <a href="../../software/easeus-partition-master-2080-with-crack-winpe.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/EaseUS-Partition-Master.avif" alt="EaseUS Partition Master 20.8.0 with Crack {WinPE}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v20.8.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/easeus-partition-master-2080-with-crack-winpe.html">EaseUS Partition Master 20.8.0 with Crack {WinPE}</a></h3>
     <p class="sw-desc">EaseUS Partition Master is an all-in-one partition solution and disk management software. It allows you to ext</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1536,14 +1648,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/easeus-partition-master-2080-with-crack-winpe.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="easeus todo backup 16.3.1 with crack {winpe}" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="easeus todo backup 16.3.1 with crack {winpe}" data-listed="202608" data-year="2026" data-date="Aug 7, 2026">
   <a href="../../software/easeus-todo-backup-1631-with-crack-winpe.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/03/EaseUS-Todo-Backup-Cover.avif" alt="EaseUS Todo Backup 16.3.1 with Crack {WinPE}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v16.3.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/easeus-todo-backup-1631-with-crack-winpe.html">EaseUS Todo Backup 16.3.1 with Crack {WinPE}</a></h3>
     <p class="sw-desc">EASEUS Todo Backup is a complete and reliable backup and disaster recovery solution to back up systems, data, </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 7, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1552,14 +1666,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/easeus-todo-backup-1631-with-crack-winpe.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="fonedog data recovery 1.5.10 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="fonedog data recovery 1.5.10 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/fonedog-data-recovery-1510-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/06/FoneDog-Data-Recovery.avif" alt="FoneDog Data Recovery 1.5.10 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5.10</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/fonedog-data-recovery-1510-with-crack.html">FoneDog Data Recovery 1.5.10 with Crack</a></h3>
     <p class="sw-desc">FoneDog Data Recovery the Professional Data Recovery Wizard! Quickly and safely recovers the deleted images, v</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1568,14 +1684,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/fonedog-data-recovery-1510-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="fonelab android data recovery 3.1.56 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="fonelab android data recovery 3.1.56 with crack" data-listed="202607" data-year="2026" data-date="Jul 13, 2026">
   <a href="../../software/fonelab-android-data-recovery-3156-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2019/11/FoneLab-Android-Data-Recovery-Full.avif" alt="FoneLab Android Data Recovery 3.1.56 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.1.56</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/fonelab-android-data-recovery-3156-with-crack.html">FoneLab Android Data Recovery 3.1.56 with Crack</a></h3>
     <p class="sw-desc">FoneLab Android Data Recovery lets you restore Android phone or SD card contacts, messages, videos, photos, an</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 13, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1584,14 +1702,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/fonelab-android-data-recovery-3156-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="fonepaw android data recovery 6.2.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="fonepaw android data recovery 6.2.0 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/fonepaw-android-data-recovery-620-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/07/FonePaw-for-Android-Cover.avif" alt="FonePaw Android Data Recovery 6.2.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.2.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/fonepaw-android-data-recovery-620-with-crack.html">FonePaw Android Data Recovery 6.2.0 with Crack</a></h3>
     <p class="sw-desc">FonePaw Android Data Recovery is the Best Android File Recovery software to recover deleted photos, videos, au</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1600,14 +1720,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/fonepaw-android-data-recovery-620-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="fonepaw data recovery 3.8.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="fonepaw data recovery 3.8.0 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/fonepaw-data-recovery-380-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2019/10/FonePaw-Data-Recovery-Full-Version-100x100.avif" alt="FonePaw Data Recovery 3.8.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.8.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/fonepaw-data-recovery-380-with-crack.html">FonePaw Data Recovery 3.8.0 with Crack</a></h3>
     <p class="sw-desc">FonePaw Data Recovery is a quick and deep scan of your computer to retrieve deleted images, videos, audio, ema</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1616,14 +1738,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/fonepaw-data-recovery-380-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="fonepaw iphone data recovery 9.6 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="fonepaw iphone data recovery 9.6 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/fonepaw-iphone-data-recovery-96-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2019/12/FonePaw-iPhone-Data-Recovery.avif" alt="FonePaw iPhone Data Recovery 9.6 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v9.6</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/fonepaw-iphone-data-recovery-96-with-crack.html">FonePaw iPhone Data Recovery 9.6 with Crack</a></h3>
     <p class="sw-desc">FonePaw iPhone Data Recovery is a professional iPhone data recovery software that gives you flexible solutions</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1632,14 +1756,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/fonepaw-iphone-data-recovery-96-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="gilisoft data recovery 2025 free download" data-listed="202507">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="gilisoft data recovery 2025 free download" data-listed="202507" data-year="2025" data-date="Jul 2025">
   <a href="../../software/gilisoft-data-recovery-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjepU_khEFlHZK281rPGqqj7TOwK169HFOMG9PodHheoduYNF_Vb2rGTZ232Zq8BJVSqPPse8l7_mlroqiDOnruhew-UcZ1tGr_CLE5xX0MnL8G8-RVgeHBu3AVQATQ-8phxf-L3cgEJWSW4Aep8u5bh7L8SMnTRNQAphs4ejJUF940SIJPhXy4xXUnFUY/s320/data-recovery-win-free-download.png" alt="Gilisoft Data Recovery 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/gilisoft-data-recovery-2025-free-download.html">Gilisoft Data Recovery 2025 Free Download</a></h3>
     <p class="sw-desc">Gilisoft Data Recovery is a popular and practical data recovery software. It can help users recover deleted fi</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1648,14 +1774,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/gilisoft-data-recovery-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="hasleo data recovery free download" data-listed="202008">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="hasleo data recovery free download" data-listed="202008" data-year="" data-date="Aug 2020">
   <a href="../../software/hasleo-data-recovery-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiyA7zkUab6aSuGVQfVxg1K6GcnsgOOvz2hnCLPJU1O4EKY8YsirwQuWlx9LBLw7pR-6hjYRnXQ7cEpg7pHJlZYsW_Lir3gS2TRRSKZRHJd-2jBcS4rJ1g1Y2L2eGWXw-e_lCFV6pUIWg/s0/data+recovery+free+download.png" alt="Hasleo Data Recovery Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/hasleo-data-recovery-free-download.html">Hasleo Data Recovery Free Download</a></h3>
     <p class="sw-desc">Hasleo Data Recovery is a free, safe and reliable data recovery software which can help you get back all lost </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 2020</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1664,14 +1792,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/hasleo-data-recovery-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="icare data recovery pro 9.0.1.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="icare data recovery pro 9.0.1.1 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/icare-data-recovery-pro-9011-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/iCare-Data-Recovery.avif" alt="iCare Data Recovery Pro 9.0.1.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v9.0.1.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/icare-data-recovery-pro-9011-with-crack.html">iCare Data Recovery Pro 9.0.1.1 with Crack</a></h3>
     <p class="sw-desc">iCare Data Recovery Software can recover any deleted file, including documents, photos, mp3 and zip files, or </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1680,14 +1810,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/icare-data-recovery-pro-9011-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="icare sd memory card recovery 4.0.1.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="icare sd memory card recovery 4.0.1.1 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/icare-sd-memory-card-recovery-4011-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/iCare-SD-Memory-Card-Recovery.avif" alt="iCare SD Memory Card Recovery 4.0.1.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.0.1.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/icare-sd-memory-card-recovery-4011-with-crack.html">iCare SD Memory Card Recovery 4.0.1.1 with Crack</a></h3>
     <p class="sw-desc">iCare SD Memory Card Recovery. You can easily lose files on various storage devices, and it doesn&amp;#8217;t have</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1696,14 +1828,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/icare-sd-memory-card-recovery-4011-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="im-magic partition resizer 7.9.2 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="im-magic partition resizer 7.9.2 with crack" data-listed="202605" data-year="2026" data-date="May 26, 2026">
   <a href="../../software/im-magic-partition-resizer-792-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/10/IM-Magic-Partition-Resizer-Cover.webp" alt="IM-Magic Partition Resizer 7.9.2 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v7.9.2</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/im-magic-partition-resizer-792-with-crack.html">IM-Magic Partition Resizer 7.9.2 with Crack</a></h3>
     <p class="sw-desc">Extend any partition without data loss? Download IM-Magic Partition Resizer, the free partition magic software</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 26, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1712,14 +1846,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/im-magic-partition-resizer-792-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="32-bit" data-title="iobit driver booster pro 13.6.0.438 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="32-bit" data-title="iobit driver booster pro 13.6.0.438 with crack" data-listed="202608" data-year="2026" data-date="Aug 3, 2026">
   <a href="../../software/iobit-driver-booster-pro-1360438-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/09/IObit-Driver-Booster-Pro-Cover.avif" alt="IObit Driver Booster Pro 13.6.0.438 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v13.6.0.438</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/iobit-driver-booster-pro-1360438-with-crack.html">IObit Driver Booster Pro 13.6.0.438 with Crack</a></h3>
     <p class="sw-desc">IObit Driver Booster Pro is the ultimate one-click driver updater utility designed to keep your Windows system</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 3, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1728,14 +1864,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/iobit-driver-booster-pro-1360438-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="iobit smart defrag pro 12.0.0.536 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="iobit smart defrag pro 12.0.0.536 with crack" data-listed="202608" data-year="2026" data-date="Aug 26, 2026">
   <a href="../../software/iobit-smart-defrag-pro-1200536-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/12/IObit-Smart-Defrag-Pro-Cover.avif" alt="IObit Smart Defrag Pro 12.0.0.536 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v12.0.0.536</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/iobit-smart-defrag-pro-1200536-with-crack.html">IObit Smart Defrag Pro 12.0.0.536 with Crack</a></h3>
     <p class="sw-desc">IObit Smart Defrag is a free Disk Defragmenter that accelerates the whole system with fast and efficient disk </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 26, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1744,14 +1882,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/iobit-smart-defrag-pro-1200536-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="iobit uninstaller pro 15.6.0.6 with crack {repack}" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="iobit uninstaller pro 15.6.0.6 with crack {repack}" data-listed="202607" data-year="2026" data-date="Jul 31, 2026">
   <a href="../../software/iobit-uninstaller-pro-15606-with-crack-repack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/IObit-Uninstaller-Pro-Cover.avif" alt="IObit Uninstaller Pro 15.6.0.6 with Crack {RePack}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v15.6.0.6</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/iobit-uninstaller-pro-15606-with-crack-repack.html">IObit Uninstaller Pro 15.6.0.6 with Crack {RePack}</a></h3>
     <p class="sw-desc">Integrated with up-to-date uninstall technology, IObit Uninstaller Pro helps you remove unneeded programs easi</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 31, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1760,14 +1900,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/iobit-uninstaller-pro-15606-with-crack-repack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="iperius backup full 8.8.6 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="iperius backup full 8.8.6 with crack" data-listed="202607" data-year="2026" data-date="Jul 9, 2026">
   <a href="../../software/iperius-backup-full-886-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/Iperius-Backup-Full-Cover.avif" alt="Iperius Backup Full 8.8.6 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.8.6</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/iperius-backup-full-886-with-crack.html">Iperius Backup Full 8.8.6 with Crack</a></h3>
     <p class="sw-desc">Iperius Backup Full is the perfect software to get the advantages of the many cloud storage services offered b</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1776,14 +1918,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/iperius-backup-full-886-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="iperius backup full free download" data-listed="201908">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="iperius backup full free download" data-listed="201908" data-year="" data-date="Aug 2019">
   <a href="../../software/iperius-backup-full-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi73M4zulDMWgKLRuOYZUeopRA8y6806Wpt5_vrBaFtEjY-ZI-X1EDfxE-T85_QktnVeCQzI8BGiLr5usS2nG14M4C5_086vQ2rPme0p9Qjj3McSB36EZEtxZUWCn9N2P7phRg4JeQVF7g/s0/Iperius+Backup+Free+Download.png" alt="Iperius Backup Full Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/iperius-backup-full-free-download.html">Iperius Backup Full Free Download</a></h3>
     <p class="sw-desc">Iperius Backup is one of the best free backup software, also released in commercial editions for those who nee</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1792,14 +1936,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/iperius-backup-full-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="joyoshare ultfix (ios system recovery) 4.7.0.44 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="joyoshare ultfix (ios system recovery) 4.7.0.44 with crack" data-listed="202501" data-year="2025" data-date="Jan 3, 2025">
   <a href="../../software/joyoshare-ultfix-ios-system-recovery-47044-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/06/Joyoshare-UltFix.avif" alt="Joyoshare UltFix (iOS System Recovery) 4.7.0.44 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.7.0.44</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/joyoshare-ultfix-ios-system-recovery-47044-with-crack.html">Joyoshare UltFix (iOS System Recovery) 4.7.0.44 with Crack</a></h3>
     <p class="sw-desc">Joyoshare UltFix is an extraordinary iOS repair specialist that offers the option to fix 30+ common iOS issues</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 3, 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1808,14 +1954,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/joyoshare-ultfix-ios-system-recovery-47044-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="magoshare data recovery 4.6 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="magoshare data recovery 4.6 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/magoshare-data-recovery-46-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/01/Magoshare-Data-Recovery.avif" alt="Magoshare Data Recovery 4.6 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.6</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/magoshare-data-recovery-46-with-crack.html">Magoshare Data Recovery 4.6 with Crack</a></h3>
     <p class="sw-desc">Magoshare Data Recovery offers a comprehensive data recovery solution to easily and completely recover lost da</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1824,14 +1972,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/magoshare-data-recovery-46-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="minitool partition wizard pro 13.9.0 with crack {winpe}" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="minitool partition wizard pro 13.9.0 with crack {winpe}" data-listed="202607" data-year="2026" data-date="Jul 8, 2026">
   <a href="../../software/minitool-partition-wizard-pro-1390-with-crack-winpe.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/MiniTool-Partition-Wizard-Cover.avif" alt="MiniTool Partition Wizard Pro 13.9.0 with Crack {WinPE}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v13.9.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/minitool-partition-wizard-pro-1390-with-crack-winpe.html">MiniTool Partition Wizard Pro 13.9.0 with Crack {WinPE}</a></h3>
     <p class="sw-desc">MiniTool Partition Wizard rich-featured partition magic, which is designed to optimize disk usage and protect </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 8, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1840,14 +1990,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/minitool-partition-wizard-pro-1390-with-crack-winpe.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="minitool partition wizard professional 9.0 free download" data-listed="202605">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="minitool partition wizard professional 9.0 free download" data-listed="202605" data-year="" data-date="May 2026">
   <a href="../../software/minitool-partition-wizard-professional-90-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiLuhhxFX8jtPJw4AJC7v34UTKDvTwyf8XMAbDh4GIZq5GRCkt_GlMKuAlDcQaBuOv2iwGNi5kBgD5DHHqmB6hKx1vsMn9sujWQq3T4m76l3ZM-_qXbRqaUBsFQakJA31L2fqsWbZj5iQUt3Bc3Sw3YxbQJhpRjX64IUpM8as1IECn9gSXZ-rYZmFBY2Qc=w320-h320" alt="MiniTool Partition Wizard Professional 9.0 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v9.0</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/minitool-partition-wizard-professional-90-free-download.html">MiniTool Partition Wizard Professional 9.0 Free Download</a></h3>
     <p class="sw-desc">MiniTool Partition Wizard Professional 9.0 is a trusted disk partition management software designed to optimiz</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1856,14 +2008,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/minitool-partition-wizard-professional-90-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="minitool power data recovery 13.0 with crack {winpe}" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="minitool power data recovery 13.0 with crack {winpe}" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
   <a href="../../software/minitool-power-data-recovery-130-with-crack-winpe.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/05/MiniTool-Power-Data-Recovery-Cover.avif" alt="MiniTool Power Data Recovery 13.0 with Crack {WinPE}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v13.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/minitool-power-data-recovery-130-with-crack-winpe.html">MiniTool Power Data Recovery 13.0 with Crack {WinPE}</a></h3>
     <p class="sw-desc">MiniTool Power Data Recovery is the read-only File Recovery Software and Data Recovery Software. Power data re</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1872,14 +2026,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/minitool-power-data-recovery-130-with-crack-winpe.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="niubi partition editor 10.3.2 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="niubi partition editor 10.3.2 with crack" data-listed="202605" data-year="2026" data-date="May 26, 2026">
   <a href="../../software/niubi-partition-editor-1032-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2025/01/NIUBI-Partition-Editor.avif" alt="NIUBI Partition Editor 10.3.2 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v10.3.2</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/niubi-partition-editor-1032-with-crack.html">NIUBI Partition Editor 10.3.2 with Crack</a></h3>
     <p class="sw-desc">If you provide IT technical service to your clients and need a powerful disk partition management toolkit, NIU</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 26, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1888,14 +2044,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/niubi-partition-editor-1032-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ocster backup pro 8 free download" data-listed="201912">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ocster backup pro 8 free download" data-listed="201912" data-year="" data-date="Dec 2019">
   <a href="../../software/ocster-backup-pro-8-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7Lx-75dH1as17VTlA3RzzuaKKIZOBWOW0k4KQC-zz-keB-gCb9m7mbfSKwb7-C-AMfPc4xAZilhzM0HcIkq1JA37O9Gwf1zhqh9Ryhf09u4E4RJ9yHuCaoLECWQYWqAhyWBDuJlROhkE/s0/Ocster-backup-pro.jpg" alt="Ocster Backup Pro 8 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ocster-backup-pro-8-free-download.html">Ocster Backup Pro 8 Free Download</a></h3>
     <p class="sw-desc">Ocster Backup Pro is an advanced and intuitive software solution developed specifically to offer you an effici</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1904,14 +2062,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ocster-backup-pro-8-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="onesafe data recovery pro 9.0.0.4 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="onesafe data recovery pro 9.0.0.4 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/onesafe-data-recovery-pro-9004-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/OneSafe-Data-Recovery-Cover.avif" alt="OneSafe Data Recovery Pro 9.0.0.4 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v9.0.0.4</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/onesafe-data-recovery-pro-9004-with-crack.html">OneSafe Data Recovery Pro 9.0.0.4 with Crack</a></h3>
     <p class="sw-desc">OneSafe Data Recovery Pro your data is irreplaceable: documents, folders, hard drives, pictures, MP3 files, an</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1920,14 +2080,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/onesafe-data-recovery-pro-9004-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="onesafe driver manager pro 6.0.690 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="onesafe driver manager pro 6.0.690 with crack" data-listed="202406" data-year="2024" data-date="Jun 12, 2024">
   <a href="../../software/onesafe-driver-manager-pro-60690-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/06/OneSafe-Driver-Manager-Cover.avif" alt="OneSafe Driver Manager Pro 6.0.690 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.0.690</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/onesafe-driver-manager-pro-60690-with-crack.html">OneSafe Driver Manager Pro 6.0.690 with Crack</a></h3>
     <p class="sw-desc">OneSafe Driver Manager Pro your operating system requires drivers to run every hardware device associated with</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 12, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1936,14 +2098,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/onesafe-driver-manager-pro-60690-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="onesafe pc cleaner pro 9.1.0.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="onesafe pc cleaner pro 9.1.0.0 with crack" data-listed="202410" data-year="2024" data-date="Oct 20, 2024">
   <a href="../../software/onesafe-pc-cleaner-pro-9100-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/12/OneSafe-PC-Cleaner-Pro-Cover.avif" alt="OneSafe PC Cleaner Pro 9.1.0.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v9.1.0.0</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/onesafe-pc-cleaner-pro-9100-with-crack.html">OneSafe PC Cleaner Pro 9.1.0.0 with Crack</a></h3>
     <p class="sw-desc">OneSafe PC Cleaner Pro fixes Windows errors on your PC! Fix and correct all your errors, Clean up your PC thor</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 20, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1952,14 +2116,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/onesafe-pc-cleaner-pro-9100-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="panfone ios data recovery 2.4.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="panfone ios data recovery 2.4.1 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/panfone-ios-data-recovery-241-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/PanFone-iOS-Data-Recovery-Cover.avif" alt="PanFone iOS Data Recovery 2.4.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.4.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/panfone-ios-data-recovery-241-with-crack.html">PanFone iOS Data Recovery 2.4.1 with Crack</a></h3>
     <p class="sw-desc">PanFone iOS Data Recovery supports retrieving deleted data from your device directly, as well as restoring dat</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1968,14 +2134,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/panfone-ios-data-recovery-241-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="passfab for zip 8.2.6.3 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="passfab for zip 8.2.6.3 with crack" data-listed="202608" data-year="2026" data-date="Aug 19, 2026">
   <a href="../../software/passfab-for-zip-8263-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/10/PassFab-for-ZIP-Cover.avif" alt="PassFab for ZIP 8.2.6.3 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.2.6.3</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/passfab-for-zip-8263-with-crack.html">PassFab for ZIP 8.2.6.3 with Crack</a></h3>
     <p class="sw-desc">PassFab for ZIP is an innovative program to recover password-protected ZIP files with three attack types. Usin</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 19, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -1984,14 +2152,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/passfab-for-zip-8263-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="passfab iphone backup unlocker 5.2.23.6 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="passfab iphone backup unlocker 5.2.23.6 with crack" data-listed="202412" data-year="2024" data-date="Dec 9, 2024">
   <a href="../../software/passfab-iphone-backup-unlocker-52236-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/PassFab-iPhone-Backup-Unlocker-Cover.avif" alt="PassFab iPhone Backup Unlocker 5.2.23.6 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v5.2.23.6</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/passfab-iphone-backup-unlocker-52236-with-crack.html">PassFab iPhone Backup Unlocker 5.2.23.6 with Crack</a></h3>
     <p class="sw-desc">PassFab iPhone Backup Unlocker quickly recovers the iTunes backup password, removes backup encryption settings</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 9, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2000,14 +2170,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/passfab-iphone-backup-unlocker-52236-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="passfab product key recovery 6.3.3.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="passfab product key recovery 6.3.3.1 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/passfab-product-key-recovery-6331-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/11/PassFab-Product-Key-Recovery-Cover.avif" alt="PassFab Product Key Recovery 6.3.3.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.3.3.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/passfab-product-key-recovery-6331-with-crack.html">PassFab Product Key Recovery 6.3.3.1 with Crack</a></h3>
     <p class="sw-desc">PassFab Product Key Recovery the amazing product key recovery tool helps users find out lost product keys with</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2016,14 +2188,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/passfab-product-key-recovery-6331-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="pegasun system utilities 9.3.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="pegasun system utilities 9.3.1 with crack" data-listed="202512" data-year="2025" data-date="Dec 2, 2025">
   <a href="../../software/pegasun-system-utilities-931-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2025/12/Pegasun-System-Cover-150x150.avif" alt="Pegasun System Utilities 9.3.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v9.3.1</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/pegasun-system-utilities-931-with-crack.html">Pegasun System Utilities 9.3.1 with Crack</a></h3>
     <p class="sw-desc">Pegasun System Utilities 9 Make your PC run like it&amp;#8217;s BRAND NEW again. System Utilities provides more th</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2032,14 +2206,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/pegasun-system-utilities-931-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="rcysoft data recovery ultimate free download" data-listed="202511">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="rcysoft data recovery ultimate free download" data-listed="202511" data-year="" data-date="Nov 2025">
   <a href="../../software/rcysoft-data-recovery-ultimate-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEj8AjIkAjutO4_XP712yi-IWtV8oMgtxQvYjqfqgQtZVolqGs7tpCOr2wH0TNY9evgz_j57pGyso1A9Vpd6mQVO9fPWqXPk8nJvsneklc7g15KM8b0MU6jhGZPQp9An3SVWe_v7m6KX7qWfe9hvhW1EMNLlXFAIkqCQme5Wm6xbvZPCc2T_cyajI8Z4jcs" alt="Rcysoft Data Recovery Ultimate Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v11.84</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/rcysoft-data-recovery-ultimate-free-download.html">Rcysoft Data Recovery Ultimate Free Download</a></h3>
     <p class="sw-desc">Rcysoft Data Recovery Ultimate is the all-in-one data recovery software that retrieves deleted, formatted, or </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Nov 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2048,14 +2224,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/rcysoft-data-recovery-ultimate-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="rcysoft usb flash drive data recovery pro free download" data-listed="202511">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="rcysoft usb flash drive data recovery pro free download" data-listed="202511" data-year="" data-date="Nov 2025">
   <a href="../../software/rcysoft-usb-flash-drive-data-recovery-pro-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgmX6mL_HByB8TnKbndOB7GP5f8M_gm_qGOInrlMOTCvtI1-dzbo78LKurTR1y3SkqZg2ZHY-vuuvzUNnJasr95DjNii1xHHGU0NqZXBn9U1iE3HDg5a6YO31rRc1T0Bb4Pr5c6mmZ3x1Og_Yo2jweIT8CfO54lvlt5Z78YAQzAMtNPqGU2jM0BKJoMMjs=s16000" alt="Rcysoft USB Flash Drive Data Recovery Pro Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v11.7</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/rcysoft-usb-flash-drive-data-recovery-pro-free-download.html">Rcysoft USB Flash Drive Data Recovery Pro Free Download</a></h3>
     <p class="sw-desc">Rcysoft USB Flash Drive Data Recovery Pro is designed to recover lost, deleted, or formatted files from USB fl</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Nov 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2064,14 +2242,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/rcysoft-usb-flash-drive-data-recovery-pro-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="recovery toolbox for pdf free download" data-listed="202511">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="recovery toolbox for pdf free download" data-listed="202511" data-year="" data-date="Nov 2025">
   <a href="../../software/recovery-toolbox-for-pdf-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEixqhY4NKa8_M9DlP9c-hW0t1QgqBha-qsDPX54ViGTznWH-1e-QmnFr5aWB5NNtpPBj2CMDk7zQby4Rl2F1kOaAI17DmuoF86BpWCety1Urk8bPrTodrm053jTDSPIJjNI9ZzbmKG5berAQtWzlUDMLcVenDZ96nD3NFOIaxuax7F88J4plczgJTeo6qc=w301-h320" alt="Recovery Toolbox for PDF Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v5.38</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/recovery-toolbox-for-pdf-free-download.html">Recovery Toolbox for PDF Free Download</a></h3>
     <p class="sw-desc">Recovery Toolbox for PDF is a powerful utility that repairs damaged or corrupted PDF documents with ease. Whet</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Nov 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2080,14 +2260,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/recovery-toolbox-for-pdf-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="reviversoft driver reviver 5.44.0.8 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="reviversoft driver reviver 5.44.0.8 with crack" data-listed="202604" data-year="2026" data-date="Apr 28, 2026">
   <a href="../../software/reviversoft-driver-reviver-54408-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/ReviverSoft-Driver-Reviver-Cover.avif" alt="ReviverSoft Driver Reviver 5.44.0.8 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v5.44.0.8</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/reviversoft-driver-reviver-54408-with-crack.html">ReviverSoft Driver Reviver 5.44.0.8 with Crack</a></h3>
     <p class="sw-desc">ReviverSoft Driver Reviver is an industry-leading PC driver update utility that will help you update your comp</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Apr 28, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2096,14 +2278,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/reviversoft-driver-reviver-54408-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="revo uninstaller pro 2025 free download" data-listed="202511">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="revo uninstaller pro 2025 free download" data-listed="202511" data-year="2025" data-date="Nov 2025">
   <a href="../../software/revo-uninstaller-pro-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEh78FI-0_csyl7DKAxDjXiYtDKGosLKd_CQHM_BuxL9BnfH6JblLtA2s1tIEUg58mz8EKvHaIsPiyagjYbHeSR7VujDpwdiSYcFNLlJo4v5ut6tghBQK_GLEIKGa_n8KuO7V9gjFZhU0Zrx1HvfNn_PaI6pI4V-hLYzUCwVylA3s1TRKbazxF-Y8uEI1_o" alt="Revo Uninstaller Pro 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/revo-uninstaller-pro-2025-free-download.html">Revo Uninstaller Pro 2025 Free Download</a></h3>
     <p class="sw-desc">is a powerful utility for completely removing unwanted programs, , and leftover files. It’s an essential tool </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Nov 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2112,14 +2296,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/revo-uninstaller-pro-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="revo uninstaller pro 5.5.2 with crack {repack}" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="revo uninstaller pro 5.5.2 with crack {repack}" data-listed="202607" data-year="2026" data-date="Jul 28, 2026">
   <a href="../../software/revo-uninstaller-pro-552-with-crack-repack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/03/Revo-Uninstaller-Pro-Cover.avif" alt="Revo Uninstaller Pro 5.5.2 with Crack {RePack}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v5.5.2</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/revo-uninstaller-pro-552-with-crack-repack.html">Revo Uninstaller Pro 5.5.2 with Crack {RePack}</a></h3>
     <p class="sw-desc">Revo Uninstaller Pro might be surprised to learn that the &amp;#8220;Add/Remove Programs&amp;#8221; option in the Wind</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 28, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2128,14 +2314,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/revo-uninstaller-pro-552-with-crack-repack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="smart driver care pro 1.1.0.5280 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="smart driver care pro 1.1.0.5280 with crack" data-listed="202404" data-year="2024" data-date="Apr 28, 2024">
   <a href="../../software/smart-driver-care-pro-1105280-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/Smart-Driver-Care-Pro-100x100.avif" alt="Smart Driver Care Pro 1.1.0.5280 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.1.0.5280</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/smart-driver-care-pro-1105280-with-crack.html">Smart Driver Care Pro 1.1.0.5280 with Crack</a></h3>
     <p class="sw-desc">Smart Driver Care Pro updates device drivers installed on your Windows easily with Smart Driver Care. This ama</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Apr 28, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2144,14 +2332,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/smart-driver-care-pro-1105280-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="smart driver manager 7.1.1180 with patch" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="smart driver manager 7.1.1180 with patch" data-listed="202402" data-year="2024" data-date="Feb 9, 2024">
   <a href="../../software/smart-driver-manager-711180-with-patch.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/Smart-Driver-Manager-Cover.avif" alt="Smart Driver Manager 7.1.1180 with Patch" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v7.1.1180</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/smart-driver-manager-711180-with-patch.html">Smart Driver Manager 7.1.1180 with Patch</a></h3>
     <p class="sw-desc">Smart Driver Manager it offers a fast, easy, and safe solution for automatically managing and updating your dr</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Feb 9, 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2160,14 +2350,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/smart-driver-manager-711180-with-patch.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="32-bit" data-title="smarty uninstaller 4.83.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="32-bit" data-title="smarty uninstaller 4.83.0 with crack" data-listed="202311" data-year="2023" data-date="Nov 27, 2023">
   <a href="../../software/smarty-uninstaller-4830-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/Smarty-Uninstaller-Cover.avif" alt="Smarty Uninstaller 4.83.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.83.0</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/smarty-uninstaller-4830-with-crack.html">Smarty Uninstaller 4.83.0 with Crack</a></h3>
     <p class="sw-desc">Smarty Uninstaller &amp;#8211; uninstaller software applications installed on your computer. Smarty Uninstaller is</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Nov 27, 2023</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2176,14 +2368,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/smarty-uninstaller-4830-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="stellar data recovery pro 12.6.0.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="stellar data recovery pro 12.6.0.0 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/stellar-data-recovery-pro-12600-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/05/Stellar-Data-Recovery-Professional-Cover.avif" alt="Stellar Data Recovery Pro 12.6.0.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v12.6.0.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/stellar-data-recovery-pro-12600-with-crack.html">Stellar Data Recovery Pro 12.6.0.0 with Crack</a></h3>
     <p class="sw-desc">Stellar Data Recovery Pro is the complete solution to recover lost data from your hard disks and removable dri</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2192,14 +2386,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/stellar-data-recovery-pro-12600-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="stellar toolkit for data recovery 11.0.0.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="stellar toolkit for data recovery 11.0.0.0 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/stellar-toolkit-for-data-recovery-11000-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/Stellar-Toolkit-for-Data-Recovery-Cover.avif" alt="Stellar Toolkit for Data Recovery 11.0.0.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v11.0.0.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/stellar-toolkit-for-data-recovery-11000-with-crack.html">Stellar Toolkit for Data Recovery 11.0.0.0 with Crack</a></h3>
     <p class="sw-desc">Stellar Toolkit for Data Recovery is a set of comprehensive software tools to recover lost or inaccessible dat</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2208,14 +2404,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/stellar-toolkit-for-data-recovery-11000-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="sys tools exchange recovery free download" data-listed="202001">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="sys tools exchange recovery free download" data-listed="202001" data-year="" data-date="Jan 2020">
   <a href="../../software/sys-tools-exchange-recovery-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSydycA6Ao6-PhyphenhyphenxhWV0fzihsTt0MGYbNkvI8WrUhUlGw01XbMCisCumQ6J9WssEk8sawVnzEFn4wZzJ3vCxIp0BqQ-mk1pO_3CLFsufyEFdPwtrP1lcWTw9pP1kUubaCJHBNn-Tvmmf8/s0/systools-exchange-recovery-data-recovery-software-free+download.png" alt="Sys Tools Exchange Recovery Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/sys-tools-exchange-recovery-free-download.html">Sys Tools Exchange Recovery Free Download</a></h3>
     <p class="sw-desc">Exchange Recovery software can recover deleted mailbox from Exchange EDB File. It can recover all deleted item</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 2020</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2224,14 +2422,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/sys-tools-exchange-recovery-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="arm64" data-title="system mechanic pro 26.5.1.249 with crack {all edition}" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="arm64" data-title="system mechanic pro 26.5.1.249 with crack {all edition}" data-listed="202608" data-year="2026" data-date="Aug 18, 2026">
   <a href="../../software/system-mechanic-pro-2651249-with-crack-all-edition.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/12/System-Mechanic-Ultimate-Defense-Cover.avif" alt="System Mechanic Pro 26.5.1.249 with Crack {All Edition}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v26.5.1.249</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/system-mechanic-pro-2651249-with-crack-all-edition.html">System Mechanic Pro 26.5.1.249 with Crack {All Edition}</a></h3>
     <p class="sw-desc">System Mechanic keeps your PC running faster, cleaner, and error-free. Its powerful arsenal of 50+ award-winni</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 18, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2240,14 +2440,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/system-mechanic-pro-2651249-with-crack-all-edition.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="systools ssd data recovery free download" data-listed="202509">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="systools ssd data recovery free download" data-listed="202509" data-year="" data-date="Sep 2025">
   <a href="../../software/systools-ssd-data-recovery-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEigR2aQfUgIAZt0EIdjbZpYtw5YcwyjUFFU-ylWCJ6IrWjSAOArrZYBiavW4DVXAN2KeOfFebLwEeUYFYFOsJPaqAl27h9rDxZpPgX8ET3HOvAGd0u1dF_r3pEW1y_AuPcsdubt7M5KA_GtxtmcZ5tbCcN5fylDfFeQEPicHe23H9cW0bYmua9HIa8tGQw=w284-h320" alt="SysTools SSD Data Recovery Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v30.72</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/systools-ssd-data-recovery-free-download.html">SysTools SSD Data Recovery Free Download</a></h3>
     <p class="sw-desc">SysTools SSD Data Recovery is a professional tool that helps retrieve deleted, lost, or formatted data from so</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2256,14 +2458,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/systools-ssd-data-recovery-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="systweak advanced disk recovery 2.9.1300.18693 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="systweak advanced disk recovery 2.9.1300.18693 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/systweak-advanced-disk-recovery-29130018693-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/12/Systweak-Advanced-Disk-Recovery-Cover.avif" alt="Systweak Advanced Disk Recovery 2.9.1300.18693 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.9.1300.18693</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/systweak-advanced-disk-recovery-29130018693-with-crack.html">Systweak Advanced Disk Recovery 2.9.1300.18693 with Crack</a></h3>
     <p class="sw-desc">Systweak Advanced Disk Recovery say you accidentally deleted an important file, not only that, but you also em</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2272,14 +2476,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/systweak-advanced-disk-recovery-29130018693-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="64-bit" data-title="systweak advanced driver updater 4.6.1086.8640 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="64-bit" data-title="systweak advanced driver updater 4.6.1086.8640 with crack" data-listed="202602" data-year="2026" data-date="Feb 19, 2026">
   <a href="../../software/systweak-advanced-driver-updater-4610868640-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/SysTweak-Advanced-Driver-Updater-Cover.avif" alt="SysTweak Advanced Driver Updater 4.6.1086.8640 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.6.1086.8640</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/systweak-advanced-driver-updater-4610868640-with-crack.html">SysTweak Advanced Driver Updater 4.6.1086.8640 with Crack</a></h3>
     <p class="sw-desc">SysTweak Advanced Driver Updater scans your system and displays a list of outdated drivers. To update to the m</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Feb 19, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2288,14 +2494,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/systweak-advanced-driver-updater-4610868640-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="systweak data recovery 2.1.1.265 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="systweak data recovery 2.1.1.265 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/systweak-data-recovery-211265-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2025/01/Systweak-Data-Recovery-Cover.avif" alt="Systweak Data Recovery 2.1.1.265 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.1.1.265</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/systweak-data-recovery-211265-with-crack.html">Systweak Data Recovery 2.1.1.265 with Crack</a></h3>
     <p class="sw-desc">Systweak Data Recovery can recover any file type from any storage device, including photos, videos, Office doc</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2304,14 +2512,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/systweak-data-recovery-211265-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="systweak photos recovery 3.2.0.221 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="systweak photos recovery 3.2.0.221 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/systweak-photos-recovery-320221-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2025/02/Systweak-Photos-Recovery-Cover.avif" alt="Systweak Photos Recovery 3.2.0.221 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.2.0.221</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/systweak-photos-recovery-320221-with-crack.html">Systweak Photos Recovery 3.2.0.221 with Crack</a></h3>
     <p class="sw-desc">Photos Recovery is the best software to retrieve digital images that are deleted, lost, or formatted from USB </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2320,14 +2530,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/systweak-photos-recovery-320221-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="tenorshare 4ddig partition manager 4.4.0.11 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="tenorshare 4ddig partition manager 4.4.0.11 with crack" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
   <a href="../../software/tenorshare-4ddig-partition-manager-44011-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2025/01/4DDiG-Partition-Manager-Cover.webp" alt="Tenorshare 4DDiG Partition Manager 4.4.0.11 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.4.0.11</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/tenorshare-4ddig-partition-manager-44011-with-crack.html">Tenorshare 4DDiG Partition Manager 4.4.0.11 with Crack</a></h3>
     <p class="sw-desc">4DDiG Partition Manager is a powerful Windows disk partition software expert in system migration, disk cloning</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2336,14 +2548,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/tenorshare-4ddig-partition-manager-44011-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="tenorshare 4ukey itunes backup 5.2.38.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="tenorshare 4ukey itunes backup 5.2.38.1 with crack" data-listed="202608" data-year="2026" data-date="Aug 30, 2026">
   <a href="../../software/tenorshare-4ukey-itunes-backup-52381-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2019/09/4uKey-iPhone-Backup-Unlocker-Full-Crack.avif" alt="Tenorshare 4uKey iTunes Backup 5.2.38.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v5.2.38.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/tenorshare-4ukey-itunes-backup-52381-with-crack.html">Tenorshare 4uKey iTunes Backup 5.2.38.1 with Crack</a></h3>
     <p class="sw-desc">Tenorshare 4uKey iTunes Backup focuses on recovering lost or forgotten iTunes backup passwords and regaining a</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 30, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2352,14 +2566,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/tenorshare-4ukey-itunes-backup-52381-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="tenorshare ultdata line recovery 2.0.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="tenorshare ultdata line recovery 2.0.1 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/tenorshare-ultdata-line-recovery-201-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/01/Tenorshare-UltData-Line-Recovery-Cover.webp" alt="Tenorshare UltData Line Recovery 2.0.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.0.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/tenorshare-ultdata-line-recovery-201-with-crack.html">Tenorshare UltData Line Recovery 2.0.1 with Crack</a></h3>
     <p class="sw-desc">Your Reliable Software to Recover Data from LINE. Recover LINE chat history from iOS/Android devices without b</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2368,14 +2584,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/tenorshare-ultdata-line-recovery-201-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="terabyte drive image backup &amp;#038; restore suite 3.64 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="terabyte drive image backup &amp;#038; restore suite 3.64 with crack" data-listed="202402" data-year="2024" data-date="Feb 5, 2024">
   <a href="../../software/terabyte-drive-image-backup-038-restore-suite-364-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/12/TeraByte-Drive-Image-Backup-Restore-Suite-Cover.avif" alt="TeraByte Drive Image Backup &amp;#038; Restore Suite 3.64 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.64</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/terabyte-drive-image-backup-038-restore-suite-364-with-crack.html">TeraByte Drive Image Backup &amp;#038; Restore Suite 3.64 with Crack</a></h3>
     <p class="sw-desc">TeraByte Drive Image Backup &amp;amp; Restore Suite Image for Windows provides an easy and convenient way to compl</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Feb 5, 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2384,14 +2602,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/terabyte-drive-image-backup-038-restore-suite-364-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="total uninstaller 2024 v3.0.0.790 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="total uninstaller 2024 v3.0.0.790 with crack" data-listed="202410" data-year="2024" data-date="Oct 20, 2024">
   <a href="../../software/total-uninstaller-2024-v300790-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/07/Total-Uninstaller-Cover.avif" alt="Total Uninstaller 2024 v3.0.0.790 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">vv3.0.0.790</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/total-uninstaller-2024-v300790-with-crack.html">Total Uninstaller 2024 v3.0.0.790 with Crack</a></h3>
     <p class="sw-desc">Total Uninstaller is an all-in-one uninstaller built for everyone. Built with performance and privacy in mind,</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 20, 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2400,14 +2620,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/total-uninstaller-2024-v300790-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="tuneskit ios system recovery 4.9.0.52 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="tuneskit ios system recovery 4.9.0.52 with crack" data-listed="202505" data-year="2025" data-date="May 9, 2025">
   <a href="../../software/tuneskit-ios-system-recovery-49052-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/TunesKit-iOS-System-Recovery-Cover.avif" alt="TunesKit iOS System Recovery 4.9.0.52 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.9.0.52</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/tuneskit-ios-system-recovery-49052-with-crack.html">TunesKit iOS System Recovery 4.9.0.52 with Crack</a></h3>
     <p class="sw-desc">TunesKit iOS System Recovery fixes your iOS to normal with all iOS system issues repaired efficiently, includi</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 9, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2416,14 +2638,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/tuneskit-ios-system-recovery-49052-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="tuneskit iphone data recovery 2.6.0.39 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="tuneskit iphone data recovery 2.6.0.39 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/tuneskit-iphone-data-recovery-26039-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/12/Tuneskit-iPhone-Data-Recovery-Cover.avif" alt="Tuneskit iPhone Data Recovery 2.6.0.39 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.6.0.39</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/tuneskit-iphone-data-recovery-26039-with-crack.html">Tuneskit iPhone Data Recovery 2.6.0.39 with Crack</a></h3>
     <p class="sw-desc">Tuneskit iPhone Data Recovery recovers all types of data loss in various scenarios from iOS devices, iTunes ba</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2432,14 +2656,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/tuneskit-iphone-data-recovery-26039-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="64-bit" data-title="ufs explorer professional recovery free download" data-listed="202509">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="64-bit" data-title="ufs explorer professional recovery free download" data-listed="202509" data-year="" data-date="Sep 2025">
   <a href="../../software/ufs-explorer-professional-recovery-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjM5oDFH81wY__3rxaRRch84kmgyol6O53nkbPwFBCUL-WtdtYXM_7ZKu460FTW4KxaTxRWF_gkrV5ixccN5RL173GaNAwMLS1T05EbQFwMVl2NnPMusR7ab_QuAay3RCJ3c4FHIbKAjSyjBIyilPlRYG3bwln0cmtK6geYqRMOEMOdC9Kzu_3HwNSRSW4" alt="UFS Explorer Professional Recovery Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ufs-explorer-professional-recovery-free-download.html">UFS Explorer Professional Recovery Free Download</a></h3>
     <p class="sw-desc">UFS Explorer Professional Recovery is an advanced data recovery solution tailored for professionals. It suppor</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2448,14 +2674,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ufs-explorer-professional-recovery-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ultfone ios system repair 9.2.0.11 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ultfone ios system repair 9.2.0.11 with crack" data-listed="202312" data-year="2023" data-date="Dec 18, 2023">
   <a href="../../software/ultfone-ios-system-repair-92011-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/12/UltFone-iOS-System-Repair-Cover.webp" alt="UltFone iOS System Repair 9.2.0.11 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v9.2.0.11</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ultfone-ios-system-repair-92011-with-crack.html">UltFone iOS System Repair 9.2.0.11 with Crack</a></h3>
     <p class="sw-desc">Is the iPhone screen frozen and won&amp;#8217;t turn on? UltFone iOS System Repair tool is capable of repairing 15</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 18, 2023</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2464,14 +2692,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ultfone-ios-system-repair-92011-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="winzip driver updater 5.44.0.8 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="winzip driver updater 5.44.0.8 with crack" data-listed="202604" data-year="2026" data-date="Apr 26, 2026">
   <a href="../../software/winzip-driver-updater-54408-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/WinZip-Driver-Updater-Cover.avif" alt="WinZip Driver Updater 5.44.0.8 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v5.44.0.8</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/winzip-driver-updater-54408-with-crack.html">WinZip Driver Updater 5.44.0.8 with Crack</a></h3>
     <p class="sw-desc">WinZip Driver Updater manages device driver updates so you don&amp;#8217;t have to! Avoid hardware component issue</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Apr 26, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2480,14 +2710,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/winzip-driver-updater-54408-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="winzip registry optimizer 4.22.2.22 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="winzip registry optimizer 4.22.2.22 with crack" data-listed="202309" data-year="2023" data-date="Sep 28, 2023">
   <a href="../../software/winzip-registry-optimizer-422222-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/WinZip-Registry-Optimizer-Cover.avif" alt="WinZip Registry Optimizer 4.22.2.22 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.22.2.22</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/winzip-registry-optimizer-422222-with-crack.html">WinZip Registry Optimizer 4.22.2.22 with Crack</a></h3>
     <p class="sw-desc">WinZip Registry Optimizer helps prevent crashes and system errors by cleaning your Windows registry automatica</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 28, 2023</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2496,14 +2728,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/winzip-registry-optimizer-422222-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="winzip system utilities suite 4.0.3.26 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="winzip system utilities suite 4.0.3.26 with crack" data-listed="202608" data-year="2026" data-date="Aug 27, 2026">
   <a href="../../software/winzip-system-utilities-suite-40326-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/03/WinZip-System-Utilities-Suite-Cover.avif" alt="WinZip System Utilities Suite 4.0.3.26 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.0.3.26</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/winzip-system-utilities-suite-40326-with-crack.html">WinZip System Utilities Suite 4.0.3.26 with Crack</a></h3>
     <p class="sw-desc">WinZip System Utilities Suite: PC tools for better performance and a faster computer! Speed up your computer a</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 27, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2512,14 +2746,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/winzip-system-utilities-suite-40326-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="32-bit" data-title="wise data recovery pro 6.2.2.520 with crack" data-listed="000000">
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="32-bit" data-title="wise data recovery pro 6.2.2.520 with crack" data-listed="202607" data-year="2026" data-date="Jul 5, 2026">
   <a href="../../software/wise-data-recovery-pro-622520-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/12/Wise-Data-Recovery-Pro-Cover.avif" alt="Wise Data Recovery Pro 6.2.2.520 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.2.2.520</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/wise-data-recovery-pro-622520-with-crack.html">Wise Data Recovery Pro 6.2.2.520 with Crack</a></h3>
     <p class="sw-desc">Wise Data Recovery Pro is a professional and advanced utility to perform data recovery. The types of files tha</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 5, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
@@ -2688,6 +2924,41 @@ ul, ol { margin: 0; padding: 0; }
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); go(); }
     });
+  }
+
+  /* ---------- Slideshow ---------- */
+  function initSlideshow() {
+    var ss = document.getElementById('latestSlideshow');
+    if (!ss) return;
+    var slides = ss.querySelectorAll('.slide');
+    var dots = ss.querySelectorAll('.dot');
+    if (!slides.length) return;
+    var cur = 0;
+    var timer = null;
+
+    function show(i) {
+      cur = (i + slides.length) % slides.length;
+      for (var j = 0; j < slides.length; j++) {
+        slides[j].classList.toggle('active', j === cur);
+        if (dots[j]) dots[j].classList.toggle('on', j === cur);
+      }
+    }
+    function next() { show(cur + 1); restart(); }
+    function prev() { show(cur - 1); restart(); }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show(cur + 1); }, 6000);
+    }
+    var btnNext = ss.querySelector('#slideNext');
+    var btnPrev = ss.querySelector('#slidePrev');
+    if (btnNext) btnNext.addEventListener('click', next);
+    if (btnPrev) btnPrev.addEventListener('click', prev);
+    for (var i = 0; i < dots.length; i++) {
+      (function (idx) {
+        dots[idx].addEventListener('click', function () { show(idx); restart(); });
+      })(i);
+    }
+    restart();
   }
 
   /* ---------- Listing sort select ---------- */
@@ -3155,7 +3426,8 @@ ul, ol { margin: 0; padding: 0; }
       + (img || ph) + '</a>';
     var tier = TIER_LABELS[it.tier] || '';
     var meta = '<span>&#9989; Windows</span>';
-    if (it.year) meta += '<span>' + escapeHtml(it.year) + '</span>';
+    if (it.year) meta += '<span>&#169; ' + escapeHtml(it.year) + '</span>';
+    if (it.date) meta += '<span>&#128197; ' + escapeHtml(it.date) + '</span>';
     if (it.version) meta += '<span class="badge-ver">' + escapeHtml(it.version) + '</span>';
     return '<article class="sw-card">' + thumb
       + '<div class="sw-body">'
@@ -3245,6 +3517,7 @@ ul, ol { margin: 0; padding: 0; }
     initNavSearchBtn();
     initHeroSearchBtn();
     initSort();
+    initSlideshow();
     initToastLinks();
     initLightbox();
     initSearch('navSearch');

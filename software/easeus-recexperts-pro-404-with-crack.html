@@ -476,14 +476,46 @@ ul, ol { margin: 0; padding: 0; }
 .sw-thumb .placeholder { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2.1rem; }
 .sw-thumb .badge-ver { position: absolute; bottom: 10px; right: 10px; background: rgba(4, 10, 20, .8); color: #dbe7f7; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-thumb .badge-top { position: absolute; top: 10px; left: 10px; }
+.sw-year { position: absolute; top: 10px; left: 10px; background: rgba(4, 10, 20, .8); color: var(--text-2); font-size: .68rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-body { padding: 15px 16px 16px; display: flex; flex-direction: column; flex: 1; gap: 8px; }
 .sw-title { font-size: .99rem; font-weight: 700; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .sw-title a { color: var(--text); }
 .sw-title a:hover { color: var(--primary-strong); }
 .sw-desc { font-size: .83rem; color: var(--text-3); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sw-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .76rem; color: var(--text-3); }
+.sw-row span { display: inline-flex; align-items: center; gap: 4px; }
+.sw-date { color: var(--text-2); font-weight: 500; }
+.sw-dl { color: var(--primary-strong); font-weight: 600; }
+.sw-dev { color: var(--text-3); font-style: italic; }
 .sw-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .74rem; color: var(--text-3); margin-top: auto; }
 .sw-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .sw-card .btn { margin-top: 10px; }
+
+/* Slideshow — latest software carousel */
+.slide-show { position: relative; max-width: 1240px; margin: 26px auto 0; padding: 0 18px; box-sizing: border-box; }
+.slide-show .slides { position: relative; height: 340px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-strong); }
+.slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s ease; pointer-events: none; display: flex; align-items: flex-end; }
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 1; }
+.slide-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 8, 16, .92) 0%, rgba(3, 8, 16, .68) 45%, rgba(3, 8, 16, .18) 100%); }
+.slide-body { position: relative; z-index: 2; max-width: 620px; padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 10px; }
+.slide-badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.slide-title { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin: 0; }
+.slide-title a { color: #fff; }
+.slide-title a:hover { color: var(--primary-soft); }
+.slide-desc { font-size: .92rem; color: rgba(255,255,255,.78); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.slide-cta { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border-radius: var(--radius-full); border: 1px solid var(--border-strong); background: rgba(4, 10, 20, .75); color: #fff; font-size: 1.25rem; cursor: pointer; display: grid; place-items: center; transition: all var(--trans); }
+.slide-arrow:hover { background: var(--primary); border-color: var(--primary-strong); }
+.slide-arrow.prev { left: 14px; }
+.slide-arrow.next { right: 14px; }
+.slide-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+.slide-dots .dot { width: 10px; height: 10px; border-radius: var(--radius-full); border: none; background: var(--border-strong); cursor: pointer; padding: 0; transition: all var(--trans); }
+.slide-dots .dot.on { background: var(--primary); width: 22px; }
+@media (max-width: 760px) {
+  .slide-show .slides { height: 300px; }
+  .slide-body { padding: 18px; }
+  .slide-title { font-size: 1.15rem; }
+}
 
 /* Compact list item (staff picks / related) */
 .related-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
@@ -891,7 +923,7 @@ ul, ol { margin: 0; padding: 0; }
        onerror="this.outerHTML='<span>📋</span>'">
 </div>
     <div class="detail-info">
-      <div class="detail-badges"><span class="badge badge-primary">📋 Productivity</span> <span class="badge badge-primary">v4.0.4</span>  <span class="badge badge-license-free">Free</span> <span class="badge badge-muted" title="Platform">Windows</span> <span class="badge badge-warning">⚖️ Mid-range</span></div>
+      <div class="detail-badges"><span class="badge badge-primary">📋 Productivity</span> <span class="badge badge-primary">v4.0.4</span> <span class="badge badge-muted">Listed Nov 2024</span> <span class="badge badge-license-free">Free</span> <span class="badge badge-muted" title="Platform">Windows</span> <span class="badge badge-warning">⚖️ Mid-range</span></div>
       <h1>EaseUS RecExperts Pro 4.0.4 with Crack</h1>
       <p class="detail-desc">EaseUS RecExperts is a tool designed to provide you with a simple and straightforward way to capture your full desktop, a specific window or area as well as your webcam. The capture can be enhanced with lines, arrows, images and text, so it can be used as guides, instructions or even for educational purposes.</p>
       <div class="detail-cta">
@@ -968,7 +1000,7 @@ ul, ol { margin: 0; padding: 0; }
   <div class="gallery"><img src="https://haxpc.net/wp-content/uploads/2024/11/EaseUS-RecExperts-Pro.avif" alt="EaseUS RecExperts Pro 4.0.4 with Crack screenshot" loading="lazy" data-zoom><img src="https://haxpc.net/wp-content/uploads/2023/03/EaseUS-Todo-Backup-Cover.avif" alt="EaseUS RecExperts Pro 4.0.4 with Crack screenshot" loading="lazy" data-zoom><img src="https://haxpc.net/wp-content/uploads/2020/10/EaseUS-Todo-PCTrans-Cover.avif" alt="EaseUS RecExperts Pro 4.0.4 with Crack screenshot" loading="lazy" data-zoom><img src="https://haxpc.net/wp-content/uploads/2023/10/EaseUS-Fixo-Cover-scaled.webp" alt="EaseUS RecExperts Pro 4.0.4 with Crack screenshot" loading="lazy" data-zoom></div>
 </div>
     </div>
-    <aside class="sidebar" aria-label="Software information"><dl class="info-card"><div class="info-row"><dt>Software</dt><dd>EaseUS RecExperts Pro 4.0.4 with Crack</dd></div><div class="info-row"><dt>Version</dt><dd>4.0.4</dd></div><div class="info-row"><dt>Developer</dt><dd>Not available</dd></div><div class="info-row"><dt>Platform</dt><dd>Windows</dd></div><div class="info-row"><dt>License</dt><dd>Free</dd></div><div class="info-row"><dt>File size</dt><dd>Not available</dd></div><div class="info-row"><dt>Category</dt><dd>Productivity</dd></div><div class="info-row"><dt>Architecture</dt><dd>Not available</dd></div><div class="info-row"><dt>Listed on source</dt><dd>Not available</dd></div></dl></aside>
+    <aside class="sidebar" aria-label="Software information"><dl class="info-card"><div class="info-row"><dt>Software</dt><dd>EaseUS RecExperts Pro 4.0.4 with Crack</dd></div><div class="info-row"><dt>Version</dt><dd>4.0.4</dd></div><div class="info-row"><dt>Developer</dt><dd>Not available</dd></div><div class="info-row"><dt>Platform</dt><dd>Windows</dd></div><div class="info-row"><dt>License</dt><dd>Free</dd></div><div class="info-row"><dt>File size</dt><dd>Not available</dd></div><div class="info-row"><dt>Category</dt><dd>Productivity</dd></div><div class="info-row"><dt>Architecture</dt><dd>Not available</dd></div><div class="info-row"><dt>Listed on source</dt><dd>Nov 2024</dd></div></dl></aside>
   </div>
 </div>
 
@@ -1183,6 +1215,41 @@ ul, ol { margin: 0; padding: 0; }
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); go(); }
     });
+  }
+
+  /* ---------- Slideshow ---------- */
+  function initSlideshow() {
+    var ss = document.getElementById('latestSlideshow');
+    if (!ss) return;
+    var slides = ss.querySelectorAll('.slide');
+    var dots = ss.querySelectorAll('.dot');
+    if (!slides.length) return;
+    var cur = 0;
+    var timer = null;
+
+    function show(i) {
+      cur = (i + slides.length) % slides.length;
+      for (var j = 0; j < slides.length; j++) {
+        slides[j].classList.toggle('active', j === cur);
+        if (dots[j]) dots[j].classList.toggle('on', j === cur);
+      }
+    }
+    function next() { show(cur + 1); restart(); }
+    function prev() { show(cur - 1); restart(); }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show(cur + 1); }, 6000);
+    }
+    var btnNext = ss.querySelector('#slideNext');
+    var btnPrev = ss.querySelector('#slidePrev');
+    if (btnNext) btnNext.addEventListener('click', next);
+    if (btnPrev) btnPrev.addEventListener('click', prev);
+    for (var i = 0; i < dots.length; i++) {
+      (function (idx) {
+        dots[idx].addEventListener('click', function () { show(idx); restart(); });
+      })(i);
+    }
+    restart();
   }
 
   /* ---------- Listing sort select ---------- */
@@ -1650,7 +1717,8 @@ ul, ol { margin: 0; padding: 0; }
       + (img || ph) + '</a>';
     var tier = TIER_LABELS[it.tier] || '';
     var meta = '<span>&#9989; Windows</span>';
-    if (it.year) meta += '<span>' + escapeHtml(it.year) + '</span>';
+    if (it.year) meta += '<span>&#169; ' + escapeHtml(it.year) + '</span>';
+    if (it.date) meta += '<span>&#128197; ' + escapeHtml(it.date) + '</span>';
     if (it.version) meta += '<span class="badge-ver">' + escapeHtml(it.version) + '</span>';
     return '<article class="sw-card">' + thumb
       + '<div class="sw-body">'
@@ -1740,6 +1808,7 @@ ul, ol { margin: 0; padding: 0; }
     initNavSearchBtn();
     initHeroSearchBtn();
     initSort();
+    initSlideshow();
     initToastLinks();
     initLightbox();
     initSearch('navSearch');

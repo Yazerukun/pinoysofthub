@@ -476,14 +476,46 @@ ul, ol { margin: 0; padding: 0; }
 .sw-thumb .placeholder { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2.1rem; }
 .sw-thumb .badge-ver { position: absolute; bottom: 10px; right: 10px; background: rgba(4, 10, 20, .8); color: #dbe7f7; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-thumb .badge-top { position: absolute; top: 10px; left: 10px; }
+.sw-year { position: absolute; top: 10px; left: 10px; background: rgba(4, 10, 20, .8); color: var(--text-2); font-size: .68rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-body { padding: 15px 16px 16px; display: flex; flex-direction: column; flex: 1; gap: 8px; }
 .sw-title { font-size: .99rem; font-weight: 700; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .sw-title a { color: var(--text); }
 .sw-title a:hover { color: var(--primary-strong); }
 .sw-desc { font-size: .83rem; color: var(--text-3); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sw-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .76rem; color: var(--text-3); }
+.sw-row span { display: inline-flex; align-items: center; gap: 4px; }
+.sw-date { color: var(--text-2); font-weight: 500; }
+.sw-dl { color: var(--primary-strong); font-weight: 600; }
+.sw-dev { color: var(--text-3); font-style: italic; }
 .sw-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .74rem; color: var(--text-3); margin-top: auto; }
 .sw-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .sw-card .btn { margin-top: 10px; }
+
+/* Slideshow — latest software carousel */
+.slide-show { position: relative; max-width: 1240px; margin: 26px auto 0; padding: 0 18px; box-sizing: border-box; }
+.slide-show .slides { position: relative; height: 340px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-strong); }
+.slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s ease; pointer-events: none; display: flex; align-items: flex-end; }
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 1; }
+.slide-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 8, 16, .92) 0%, rgba(3, 8, 16, .68) 45%, rgba(3, 8, 16, .18) 100%); }
+.slide-body { position: relative; z-index: 2; max-width: 620px; padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 10px; }
+.slide-badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.slide-title { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin: 0; }
+.slide-title a { color: #fff; }
+.slide-title a:hover { color: var(--primary-soft); }
+.slide-desc { font-size: .92rem; color: rgba(255,255,255,.78); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.slide-cta { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border-radius: var(--radius-full); border: 1px solid var(--border-strong); background: rgba(4, 10, 20, .75); color: #fff; font-size: 1.25rem; cursor: pointer; display: grid; place-items: center; transition: all var(--trans); }
+.slide-arrow:hover { background: var(--primary); border-color: var(--primary-strong); }
+.slide-arrow.prev { left: 14px; }
+.slide-arrow.next { right: 14px; }
+.slide-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+.slide-dots .dot { width: 10px; height: 10px; border-radius: var(--radius-full); border: none; background: var(--border-strong); cursor: pointer; padding: 0; transition: all var(--trans); }
+.slide-dots .dot.on { background: var(--primary); width: 22px; }
+@media (max-width: 760px) {
+  .slide-show .slides { height: 300px; }
+  .slide-body { padding: 18px; }
+  .slide-title { font-size: 1.15rem; }
+}
 
 /* Compact list item (staff picks / related) */
 .related-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
@@ -896,14 +928,16 @@ ul, ol { margin: 0; padding: 0; }
     </select>
   </div>
   <div id="swList" class="sw-grid">
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="brave browser free download" data-listed="201901">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="brave browser free download" data-listed="201901" data-year="" data-date="Jan 2019">
   <a href="../../software/brave-browser-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSd3sjoXxCJUK4MC_bYaZiV491eXTMVmnWLA23bPOemhRJcxe4AUf6m6yZEW_YgwtMcn46WQU0kUGNCMCYfptklSPHywjW0G8X83SiUEk7dXe7BoAQjyu3mb6c2RR33JJRsRcHXmURL3M/s200/brave_browser-100732965-large.jpg" alt="Brave Browser Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.1</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/brave-browser-free-download.html">Brave Browser Free Download</a></h3>
     <p class="sw-desc">Brave is a free internet browser developed by Brave Software, and it was initially released in beta form in 20</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 2019</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -912,14 +946,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/brave-browser-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="brave browser win32bit free download" data-listed="201901">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="brave browser win32bit free download" data-listed="201901" data-year="" data-date="Jan 2019">
   <a href="../../software/brave-browser-win32bit-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSd3sjoXxCJUK4MC_bYaZiV491eXTMVmnWLA23bPOemhRJcxe4AUf6m6yZEW_YgwtMcn46WQU0kUGNCMCYfptklSPHywjW0G8X83SiUEk7dXe7BoAQjyu3mb6c2RR33JJRsRcHXmURL3M/s200/brave_browser-100732965-large.jpg" alt="Brave Browser Win32bit Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.1</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/brave-browser-win32bit-free-download.html">Brave Browser Win32bit Free Download</a></h3>
     <p class="sw-desc">Brave is a free internet browser developed by Brave Software, and it was initially released in beta form in 20</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 2019</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -928,14 +964,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/brave-browser-win32bit-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="google chrome 2021 free download" data-listed="202106">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="google chrome 2021 free download" data-listed="202106" data-year="2021" data-date="Jun 2021">
   <a href="../../software/google-chrome-2021-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyLYk6TLuj5kI3ENq6UCkH-yixmXVZXqGJVNHspvkbmyL1G3ndjmF5YkaTWtDpsHz0rupwOWXO1UCtnuNc3N-sogrsXpK1sPM99fNr85sNyW3lUyq3w0oU4BjXeeaCYGtCBxrdSG-GRb0/s200/Chrome_better.png" alt="Google Chrome 2021 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v55.4</span>
+    <span class="sw-year">© 2021</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/google-chrome-2021-free-download.html">Google Chrome 2021 Free Download</a></h3>
     <p class="sw-desc">Google Chrome is an imposing application widely used as a browser which enables you to to search and visit var</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2021</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -944,14 +982,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/google-chrome-2021-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="google chrome offline 2019 download" data-listed="201905">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="google chrome offline 2019 download" data-listed="201905" data-year="2019" data-date="May 2019">
   <a href="../../software/google-chrome-offline-2019-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyLYk6TLuj5kI3ENq6UCkH-yixmXVZXqGJVNHspvkbmyL1G3ndjmF5YkaTWtDpsHz0rupwOWXO1UCtnuNc3N-sogrsXpK1sPM99fNr85sNyW3lUyq3w0oU4BjXeeaCYGtCBxrdSG-GRb0/s200/Chrome_better.png" alt="Google Chrome Offline 2019 Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v55.4</span>
+    <span class="sw-year">© 2019</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/google-chrome-offline-2019-download.html">Google Chrome Offline 2019 Download</a></h3>
     <p class="sw-desc">Google Chrome is an imposing application widely used as a browser which enables you to to search and visit var</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -960,14 +1000,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/google-chrome-offline-2019-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="maxthon cloud browser free download" data-listed="201905">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="maxthon cloud browser free download" data-listed="201905" data-year="" data-date="May 2019">
   <a href="../../software/maxthon-cloud-browser-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9vKQ9NjEf5NhsSvTeioBuShyphenhyphen71O6iGvRXYhrxcGDf40fMax3o_5JAdKxa62vWALv3jHIeRmwfkbQLSja7Hxsg-J_F_9Ivwj3B6Rthq3g8h_qOp_Om-VECMIF4NYfrEFR-LU1w_HR9bGo/s200/Maxthon_Browser_Logo.jpg" alt="Maxthon Cloud Browser Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v84.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/maxthon-cloud-browser-free-download.html">Maxthon Cloud Browser Free Download</a></h3>
     <p class="sw-desc">Maxthon is a freeware web browser developed by the company Maxthon Ltd., based in Beijing, China. It is availa</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -976,14 +1018,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/maxthon-cloud-browser-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="maxthon nitro browser free download" data-listed="201905">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="maxthon nitro browser free download" data-listed="201905" data-year="" data-date="May 2019">
   <a href="../../software/maxthon-nitro-browser-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEihQCZI77tX7Q8DYv_iLN1Uuxs54fJvEXGpO9KH67AQhrIBoWWZ4qAenOg9UuTzhCrw9eZPLOUeaYfaYguUHa4pmw9n4iywVGkfBL19fSGPP6FFffYPLJ9BYMjrV1jB8kv09jaPNoKHDu8/s320/mxnitrobrowser_story.jpg" alt="Maxthon Nitro Browser Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v31.3</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/maxthon-nitro-browser-free-download.html">Maxthon Nitro Browser Free Download</a></h3>
     <p class="sw-desc">Maxthon designed the Nitro web browser to be as simple, as uncluttered, and as fast as possible. That is why t</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -992,14 +1036,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/maxthon-nitro-browser-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="mozilla firefox 2021 free download" data-listed="202106">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="mozilla firefox 2021 free download" data-listed="202106" data-year="2021" data-date="Jun 2021">
   <a href="../../software/mozilla-firefox-2021-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOoFP0uCwgy9X03S_jhAj29-XNJIL93ALu7SMQBSUrAK5B7uOJDgdQp3LEKW79lAl3w9J4tAj1Faz6tYryRCjpf-IsmXp4S3S1X9IyJkP7eNEMQlaiNkDBAtYkD2ysJ3ntZrr-m9ROVH0/s320/firefox-logo-2014-vertical-4sts.jpg" alt="Mozilla Firefox 2021 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2021</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/mozilla-firefox-2021-free-download.html">Mozilla Firefox 2021 Free Download</a></h3>
     <p class="sw-desc">The premier free, open-source browser. Tabs, pop-up blocking, themes, and extensions. Considered by many to be</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2021</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-opensource">Open Source</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -1008,14 +1054,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/mozilla-firefox-2021-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="32-bit" data-title="mozilla firefox setup 2025 free download (x32)" data-listed="202506">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="32-bit" data-title="mozilla firefox setup 2025 free download (x32)" data-listed="202506" data-year="2025" data-date="Jun 2025">
   <a href="../../software/mozilla-firefox-setup-2025-free-download-x32.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgiQs2vA0zKu0g5XTsAVEb7iLJsh58knii0nwA6q5rpc9YJUuHJUef9Ibxlsoi7bmcG0jRg_NAZU_EFfHpU17jIBU--ZtvMjOdhY4scIHVnX4yFDiBs4NCDl6lvAVG1mth4xhykn0jSxh35aDOrRy7t65JSY9IvhImUqyHE-UB-uyFxPZ4CdnTmxmnPTHg=w200-h199" alt="Mozilla Firefox Setup 2025 Free Download (X32)" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/mozilla-firefox-setup-2025-free-download-x32.html">Mozilla Firefox Setup 2025 Free Download (X32)</a></h3>
     <p class="sw-desc">Mozilla Firefox 2025 is the latest version of the fast, secure, and customizable web browser. With enhanced tr</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -1024,14 +1072,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/mozilla-firefox-setup-2025-free-download-x32.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="64-bit" data-title="mozilla firefox setup 2025 free download (x64)" data-listed="202506">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="64-bit" data-title="mozilla firefox setup 2025 free download (x64)" data-listed="202506" data-year="2025" data-date="Jun 2025">
   <a href="../../software/mozilla-firefox-setup-2025-free-download-x64.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgiQs2vA0zKu0g5XTsAVEb7iLJsh58knii0nwA6q5rpc9YJUuHJUef9Ibxlsoi7bmcG0jRg_NAZU_EFfHpU17jIBU--ZtvMjOdhY4scIHVnX4yFDiBs4NCDl6lvAVG1mth4xhykn0jSxh35aDOrRy7t65JSY9IvhImUqyHE-UB-uyFxPZ4CdnTmxmnPTHg=w200-h199" alt="Mozilla Firefox Setup 2025 Free Download (X64)" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/mozilla-firefox-setup-2025-free-download-x64.html">Mozilla Firefox Setup 2025 Free Download (X64)</a></h3>
     <p class="sw-desc">Mozilla Firefox 2025 is the latest version of the fast, secure, and customizable web browser. With enhanced tr</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2025</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -1040,14 +1090,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/mozilla-firefox-setup-2025-free-download-x64.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="opera neon browser free download" data-listed="201905">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="opera neon browser free download" data-listed="201905" data-year="" data-date="May 2019">
   <a href="../../software/opera-neon-browser-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkxTNE4gZ1dk4YCy-BGOrJbO2v2X2NIf3OvJIyWPxxUbNhJti6cE1LKti-JBDO5QWdtT3FOLRWFbom39Lzk59VDFyTuVbZBED-pHN17J_-JogrxfJA3dvc-zroyNHUHPY4LnCiwxtG-h0/s320/pasted-image-0-8.png" alt="Opera Neon Browser Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/opera-neon-browser-free-download.html">Opera Neon Browser Free Download</a></h3>
     <p class="sw-desc">Opera Neon wipes away your desktop clutter by bringing your computer’s wallpaper into the browser.Opera Neon’s</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -1056,14 +1108,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/opera-neon-browser-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="orbitum browser free download" data-listed="201901">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="orbitum browser free download" data-listed="201901" data-year="" data-date="Jan 2019">
   <a href="../../software/orbitum-browser-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9DOqsp1kZqpRrnJ1ssiQMik6RLM6h1cmc5vFbmfCWmFmitzEskVWc7k6_Sm6hAqYkmyAwfhO_9MS3O_hc6WtkSwWetqCFMTFelwSFTP9SRfLFkOMemIT8e6B9G-QAz8ljkKjJwZScj0E/s200/orbitum.png" alt="Orbitum Browser Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v48.91</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/orbitum-browser-free-download.html">Orbitum Browser Free Download</a></h3>
     <p class="sw-desc">Orbitum is very useful social browser for users of different social networks, especially Facebook, VKontakte, </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -1072,14 +1126,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/orbitum-browser-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="slimjet browser free download win32" data-listed="201901">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="slimjet browser free download win32" data-listed="201901" data-year="" data-date="Jan 2019">
   <a href="../../software/slimjet-browser-free-download-win32.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgytRjB4hJsTkCR2iPY-vRUNW9I7PDa4K2XjblQ7eGivB9loW2_S2G8xjTjPr8TXkSngZMRP3HgqXbV4CtAlSnXUErr4RZNt-0sPcjwQMkQVJ9dtrZqwaS_6ZnXjCkzZdIpZ7UnEWhN-2g/s200/slimjet.png" alt="Slimjet Browser Free Download Win32" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v63.5</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/slimjet-browser-free-download-win32.html">Slimjet Browser Free Download Win32</a></h3>
     <p class="sw-desc">Slimjet Browser is a tabbed multiple-site web browser from FlashPeak that uses the Microsoft Trident layout en</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -1088,14 +1144,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/slimjet-browser-free-download-win32.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="slimjet browser free download win64" data-listed="201901">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="slimjet browser free download win64" data-listed="201901" data-year="" data-date="Jan 2019">
   <a href="../../software/slimjet-browser-free-download-win64.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgytRjB4hJsTkCR2iPY-vRUNW9I7PDa4K2XjblQ7eGivB9loW2_S2G8xjTjPr8TXkSngZMRP3HgqXbV4CtAlSnXUErr4RZNt-0sPcjwQMkQVJ9dtrZqwaS_6ZnXjCkzZdIpZ7UnEWhN-2g/s200/slimjet.png" alt="Slimjet Browser Free Download Win64" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v65.3</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/slimjet-browser-free-download-win64.html">Slimjet Browser Free Download Win64</a></h3>
     <p class="sw-desc">Slimjet is a tabbed multiple-site web browser from FlashPeak that uses the Microsoft Trident layout engine. Sl</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -1104,14 +1162,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/slimjet-browser-free-download-win64.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="torch browser free download" data-listed="201905">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="torch browser free download" data-listed="201905" data-year="" data-date="May 2019">
   <a href="../../software/torch-browser-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIPMa7jxOzNOIoFJK8JiN5neRCiPFPe9Fr4GXJ6BZOT3rRwTMj3lAa8nwKAmnmObz6OjhuvclEjDXIF5L6a8KsBnGDYmVvW610owtmuYGgIdt8TFu8TNksdT0pn-Dw10_a6FqVoZ3G1Zo/s400/Torch_Browser_Logo.jpg" alt="Torch Browser Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/torch-browser-free-download.html">Torch Browser Free Download</a></h3>
     <p class="sw-desc">Torch is one of the navigators more popular than it has on the Internet, and that one stands out by complete i</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -1120,14 +1180,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/torch-browser-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="uc browser free download" data-listed="201901">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="x64" data-title="uc browser free download" data-listed="201901" data-year="" data-date="Jan 2019">
   <a href="../../software/uc-browser-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjGLrNTYLjDjpOEY27iti_L4j-C362LtON-K6yHhyLIa64E2U-YR3-j31fgMH0bKQ6CGW3_lxOMdwEmGBpID10t8sJr9nrGG9cATJGLEKQ7HBELtSkcvGo6q0L7w3tUWQ4iRg96A2aLTE/s200/ucbrowser.png" alt="UC Browser Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v48.64</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/uc-browser-free-download.html">UC Browser Free Download</a></h3>
     <p class="sw-desc">UC Browser for Windows PC is web browser designed to offer both speed and compatibility with modern web sites.</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -1136,14 +1198,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/uc-browser-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="64-bit" data-title="vivaldi browser 64-bit free download" data-listed="201901">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="64-bit" data-title="vivaldi browser 64-bit free download" data-listed="201901" data-year="" data-date="Jan 2019">
   <a href="../../software/vivaldi-browser-64-bit-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhx5LvtIjzAdapgIK57JY_akIE-1x2XmqmLGLGjk0w4amrb1esmTvIXptN28ObDEG4NIibwJWsR3z6gjkGo1wZRyBV9aivNqiyUIPYIbno_YGjmMgZPIG-pM5rJFw1WqsXgq0G0H3debbg/s200/1200px-Vivaldi_web_browser_logo.svg.png" alt="Vivaldi Browser 64-bit Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/vivaldi-browser-64-bit-free-download.html">Vivaldi Browser 64-bit Free Download</a></h3>
     <p class="sw-desc">Vivaldi Browser 64-bit that is fast, but also a browser that is rich in functionality, highly flexible and put</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -1152,14 +1216,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/vivaldi-browser-64-bit-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="browsers" data-license="free" data-arch="64-bit" data-title="waterfox browser free download" data-listed="201902">
+<article class="sw-card" data-category="browsers" data-license="free" data-arch="64-bit" data-title="waterfox browser free download" data-listed="201902" data-year="" data-date="Feb 2019">
   <a href="../../software/waterfox-browser-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🧭&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwfQKQLafYXRuLwMt7F_ijxEvGpKbYN_FiQ-s5WXm7afxp1vBRaUY5pFcxH3iX90zvI4J3kiFKWNovHjjICC2eN0Z2SsIWQRYk_LdDqA7QLW-mf1ZkDDkk1MEUYqJ8gqjCe3W8RsSUDU8/s200/Waterfox_Logo_%2528redesigned_2015%2529.png" alt="Waterfox Browser Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v71.4</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/waterfox-browser-free-download.html">Waterfox Browser Free Download</a></h3>
     <p class="sw-desc">Waterfox is an open-source web browser for 64-bit operating systems, with an aim to be speedy and ethical, and</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Feb 2019</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-opensource">Open Source</span>
       <span class="badge badge-primary">🧭 Browsers</span>
@@ -1328,6 +1394,41 @@ ul, ol { margin: 0; padding: 0; }
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); go(); }
     });
+  }
+
+  /* ---------- Slideshow ---------- */
+  function initSlideshow() {
+    var ss = document.getElementById('latestSlideshow');
+    if (!ss) return;
+    var slides = ss.querySelectorAll('.slide');
+    var dots = ss.querySelectorAll('.dot');
+    if (!slides.length) return;
+    var cur = 0;
+    var timer = null;
+
+    function show(i) {
+      cur = (i + slides.length) % slides.length;
+      for (var j = 0; j < slides.length; j++) {
+        slides[j].classList.toggle('active', j === cur);
+        if (dots[j]) dots[j].classList.toggle('on', j === cur);
+      }
+    }
+    function next() { show(cur + 1); restart(); }
+    function prev() { show(cur - 1); restart(); }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show(cur + 1); }, 6000);
+    }
+    var btnNext = ss.querySelector('#slideNext');
+    var btnPrev = ss.querySelector('#slidePrev');
+    if (btnNext) btnNext.addEventListener('click', next);
+    if (btnPrev) btnPrev.addEventListener('click', prev);
+    for (var i = 0; i < dots.length; i++) {
+      (function (idx) {
+        dots[idx].addEventListener('click', function () { show(idx); restart(); });
+      })(i);
+    }
+    restart();
   }
 
   /* ---------- Listing sort select ---------- */
@@ -1795,7 +1896,8 @@ ul, ol { margin: 0; padding: 0; }
       + (img || ph) + '</a>';
     var tier = TIER_LABELS[it.tier] || '';
     var meta = '<span>&#9989; Windows</span>';
-    if (it.year) meta += '<span>' + escapeHtml(it.year) + '</span>';
+    if (it.year) meta += '<span>&#169; ' + escapeHtml(it.year) + '</span>';
+    if (it.date) meta += '<span>&#128197; ' + escapeHtml(it.date) + '</span>';
     if (it.version) meta += '<span class="badge-ver">' + escapeHtml(it.version) + '</span>';
     return '<article class="sw-card">' + thumb
       + '<div class="sw-body">'
@@ -1885,6 +1987,7 @@ ul, ol { margin: 0; padding: 0; }
     initNavSearchBtn();
     initHeroSearchBtn();
     initSort();
+    initSlideshow();
     initToastLinks();
     initLightbox();
     initSearch('navSearch');

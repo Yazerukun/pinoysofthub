@@ -476,14 +476,46 @@ ul, ol { margin: 0; padding: 0; }
 .sw-thumb .placeholder { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2.1rem; }
 .sw-thumb .badge-ver { position: absolute; bottom: 10px; right: 10px; background: rgba(4, 10, 20, .8); color: #dbe7f7; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-thumb .badge-top { position: absolute; top: 10px; left: 10px; }
+.sw-year { position: absolute; top: 10px; left: 10px; background: rgba(4, 10, 20, .8); color: var(--text-2); font-size: .68rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-body { padding: 15px 16px 16px; display: flex; flex-direction: column; flex: 1; gap: 8px; }
 .sw-title { font-size: .99rem; font-weight: 700; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .sw-title a { color: var(--text); }
 .sw-title a:hover { color: var(--primary-strong); }
 .sw-desc { font-size: .83rem; color: var(--text-3); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sw-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .76rem; color: var(--text-3); }
+.sw-row span { display: inline-flex; align-items: center; gap: 4px; }
+.sw-date { color: var(--text-2); font-weight: 500; }
+.sw-dl { color: var(--primary-strong); font-weight: 600; }
+.sw-dev { color: var(--text-3); font-style: italic; }
 .sw-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .74rem; color: var(--text-3); margin-top: auto; }
 .sw-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .sw-card .btn { margin-top: 10px; }
+
+/* Slideshow — latest software carousel */
+.slide-show { position: relative; max-width: 1240px; margin: 26px auto 0; padding: 0 18px; box-sizing: border-box; }
+.slide-show .slides { position: relative; height: 340px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-strong); }
+.slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s ease; pointer-events: none; display: flex; align-items: flex-end; }
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 1; }
+.slide-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 8, 16, .92) 0%, rgba(3, 8, 16, .68) 45%, rgba(3, 8, 16, .18) 100%); }
+.slide-body { position: relative; z-index: 2; max-width: 620px; padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 10px; }
+.slide-badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.slide-title { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin: 0; }
+.slide-title a { color: #fff; }
+.slide-title a:hover { color: var(--primary-soft); }
+.slide-desc { font-size: .92rem; color: rgba(255,255,255,.78); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.slide-cta { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border-radius: var(--radius-full); border: 1px solid var(--border-strong); background: rgba(4, 10, 20, .75); color: #fff; font-size: 1.25rem; cursor: pointer; display: grid; place-items: center; transition: all var(--trans); }
+.slide-arrow:hover { background: var(--primary); border-color: var(--primary-strong); }
+.slide-arrow.prev { left: 14px; }
+.slide-arrow.next { right: 14px; }
+.slide-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+.slide-dots .dot { width: 10px; height: 10px; border-radius: var(--radius-full); border: none; background: var(--border-strong); cursor: pointer; padding: 0; transition: all var(--trans); }
+.slide-dots .dot.on { background: var(--primary); width: 22px; }
+@media (max-width: 760px) {
+  .slide-show .slides { height: 300px; }
+  .slide-body { padding: 18px; }
+  .slide-title { font-size: 1.15rem; }
+}
 
 /* Compact list item (staff picks / related) */
 .related-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
@@ -884,776 +916,872 @@ ul, ol { margin: 0; padding: 0; }
 <div class="list-head container">
   <span class="crumb-note">✦ New</span>
   <h1>New Releases</h1>
-  <p class="sub">Titles are ordered by when they were listed on their source — most recent: Jul 2026. Newest additions to the PinoySoftHub catalogue, newest first.</p>
+  <p class="sub">Titles are ordered by when they were listed on their source — most recent: Sep 2026. Newest additions to the PinoySoftHub catalogue, newest first.</p>
 </div>
 <div class="container">
   <div class="sw-grid">
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="grand theft auto iii (gta 3) free download" data-listed="202607">
-  <a href="software/grand-theft-auto-iii-gta-3-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgTSv0XQG2LZhgwrucEIIf6OasNfS5gGuwKomcqh8kL_X3JWxRP12SjUsqTEY0oFTm1G_alSjdCmo_cvTDSAi7Dds5v8hShPToxvOui1AVjBxubFy8JKiTcLo4aCcExASkVCZaSXvRt1ZjibAM9xC38slGW5rwJp0sL2jJXIBB7_ICXIju6rW_ptY8fTpc=w320-h320" alt="Grand Theft Auto III (GTA 3) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="reviversoft pc reviver 4.0.3.28" data-listed="202609" data-year="2026" data-date="Sep 10, 2026">
+  <a href="software/reviversoft-pc-reviver-40328.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/ReviverSoft-PC-Reviver-Cover.avif" alt="ReviverSoft PC Reviver 4.0.3.28" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v4.0.3.28</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
-    <h3 class="sw-title"><a href="software/grand-theft-auto-iii-gta-3-free-download.html">Grand Theft Auto III (GTA 3) Free Download</a></h3>
-    <p class="sw-desc">Grand Theft Auto III (GTA 3) is one of the most influential open-world action-adventure games ever created. De</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/grand-theft-auto-iii-gta-3-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="grand theft auto iv (gta iv) free download" data-listed="202607">
-  <a href="software/grand-theft-auto-iv-gta-iv-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjeqSZxvTtXHtFVkJudibBDaNYF9bxdjLoxvdWr1eJWZ5nDAX-hGbWnk4McWhUdjSvVIcX0fgO9qiFXwAZ9Mos07R42uiHRuZZpwaRxfD3uVhoZDJzfe5mB2X86-JXGQjNgN6zIVu5w4XOJRMZu9uFxvPoaxHSpgv9lu3gk66i0bXHvz2UrN2JoJwPLuHk=s1600" alt="Grand Theft Auto IV (GTA IV) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v1.8</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/grand-theft-auto-iv-gta-iv-free-download.html">Grand Theft Auto IV (GTA IV) Free Download</a></h3>
-    <p class="sw-desc">Grand Theft Auto IV (GTA IV) is an award-winning open-world action game developed by Rockstar Games. Set in th</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/grand-theft-auto-iv-gta-iv-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="64-bit" data-title="grand theft auto v (gta 5) free download" data-listed="202607">
-  <a href="software/grand-theft-auto-v-gta-5-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiSGQvF0BLHwex0G7pibT9lDV2RqDgZLu71YGK5cj0GIwS8L4xFvX1fTbdAE5I90AHHU0mXBgNNXFyafmlenXexszkMtJSEq1-8IE862fHnxzDwB9eQiebdXDFso9GBZV9VU45yXPTM0OVyC2g_6lYIIXs0FlT63iVmzG40ZNoxZmCB-8PVGUG00gmZPS4=w262-h320" alt="Grand Theft Auto V (GTA 5) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/grand-theft-auto-v-gta-5-free-download.html">Grand Theft Auto V (GTA 5) Free Download</a></h3>
-    <p class="sw-desc">Grand Theft Auto V (GTA 5) is one of the best-selling video games of all time, developed by Rockstar Games. Se</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/grand-theft-auto-v-gta-5-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="grand theft auto: vice city (gta vice city) free download" data-listed="202607">
-  <a href="software/grand-theft-auto-vice-city-gta-vice-city-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEj-0NVOvUlR3GCBsfyhugoQIV1N5Z_5TnbYKuzRSrsgKhlVLHIIUfUMpzXYJIlJYivWhnZ4_J7opc2FHq-73ZYRzWL3FStz_zBFsucpuhcgH0vXXeLVljgJLsJYdZ-j0mGJrLgng2fUkZtCwaXbZM4kGdvRgLNKvqxF3WgQHS1sF1gxyNKAM1KeaurbdH0=s1600" alt="Grand Theft Auto: Vice City (GTA Vice City) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v1.3</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/grand-theft-auto-vice-city-gta-vice-city-free-download.html">Grand Theft Auto: Vice City (GTA Vice City) Free Download</a></h3>
-    <p class="sw-desc">Grand Theft Auto: Vice City is one of the most iconic games in the Grand Theft Auto series, developed by Rocks</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/grand-theft-auto-vice-city-gta-vice-city-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="gta san andreas free download" data-listed="202607">
-  <a href="software/gta-san-andreas-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgKtnhl87Kw8-vaFcCB3ZibH-sBcsqvzT1CtpRGlcK_q2cpMGta3YAtABxqIz0FegBy5scymj9Z53rtCI9zMq_ioc_8gCyc0NaG6PEv5nkod7gJAmP9PhPTV8lvOkeJgIpZ7_0AFQy0yN0wJeISzaGBKgCUAkdJxJhf9oJiDjKOYwi5VQIT5IETu-kIHQE" alt="GTA San Andreas Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v4.2</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/gta-san-andreas-free-download.html">GTA San Andreas Free Download</a></h3>
-    <p class="sw-desc">Grand Theft Auto: San Andreas is one of the most successful and beloved games developed by Rockstar Games. Pla</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/gta-san-andreas-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="need for speed carbon free download" data-listed="202607">
-  <a href="software/need-for-speed-carbon-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiDyDM1Dchv0fgdcvElBU_GCW2mH3hOR_85wtA71KGDmKmKHfkBpMJZzFGfOEGhYizLSLTACAsYscLAQoxaAYXJFPza8Pw1qELgDt2ttzoAZRaVHAUYHt2wRXF1IaCkLSji0XlEwzxuJeEZYFhSkVtn2FRJwAwqaIOLKO-9Ux5dQ2Oca1SgEmm6dDiRAtA=w320-h320" alt="Need for Speed Carbon Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v1.7</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-carbon-free-download.html">Need for Speed Carbon Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Carbon continues the story after Most Wanted and introduces players to a city divided into terr</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-carbon-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="need for speed high stakes free download" data-listed="202607">
-  <a href="software/need-for-speed-high-stakes-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEik2dEjKavH8ti3mP4me7WFIpculJ-dWYcBe_quozlfO-ARmYQtM3CaqhV6BHd1TzQytvi-U04xgU53FDl19rh2D52-QPDEMQQdUsJKNH4s3n-9rM5WJeSJ3NdZB2LImQsi9dvRURhWSm10DQayPpb_sU8z8f3NR0mLCKY2dDsxyH42Lrb95GbJ6ahMA5w=s1600" alt="Need for Speed High Stakes Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-high-stakes-free-download.html">Need for Speed High Stakes Free Download</a></h3>
-    <p class="sw-desc">Need for Speed: High Stakes (released as Road Challenge in some regions) is a classic racing game developed by</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-high-stakes-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="need for speed hot pursuit 2 free download" data-listed="202607">
-  <a href="software/need-for-speed-hot-pursuit-2-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEg2Lcht3bX8DO55xKgH5zxz8akvNgdCi6HS4QMXSG8RzGGv7hCePJ17xO3zBO05dPoWXH2v2SKqCaC7KjF4Uht0MB655MsG1ja6jXTJB9y1HgAP8qDfGywawo_sgUINCmplVOnnUxTqsdbtqOMfGI8cJWutLjyjkEd-TWo7kSY3g5BAi4-CZZjV2iSNNWw=w320-h320" alt="Need for Speed Hot Pursuit 2 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-hot-pursuit-2-free-download.html">Need for Speed Hot Pursuit 2 Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Hot Pursuit 2 brought back the thrilling police chase gameplay that made the franchise famous. </p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-hot-pursuit-2-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="need for speed hot pursuit free download" data-listed="202607">
-  <a href="software/need-for-speed-hot-pursuit-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgDZFWKq-xsp05E2gpvu85L2I_yfv21wAh2nJl-9TfFvkofuSHNvpbxmzJUZz61DyRy00EUIMDrXgNXy2ECrNreug3i1EGoTwJuV_u4COqaSmJrGVttWy9xRJpE55w8jT7NXql9o6v_V4UUPLm1IZJbmSSfXfUyMb_19sdBD7BNrpUdpnDY1j5RetzBa-8=w320-h320" alt="Need for Speed Hot Pursuit Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v7.0</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-hot-pursuit-free-download.html">Need for Speed Hot Pursuit Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Hot Pursuit delivers adrenaline-fueled racing with high-speed pursuits, exotic supercars, and c</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-hot-pursuit-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="64-bit" data-title="need for speed hot pursuit remastered free download" data-listed="202607">
-  <a href="software/need-for-speed-hot-pursuit-remastered-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiSYEFW1XE2sQBdFoHm24GX-QY2pBYDAOUTFlnXTd6HeZbkhMbm-N4kMS-kbasMyCdPcy3nEbMlEuMgOhELUS_IBC06AY1xLj7bYtF3np2pYjQbSS-w-yHuoXo5vpfjdNTVunrzDN0GssxxECCyBcQnbcYfM71dFHsl5HRDwjgQDyt8ZkCFKeL9Trv1m_0=w320-h320" alt="Need for Speed Hot Pursuit Remastered Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v34.4</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-hot-pursuit-remastered-free-download.html">Need for Speed Hot Pursuit Remastered Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Hot Pursuit Remastered is an enhanced edition of the classic Hot Pursuit racing game developed </p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-hot-pursuit-remastered-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="need for speed most wanted 2 free download" data-listed="202607">
-  <a href="software/need-for-speed-most-wanted-2-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEggeOmP8ss1oDBQbIkbYs6qLEljfsxK9CDbQypM3viMYMFGnLHAiw1WAiIBtUXBu6aIc9zfjPmg8Ri6zkMcKsx3gGhUPd8sDPV9cGmWPAXFLiO2kQkgaGVRchq_8dpuI1LPfVjJxy644l2l1t_mA1J-HILvzTYwczaC92Cap5bhVwWOAdRZFIBvzztEHcU=w320-h320" alt="Need for Speed Most Wanted 2 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v2.4</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-most-wanted-2-free-download.html">Need for Speed Most Wanted 2 Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Most Wanted 2 (2012) reimagines the classic Most Wanted experience with modern graphics, an ope</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-most-wanted-2-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="need for speed most wanted free download" data-listed="202607">
-  <a href="software/need-for-speed-most-wanted-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhaO_8cphEbaOUPaQWwo05yytPT_sOap5wR8FwRnU8fs6HqUN01jszV6Ym2rmHfzGtdTQxTjiCKYKAi9TAeAkPo6Kpx24tO9oZN4LrDgg4PY5aeJnAS2RrJsT5DYb7qTMVxx246vMUg-JyylVs30J_F4yqMFtrNYlKOLAzNsXEsN4kTyuYsHiS3a0arwu8=w284-h400" alt="Need for Speed Most Wanted Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v1.4</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-most-wanted-free-download.html">Need for Speed Most Wanted Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Most Wanted is widely regarded as one of the greatest racing games ever created. Released by EA</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-most-wanted-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="64-bit" data-title="need for speed payback free download" data-listed="202607">
-  <a href="software/need-for-speed-payback-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhLxrT4JyU_xHldSDBblOkIeHTc64PQalryIB9Pk2z69rr3pFPr9-iRWpDV60reZDsTgUuLT4BtKo4F_CFtxAPcWrbB4VoD224X2VHY77zWJMVi1T9QPG7L_cZmn8-7snOvVJPqVGDVvx3A__NUDIut1uX28CMOBVte-nSezZ1X2ddg8cYxU-Qxzpzdj7M" alt="Need for Speed Payback Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-payback-free-download.html">Need for Speed Payback Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Payback is an action-packed open-world racing game developed by Ghost Games and published by El</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-payback-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="need for speed prostreet free download" data-listed="202607">
-  <a href="software/need-for-speed-prostreet-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEh_0KyWjc9YdwmvczUPjfP9PmqdRRXKCdibBz7Hb-6iKvEvE9KM0Zm3srTGYy1o8ZdkwHOKZRDMgYLODW-kW0I69Cwb85TT4Qeb6B18KYnCtv0zewGX-Ies5HRZjs7DtyQI4Vdr4bhTTj2tiVTY0quUPHXhkrh8WC1RzFi3mbqw34EOG1pdKLxROPJ_kZ0=w284-h400" alt="Need for Speed ProStreet Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v2.8</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-prostreet-free-download.html">Need for Speed ProStreet Free Download</a></h3>
-    <p class="sw-desc">Need for Speed ProStreet takes the legendary racing franchise into the world of organized legal racing events.</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-prostreet-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="64-bit" data-title="need for speed rivals free download" data-listed="202607">
-  <a href="software/need-for-speed-rivals-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhfzExT-lM0oYNX2uxgBw1YBL02h6Z8SZG_nwZY9hyV5eEAQPnxIPqvtIPOlr3KH5FfNOwifKjdjOVWvaOL55QhTOvGfD5xMbgAQNnxAvZoWSKxQouZNT9DEnrJZQrxtjGKle9V1SJszPhjSaRhxwKCGXFUVD92HBBDQ52iY2W3HjTkpD10YRZF-I667X8=w320-h320" alt="Need for Speed Rivals Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v2.4</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-rivals-free-download.html">Need for Speed Rivals Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Rivals is a fast-paced open-world racing game developed by Ghost Games in collaboration with Cr</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-rivals-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="need for speed: the run free download" data-listed="202607">
-  <a href="software/need-for-speed-the-run-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhnSLN4tc6r5LoL7L84e_4uarpxf7p7Sf-bQ4P9q9jxNWJFOrnC6FwAxUCuVhPxer-KR9yeJBA7OHTjqilp5XzLrzm5RnQTqx78hX50V0iAUAko5IvkCvCVjTBW1al3Wc8-364wgoJEioUG3pATob2CtxW00sJ1F-Wm3tDjWGDgL995X7nWeDVWNl3M2AA=w264-h320" alt="Need for Speed: The Run Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v2.4</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-the-run-free-download.html">Need for Speed: The Run Free Download</a></h3>
-    <p class="sw-desc">Need for Speed: The Run is an action-packed racing game developed by EA Games and powered by the Frostbite 2 e</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-the-run-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="need for speed shift 2 unleashed free download" data-listed="202607">
-  <a href="software/need-for-speed-shift-2-unleashed-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjmZltzNBMtKEbrXhUl1f6TnR6_HOhQsuE0kWpe28ylSGzNfSMHVcGsUE1K4QISc2RGHX1TtB2nJ10YQFbT-DraEIl43WaMDHUSjZN7ngKg9yvcFvnMf586FHmKq-8BzTIqeJSD0gvKwFsQ0yzC81QsSwCsVS5WOow0dv5cawLF6LLGyJUCFebk0SQGaEg=w320-h320" alt="Need for Speed Shift 2 Unleashed Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v1.6</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-shift-2-unleashed-free-download.html">Need for Speed Shift 2 Unleashed Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Shift 2 Unleashed offers a realistic racing simulation experience with immersive cockpit views,</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-shift-2-unleashed-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="need for speed shift free download" data-listed="202607">
-  <a href="software/need-for-speed-shift-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEirbNnhQ81Xq2RuEt5vWVNWkULQUscWJx_u_0xqjfhJDPy-LHX0UGsk0Hfj03EA1KrneWLdJ4IE_4d2cVoJgISmLN-DXOIBUPaqRafY91c27VIz3ZsfmuGM2JCTr6kn1GnKqR4k2C-el_yLyKPi_WtjRP_s6CPLi_Lf96Q2gyeoMOkXUkysezBNhI0aT7M=w231-h320" alt="Need for Speed Shift Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v1.6</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-shift-free-download.html">Need for Speed Shift Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Shift is a realistic racing simulation game developed by EA Games in collaboration with Slightl</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-shift-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="64-bit" data-title="need for speed unbound free download" data-listed="202607">
-  <a href="software/need-for-speed-unbound-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEif81CnyV5QiPl3mYkvEAszvtvQ4tZFlsHsYZUjW3qauEytXG2beK4r3FJdtkyC5kJgZpvAwjMCcyC-JSLAc8A3ntkMnTwU5CJA63q5Hz7_ONNHSvAZkquVjfIZUj6wi9bnyjji-YHoOVl5QVGyvwPQgnsvnbI3u1jUJRLj31bq6S224KXkwYj9r-nSWXE=w400-h400" alt="Need for Speed Unbound Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v38.1</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-unbound-free-download.html">Need for Speed Unbound Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Unbound is the latest open-world street racing title developed by Criterion Games and published</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-unbound-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="need for speed undercover free download" data-listed="202607">
-  <a href="software/need-for-speed-undercover-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgMkamSciqj2tqSetRvOrd0qGYdnZOWNg_jv3a_Qxa-XPl9lK3wHTLx7IAq_sBwZ7hrMsyfF8LP_9PGdLjL5qNaARyJrdURGnW0Ok0caDcmBdYaNnTEuFzHcjVfHv8aODRqA4e-ADFLX0DFP7efdR5BNprCP3ELfTKXyRpFV8AK2B_d7kdZy6HtdevRC_0=w320-h320" alt="Need for Speed Undercover Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v3.0</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-undercover-free-download.html">Need for Speed Undercover Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Undercover combines high-speed street racing with an action-packed undercover police storyline.</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-undercover-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="adobe premiere cs6 free download" data-listed="202606">
-  <a href="software/adobe-premiere-cs6-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgFAyhgz03ep4FXgqW0VPYiAF56Wvss_B3s4j4dH0uqSzDVFFKhkp4IM2Zyym4WCiK1PhLSnKBiR4HB5JqdE1ReESkFKhbUge1CcywdspV5xvTnel-99DvnzBiY4T_PuGR6u_7BWgBoWkiAh_GUtdf1p3bZI4D7O_lHu5ZA-5hstN6hB3atfCZGBcBGjHE" alt="Adobe Premiere CS6 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/adobe-premiere-cs6-free-download.html">Adobe Premiere CS6 Free Download</a></h3>
-    <p class="sw-desc">Adobe Premiere CS6 is one of the most popular video editing applications ever released by Adobe. Designed for </p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/adobe-premiere-cs6-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2022 v22.0 free download" data-listed="202606">
-  <a href="software/adobe-premiere-pro-2022-v220-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjQww4nHVWrnw5ZWixdyTyhpXtWnG7DLl9tLyzRqlY-sfd6W0ZPyRSO3OxkoExKG3SDfCDEHay5AhGaVNoqPQNTSgjz5HHW_aQm2JpScCBi1BEKRHW1Lnwgt4X2g0JZYVOuz4z3D8ShLzKwtC30P8xnQ9cRby8yj9SNMmUJGAgMHhKw8D2iou6q622pDqI=w200-h195" alt="Adobe Premiere Pro 2022 v22.0 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">vv22.0</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/adobe-premiere-pro-2022-v220-free-download.html">Adobe Premiere Pro 2022 v22.0 Free Download</a></h3>
-    <p class="sw-desc">Adobe Premiere Pro 2022 v22.0 is a professional video editing solution developed by Adobe that combines powerf</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/adobe-premiere-pro-2022-v220-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2024 v24.6 free download" data-listed="202606">
-  <a href="software/adobe-premiere-pro-2024-v246-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjAFlqaAb9i_c9njHM-P1xsYZSi_jDanQRX44MUw0kaILz6YyK7ox8xXNiRjWvt1-P0pmvxYcyeXTap0v0w7zaPd2hI5RFlwXmBbvtzUq0t9iev4s1Vyqg7_4yy2fcFesMh_9bq9eAhbkq-XQhG0hb_TEiRCJrysFEaoMsFGAKJHAvjr-42Shc7a2dAWvU=w320-h320" alt="Adobe Premiere Pro 2024 v24.6 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">vv24.6</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/adobe-premiere-pro-2024-v246-free-download.html">Adobe Premiere Pro 2024 v24.6 Free Download</a></h3>
-    <p class="sw-desc">Adobe Premiere Pro 2024 v24.6 represents a significant advancement in professional video production software. </p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/adobe-premiere-pro-2024-v246-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2025 v25.6 free download" data-listed="202606">
-  <a href="software/adobe-premiere-pro-2025-v256-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEg9WS-DXG0DGZNytzzgY7h1Zy3JzBKpLNrYgp0E0zi8XmB-Nb3r599wz-ggMnF4AzfUInro_ZW_kx_KLBi4M1nUw0TL1_Fmo2ns_GzoT9X-6UL-UFKv6bC_Rdqs9OIKdRg1oCEWDIE_AnqcYT4w8UIQthzvJeRUGpCz0eWuyax14NI4RW5emJfQUFKXYts=w311-h320" alt="Adobe Premiere Pro 2025 v25.6 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">vv25.6</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/adobe-premiere-pro-2025-v256-free-download.html">Adobe Premiere Pro 2025 v25.6 Free Download</a></h3>
-    <p class="sw-desc">Adobe Premiere Pro 2025 v25.6 is a next-generation video editing platform built to meet the demands of profess</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/adobe-premiere-pro-2025-v256-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2026 free download" data-listed="202606">
-  <a href="software/adobe-premiere-pro-2026-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEi3e7m2SbkFueqsUjv_YHqF9ePLBqFuHGAMxjWaY-6DSrAQwDOa5ruZnZotuR-P6QkMykiogUMGGe9RgOlDHxMD1x8t-mYN-W_DX2gzuKM85aWLxbSPF-8n6NQemus1oCUpAiZqltITUn2HoNGHiY9HL49wRwbt1HHR72ZE_G8bXBLB1gnTMQY1QG25jWw=w320-h320" alt="Adobe Premiere Pro 2026 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v3.8</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/adobe-premiere-pro-2026-free-download.html">Adobe Premiere Pro 2026 Free Download</a></h3>
-    <p class="sw-desc">Adobe Premiere Pro 2026 is the latest release of Adobe&#x27;s industry-standard video editing software, designed to</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
-      <span class="badge badge-danger">🔥 High-end</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/adobe-premiere-pro-2026-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="need for speed underground 2 free download" data-listed="202606">
-  <a href="software/need-for-speed-underground-2-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiSfgV8k5DUn3HyaJ2FPfFB-r8pyC3Ts1J1tPKvs2j2kVa6dLULDp-4BE_svBWryd2rAkZy8U100J5HFiwHt6Cssxm7iG4pmtDUYTZWDZmiwCO432FF0r5RDOWA0FC-0XDy6jEkMEFiXBFZ4Pm7oFRtYaalFZ4jSvgUlTLf7J2RYwF_OVXe3mAAIt7DYyM=w213-h320" alt="Need for Speed Underground 2 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v1.2</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-underground-2-free-download.html">Need for Speed Underground 2 Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Underground 2 expanded upon the success of the original game by introducing a fully explorable </p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-underground-2-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="games" data-license="free" data-arch="x64" data-title="need for speed underground free download" data-listed="202606">
-  <a href="software/need-for-speed-underground-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎮&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjdw_75cDnC53RzumcY45gNPhFxQrKiXcipEJ7LSls8pnY-2155FF828kPTWJLEaLXBCSNMEfnhchURmvvWqcohMsX02RteMD9PQpAxuUlsZSFP_vJTxiUnQxsyu2BXjFoUh4M4-KKxQlhFasGsrv71Li7ExW5WwW6D_UillHBN3i9321ryafi1W9oQwJU" alt="Need for Speed Underground Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v1.4</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/need-for-speed-underground-free-download.html">Need for Speed Underground Free Download</a></h3>
-    <p class="sw-desc">Need for Speed Underground is one of the most iconic street racing games ever released by Electronic Arts. Fea</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎮 Games</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/need-for-speed-underground-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="x64" data-title="wondershare filmora 2023 free download" data-listed="202606">
-  <a href="software/wondershare-filmora-2023-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhSncp1BKt-wDqQ2sKxB8bxZVNUAuiCmVtgKJXCGves2To7tzdqZz_Maat4KitdreZZe2YLYuwjMZtwTXa6TUcZsYNwITzY2CbMFSEZwxKvgSMcrhayWIPOd3VgFf22eVY0lVGBKE8ZzNEiTHOq746vMA7RM5iQCc2f1YejBe3koevxADMthGOQ9SOa65c=w320-h320" alt="Wondershare Filmora 2023 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/wondershare-filmora-2023-free-download.html">Wondershare Filmora 2023 Free Download</a></h3>
-    <p class="sw-desc">Wondershare Filmora 2023 is a powerful yet easy-to-use video editing solution designed for creators who want p</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎞️ Video Editing</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/wondershare-filmora-2023-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="wondershare filmora 2024 free download" data-listed="202606">
-  <a href="software/wondershare-filmora-2024-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEg0JEHcaf1KFk1gJybzkLYHPaibB6SRu0msCDe74ShpUcmcJvxV25qKDmmoF1V0yHQ9ip5qrgBjKK1jovonVz6eHofzIuF9a3OKkAayYbPv59x8E7scyxMffBj5mn5RzHg8GaKmBtedHQItPRAH3mBS8XWmRG3S0koBHxJold6cKWXxy9ZPFQoHt5w8MkQ=w200-h200" alt="Wondershare Filmora 2024 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/wondershare-filmora-2024-free-download.html">Wondershare Filmora 2024 Free Download</a></h3>
-    <p class="sw-desc">Wondershare Filmora 2024 is a feature-rich video editor that combines simplicity with professional editing cap</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎞️ Video Editing</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/wondershare-filmora-2024-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="wondershare filmora 2025 free download" data-listed="202606">
-  <a href="software/wondershare-filmora-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEg9iveiJSSbZ5I6T1rs_KkA95wjf3qL82yKOt1rVWHkErEhqiK8iNhgfKnvE0cYxIYiKWewvCDl_ytZySi7kaZ3wAgOe76W3l50t9x7HbtoMmQ-d1p8tTN_M0SuEhq3AHT5uAc3C-zj19fZDKk9CR0_MvOWmFD7OnG6nJLkqjIXwVsSvwQG9xmNT5D2OSY" alt="Wondershare Filmora 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/wondershare-filmora-2025-free-download.html">Wondershare Filmora 2025 Free Download</a></h3>
-    <p class="sw-desc">Wondershare Filmora 2025 is the latest version of the popular video editing software developed by . Designed f</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎞️ Video Editing</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/wondershare-filmora-2025-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="productivity" data-license="free" data-arch="64-bit" data-title="robotstudio 2024 free download" data-listed="202605">
-  <a href="software/robotstudio-2024-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjvj_aKw8G_1PEWFGEI5akIVP-8-rgDtbR0O3rScT0wFaNhIDGbACErk8X0OULvxTEknloSLxp8ThW3YjXXoMmBmlg96K2je1_RSUvN-KvwnYdZB31Ufj6hWUicmnPd2Mu9R2SYjG_AzIj8QmVRVe4AI-tlqRlyx7-RBvOM8Ux24OdP2pA16kR86LVZpsM=w208-h320" alt="RobotStudio 2024 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v1.3</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/robotstudio-2024-free-download.html">RobotStudio 2024 Free Download</a></h3>
-    <p class="sw-desc">RobotStudio 2024 is an advanced robotic simulation and offline programming software developed by ABB. It enabl</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free-trial">Free Trial</span>
-      <span class="badge badge-primary">📋 Productivity</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/robotstudio-2024-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="productivity" data-license="free" data-arch="64-bit" data-title="robotstudio 2025 free download" data-listed="202605">
-  <a href="software/robotstudio-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjJbEoPFHUD0RR1SmkBlH0VVYOsvNDkzX9PpgfbZHdjelMBgocNC10dwmQf7MTJNnpkF24to6Zy7mGBmRiMsgtY8FnHuJs4hMu7eFyFaF7pY7dcYT3Jdsfd4b29u64fbyqZxYg1NcVm6vSCeXMdoRmegTNA35NLfKksQr7vyOzHKNXGzJwj_OnKFQiAVuU=w320-h320" alt="RobotStudio 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/robotstudio-2025-free-download.html">RobotStudio 2025 Free Download</a></h3>
-    <p class="sw-desc">RobotStudio 2025 is the newest generation of ABB’s industrial robotic simulation platform designed for smart m</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free-trial">Free Trial</span>
-      <span class="badge badge-primary">📋 Productivity</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/robotstudio-2025-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe illustrator 2024 free download" data-listed="202605">
-  <a href="software/adobe-illustrator-2024-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhJK_q_lQAQfQKbWFslO_UGHGsRQ3O_CLfnrgF5s4DiFTpgOwaC4RFE7ikx5bKCfCs-9ovQBRzt522181X7M8x1D0ePZ_PvKyYzXM9oD8nIe3gB2rIUD4LHUj5qqx608AFsNtGKPXREmJbTIssb_7mtwTeRZvUlT3_L-wYy9ZphzdOqLh6BvzSwJinE8nY=w312-h320" alt="Adobe Illustrator 2024 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v2.2</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/adobe-illustrator-2024-free-download.html">Adobe Illustrator 2024 Free Download</a></h3>
-    <p class="sw-desc">Adobe Illustrator 2024 is a professional vector graphics design software developed by Adobe for graphic design</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/adobe-illustrator-2024-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="adobe premiere pro 2024 free download" data-listed="202605">
-  <a href="software/adobe-premiere-pro-2024-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgdXwROktcRi6XBMZt7APO50hhsc_q5JR2-F2XFRjHXhN93rjFtsKcnEqXbnxLDUkDMamD6cKLv2wmYoulMGE7lMB77mV2Oz77yoChoaDWpIM7J5jNanllmo0C0tBPfO-PvalnLISv182hP02YxKgEXUHu4D99e87uSHI-podNQHeiMxX2fY2Iue1p-haM=w320-h320" alt="Adobe Premiere Pro 2024 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v2.1</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/adobe-premiere-pro-2024-free-download.html">Adobe Premiere Pro 2024 Free Download</a></h3>
-    <p class="sw-desc">Adobe Premiere Pro 2024 is a professional video editing software developed by Adobe for filmmakers, YouTubers,</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/adobe-premiere-pro-2024-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autocad 2024 free download" data-listed="202605">
-  <a href="software/autocad-2024-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEieQ1b_Xxb0a2WTIFWtiOTtAtT-azXclBqhT90dxPFneihZ8Eq6mWUz-2yvbJC7TX3ytEkJPRjQNQsi9Eyv06FndYdjzMrUQmHzNzenIHW1fczPauEdq8k1-zfKWqzZznDiPhrq-Bby_IJhdWEyURJ1GXhNerIjYNU8-VmYBCmTfT_3Ihn5xifThm4xufs=w320-h320" alt="AutoCAD 2024 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v2.5</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/autocad-2024-free-download.html">AutoCAD 2024 Free Download</a></h3>
-    <p class="sw-desc">AutoCAD 2024 by Autodesk is a professional CAD software solution designed for engineers, architects, designers</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/autocad-2024-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="autodesk 3ds max 2024 free download" data-listed="202605">
-  <a href="software/autodesk-3ds-max-2024-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiMx0hbojrXphyHBHS8oC351PZOxd7GiBH02k3OpVm6wVMgP0A6pkDmvZdkrFOrnOq7mnJzf7QSTzduGxuJxM1XLr43U8pUo3woAg_-h47pX0Uf6-jPaKsFltFmhUhMLFLSbs1KaF-zl6oywNpZL0ezkkgyutxMH3AVWAjXNXYBO43ifA58YxJxgRNXugY=w227-h320" alt="Autodesk 3ds Max 2024 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v4.8</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/autodesk-3ds-max-2024-free-download.html">Autodesk 3ds Max 2024 Free Download</a></h3>
-    <p class="sw-desc">Autodesk 3ds Max 2024 is a professional 3D modeling, rendering, and animation software widely used in game dev</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
-      <span class="badge badge-warning">⚖️ Mid-range</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/autodesk-3ds-max-2024-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="productivity" data-license="free" data-arch="64-bit" data-title="autodesk revit 2025 free download" data-listed="202605">
-  <a href="software/autodesk-revit-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEi4TRV0GR9sB-R_u3E2woY4MKJVO17y7z7xcsLfam0GUCY3EIFWD7eo3x4BgNXti6DLAgxzcXRRARE1WFzmHiI4BZPUU5mk5c20CjDZ42FyCxRmjkuC63HlACl_qJUQPqyNjOdgPM8CGSLEQ8e2HqMiuagRjL3fLj1ft56-6wR117uZRmnCmrdKl6l-nLQ=w320-h320" alt="Autodesk Revit 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v5.8</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/autodesk-revit-2025-free-download.html">Autodesk Revit 2025 Free Download</a></h3>
-    <p class="sw-desc">Autodesk Revit 2025 is a leading BIM (Building Information Modeling) software used by architects, structural e</p>
+    <h3 class="sw-title"><a href="software/reviversoft-pc-reviver-40328.html">ReviverSoft PC Reviver 4.0.3.28</a></h3>
+    <p class="sw-desc">ReviverSoft PC Reviver is a multi-purpose utility that will diagnose errors on your PC, and safely repair them</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 10, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📋 Productivity</span>
       <span class="badge badge-warning">⚖️ Mid-range</span>
     </div>
-    <a class="btn btn-secondary btn-compact" href="software/autodesk-revit-2025-free-download.html">View Details</a>
+    <a class="btn btn-secondary btn-compact" href="software/reviversoft-pc-reviver-40328.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="productivity" data-license="free" data-arch="64-bit" data-title="blender 5.0.1 (x64) free download" data-listed="202605">
-  <a href="software/blender-501-x64-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEg6PZTU1L8xoLEmIYdvhKsWKHy9NsgrGX69-JLyNwGDU4RW7ewB2Z-Sk1X2hIBqKDGwpK9lgUnyggseAQkosC8hRVlU3QJv1kbLlS_Xhbp0zc7u7PLPYh6OhZ5vNSYUcm3XqafyhlXQgcVKxzyPtj0gLnOp20NjATBQLHNNrEiOYJ1jAqmTz79z1eYLNGQ" alt="Blender 5.0.1 (X64) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v5.0.1</span>
+<article class="sw-card" data-category="internet" data-license="free" data-arch="x64" data-title="ant download manager pro 2.17.8.96712 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/ant-download-manager-pro-217896712-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🌐&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/Ant-Download-Manager-Pro-Cover.avif" alt="Ant Download Manager Pro 2.17.8.96712 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v2.17.8.96712</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
-    <h3 class="sw-title"><a href="software/blender-501-x64-free-download.html">Blender 5.0.1 (X64) Free Download</a></h3>
-    <p class="sw-desc">Blender 5.0.1 is a powerful open-source 3D creation suite used for modeling, animation, rendering, simulation,</p>
+    <h3 class="sw-title"><a href="software/ant-download-manager-pro-217896712-with-crack.html">Ant Download Manager Pro 2.17.8.96712 with Crack</a></h3>
+    <p class="sw-desc">Ant Download Manager Pro is a quick downloader of internet content with support for video downloads! Function:</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
-      <span class="badge badge-license-opensource">Open Source</span>
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">🌐 Internet &amp; Networking</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/ant-download-manager-pro-217896712-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="bandicam 8.3.1.2537 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/bandicam-8312537-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/07/Bandicam-Cover.avif" alt="Bandicam 8.3.1.2537 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v8.3.1.2537</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/bandicam-8312537-with-crack.html">Bandicam 8.3.1.2537 with Crack</a></h3>
+    <p class="sw-desc">Bandicam, the lightweight screen recorder software for Windows, can capture anything on your PC screen as a hi</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📋 Productivity</span>
       <span class="badge badge-warning">⚖️ Mid-range</span>
     </div>
-    <a class="btn btn-secondary btn-compact" href="software/blender-501-x64-free-download.html">View Details</a>
+    <a class="btn btn-secondary btn-compact" href="software/bandicam-8312537-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="canva setup for windows free download" data-listed="202605">
-  <a href="software/canva-setup-for-windows-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiFVosT9S-PDBPl4lJQqkNYF5GR0kJeDw34vfJql7It937qJnh2cDPh706jf0cABBlBO0nSb4XoS4f0Sg03tziq_hn9pFRxmW5IXfXSoZ54x8Ysq213-xzdLoV-QBYQkrUHS_khQdBwdQb_-hMDXcK5kcdoep432et6uwk_8cO7b-49Gcu3TdMVYbcyp6A=w320-h320" alt="Canva Setup for Windows Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v1.119.0</span>
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="clip studio paint ex 5.0.4 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/clip-studio-paint-ex-504-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/12/Clip-Studio-Paint-EX-Cover.avif" alt="Clip Studio Paint EX 5.0.4 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v5.0.4</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
-    <h3 class="sw-title"><a href="software/canva-setup-for-windows-free-download.html">Canva Setup for Windows Free Download</a></h3>
-    <p class="sw-desc">Canva Setup 1.119.0 is the Windows desktop version of the popular online graphic design platform developed by </p>
+    <h3 class="sw-title"><a href="software/clip-studio-paint-ex-504-with-crack.html">Clip Studio Paint EX 5.0.4 with Crack</a></h3>
+    <p class="sw-desc">Clip Studio Paint EX is the world&amp;#8217;s leading comic and manga creation software and delivers powerful art </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🪟 Windows Software</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
+      <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
     </div>
-    <a class="btn btn-secondary btn-compact" href="software/canva-setup-for-windows-free-download.html">View Details</a>
+    <a class="btn btn-secondary btn-compact" href="software/clip-studio-paint-ex-504-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="multimedia" data-license="free" data-arch="x64" data-title="gilisoft video converter 12.3.0 free download" data-listed="202605">
-  <a href="software/gilisoft-video-converter-1230-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎬&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEg0Cds_yVabb--jpK5SkFIk2qYWC-iIeRpvgso1Psp6S5qtzACri_RFILBdSNoFXwglRdxtGk3ySMq5M_uPFNN1u7LojKsCOLJEvdqqq_r-dh9F6w1xVLKZmc9N80YecHioQG2s912UGpHR9XQjMYpDQ6I4H3ZyJbFloZOLjKqHbzFpB8FFQen08KsyPqU=w241-h320" alt="Gilisoft Video Converter 12.3.0 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v12.3.0</span>
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="design davinci resolve studio 21.0.4 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/design-davinci-resolve-studio-2104-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/02/Blackmagic-Design-DaVinci-Resolve-Studio-cover.avif" alt="Design DaVinci Resolve Studio 21.0.4 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v21.0.4</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
-    <h3 class="sw-title"><a href="software/gilisoft-video-converter-1230-free-download.html">Gilisoft Video Converter 12.3.0 Free Download</a></h3>
-    <p class="sw-desc">Gilisoft Video Converter 12.3.0 is a powerful multimedia conversion tool that enables users to convert videos </p>
+    <h3 class="sw-title"><a href="software/design-davinci-resolve-studio-2104-with-crack.html">Design DaVinci Resolve Studio 21.0.4 with Crack</a></h3>
+    <p class="sw-desc">DaVinci Resolve is the world’s only solution that combines editing, color correction, visual effects, motion g</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 6 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎬 Multimedia</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
+      <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
     </div>
-    <a class="btn btn-secondary btn-compact" href="software/gilisoft-video-converter-1230-free-download.html">View Details</a>
+    <a class="btn btn-secondary btn-compact" href="software/design-davinci-resolve-studio-2104-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="video-editing" data-license="free" data-arch="64-bit" data-title="gilisoft video editor 18.7.0 x64 free download" data-listed="202605">
-  <a href="software/gilisoft-video-editor-1870-x64-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎞️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgqY79oFs7ejwDBOyup-bRX3ZZaxES-HYzEjz94HevrhRuzXQBh4qThtZi7eG9kgub6S8PTm2PrrscJeGg8cCnk-RbguIWMxi6ZfQda0ueMMu_c1X1041uJz1lvXD4_sInJlbIR33k39Kn6qgdhr1mFtUTnUVvTpjYuu9r2x80H003dawRSTTjW2lPa9zI=w241-h320" alt="Gilisoft Video Editor 18.7.0 x64 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v18.7.0 x64</span>
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="driver easy pro 7.1.5.5750 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/driver-easy-pro-7155750-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/Driver-Easy-Pro-cover.avif" alt="Driver Easy Pro 7.1.5.5750 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v7.1.5.5750</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
-    <h3 class="sw-title"><a href="software/gilisoft-video-editor-1870-x64-free-download.html">Gilisoft Video Editor 18.7.0 x64 Free Download</a></h3>
-    <p class="sw-desc">Gilisoft Video Editor 18.7.0 x64 is a comprehensive video editing software that allows users to cut, merge, sp</p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">🎞️ Video Editing</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/gilisoft-video-editor-1870-x64-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="microsoft office365 free download" data-listed="202605">
-  <a href="software/microsoft-office365-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEijzvkpMiBU0Nq_QC8Hoscd9ZbjIl-Wmw43azKM6DYZQjdryuAJzSmshbySc650vX6d1GGBYKEHGg9BjOmMxOpzaKxRuTD_x1nujMjmYu5KacC3uC6NQtAUvEb2KJd9tKGoxIlW53swZHtJgUBqsyZnglm8uhkCfGKSvqK6Hzk_Tgr8gTciJQPw8mll0gM=w320-h320" alt="Microsoft Office365 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v1.6</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/microsoft-office365-free-download.html">Microsoft Office365 Free Download</a></h3>
-    <p class="sw-desc">Microsoft Office 365 is a cloud-based productivity suite developed by Microsoft that combines powerful office </p>
-    <div class="sw-meta">
-      <span class="badge badge-license-free">Free</span>
-      <span class="badge badge-primary">📋 Productivity</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
-    </div>
-    <a class="btn btn-secondary btn-compact" href="software/microsoft-office365-free-download.html">View Details</a>
-  </div>
-</article>
-<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="minitool partition wizard professional 9.0 free download" data-listed="202605">
-  <a href="software/minitool-partition-wizard-professional-90-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiLuhhxFX8jtPJw4AJC7v34UTKDvTwyf8XMAbDh4GIZq5GRCkt_GlMKuAlDcQaBuOv2iwGNi5kBgD5DHHqmB6hKx1vsMn9sujWQq3T4m76l3ZM-_qXbRqaUBsFQakJA31L2fqsWbZj5iQUt3Bc3Sw3YxbQJhpRjX64IUpM8as1IECn9gSXZ-rYZmFBY2Qc=w320-h320" alt="MiniTool Partition Wizard Professional 9.0 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    <span class="badge-ver">v9.0</span>
-  </a>
-  <div class="sw-body">
-    <h3 class="sw-title"><a href="software/minitool-partition-wizard-professional-90-free-download.html">MiniTool Partition Wizard Professional 9.0 Free Download</a></h3>
-    <p class="sw-desc">MiniTool Partition Wizard Professional 9.0 is a trusted disk partition management software designed to optimiz</p>
+    <h3 class="sw-title"><a href="software/driver-easy-pro-7155750-with-crack.html">Driver Easy Pro 7.1.5.5750 with Crack</a></h3>
+    <p class="sw-desc">Driver Easy Pro is an application that allows you to locate missing drivers and download them to your computer</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛠️ System Utilities</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
     </div>
-    <a class="btn btn-secondary btn-compact" href="software/minitool-partition-wizard-professional-90-free-download.html">View Details</a>
+    <a class="btn btn-secondary btn-compact" href="software/driver-easy-pro-7155750-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="ms office 2007 free download" data-listed="202605">
-  <a href="software/ms-office-2007-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEggH0qaDmp5AIxuZOi0DGNPs0hYUrUm6pPyYxorgUcttTWwPlCylJ-3BLOe1MYpDDYqfMv1GWpKgLmTM6bNgVoKO7XyKsFCUt117Ym3DTxiK9_zoQ9m9d2o5SoRnZVmvohsABpEZhTBsB8DrD1SQSV7x8jYeTNyqxTVo7ReaJoyyrNkFVy5ZvVbSLJwqyY=w320-h320" alt="MS Office 2007 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="fineprint 12.32 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/fineprint-1232-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/04/FinePrint-Cover.avif" alt="FinePrint 12.32 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v12.32</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
-    <h3 class="sw-title"><a href="software/ms-office-2007-free-download.html">MS Office 2007 Free Download</a></h3>
-    <p class="sw-desc">Microsoft Office 2007 revolutionized office productivity with the introduction of the Ribbon user interface, r</p>
+    <h3 class="sw-title"><a href="software/fineprint-1232-with-crack.html">FinePrint 12.32 with Crack</a></h3>
+    <p class="sw-desc">FinePrint saves you money on paper and toner, weight in your briefcase, and time and hassle in managing your p</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📋 Productivity</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
     </div>
-    <a class="btn btn-secondary btn-compact" href="software/ms-office-2007-free-download.html">View Details</a>
+    <a class="btn btn-secondary btn-compact" href="software/fineprint-1232-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="productivity" data-license="free" data-arch="32-bit" data-title="ms office professional 2010 32bit free download" data-listed="202605">
-  <a href="software/ms-office-professional-2010-32bit-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9dXLGsjsH-Qeq04g_wtPwgGIqWGAo8BnIRAF5c0dIdElrPAy2zUcvEgNpLfcMrGD-6I72PzE3E4TJBGDuLYnP_Q2IRiO-2fQYr_WPkWavt2lF1GvcEV967n39bLx3SWlKzDWFf7OIf-u0S4SXerzzAoH0sqPc7MqHlgRQb5QWA92fAZ8WrkbrnpiADGU/w216-h320/MS%20Office%202010%20Free%20Download.png" alt="MS Office Professional 2010 32bit Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="firetrust mailwasher pro 8.5.1 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/firetrust-mailwasher-pro-851-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/06/Firetrust-MailWasher-Pro-Cover.avif" alt="Firetrust MailWasher Pro 8.5.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v8.5.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
-    <h3 class="sw-title"><a href="software/ms-office-professional-2010-32bit-free-download.html">MS Office Professional 2010 32bit Free Download</a></h3>
-    <p class="sw-desc">Microsoft Office Professional 2010 32bit is one of the most reliable and widely used productivity suites ever </p>
+    <h3 class="sw-title"><a href="software/firetrust-mailwasher-pro-851-with-crack.html">Firetrust MailWasher Pro 8.5.1 with Crack</a></h3>
+    <p class="sw-desc">Receiving spam with Firetrust MailWasher Pro is like those telemarketers who call at dinner time &amp;#8211; downr</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📋 Productivity</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
     </div>
-    <a class="btn btn-secondary btn-compact" href="software/ms-office-professional-2010-32bit-free-download.html">View Details</a>
+    <a class="btn btn-secondary btn-compact" href="software/firetrust-mailwasher-pro-851-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="ms office professional plus 2010 free download" data-listed="202605">
-  <a href="software/ms-office-professional-plus-2010-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguWtB_j_mQO8-yIkFW6SUqMUrROVmDoZ4vyw4O83BVxm7RTeM_NasMmSQl0GlWmMRq4QB8jLGm3eQQPLxA1P6ZmjsfZX86rKBGNY-oMe3G0He7qlR2s4eEQKPoECkzgV6I274s9n-Vb1850QtHckSLl_T1q4BVZ1PcXzaA5B_7al2fStljeczIo7m87XU/s320/MS%20Office%202010%20Free%20Download.png" alt="MS Office Professional Plus 2010 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="iobit malware fighter pro 13.4.0.1669 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/iobit-malware-fighter-pro-13401669-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/IObit-Malware-Fighter-Pro-Cover.avif" alt="IObit Malware Fighter Pro 13.4.0.1669 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v13.4.0.1669</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
-    <h3 class="sw-title"><a href="software/ms-office-professional-plus-2010-free-download.html">MS Office Professional Plus 2010 Free Download</a></h3>
-    <p class="sw-desc">Microsoft Office Professional Plus 2010 is a premium business-oriented productivity suite developed by Microso</p>
+    <h3 class="sw-title"><a href="software/iobit-malware-fighter-pro-13401669-with-crack.html">IObit Malware Fighter Pro 13.4.0.1669 with Crack</a></h3>
+    <p class="sw-desc">IObit Malware Fighter Pro is an advanced malware &amp;amp; spyware removal utility that detects and removes the de</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">🛡️ Security</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/iobit-malware-fighter-pro-13401669-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="all video downloader pro 10.5.5 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/all-video-downloader-pro-1055-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/10/All-Video-Downloader-Pro.avif" alt="All Video Downloader Pro 10.5.5 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v10.5.5</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/all-video-downloader-pro-1055-with-crack.html">All Video Downloader Pro 10.5.5 with Crack</a></h3>
+    <p class="sw-desc">All Video Downloader Pro is a professional Windows app for downloading and converting your favorite videos fro</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">📋 Productivity</span>
-      <span class="badge badge-success">🪶 Low-end friendly</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
     </div>
-    <a class="btn btn-secondary btn-compact" href="software/ms-office-professional-plus-2010-free-download.html">View Details</a>
+    <a class="btn btn-secondary btn-compact" href="software/all-video-downloader-pro-1055-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="sketchup pro 2023 free download" data-listed="202605">
-  <a href="software/sketchup-pro-2023-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgXS9ipx6kd9FzdsNDh1z4THP-ZrQkdue1Lo10jCUSYybHZtep91H1eEqBUgQ-rZ4LsvPDkjuWdOExvcrBSnPNoYWPiM9r99vaqS2N-PqglPBWEGzzzYwC1AfYhu8MX3WzOHJySEZMsT-7xVya7UY1PJoeV0WoaHbxOz84taFj4EmIusR8oasx4VAXzOgQ=s16000" alt="SketchUp Pro 2023 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="masstube 2027 v22.1.4.221 ultra with crack" data-listed="202609" data-year="2027" data-date="Sep 9, 2026">
+  <a href="software/masstube-2027-v2214221-ultra-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/09/MassTube-Plus-Cover.avif" alt="MassTube 2027 v22.1.4.221 Ultra with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">vv22.1.4.221</span>
+    <span class="sw-year">© 2027</span>
   </a>
   <div class="sw-body">
-    <h3 class="sw-title"><a href="software/sketchup-pro-2023-free-download.html">SketchUp Pro 2023 Free Download</a></h3>
-    <p class="sw-desc">SketchUp Pro 2023 is a professional 3D modeling software known for its simplicity, speed, and versatility. It </p>
+    <h3 class="sw-title"><a href="software/masstube-2027-v2214221-ultra-with-crack.html">MassTube 2027 v22.1.4.221 Ultra with Crack</a></h3>
+    <p class="sw-desc">MassTube Ultra is a small software utility designed to help users grab their favorite video files from YouTube</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/masstube-2027-v2214221-ultra-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="minitool power data recovery 13.0 with crack {winpe}" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/minitool-power-data-recovery-130-with-crack-winpe.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/05/MiniTool-Power-Data-Recovery-Cover.avif" alt="MiniTool Power Data Recovery 13.0 with Crack {WinPE}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v13.0</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/minitool-power-data-recovery-130-with-crack-winpe.html">MiniTool Power Data Recovery 13.0 with Crack {WinPE}</a></h3>
+    <p class="sw-desc">MiniTool Power Data Recovery is the read-only File Recovery Software and Data Recovery Software. Power data re</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">🛠️ System Utilities</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/minitool-power-data-recovery-130-with-crack-winpe.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="panoramastudio pro 4.2.3.501 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/panoramastudio-pro-423501-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/06/PanoramaStudio-Pro-Cover.avif" alt="PanoramaStudio Pro 4.2.3.501 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v4.2.3.501</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/panoramastudio-pro-423501-with-crack.html">PanoramaStudio Pro 4.2.3.501 with Crack</a></h3>
+    <p class="sw-desc">PanoramaStudio Pro is a comprehensive program that creates seamless 360-degree and wide-angle panoramic images</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/panoramastudio-pro-423501-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="pdffactory pro 9.32 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/pdffactory-pro-932-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/11/pdfFactory-Pro-Cover.avif" alt="pdfFactory Pro 9.32 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v9.32</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/pdffactory-pro-932-with-crack.html">pdfFactory Pro 9.32 with Crack</a></h3>
+    <p class="sw-desc">pdfFactory Pro offers award-winning PDF creation features at an affordable price. pdfFactory Pro has all the f</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/pdffactory-pro-932-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="photoscape x pro 4.3.0 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/photoscape-x-pro-430-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/11/PhotoScape-X-Pro.avif" alt="PhotoScape X Pro 4.3.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v4.3.0</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/photoscape-x-pro-430-with-crack.html">PhotoScape X Pro 4.3.0 with Crack</a></h3>
+    <p class="sw-desc">PhotoScape X Pro has everything you need to edit photos. PhotoScape X is an all-in-one photo editing software </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/photoscape-x-pro-430-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="pilotedit pro 21.2.0 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/pilotedit-pro-2120-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/11/PilotEdit-Logo.webp" alt="PilotEdit Pro 21.2.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v21.2.0</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/pilotedit-pro-2120-with-crack.html">PilotEdit Pro 21.2.0 with Crack</a></h3>
+    <p class="sw-desc">PilotEdit is a handy and reliable file editor designed to help users to execute scripts, extract strings, and </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/pilotedit-pro-2120-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="rhinoceros 8.34.26223.11001 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/rhinoceros-8342622311001-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/Rhinoceros-Cover.avif" alt="Rhinoceros 8.34.26223.11001 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v8.34.26223.11001</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/rhinoceros-8342622311001-with-crack.html">Rhinoceros 8.34.26223.11001 with Crack</a></h3>
+    <p class="sw-desc">Rhinoceros is the most significant upgrade in our history. You can create organic shapes with our new SubD too</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/rhinoceros-8342622311001-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="robin youtube video downloader pro 7.5.10 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/robin-youtube-video-downloader-pro-7510-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/Robin-YouTube-Video-Downloader-Pro.avif" alt="Robin YouTube Video Downloader Pro 7.5.10 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v7.5.10</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/robin-youtube-video-downloader-pro-7510-with-crack.html">Robin YouTube Video Downloader Pro 7.5.10 with Crack</a></h3>
+    <p class="sw-desc">Robin YouTube Video Downloader Pro is a professional Windows app for downloading and converting videos from Yo</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/robin-youtube-video-downloader-pro-7510-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="tubemate downloader 6.5.6 with crack {windows}" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/tubemate-downloader-656-with-crack-windows.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/03/TubeMate-Downloader-Logo.webp" alt="TubeMate Downloader 6.5.6 with Crack {Windows}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v6.5.6</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/tubemate-downloader-656-with-crack-windows.html">TubeMate Downloader 6.5.6 with Crack {Windows}</a></h3>
+    <p class="sw-desc">TubeMate Downloader is a smart application that lets you snag any clip you want from the main video hosting si</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">🪟 Windows Software</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/tubemate-downloader-656-with-crack-windows.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="valentina studio pro 18.0 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/valentina-studio-pro-180-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/11/Valentina-Studio-Pro-Cover.avif" alt="Valentina Studio Pro 18.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v18.0</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/valentina-studio-pro-180-with-crack.html">Valentina Studio Pro 18.0 with Crack</a></h3>
+    <p class="sw-desc">Valentina Studio Pro is the ultimate tool for transforming raw data into valuable insights. It empowers you to</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/valentina-studio-pro-180-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="x64" data-title="zoner photo studio x 19.2606.2.702 with crack {repack}" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/zoner-photo-studio-x-1926062702-with-crack-repack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/Zoner-Photo-Studio-X-Cover.avif" alt="Zoner Photo Studio X 19.2606.2.702 with Crack {RePack}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v19.2606.2.702</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/zoner-photo-studio-x-1926062702-with-crack-repack.html">Zoner Photo Studio X 19.2606.2.702 with Crack {RePack}</a></h3>
+    <p class="sw-desc">Zoner Photo Studio X makes every photo better with its features! Your Lightroom® and Photoshop® alternative. Z</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
       <span class="badge badge-warning">⚖️ Mid-range</span>
     </div>
-    <a class="btn btn-secondary btn-compact" href="software/sketchup-pro-2023-free-download.html">View Details</a>
+    <a class="btn btn-secondary btn-compact" href="software/zoner-photo-studio-x-1926062702-with-crack-repack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="sketchup pro 2025 free download" data-listed="202605">
-  <a href="software/sketchup-pro-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
-    <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjFNs6o6hIseRDV_FFe2u1CL09vFNDcgwx6jt-n6dg_iLX1np80U3M1pBF1JDvJZ-xWSl3k_RDdEtWllD2_aUEnLT7PMLhVT432u0hvKRicnYCmYwb85bas2qVbcwNj-bwORA8MCD7_0y7Kw3j4h6kmFC6pm1gu1EXEgEIZKzNYYwwfyi3AnWyAy_AvCls=w320-h262" alt="SketchUp Pro 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
-    
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="systweak regclean pro 8.45.81.1242 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
+  <a href="software/systweak-regclean-pro-845811242-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/09/SysTweak-Regclean-Pro-Cover.avif" alt="SysTweak Regclean Pro 8.45.81.1242 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v8.45.81.1242</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
-    <h3 class="sw-title"><a href="software/sketchup-pro-2025-free-download.html">SketchUp Pro 2025 Free Download</a></h3>
-    <p class="sw-desc">SketchUp Pro 2025 is the latest professional 3D modeling software designed for architects, engineers, interior</p>
+    <h3 class="sw-title"><a href="software/systweak-regclean-pro-845811242-with-crack.html">SysTweak Regclean Pro 8.45.81.1242 with Crack</a></h3>
+    <p class="sw-desc">SysTweak Regclean Pro: Since the registry is in constant use due to regular PC usage, it can get cluttered ove</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/systweak-regclean-pro-845811242-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="aomei partition assistant 10.12 with crack {winpe}" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/aomei-partition-assistant-1012-with-crack-winpe.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/AOMEI-Partition-Assistant-Cover.avif" alt="AOMEI Partition Assistant 10.12 with Crack {WinPE}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v10.12</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/aomei-partition-assistant-1012-with-crack-winpe.html">AOMEI Partition Assistant 10.12 with Crack {WinPE}</a></h3>
+    <p class="sw-desc">AOMEI Partition Assistant an easy-to-use all-in-one Hard Disk Partition Software. It offers various free parti</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">🛠️ System Utilities</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/aomei-partition-assistant-1012-with-crack-winpe.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="arm64" data-title="ashampoo snap pro 26.0.2 with crack" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/ashampoo-snap-pro-2602-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/01/Ashampoo-Snap-Cover.avif" alt="Ashampoo Snap Pro 26.0.2 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v26.0.2</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/ashampoo-snap-pro-2602-with-crack.html">Ashampoo Snap Pro 26.0.2 with Crack</a></h3>
+    <p class="sw-desc">Ashampoo Snap Pro, the built-in editor, takes care of post-processing as well as storing and saving captures. </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/ashampoo-snap-pro-2602-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="bitsum process lasso pro 18.2.3.42 with crack" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/bitsum-process-lasso-pro-182342-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2026/06/Bitsum-Process-Lasso-Cover.png" alt="Bitsum Process Lasso Pro 18.2.3.42 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v18.2.3.42</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/bitsum-process-lasso-pro-182342-with-crack.html">Bitsum Process Lasso Pro 18.2.3.42 with Crack</a></h3>
+    <p class="sw-desc">Bitsum Process Lasso Pro is a groundbreaking technology designed to enhance your PC’s responsiveness and stabi</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/bitsum-process-lasso-pro-182342-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="broadgun pdfmachine 20.61 with crack" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/broadgun-pdfmachine-2061-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/09/Broadgun-pdfMachine-Cover.avif" alt="Broadgun pdfMachine 20.61 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v20.61</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/broadgun-pdfmachine-2061-with-crack.html">Broadgun pdfMachine 20.61 with Crack</a></h3>
+    <p class="sw-desc">pdfMachine converts a print stream from an application directly into a PDF. Once you have installed the PDF wr</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/broadgun-pdfmachine-2061-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="cyberlink photodirector ultra 2026 v17.6.1729.0 with crack {ai modules}" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/cyberlink-photodirector-ultra-2026-v17617290-with-crack-ai-modules.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2026/05/CyberLink-PhotoDirector-Ultra-Logo.webp" alt="CyberLink PhotoDirector Ultra 2026 v17.6.1729.0 with Crack {AI Modules}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">vv17.6.1729.0</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/cyberlink-photodirector-ultra-2026-v17617290-with-crack-ai-modules.html">CyberLink PhotoDirector Ultra 2026 v17.6.1729.0 with Crack {AI Modules}</a></h3>
+    <p class="sw-desc">CyberLink PhotoDirector Ultra is an award-winning, professional photo editing and graphic design suite that se</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/cyberlink-photodirector-ultra-2026-v17617290-with-crack-ai-modules.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="easy duplicate finder 8.2.0.3 with crack" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/easy-duplicate-finder-8203-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/06/Easy-Duplicate-Finder-Cover.avif" alt="Easy Duplicate Finder 8.2.0.3 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v8.2.0.3</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/easy-duplicate-finder-8203-with-crack.html">Easy Duplicate Finder 8.2.0.3 with Crack</a></h3>
+    <p class="sw-desc">Find and delete duplicate files in seconds with Easy Duplicate Finder™! With this tool, you can recover gigaby</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/easy-duplicate-finder-8203-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="goodsync 12.11.6.6 with crack" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/goodsync-121166-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/04/GoodSync-Enterprise-Cover.avif" alt="GoodSync 12.11.6.6 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v12.11.6.6</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/goodsync-121166-with-crack.html">GoodSync 12.11.6.6 with Crack</a></h3>
+    <p class="sw-desc">GoodSync is an easy and reliable file backup and file synchronization software. It automatically analyzes, syn</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/goodsync-121166-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="multimedia" data-license="free" data-arch="x64" data-title="leawo prof. media 13.0.0.9 with crack" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/leawo-prof-media-13009-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎬&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/09/Leawo-Prof.-Media-logo.webp" alt="Leawo Prof. Media 13.0.0.9 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v13.0.0.9</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/leawo-prof-media-13009-with-crack.html">Leawo Prof. Media 13.0.0.9 with Crack</a></h3>
+    <p class="sw-desc">Leawo Prof. Media is the ultimate, all-in-one multimedia solution suite designed to handle all your video conv</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">🎬 Multimedia</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/leawo-prof-media-13009-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="wondershare pdfelement pro 12.2.2.4430 with crack + ocr" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/wondershare-pdfelement-pro-12224430-with-crack-ocr.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/07/Wondershare-PDFelement-Professional-Cover.avif" alt="Wondershare PDFelement Pro 12.2.2.4430 with Crack + OCR" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v12.2.2.4430</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/wondershare-pdfelement-pro-12224430-with-crack-ocr.html">Wondershare PDFelement Pro 12.2.2.4430 with Crack + OCR</a></h3>
+    <p class="sw-desc">Wondershare PDFelement Pro is an all-in-one, enterprise-grade PDF editor and converter designed to provide a l</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 3 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/wondershare-pdfelement-pro-12224430-with-crack-ocr.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="64-bit" data-title="cyberlink powerdirector ultimate 2026 v24.6.1907.0 with crack" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/cyberlink-powerdirector-ultimate-2026-v24619070-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/CyberLink-PowerDirector-Ultimate-Cover.avif" alt="CyberLink PowerDirector Ultimate 2026 v24.6.1907.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">vv24.6.1907.0</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/cyberlink-powerdirector-ultimate-2026-v24619070-with-crack.html">CyberLink PowerDirector Ultimate 2026 v24.6.1907.0 with Crack</a></h3>
+    <p class="sw-desc">CyberLink PowerDirector Ultimate controls Your Video Creation Without the Learning Curve. PowerDirector Ultima</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/cyberlink-powerdirector-ultimate-2026-v24619070-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="reaconverter pro 8.0.239 with crack" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/reaconverter-pro-80239-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/01/reaConverter-Pro-Cover-150x150.avif" alt="reaConverter Pro 8.0.239 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v8.0.239</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/reaconverter-pro-80239-with-crack.html">reaConverter Pro 8.0.239 with Crack</a></h3>
+    <p class="sw-desc">A Better Way to Handle Your Images. Flexible, Smart, and Very Fast. Understandably, on a hunch, reaConverter P</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/reaconverter-pro-80239-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="stardock start11 v2.7.4 with crack" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/stardock-start11-v274-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/07/Stardock-Start11-Cover.avif" alt="Stardock Start11 v2.7.4 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">vv2.7.4</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/stardock-start11-v274-with-crack.html">Stardock Start11 v2.7.4 with Crack</a></h3>
+    <p class="sw-desc">Stardock Start11 is the first Windows 11 Start menu alternative. It brings a more familiar look and feel to th</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/stardock-start11-v274-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="tableplus 26.9.8 with crack" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/tableplus-2698-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/06/TablePlus-Cover.avif" alt="TablePlus 26.9.8 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v26.9.8</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/tableplus-2698-with-crack.html">TablePlus 26.9.8 with Crack</a></h3>
+    <p class="sw-desc">TablePlus is Database Management made easy. Modern, native, and friendly GUI tool for relational databases: My</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/tableplus-2698-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="topaz gigapixel pro 1.3.4 with crack" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/topaz-gigapixel-pro-134-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/Topaz-Gigapixel-AI-Cover.avif" alt="Topaz Gigapixel Pro 1.3.4 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v1.3.4</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/topaz-gigapixel-pro-134-with-crack.html">Topaz Gigapixel Pro 1.3.4 with Crack</a></h3>
+    <p class="sw-desc">Photo Enlargement with Topaz Gigapixel Pro. Enlarging your image without losing detail has always been impossi</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/topaz-gigapixel-pro-134-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="development" data-license="free" data-arch="x64" data-title="wysiwyg web builder 21.2.0 with crack" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/wysiwyg-web-builder-2120-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;💻&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/WYSIWYG-Web-Builder-Cover.avif" alt="WYSIWYG Web Builder 21.2.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v21.2.0</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/wysiwyg-web-builder-2120-with-crack.html">WYSIWYG Web Builder 21.2.0 with Crack</a></h3>
+    <p class="sw-desc">WYSIWYG Web Builder is a desktop application; you can install it on your computer just like other desktop soft</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">💻 Development</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/wysiwyg-web-builder-2120-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="lumina suite ai 1.0.4 with crack" data-listed="202609" data-year="2026" data-date="Sep 6, 2026">
+  <a href="software/lumina-suite-ai-104-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2026/09/Lumina-Suite-AI-Logo.avif" alt="Lumina Suite AI 1.0.4 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v1.0.4</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/lumina-suite-ai-104-with-crack.html">Lumina Suite AI 1.0.4 with Crack</a></h3>
+    <p class="sw-desc">Discover the true power of local image processing with Lumina Suite AI. Far more than a simple editor, Lumina </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/lumina-suite-ai-104-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="tenorshare 4ddig partition manager 4.4.0.11 with crack" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
+  <a href="software/tenorshare-4ddig-partition-manager-44011-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2025/01/4DDiG-Partition-Manager-Cover.webp" alt="Tenorshare 4DDiG Partition Manager 4.4.0.11 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v4.4.0.11</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/tenorshare-4ddig-partition-manager-44011-with-crack.html">Tenorshare 4DDiG Partition Manager 4.4.0.11 with Crack</a></h3>
+    <p class="sw-desc">4DDiG Partition Manager is a powerful Windows disk partition software expert in system migration, disk cloning</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">🛠️ System Utilities</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/tenorshare-4ddig-partition-manager-44011-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="4k video downloader plus 26.3.1 with crack" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
+  <a href="software/4k-video-downloader-plus-2631-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/02/4K-Video-Downloader-Cover.avif" alt="4K Video Downloader Plus 26.3.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v26.3.1</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/4k-video-downloader-plus-2631-with-crack.html">4K Video Downloader Plus 26.3.1 with Crack</a></h3>
+    <p class="sw-desc">4K Video Downloader Plus empowers you to download videos from a diverse array of popular websites, including Y</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/4k-video-downloader-plus-2631-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="multimedia" data-license="free" data-arch="x64" data-title="4k youtube to mp3 26.3.1 with crack" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
+  <a href="software/4k-youtube-to-mp3-2631-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎬&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/01/4K-YouTube-to-MP3-Cover.avif" alt="4K YouTube to MP3 26.3.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v26.3.1</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/4k-youtube-to-mp3-2631-with-crack.html">4K YouTube to MP3 26.3.1 with Crack</a></h3>
+    <p class="sw-desc">4K YouTube to MP3 was specifically created to extract audio from YouTube, Vimeo, or Facebook and save it in MP</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">🎬 Multimedia</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/4k-youtube-to-mp3-2631-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="allavsoft video downloader 3.29.4.9686 with crack" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
+  <a href="software/allavsoft-video-downloader-32949686-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/11/Allavsoft-Video-Downloader-Converter-Cover.avif" alt="Allavsoft Video Downloader 3.29.4.9686 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v3.29.4.9686</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/allavsoft-video-downloader-32949686-with-crack.html">Allavsoft Video Downloader 3.29.4.9686 with Crack</a></h3>
+    <p class="sw-desc">Allavsoft Video Downloader is a powerful Video Downloader that supports downloading movies, music videos, play</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/allavsoft-video-downloader-32949686-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="burnaware professional 19.2 with crack" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
+  <a href="software/burnaware-professional-192-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/BurnAware-Professional-Cover.avif" alt="BurnAware Professional 19.2 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v19.2</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/burnaware-professional-192-with-crack.html">BurnAware Professional 19.2 with Crack</a></h3>
+    <p class="sw-desc">BurnAware Professional is a powerful CD, DVD, and BD disc-burning solution intended for users who need maximum</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/burnaware-professional-192-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="ccleaner professional 7.9.1432.0 with crack {repack}" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
+  <a href="software/ccleaner-professional-7914320-with-crack-repack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2026/04/ccleaner-logo.avif" alt="CCleaner Professional 7.9.1432.0 with Crack {RePack}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v7.9.1432.0</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/ccleaner-professional-7914320-with-crack-repack.html">CCleaner Professional 7.9.1432.0 with Crack {RePack}</a></h3>
+    <p class="sw-desc">CCleaner Professional is the world’s most popular and trusted PC optimization utility, engineered to reclaim v</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">🛠️ System Utilities</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/ccleaner-professional-7914320-with-crack-repack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="utilities" data-license="free" data-arch="x64" data-title="easeus partition master 20.8.0 with crack {winpe}" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
+  <a href="software/easeus-partition-master-2080-with-crack-winpe.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛠️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/EaseUS-Partition-Master.avif" alt="EaseUS Partition Master 20.8.0 with Crack {WinPE}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v20.8.0</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/easeus-partition-master-2080-with-crack-winpe.html">EaseUS Partition Master 20.8.0 with Crack {WinPE}</a></h3>
+    <p class="sw-desc">EaseUS Partition Master is an all-in-one partition solution and disk management software. It allows you to ext</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 4 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">🛠️ System Utilities</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/easeus-partition-master-2080-with-crack-winpe.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="on1 effects 2026.5 v20.5.0.19062 with crack" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
+  <a href="software/on1-effects-20265-v205019062-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/02/ON1-Effects-2021-Cover.avif" alt="ON1 Effects 2026.5 v20.5.0.19062 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v2026.5</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/on1-effects-20265-v205019062-with-crack.html">ON1 Effects 2026.5 v20.5.0.19062 with Crack</a></h3>
+    <p class="sw-desc">Add instant style, personality, and impact to your photos with ON1 Effects 2026—the ultimate photo effects sof</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/on1-effects-20265-v205019062-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="graphics-design" data-license="free" data-arch="64-bit" data-title="on1 photo raw 2026.5 v20.5.0.19010 with crack" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
+  <a href="software/on1-photo-raw-20265-v205019010-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🎨&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/06/ON1-Photo-RAW-Cover.avif" alt="ON1 Photo RAW 2026.5 v20.5.0.19010 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v2026.5</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/on1-photo-raw-20265-v205019010-with-crack.html">ON1 Photo RAW 2026.5 v20.5.0.19010 with Crack</a></h3>
+    <p class="sw-desc">ON1 Photo RAW is a professional-grade photo organizer, raw processor, layered editor, and effects app that inc</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🎨 Graphics &amp; Design</span>
       <span class="badge badge-warning">⚖️ Mid-range</span>
     </div>
-    <a class="btn btn-secondary btn-compact" href="software/sketchup-pro-2025-free-download.html">View Details</a>
+    <a class="btn btn-secondary btn-compact" href="software/on1-photo-raw-20265-v205019010-with-crack.html">View Details</a>
+  </div>
+</article>
+<article class="sw-card" data-category="productivity" data-license="free" data-arch="x64" data-title="on1 resize ai 2026.5 v20.5.0.19062 with crack" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
+  <a href="software/on1-resize-ai-20265-v205019062-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;📋&lt;/div&gt;" tabindex="-1" aria-hidden="true">
+    <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/02/ON1-Resize-2021-Cover.avif" alt="ON1 Resize AI 2026.5 v20.5.0.19062 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    <span class="badge-ver">v2026.5</span>
+    <span class="sw-year">© 2026</span>
+  </a>
+  <div class="sw-body">
+    <h3 class="sw-title"><a href="software/on1-resize-ai-20265-v205019062-with-crack.html">ON1 Resize AI 2026.5 v20.5.0.19062 with Crack</a></h3>
+    <p class="sw-desc">ON1 Resize 2026, featuring ON1&amp;#8217;s industry-leading Genuine Fractals® technology, Resize 2021 is a must-ha</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
+    <div class="sw-meta">
+      <span class="badge badge-license-free">Free</span>
+      <span class="badge badge-primary">📋 Productivity</span>
+      <span class="badge badge-warning">⚖️ Mid-range</span>
+    </div>
+    <a class="btn btn-secondary btn-compact" href="software/on1-resize-ai-20265-v205019062-with-crack.html">View Details</a>
   </div>
 </article></div>
   <div class="empty" style="padding:24px 20px">
@@ -1815,6 +1943,41 @@ ul, ol { margin: 0; padding: 0; }
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); go(); }
     });
+  }
+
+  /* ---------- Slideshow ---------- */
+  function initSlideshow() {
+    var ss = document.getElementById('latestSlideshow');
+    if (!ss) return;
+    var slides = ss.querySelectorAll('.slide');
+    var dots = ss.querySelectorAll('.dot');
+    if (!slides.length) return;
+    var cur = 0;
+    var timer = null;
+
+    function show(i) {
+      cur = (i + slides.length) % slides.length;
+      for (var j = 0; j < slides.length; j++) {
+        slides[j].classList.toggle('active', j === cur);
+        if (dots[j]) dots[j].classList.toggle('on', j === cur);
+      }
+    }
+    function next() { show(cur + 1); restart(); }
+    function prev() { show(cur - 1); restart(); }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show(cur + 1); }, 6000);
+    }
+    var btnNext = ss.querySelector('#slideNext');
+    var btnPrev = ss.querySelector('#slidePrev');
+    if (btnNext) btnNext.addEventListener('click', next);
+    if (btnPrev) btnPrev.addEventListener('click', prev);
+    for (var i = 0; i < dots.length; i++) {
+      (function (idx) {
+        dots[idx].addEventListener('click', function () { show(idx); restart(); });
+      })(i);
+    }
+    restart();
   }
 
   /* ---------- Listing sort select ---------- */
@@ -2282,7 +2445,8 @@ ul, ol { margin: 0; padding: 0; }
       + (img || ph) + '</a>';
     var tier = TIER_LABELS[it.tier] || '';
     var meta = '<span>&#9989; Windows</span>';
-    if (it.year) meta += '<span>' + escapeHtml(it.year) + '</span>';
+    if (it.year) meta += '<span>&#169; ' + escapeHtml(it.year) + '</span>';
+    if (it.date) meta += '<span>&#128197; ' + escapeHtml(it.date) + '</span>';
     if (it.version) meta += '<span class="badge-ver">' + escapeHtml(it.version) + '</span>';
     return '<article class="sw-card">' + thumb
       + '<div class="sw-body">'
@@ -2372,6 +2536,7 @@ ul, ol { margin: 0; padding: 0; }
     initNavSearchBtn();
     initHeroSearchBtn();
     initSort();
+    initSlideshow();
     initToastLinks();
     initLightbox();
     initSearch('navSearch');

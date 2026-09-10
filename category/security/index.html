@@ -476,14 +476,46 @@ ul, ol { margin: 0; padding: 0; }
 .sw-thumb .placeholder { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2.1rem; }
 .sw-thumb .badge-ver { position: absolute; bottom: 10px; right: 10px; background: rgba(4, 10, 20, .8); color: #dbe7f7; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-thumb .badge-top { position: absolute; top: 10px; left: 10px; }
+.sw-year { position: absolute; top: 10px; left: 10px; background: rgba(4, 10, 20, .8); color: var(--text-2); font-size: .68rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-body { padding: 15px 16px 16px; display: flex; flex-direction: column; flex: 1; gap: 8px; }
 .sw-title { font-size: .99rem; font-weight: 700; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .sw-title a { color: var(--text); }
 .sw-title a:hover { color: var(--primary-strong); }
 .sw-desc { font-size: .83rem; color: var(--text-3); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sw-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .76rem; color: var(--text-3); }
+.sw-row span { display: inline-flex; align-items: center; gap: 4px; }
+.sw-date { color: var(--text-2); font-weight: 500; }
+.sw-dl { color: var(--primary-strong); font-weight: 600; }
+.sw-dev { color: var(--text-3); font-style: italic; }
 .sw-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .74rem; color: var(--text-3); margin-top: auto; }
 .sw-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .sw-card .btn { margin-top: 10px; }
+
+/* Slideshow — latest software carousel */
+.slide-show { position: relative; max-width: 1240px; margin: 26px auto 0; padding: 0 18px; box-sizing: border-box; }
+.slide-show .slides { position: relative; height: 340px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-strong); }
+.slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s ease; pointer-events: none; display: flex; align-items: flex-end; }
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 1; }
+.slide-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 8, 16, .92) 0%, rgba(3, 8, 16, .68) 45%, rgba(3, 8, 16, .18) 100%); }
+.slide-body { position: relative; z-index: 2; max-width: 620px; padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 10px; }
+.slide-badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.slide-title { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin: 0; }
+.slide-title a { color: #fff; }
+.slide-title a:hover { color: var(--primary-soft); }
+.slide-desc { font-size: .92rem; color: rgba(255,255,255,.78); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.slide-cta { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border-radius: var(--radius-full); border: 1px solid var(--border-strong); background: rgba(4, 10, 20, .75); color: #fff; font-size: 1.25rem; cursor: pointer; display: grid; place-items: center; transition: all var(--trans); }
+.slide-arrow:hover { background: var(--primary); border-color: var(--primary-strong); }
+.slide-arrow.prev { left: 14px; }
+.slide-arrow.next { right: 14px; }
+.slide-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+.slide-dots .dot { width: 10px; height: 10px; border-radius: var(--radius-full); border: none; background: var(--border-strong); cursor: pointer; padding: 0; transition: all var(--trans); }
+.slide-dots .dot.on { background: var(--primary); width: 22px; }
+@media (max-width: 760px) {
+  .slide-show .slides { height: 300px; }
+  .slide-body { padding: 18px; }
+  .slide-title { font-size: 1.15rem; }
+}
 
 /* Compact list item (staff picks / related) */
 .related-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
@@ -896,14 +928,16 @@ ul, ol { margin: 0; padding: 0; }
     </select>
   </div>
   <div id="swList" class="sw-grid">
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="auslogics anti-malware 1.23.0.4 with crack" data-listed="000000">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="auslogics anti-malware 1.23.0.4 with crack" data-listed="202605" data-year="2026" data-date="May 20, 2026">
   <a href="../../software/auslogics-anti-malware-12304-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/01/Auslogics-Anti-Malware-Cover.avif" alt="Auslogics Anti-Malware 1.23.0.4 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.23.0.4</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/auslogics-anti-malware-12304-with-crack.html">Auslogics Anti-Malware 1.23.0.4 with Crack</a></h3>
     <p class="sw-desc">Auslogics Anti-Malware top-notch protection against malware and data safety threats. It will help keep your PC</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 20, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -912,14 +946,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/auslogics-anti-malware-12304-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avast cleanup premium 21.1 build 9801 with crack" data-listed="000000">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avast cleanup premium 21.1 build 9801 with crack" data-listed="202606" data-year="2026" data-date="Jun 6, 2026">
   <a href="../../software/avast-cleanup-premium-211-build-9801-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/10/Avast-Cleanup-Cover.avif" alt="Avast Cleanup Premium 21.1 Build 9801 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v21.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avast-cleanup-premium-211-build-9801-with-crack.html">Avast Cleanup Premium 21.1 Build 9801 with Crack</a></h3>
     <p class="sw-desc">Avast Cleanup Premium erases unneeded data and gets rid of leftover files to gain free space, or tunes your co</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -928,14 +964,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avast-cleanup-premium-211-build-9801-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avast free antivirus 2022-full version free download" data-listed="202507">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avast free antivirus 2022-full version free download" data-listed="202507" data-year="2022" data-date="Jul 2025">
   <a href="../../software/avast-free-antivirus-2022-full-version-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn8iRxpiFjXSWuPRLD45bhhKed8fRnqG-MoDGkd6NTd0vBA47ScV6enCPnCCYy1cK7D0vUfmTtR3QNiYwMiIE15y6wbVNMD9HUnqGbADRJd44EWEGGaIvdMXgdKoQMcp2Vw38kE65pjUFW8x9w6X3zJdfwYyawCKDhwGN7Dw4KS8qwaUEe_wye9HrmMlY/s320/Avast%20Free%20Antivirus%202022-Full%20Version%20Free%20Download.png" alt="Avast Free Antivirus 2022-Full Version Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avast-free-antivirus-2022-full-version-free-download.html">Avast Free Antivirus 2022-Full Version Free Download</a></h3>
     <p class="sw-desc">Avast Free Antivirus 2022 delivers award-winning protection with minimal impact on system performance. Trusted</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -944,14 +982,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avast-free-antivirus-2022-full-version-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avast premium security 2022-full version free download" data-listed="202507">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avast premium security 2022-full version free download" data-listed="202507" data-year="2022" data-date="Jul 2025">
   <a href="../../software/avast-premium-security-2022-full-version-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbNB45OLi4DspUKOhv8S0Aie0BRTQuZAIPJ7qwln5jSGQMvjyCjP-kznr-A3bOHVn1cMhRpdJb0_cWLokDkESWPft33jK-L9BFXzxX9c9IvokvczE1Cq8zJnAhXXWjP3LB_lPWJriOyzMjGlGjrP4dotp8jsm_NcR_yw2adqujT87bLQ2zgqUe2_qoKRM/s320/Avast%20Premium%20Security%202022-Full%20Version%20Free%20Download.jpg" alt="Avast Premium Security 2022-Full Version Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avast-premium-security-2022-full-version-free-download.html">Avast Premium Security 2022-Full Version Free Download</a></h3>
     <p class="sw-desc">Avast Premium Security 2022 offers full-suite protection with features like advanced ransomware shield, remote</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -960,14 +1000,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avast-premium-security-2022-full-version-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="arm64" data-title="avast premium security 26.7.11086 with license file {till 2045}" data-listed="000000">
+<article class="sw-card" data-category="security" data-license="free" data-arch="arm64" data-title="avast premium security 26.7.11086 with license file {till 2045}" data-listed="202607" data-year="2045" data-date="Jul 23, 2026">
   <a href="../../software/avast-premium-security-26711086-with-license-file-till-2045.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/05/Avast-Premium-Security-Cover.avif" alt="Avast Premium Security 26.7.11086 with License File {Till 2045}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v26.7.11086</span>
+    <span class="sw-year">© 2045</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avast-premium-security-26711086-with-license-file-till-2045.html">Avast Premium Security 26.7.11086 with License File {Till 2045}</a></h3>
     <p class="sw-desc">Avast Premium Security is an Avast product that offers antivirus protection and advanced security for your PC </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 23, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -976,14 +1018,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avast-premium-security-26711086-with-license-file-till-2045.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avast secure browser free download" data-listed="201901">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avast secure browser free download" data-listed="201901" data-year="" data-date="Jan 2019">
   <a href="../../software/avast-secure-browser-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhl8D0pnXpnGG2ea4zKdcvOGQwWIOe-Kj1LNt2exjuOto0n-T1iAOJ_MdnUVpleBsHV5NiDN0Gmvj7K7Jmb_diI4crlGgFjW1kzazy39KP29DJ7X3VD-Wd6E615lRV4vKJmmsugHeTmetk/s200/Avast-secure-browser-icon.png" alt="Avast Secure Browser Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.6</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avast-secure-browser-free-download.html">Avast Secure Browser Free Download</a></h3>
     <p class="sw-desc">Avast Secure Browser is Avast&#x27;s private Chromium-based web browser for Windows PC.Avast bundled it with the fr</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jan 2019</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -992,14 +1036,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avast-secure-browser-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="arm64" data-title="avg anti virus free download" data-listed="201610">
+<article class="sw-card" data-category="security" data-license="free" data-arch="arm64" data-title="avg anti virus free download" data-listed="201610" data-year="" data-date="Oct 2016">
   <a href="../../software/avg-anti-virus-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSwGcrStRvxZnIS9BekQf_2m0508ii2uYyvrSmpJcm8Orqr6IutGFFHEwF2JSAZkSVE-V-0WhzwJojHip8lAskJE9JqX2lFzREo8v_3VQ-fsJShAhoWuQt9MUCdYwqvv5gDX0jZ_6Ye8o/s320/AVG-Anti-Virus.png" alt="AVG Anti Virus Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avg-anti-virus-free-download.html">AVG Anti Virus Free Download</a></h3>
     <p class="sw-desc">AVG free antivirus program is so light and easy to install, you and your family will be protected in just mome</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 2016</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1008,14 +1054,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avg-anti-virus-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avg antivirus 2022-full version free download" data-listed="202507">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avg antivirus 2022-full version free download" data-listed="202507" data-year="2022" data-date="Jul 2025">
   <a href="../../software/avg-antivirus-2022-full-version-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_Q6lOkqSS0IftEVO3p3G744dnSSvXoaLPSz0NB8ncgdcKv4ZoOTTiWGUm3Fr8g86NMlDdifXryqd4j4MWhQlBbTgr-SywGGnJjT5KZKgOGJ-zpsYMPrllttTGsuEnNfaJ2AhfWWo9tjdkUzCQ0A00162KjB5xsRWuSSVYlVG7WPORXiPXCnBQwi1uRoc/s320/AVG-Internet-Security-2022-Key-%E2%80%93-Complete-Protection.webp" alt="AVG Antivirus 2022-Full Version Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5</span>
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avg-antivirus-2022-full-version-free-download.html">AVG Antivirus 2022-Full Version Free Download</a></h3>
     <p class="sw-desc">AVG Antivirus 2022 Full Version provides powerful protection against viruses, ransomware, spyware, and phishin</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1024,14 +1072,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avg-antivirus-2022-full-version-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="32-bit" data-title="avg antivirus free 2022 (32-bit) free download" data-listed="202507">
+<article class="sw-card" data-category="security" data-license="free" data-arch="32-bit" data-title="avg antivirus free 2022 (32-bit) free download" data-listed="202507" data-year="2022" data-date="Jul 2025">
   <a href="../../software/avg-antivirus-free-2022-32-bit-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_Q6lOkqSS0IftEVO3p3G744dnSSvXoaLPSz0NB8ncgdcKv4ZoOTTiWGUm3Fr8g86NMlDdifXryqd4j4MWhQlBbTgr-SywGGnJjT5KZKgOGJ-zpsYMPrllttTGsuEnNfaJ2AhfWWo9tjdkUzCQ0A00162KjB5xsRWuSSVYlVG7WPORXiPXCnBQwi1uRoc/s320/AVG-Internet-Security-2022-Key-%E2%80%93-Complete-Protection.webp" alt="AVG Antivirus Free 2022 (32-bit) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5</span>
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avg-antivirus-free-2022-32-bit-free-download.html">AVG Antivirus Free 2022 (32-bit) Free Download</a></h3>
     <p class="sw-desc">AVG Free Antivirus 2022 (32-bit) delivers basic yet reliable protection for older systems. It scans for viruse</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1040,14 +1090,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avg-antivirus-free-2022-32-bit-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="64-bit" data-title="avg antivirus free 2022 (64-bit) free download" data-listed="202507">
+<article class="sw-card" data-category="security" data-license="free" data-arch="64-bit" data-title="avg antivirus free 2022 (64-bit) free download" data-listed="202507" data-year="2022" data-date="Jul 2025">
   <a href="../../software/avg-antivirus-free-2022-64-bit-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_Q6lOkqSS0IftEVO3p3G744dnSSvXoaLPSz0NB8ncgdcKv4ZoOTTiWGUm3Fr8g86NMlDdifXryqd4j4MWhQlBbTgr-SywGGnJjT5KZKgOGJ-zpsYMPrllttTGsuEnNfaJ2AhfWWo9tjdkUzCQ0A00162KjB5xsRWuSSVYlVG7WPORXiPXCnBQwi1uRoc/s320/AVG-Internet-Security-2022-Key-%E2%80%93-Complete-Protection.webp" alt="AVG Antivirus Free 2022 (64-bit) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5</span>
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avg-antivirus-free-2022-64-bit-free-download.html">AVG Antivirus Free 2022 (64-bit) Free Download</a></h3>
     <p class="sw-desc">AVG Free Antivirus 2022 (64-bit) offers strong antivirus protection optimized for modern 64-bit systems. It gu</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1056,14 +1108,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avg-antivirus-free-2022-64-bit-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avg driver updater 2.5.8 with crack" data-listed="000000">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avg driver updater 2.5.8 with crack" data-listed="202409" data-year="2024" data-date="Sep 25, 2024">
   <a href="../../software/avg-driver-updater-258-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/AVG-Driver-Updater-Cover.avif" alt="AVG Driver Updater 2.5.8 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.5.8</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avg-driver-updater-258-with-crack.html">AVG Driver Updater 2.5.8 with Crack</a></h3>
     <p class="sw-desc">AVG Driver Updater quickly fixes &amp;amp; updates your device drivers. Automatically checks 127,000+ drivers to h</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 25, 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1072,14 +1126,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avg-driver-updater-258-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avg tuneup 21.2 build 2916 with crack" data-listed="000000">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="avg tuneup 21.2 build 2916 with crack" data-listed="202406" data-year="2024" data-date="Jun 27, 2024">
   <a href="../../software/avg-tuneup-212-build-2916-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/AVG-TuneUp-Cover.avif" alt="AVG TuneUp 21.2 build 2916 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v21.2</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/avg-tuneup-212-build-2916-with-crack.html">AVG TuneUp 21.2 build 2916 with Crack</a></h3>
     <p class="sw-desc">AVG PC Tuneup is designed to help you keep the computer in shape by cleaning files that could slow down the op</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 27, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1088,14 +1144,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/avg-tuneup-212-build-2916-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="bitdefender antivirus plus 2022 free download" data-listed="202507">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="bitdefender antivirus plus 2022 free download" data-listed="202507" data-year="2022" data-date="Jul 2025">
   <a href="../../software/bitdefender-antivirus-plus-2022-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzFQALjQN4e5Kq3bcgGJAdBNc1l5xGzTwxnbKTrct7SES_sSUjaNPTFltr9fz2xwBJkY_nMoZku0D_ZCbsyUnv0Uy7Wxzld0K-7dbpbhlQj9Isnz3b9EBdCVJLVnDUxRk_Qrwx_BJ2cs0kGxoiXROQk1pKQX2zdKMhtZIcZGUc5KGmrScdiGLK_fVlFMI/s320/Bitdefender%20Antivirus%20Plus%202022.webp" alt="Bitdefender Antivirus Plus 2022 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.5</span>
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/bitdefender-antivirus-plus-2022-free-download.html">Bitdefender Antivirus Plus 2022 Free Download</a></h3>
     <p class="sw-desc">Bitdefender Antivirus Plus 2022 provides essential, lightweight antivirus protection. With AI-driven threat de</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1104,14 +1162,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/bitdefender-antivirus-plus-2022-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="bitdefender total security 2022 free download" data-listed="202507">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="bitdefender total security 2022 free download" data-listed="202507" data-year="2022" data-date="Jul 2025">
   <a href="../../software/bitdefender-total-security-2022-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEieFnZuqazf6hOdfBhdWqLTJDenZ0cjYlIkkGDIHrQ9DoUvfJG33-XMG5L85MZj_YAkIOBQ3_Ze2aEbNNTUdkesiUjLp9LIH2Bg-ipJYX0-iBH9H2oo9H1SG0M0njZD2I59AjiYQ4erhycVfW1xVzSdwx6srPXN5JF_rFCq0fyxc21XvRqeRg8UhFthaV0/s320/Bitdefender%20Total%20Security%202022.jpg" alt="Bitdefender Total Security 2022 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.5</span>
+    <span class="sw-year">© 2022</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/bitdefender-total-security-2022-free-download.html">Bitdefender Total Security 2022 Free Download</a></h3>
     <p class="sw-desc">Bitdefender Total Security 2022 delivers the ultimate cross-platform protection. Covering Windows, macOS, Andr</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1120,14 +1180,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/bitdefender-total-security-2022-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="emsisoft anti-malware free download" data-listed="201610">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="emsisoft anti-malware free download" data-listed="201610" data-year="" data-date="Oct 2016">
   <a href="../../software/emsisoft-anti-malware-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiergWMQied8SDBFRdS1uIdRuXu0PmRUt1DEZhuePRLXLfckxxmR6mBSXCbU-P7ZpZQMIJRNMAjee5MhZmYoGSjiWypiA0-fhmv-LC8d8vv8JPQyEOX_EmOr6qx89DESwtzxkEmqpGsmtk/s400/1.png" alt="Emsisoft Anti-Malware Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/emsisoft-anti-malware-free-download.html">Emsisoft Anti-Malware Free Download</a></h3>
     <p class="sw-desc">Emsisoft Anti-Malware is designed to keep your computer Malware-Free and working as it should. Much like a nas</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 2016</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1136,14 +1198,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/emsisoft-anti-malware-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="glarysoft malware hunter pro 1.220.0.866 with crack" data-listed="000000">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="glarysoft malware hunter pro 1.220.0.866 with crack" data-listed="202608" data-year="2026" data-date="Aug 31, 2026">
   <a href="../../software/glarysoft-malware-hunter-pro-12200866-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/Glary-Malware-Hunter-Pro-Cover.avif" alt="Glarysoft Malware Hunter Pro 1.220.0.866 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.220.0.866</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/glarysoft-malware-hunter-pro-12200866-with-crack.html">Glarysoft Malware Hunter Pro 1.220.0.866 with Crack</a></h3>
     <p class="sw-desc">Glarysoft Malware Hunter Pro detects malicious files on your computer and erases dangerous content, allowing y</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 31, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1152,14 +1216,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/glarysoft-malware-hunter-pro-12200866-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="arm64" data-title="gridinsoft anti-malware 4.2.54.5598 with patch" data-listed="000000">
+<article class="sw-card" data-category="security" data-license="free" data-arch="arm64" data-title="gridinsoft anti-malware 4.2.54.5598 with patch" data-listed="202405" data-year="2024" data-date="May 30, 2024">
   <a href="../../software/gridinsoft-anti-malware-42545598-with-patch.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2019/09/GridinSoft-Anti-Malware-Full-Crack-100x100.avif" alt="GridinSoft Anti-Malware 4.2.54.5598 with Patch" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.2.54.5598</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/gridinsoft-anti-malware-42545598-with-patch.html">GridinSoft Anti-Malware 4.2.54.5598 with Patch</a></h3>
     <p class="sw-desc">GridinSoft Anti-Malware is an excellent anti-malware solution. It is fast, effective, and reliable. GridinSoft</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 30, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1168,14 +1234,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/gridinsoft-anti-malware-42545598-with-patch.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="iobit malware fighter pro 13.4.0.1669 with crack" data-listed="000000">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="iobit malware fighter pro 13.4.0.1669 with crack" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
   <a href="../../software/iobit-malware-fighter-pro-13401669-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/IObit-Malware-Fighter-Pro-Cover.avif" alt="IObit Malware Fighter Pro 13.4.0.1669 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v13.4.0.1669</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/iobit-malware-fighter-pro-13401669-with-crack.html">IObit Malware Fighter Pro 13.4.0.1669 with Crack</a></h3>
     <p class="sw-desc">IObit Malware Fighter Pro is an advanced malware &amp;amp; spyware removal utility that detects and removes the de</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1184,14 +1252,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/iobit-malware-fighter-pro-13401669-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="kaspersky free 2025 (no license needed) free download" data-listed="202507">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="kaspersky free 2025 (no license needed) free download" data-listed="202507" data-year="2025" data-date="Jul 2025">
   <a href="../../software/kaspersky-free-2025-no-license-needed-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_COzm1H_z3mycgnQpGBRGXmok4fObtB4xydHcNDFTTPSeQlUayyZ-hxCqjQAHeKEgSIPd5pwN7stXRxUgY5an6CPGp7peN-FfbL7MoZzzygbkNzqUdIu9XTXRfzK4qcRdq3A2Ary55ggrsQN2b97Ce5cTYEODlwx0N0h5pzk6aOOtb-bXqapgz_ucuCs/s320/Kaspersky%20Free%202025.jpg" alt="Kaspersky Free 2025 (No License Needed) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/kaspersky-free-2025-no-license-needed-free-download.html">Kaspersky Free 2025 (No License Needed) Free Download</a></h3>
     <p class="sw-desc">Kaspersky Free 2025 offers strong basic protection with real-time malware scanning and cloud-assisted threat d</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1200,14 +1270,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/kaspersky-free-2025-no-license-needed-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="kaspersky plus 2025 free download" data-listed="202507">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="kaspersky plus 2025 free download" data-listed="202507" data-year="2025" data-date="Jul 2025">
   <a href="../../software/kaspersky-plus-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvpJclrLCeOTToVl077WUnCFH6tzKBy4DZ5QzaoOCQ2_oPLeLJh7XqzMdj0AoD9cy-XoyLjRI-2mic9ViqBzeQgnX-MW8qky4W-uBZZysibacWTFUXR5rUC2XA7qc4wS3RQ63iC5jPpvjf0cqlrN-tUexhBLQLrhAVR9GPaqrulfQe0LyMcnLS2clUoO4/s320/Kaspersky%20Plus%202025%20Free%20Download.jpg" alt="Kaspersky Plus 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/kaspersky-plus-2025-free-download.html">Kaspersky Plus 2025 Free Download</a></h3>
     <p class="sw-desc">Kaspersky Plus 2025 provides an enhanced level of protection with extra features like password management, per</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1216,14 +1288,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/kaspersky-plus-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="kaspersky premium 2025 free download" data-listed="202507">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="kaspersky premium 2025 free download" data-listed="202507" data-year="2025" data-date="Jul 2025">
   <a href="../../software/kaspersky-premium-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyqZEGWDlNVEhe5ehkdvJz73PPB4HAnDc7DG4YlS-84OqnCpc6TWQaWAL_HMIEjwNcY347Gj0FK6eiRehhTsMhq89erm-z0E_5cvyGA-p4xE82l0ltE24IkhkRje60ztBMwBau6z7hFphJ7-pXJ2d6EuVpZeTqyRKBcWkFPsUheMswVUE00MS_hdhybbQ/s320/Kaspersky-Premium-2025-Free-Download.png" alt="Kaspersky Premium 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.5</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/kaspersky-premium-2025-free-download.html">Kaspersky Premium 2025 Free Download</a></h3>
     <p class="sw-desc">Kaspersky Premium 2025 is a top-tier security suite with all-in-one protection for your digital life. It inclu</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1232,14 +1306,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/kaspersky-premium-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="kaspersky standard 2025 free download" data-listed="202507">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="kaspersky standard 2025 free download" data-listed="202507" data-year="2025" data-date="Jul 2025">
   <a href="../../software/kaspersky-standard-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-UacK5bRdVI0wIUPV96FcW8VKct5lnfWStlwebIH7VHczgQcDcAPGX1N6UXcp1No_O27OKwRIu54OF8QleXJNmiKKcVfqiwKFf61GaJR8jWyfrbYe_HztgDuV2rRcTRrpNNW7_2Et2CZ7GaCfUvAxq4tx2b1GU-n3uhVVxRHbvG73Gz_qJCcAhccO81E/s320/Kaspersky-Standard-Free-Download.png" alt="Kaspersky Standard 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.5</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/kaspersky-standard-2025-free-download.html">Kaspersky Standard 2025 Free Download</a></h3>
     <p class="sw-desc">Kaspersky Standard 2025 is a reliable mid-tier solution offering antivirus, anti-phishing, firewall, and perfo</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1248,14 +1324,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/kaspersky-standard-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="loaris trojan remover 3.2.109 with crack" data-listed="000000">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="loaris trojan remover 3.2.109 with crack" data-listed="202409" data-year="2024" data-date="Sep 24, 2024">
   <a href="../../software/loaris-trojan-remover-32109-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/09/Loaris-Trojan-Remover-Cover.avif" alt="Loaris Trojan Remover 3.2.109 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v3.2.109</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/loaris-trojan-remover-32109-with-crack.html">Loaris Trojan Remover 3.2.109 with Crack</a></h3>
     <p class="sw-desc">Loaris Trojan Remover the removal of Malware – Trojan Horses, Worms, Adware, Spyware – when standard anti-viru</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 24, 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1264,14 +1342,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/loaris-trojan-remover-32109-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="mcafee virusscan enterprise 8.8 free download" data-listed="202512">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="mcafee virusscan enterprise 8.8 free download" data-listed="202512" data-year="" data-date="Dec 2025">
   <a href="../../software/mcafee-virusscan-enterprise-88-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEib7KMXQgeGDT_EezEbgzX5iLpldTDG1A3FcRcplGCOBGo8zJZmzq_KDlCExpNDdby_uVtMHXFOiTxaRtfxDV28lgoSblZfmiZS42MnQX8BOAjJ5K4KQElDEBn2QgY49pqnYJlNaeLWw547ccjDyNb4XzpdLkQ0b7ac9QGBeUtH53i2Z39tTy0RoZatXSo=s16000" alt="McAfee VirusScan Enterprise 8.8 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.8</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/mcafee-virusscan-enterprise-88-free-download.html">McAfee VirusScan Enterprise 8.8 Free Download</a></h3>
     <p class="sw-desc">McAfee VirusScan Enterprise 8.8 is a corporate antivirus solution offering strong malware protection, policy e</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1280,14 +1360,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/mcafee-virusscan-enterprise-88-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="norton 360 v22 free download" data-listed="202507">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="norton 360 v22 free download" data-listed="202507" data-year="" data-date="Jul 2025">
   <a href="../../software/norton-360-v22-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqe-lqhjwouj9_bBxpJafgRj8HCElYDgqec1ZLLpHxLYlg2Q_DRvdgIIxImRmJfIYFrkmFjW6nxYunBXJoPivvvmirhjUXEl9ZpVB5YHu_WrIpruT6Kfz-qk1ws0g6zT2p2Tt4vBggBseQWOYRHuoqSNo25zcKNBdsunw_sLvvJcuq9mhPjdiKWzKy_vc/s320/Norton%20360%20Free%20Download.png" alt="Norton 360 v22 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/norton-360-v22-free-download.html">Norton 360 v22 Free Download</a></h3>
     <p class="sw-desc">Norton 360 v22 is a comprehensive antivirus and cybersecurity suite designed to protect your PC, online privac</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1296,14 +1378,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/norton-360-v22-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="reviversoft security reviver 2.1.1100.26760 with crack" data-listed="000000">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="reviversoft security reviver 2.1.1100.26760 with crack" data-listed="202410" data-year="2024" data-date="Oct 20, 2024">
   <a href="../../software/reviversoft-security-reviver-21110026760-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/01/Reviversoft-Security-Reviver.avif" alt="ReviverSoft Security Reviver 2.1.1100.26760 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.1.1100.26760</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/reviversoft-security-reviver-21110026760-with-crack.html">ReviverSoft Security Reviver 2.1.1100.26760 with Crack</a></h3>
     <p class="sw-desc">ReviverSoft Security Reviver will scan your PC and identify security threats and vulnerabilities. Security Rev</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 20, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1312,14 +1396,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/reviversoft-security-reviver-21110026760-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="shieldapps anti-malware pro 4.2.8 with crack" data-listed="000000">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="shieldapps anti-malware pro 4.2.8 with crack" data-listed="202310" data-year="2023" data-date="Oct 15, 2023">
   <a href="../../software/shieldapps-anti-malware-pro-428-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/03/Anti-Malware-Pro-Cover.avif" alt="ShieldApps Anti-Malware Pro 4.2.8 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.2.8</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/shieldapps-anti-malware-pro-428-with-crack.html">ShieldApps Anti-Malware Pro 4.2.8 with Crack</a></h3>
     <p class="sw-desc">Anti-Malware Pro will automatically scan a computer for threats on a defined schedule and also includes extra </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 15, 2023</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1328,14 +1414,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/shieldapps-anti-malware-pro-428-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="symantec endpoint protection 14.3 free download" data-listed="202512">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="symantec endpoint protection 14.3 free download" data-listed="202512" data-year="" data-date="Dec 2025">
   <a href="../../software/symantec-endpoint-protection-143-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEir2vnssZyGq6QemXCAq5qSnb1ntmvLL7UlSBewF-4GW620bWCdhFPV_-_OX_7vUmtjJJEE3o3y4wGYPZKzv7ta0lRd6ufP6cXcUAsa1cac4Ugh45gRT2wC9O_82a92AQ-tqM_K6Qhyj0wDhTlsr87lLmkMfqy4FcvGMptL7CqnXvGj6ZWir4LPlr1lZ-U" alt="Symantec Endpoint Protection 14.3 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v14.3</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/symantec-endpoint-protection-143-free-download.html">Symantec Endpoint Protection 14.3 Free Download</a></h3>
     <p class="sw-desc">Symantec Endpoint Protection 14.3 is an enterprise-grade cybersecurity solution designed to protect business n</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1344,14 +1432,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/symantec-endpoint-protection-143-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="trojan killer 2.1.35 multilingual free download" data-listed="202512">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="trojan killer 2.1.35 multilingual free download" data-listed="202512" data-year="" data-date="Dec 2025">
   <a href="../../software/trojan-killer-2135-multilingual-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhhVtK4WB2naL1Cm17iaEnqpyrN7JDiqY-y6tCPCG_PUl69o1PYWHm9gDlE6jtF2OlUlMWi_5xQYoeHcWwM7D6XK5pleNqcjcCwm2Y56L8wtqD3j9j-KBtYY-NBAxGobRsbHiQrDMFsGzFI-UQHXD6Cmfa58AEYZTZ9HXSaRmcapbErMXgDZpng6Qbz5o8" alt="Trojan Killer 2.1.35 Multilingual Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.1.35 Multilingual</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/trojan-killer-2135-multilingual-free-download.html">Trojan Killer 2.1.35 Multilingual Free Download</a></h3>
     <p class="sw-desc">Trojan Killer 2.1.35 Multilingual is a specialized malware removal tool focused on detecting and eliminating t</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1360,14 +1450,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/trojan-killer-2135-multilingual-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="trojan killer 2.1.59 with license key" data-listed="000000">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="trojan killer 2.1.59 with license key" data-listed="202606" data-year="2026" data-date="Jun 6, 2026">
   <a href="../../software/trojan-killer-2159-with-license-key.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2019/09/Trojan-Killer-Crack-100x100.avif" alt="Trojan Killer 2.1.59 with License Key" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.1.59</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/trojan-killer-2159-with-license-key.html">Trojan Killer 2.1.59 with License Key</a></h3>
     <p class="sw-desc">Trojan Killer an effective anti-malware tool for your memory stick. Be sure that you&amp;#8217;re safe from intern</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 6, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1376,14 +1468,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/trojan-killer-2159-with-license-key.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="winzip malware protector 2.1.1200.27011 with crack" data-listed="000000">
+<article class="sw-card" data-category="security" data-license="free" data-arch="x64" data-title="winzip malware protector 2.1.1200.27011 with crack" data-listed="202409" data-year="2024" data-date="Sep 26, 2024">
   <a href="../../software/winzip-malware-protector-21120027011-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🛡️&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/12/WinZip-Malware-Protector-Cover.avif" alt="WinZip Malware Protector 2.1.1200.27011 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.1.1200.27011</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/winzip-malware-protector-21120027011-with-crack.html">WinZip Malware Protector 2.1.1200.27011 with Crack</a></h3>
     <p class="sw-desc">WinZip Malware Protector stops malware in its tracks with WinZip Malware Protector, the software that safeguar</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 26, 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🛡️ Security</span>
@@ -1552,6 +1646,41 @@ ul, ol { margin: 0; padding: 0; }
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); go(); }
     });
+  }
+
+  /* ---------- Slideshow ---------- */
+  function initSlideshow() {
+    var ss = document.getElementById('latestSlideshow');
+    if (!ss) return;
+    var slides = ss.querySelectorAll('.slide');
+    var dots = ss.querySelectorAll('.dot');
+    if (!slides.length) return;
+    var cur = 0;
+    var timer = null;
+
+    function show(i) {
+      cur = (i + slides.length) % slides.length;
+      for (var j = 0; j < slides.length; j++) {
+        slides[j].classList.toggle('active', j === cur);
+        if (dots[j]) dots[j].classList.toggle('on', j === cur);
+      }
+    }
+    function next() { show(cur + 1); restart(); }
+    function prev() { show(cur - 1); restart(); }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show(cur + 1); }, 6000);
+    }
+    var btnNext = ss.querySelector('#slideNext');
+    var btnPrev = ss.querySelector('#slidePrev');
+    if (btnNext) btnNext.addEventListener('click', next);
+    if (btnPrev) btnPrev.addEventListener('click', prev);
+    for (var i = 0; i < dots.length; i++) {
+      (function (idx) {
+        dots[idx].addEventListener('click', function () { show(idx); restart(); });
+      })(i);
+    }
+    restart();
   }
 
   /* ---------- Listing sort select ---------- */
@@ -2019,7 +2148,8 @@ ul, ol { margin: 0; padding: 0; }
       + (img || ph) + '</a>';
     var tier = TIER_LABELS[it.tier] || '';
     var meta = '<span>&#9989; Windows</span>';
-    if (it.year) meta += '<span>' + escapeHtml(it.year) + '</span>';
+    if (it.year) meta += '<span>&#169; ' + escapeHtml(it.year) + '</span>';
+    if (it.date) meta += '<span>&#128197; ' + escapeHtml(it.date) + '</span>';
     if (it.version) meta += '<span class="badge-ver">' + escapeHtml(it.version) + '</span>';
     return '<article class="sw-card">' + thumb
       + '<div class="sw-body">'
@@ -2109,6 +2239,7 @@ ul, ol { margin: 0; padding: 0; }
     initNavSearchBtn();
     initHeroSearchBtn();
     initSort();
+    initSlideshow();
     initToastLinks();
     initLightbox();
     initSearch('navSearch');

@@ -476,14 +476,46 @@ ul, ol { margin: 0; padding: 0; }
 .sw-thumb .placeholder { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2.1rem; }
 .sw-thumb .badge-ver { position: absolute; bottom: 10px; right: 10px; background: rgba(4, 10, 20, .8); color: #dbe7f7; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-thumb .badge-top { position: absolute; top: 10px; left: 10px; }
+.sw-year { position: absolute; top: 10px; left: 10px; background: rgba(4, 10, 20, .8); color: var(--text-2); font-size: .68rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,.08); }
 .sw-body { padding: 15px 16px 16px; display: flex; flex-direction: column; flex: 1; gap: 8px; }
 .sw-title { font-size: .99rem; font-weight: 700; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .sw-title a { color: var(--text); }
 .sw-title a:hover { color: var(--primary-strong); }
 .sw-desc { font-size: .83rem; color: var(--text-3); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sw-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .76rem; color: var(--text-3); }
+.sw-row span { display: inline-flex; align-items: center; gap: 4px; }
+.sw-date { color: var(--text-2); font-weight: 500; }
+.sw-dl { color: var(--primary-strong); font-weight: 600; }
+.sw-dev { color: var(--text-3); font-style: italic; }
 .sw-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .74rem; color: var(--text-3); margin-top: auto; }
 .sw-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .sw-card .btn { margin-top: 10px; }
+
+/* Slideshow — latest software carousel */
+.slide-show { position: relative; max-width: 1240px; margin: 26px auto 0; padding: 0 18px; box-sizing: border-box; }
+.slide-show .slides { position: relative; height: 340px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-strong); }
+.slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s ease; pointer-events: none; display: flex; align-items: flex-end; }
+.slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 1; }
+.slide-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 8, 16, .92) 0%, rgba(3, 8, 16, .68) 45%, rgba(3, 8, 16, .18) 100%); }
+.slide-body { position: relative; z-index: 2; max-width: 620px; padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 10px; }
+.slide-badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.slide-title { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin: 0; }
+.slide-title a { color: #fff; }
+.slide-title a:hover { color: var(--primary-soft); }
+.slide-desc { font-size: .92rem; color: rgba(255,255,255,.78); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.slide-cta { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border-radius: var(--radius-full); border: 1px solid var(--border-strong); background: rgba(4, 10, 20, .75); color: #fff; font-size: 1.25rem; cursor: pointer; display: grid; place-items: center; transition: all var(--trans); }
+.slide-arrow:hover { background: var(--primary); border-color: var(--primary-strong); }
+.slide-arrow.prev { left: 14px; }
+.slide-arrow.next { right: 14px; }
+.slide-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+.slide-dots .dot { width: 10px; height: 10px; border-radius: var(--radius-full); border: none; background: var(--border-strong); cursor: pointer; padding: 0; transition: all var(--trans); }
+.slide-dots .dot.on { background: var(--primary); width: 22px; }
+@media (max-width: 760px) {
+  .slide-show .slides { height: 300px; }
+  .slide-body { padding: 18px; }
+  .slide-title { font-size: 1.15rem; }
+}
 
 /* Compact list item (staff picks / related) */
 .related-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
@@ -896,14 +928,16 @@ ul, ol { margin: 0; padding: 0; }
     </select>
   </div>
   <div id="swList" class="sw-grid">
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="canva setup for windows free download" data-listed="202605">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="canva setup for windows free download" data-listed="202605" data-year="" data-date="May 2026">
   <a href="../../software/canva-setup-for-windows-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEiFVosT9S-PDBPl4lJQqkNYF5GR0kJeDw34vfJql7It937qJnh2cDPh706jf0cABBlBO0nSb4XoS4f0Sg03tziq_hn9pFRxmW5IXfXSoZ54x8Ysq213-xzdLoV-QBYQkrUHS_khQdBwdQb_-hMDXcK5kcdoep432et6uwk_8cO7b-49Gcu3TdMVYbcyp6A=w320-h320" alt="Canva Setup for Windows Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.119.0</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/canva-setup-for-windows-free-download.html">Canva Setup for Windows Free Download</a></h3>
     <p class="sw-desc">Canva Setup 1.119.0 is the Windows desktop version of the popular online graphic design platform developed by </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2026</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -912,14 +946,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/canva-setup-for-windows-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="imypass windows password reset 1.0.16 with crack" data-listed="000000">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="imypass windows password reset 1.0.16 with crack" data-listed="202510" data-year="2025" data-date="Oct 16, 2025">
   <a href="../../software/imypass-windows-password-reset-1016-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2024/03/imyPass-Windows-Password-Reset-Cover-150x150.avif" alt="imyPass Windows Password Reset 1.0.16 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.0.16</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/imypass-windows-password-reset-1016-with-crack.html">imyPass Windows Password Reset 1.0.16 with Crack</a></h3>
     <p class="sw-desc">A world-class Windows password reset tool to reset Windows Admin and Standard user account passwords on Window</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 16, 2025</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -928,14 +964,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/imypass-windows-password-reset-1016-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="paragon apfs for windows 4.0.10 with crack" data-listed="000000">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="paragon apfs for windows 4.0.10 with crack" data-listed="202410" data-year="2024" data-date="Oct 28, 2024">
   <a href="../../software/paragon-apfs-for-windows-4010-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/07/Paragon-APFS-for-Windows.avif" alt="Paragon APFS for Windows 4.0.10 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v4.0.10</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/paragon-apfs-for-windows-4010-with-crack.html">Paragon APFS for Windows 4.0.10 with Crack</a></h3>
     <p class="sw-desc">Paragon APFS for Windows Apple File System (APFS) is a new file system for macOS, iOS, and Apple devices. If y</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 28, 2024</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -944,14 +982,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/paragon-apfs-for-windows-4010-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="paragon hfs+ for windows 14.0.24 with crack" data-listed="000000">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="paragon hfs+ for windows 14.0.24 with crack" data-listed="202410" data-year="2024" data-date="Oct 28, 2024">
   <a href="../../software/paragon-hfs-for-windows-14024-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2021/06/Paragon-HFS-for-Windows-Cover.avif" alt="Paragon HFS+ for Windows 14.0.24 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v14.0.24</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/paragon-hfs-for-windows-14024-with-crack.html">Paragon HFS+ for Windows 14.0.24 with Crack</a></h3>
     <p class="sw-desc">Paragon HFS+ for Windows is the primary file system of macOS. If you work on a Windows computer and need to re</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Oct 28, 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -960,14 +1000,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/paragon-hfs-for-windows-14024-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="quicktime 7.7.9 for windows free download" data-listed="201903">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="quicktime 7.7.9 for windows free download" data-listed="201903" data-year="" data-date="Mar 2019">
   <a href="../../software/quicktime-779-for-windows-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKqCG_k6CkQO43ANNgs0BTZOKjNhlirah2nHFsEiHdnWhj7Fp8zeLtHdgmiCrITxYdOEUbaKHWucAkpIShtmkzq0VCWdvnN5bC8hmmn58TUWMofkSEIfIKFqBIo-Zg1sdFb3-T8VESLnE/s200/quick+time+player+logo.png" alt="QuickTime 7.7.9 for Windows Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v7.7.9</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/quicktime-779-for-windows-free-download.html">QuickTime 7.7.9 for Windows Free Download</a></h3>
     <p class="sw-desc">QuickTime is an extensible multimedia framework developed by Apple Inc., capable of handling various formats o</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Mar 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -976,14 +1018,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/quicktime-779-for-windows-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="remo recover windows 6.1.0.3 with crack" data-listed="000000">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="remo recover windows 6.1.0.3 with crack" data-listed="202608" data-year="2026" data-date="Aug 18, 2026">
   <a href="../../software/remo-recover-windows-6103-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2026/06/Remo-Recover-Cover.avif" alt="Remo Recover Windows 6.1.0.3 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.1.0.3</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/remo-recover-windows-6103-with-crack.html">Remo Recover Windows 6.1.0.3 with Crack</a></h3>
     <p class="sw-desc">Remo Recover (Windows) is the best solution to recover your deleted or lost data in an easy way. Data lost due</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 18, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -992,14 +1036,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/remo-recover-windows-6103-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="arm64" data-title="safari for windows free download" data-listed="201905">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="arm64" data-title="safari for windows free download" data-listed="201905" data-year="" data-date="May 2019">
   <a href="../../software/safari-for-windows-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi12rkxvJrsiW-w1wYjZxeyVnyKMOvVpKVzJgdlzKlE9CLalEXYdlkj73xm9yM1M18Isl5WSNY9F6Wx2OQc7HwRaBfETSoUrLxI3x10tZmA_QQL-oS5GK99crxnfCObI5oqsVF2j8MZHos/s200/1200px-Safari_browser_logo.svg.png" alt="Safari for Windows Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/safari-for-windows-free-download.html">Safari for Windows Free Download</a></h3>
     <p class="sw-desc">Safari is faster and more energy efficient than other browsers. Handy tools help you save, find, and share you</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1008,14 +1054,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/safari-for-windows-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="tubemate downloader 6.5.6 with crack {windows}" data-listed="000000">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="tubemate downloader 6.5.6 with crack {windows}" data-listed="202609" data-year="2026" data-date="Sep 9, 2026">
   <a href="../../software/tubemate-downloader-656-with-crack-windows.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/03/TubeMate-Downloader-Logo.webp" alt="TubeMate Downloader 6.5.6 with Crack {Windows}" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.5.6</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/tubemate-downloader-656-with-crack-windows.html">TubeMate Downloader 6.5.6 with Crack {Windows}</a></h3>
     <p class="sw-desc">TubeMate Downloader is a smart application that lets you snag any clip you want from the main video hosting si</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 9, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1024,14 +1072,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/tubemate-downloader-656-with-crack-windows.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="ultfone windows data recovery 10.9.2.1 with crack" data-listed="000000">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="ultfone windows data recovery 10.9.2.1 with crack" data-listed="202609" data-year="2026" data-date="Sep 2, 2026">
   <a href="../../software/ultfone-windows-data-recovery-10921-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2026/01/UltFone-Windows-Data-Recovery-Cover.avif" alt="UltFone Windows Data Recovery 10.9.2.1 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v10.9.2.1</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/ultfone-windows-data-recovery-10921-with-crack.html">UltFone Windows Data Recovery 10.9.2.1 with Crack</a></h3>
     <p class="sw-desc">Employing a structured data backup scheme is a good approach for ensuring your digital information in the long</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1040,14 +1090,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/ultfone-windows-data-recovery-10921-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 10 enterprise (x64) 2021 free download" data-listed="202505">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 10 enterprise (x64) 2021 free download" data-listed="202505" data-year="2021" data-date="May 2025">
   <a href="../../software/windows-10-enterprise-x64-2021-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSej8rsmPsAIzSl3j7QQ28wWitGtT0PRgeM2qWnUe6I0PGEVsBN544Gj6N3wOeyCm9jP4gmMEbnjBUZ7TFXeAuRaapRK1Q3JJrCpy_u_-pDvUHf-Z7oAzE9qbdUntsP8hyaEuPqNtAzh8Zy4Uk69Kyxlx6h3VCoEyEL3iz-M0zmk5femA_tASLHzKSKVs/w320-h320/windows%2010%20enterprise.webp" alt="Windows 10 Enterprise (X64) 2021 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2021</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-10-enterprise-x64-2021-free-download.html">Windows 10 Enterprise (X64) 2021 Free Download</a></h3>
     <p class="sw-desc">is built with large organizations in mind, offering the highest level of control, security, and deployment cap</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1056,14 +1108,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-10-enterprise-x64-2021-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 10 enterprise (x86) 2021 free download" data-listed="202505">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 10 enterprise (x86) 2021 free download" data-listed="202505" data-year="2021" data-date="May 2025">
   <a href="../../software/windows-10-enterprise-x86-2021-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSej8rsmPsAIzSl3j7QQ28wWitGtT0PRgeM2qWnUe6I0PGEVsBN544Gj6N3wOeyCm9jP4gmMEbnjBUZ7TFXeAuRaapRK1Q3JJrCpy_u_-pDvUHf-Z7oAzE9qbdUntsP8hyaEuPqNtAzh8Zy4Uk69Kyxlx6h3VCoEyEL3iz-M0zmk5femA_tASLHzKSKVs/w320-h320/windows%2010%20enterprise.webp" alt="Windows 10 Enterprise (X86) 2021 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2021</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-10-enterprise-x86-2021-free-download.html">Windows 10 Enterprise (X86) 2021 Free Download</a></h3>
     <p class="sw-desc">is a streamlined version of Microsoft&#x27;s business-grade operating system, designed for older or lower-spec hard</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free-trial">Free Trial</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1072,14 +1126,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-10-enterprise-x86-2021-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 10 pro (x64) free download" data-listed="202408">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 10 pro (x64) free download" data-listed="202408" data-year="" data-date="Aug 2024">
   <a href="../../software/windows-10-pro-x64-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvfxng8TYDY4rJcYsWT3Wd4nvXMy-N1mgUbAghO28S-qtNInuaqbwvUHnqrOs-TWD4SUbAoUM9bvD1TlrdMvzTHSuGBFjJFrYQjgmpXbc8YFLtnErKI9_bPKU94i2ulla_xyaDbC2canQzFw-QKLt4aY8tTUlw59_SsU0XoAX1iK3xNd_H87bhfGOsU0A/s320/win10pro%20download.jpeg" alt="Windows 10 Pro (x64) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-10-pro-x64-free-download.html">Windows 10 Pro (x64) Free Download</a></h3>
     <p class="sw-desc">Windows 10, released in July 2015, marked a new era for Microsoft&#x27;s operating systems by combining the best of</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1088,14 +1144,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-10-pro-x64-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 10 pro 2019 free download" data-listed="202505">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 10 pro 2019 free download" data-listed="202505" data-year="2019" data-date="May 2025">
   <a href="../../software/windows-10-pro-2019-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyPCtVbd4tcIyIZDbGZxKhZCrlpP3XZdpj1CYB0lWjELt2u6Djqpv4EyCnztJq63iuTKgoMu-x1NiRuLI5MIMFoy4CLQgVhp-QGm7MmJxc0NH7tqL2WJVLXzyRU7wWD6wpduJxIp7XmVLiiyzSV5nIcgTHS3YdmHOWkPFBl_s0PqwAsZ5CTqopPRlsLBg/w200-h200/windows-10-logo.png" alt="Windows 10 Pro 2019 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2019</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-10-pro-2019-free-download.html">Windows 10 Pro 2019 Free Download</a></h3>
     <p class="sw-desc">Windows 10 Pro 2019 remains one of the most reliable and widely-used operating systems for professionals aroun</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2025</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1104,14 +1162,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-10-pro-2019-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 (russian) free download" data-listed="202509">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 (russian) free download" data-listed="202509" data-year="" data-date="Sep 2025">
   <a href="../../software/windows-11-russian-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEj2KFvmX2Jw7i3WUX1xa6NVmONNOqJ1xV0qWfEDzVios_C1so00qXPgQohGm5PwWB-B5zf4F7zMBfnG5z0wmBiuDOEyeRDE3YTL0UC0cQqao7w5khYomoL429iOBD8Vcu1ZlABqo1RUyG0dsMAAXVPsu9TOBFxxBeUp0wkOPcOeDbVe4hoyd4F_zZwui0k=w320-h320" alt="Windows 11 (Russian) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.0</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-11-russian-free-download.html">Windows 11 (Russian) Free Download</a></h3>
     <p class="sw-desc">Windows 11 (Russian Edition) is the localized version of Microsoft’s latest operating system, designed to prov</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1120,14 +1180,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-11-russian-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 (spanish) free download" data-listed="202509">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 (spanish) free download" data-listed="202509" data-year="" data-date="Sep 2025">
   <a href="../../software/windows-11-spanish-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEj2KFvmX2Jw7i3WUX1xa6NVmONNOqJ1xV0qWfEDzVios_C1so00qXPgQohGm5PwWB-B5zf4F7zMBfnG5z0wmBiuDOEyeRDE3YTL0UC0cQqao7w5khYomoL429iOBD8Vcu1ZlABqo1RUyG0dsMAAXVPsu9TOBFxxBeUp0wkOPcOeDbVe4hoyd4F_zZwui0k" alt="Windows 11 (Spanish) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.0</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-11-spanish-free-download.html">Windows 11 (Spanish) Free Download</a></h3>
     <p class="sw-desc">Windows 11 (Spanish Edition) is fully localized for Spanish-speaking users, delivering Microsoft’s modern OS e</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1136,14 +1198,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-11-spanish-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 (x64) 2025 free download" data-listed="202509">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 (x64) 2025 free download" data-listed="202509" data-year="2025" data-date="Sep 2025">
   <a href="../../software/windows-11-x64-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEj2KFvmX2Jw7i3WUX1xa6NVmONNOqJ1xV0qWfEDzVios_C1so00qXPgQohGm5PwWB-B5zf4F7zMBfnG5z0wmBiuDOEyeRDE3YTL0UC0cQqao7w5khYomoL429iOBD8Vcu1ZlABqo1RUyG0dsMAAXVPsu9TOBFxxBeUp0wkOPcOeDbVe4hoyd4F_zZwui0k" alt="Windows 11 (X64) 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.0</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-11-x64-2025-free-download.html">Windows 11 (X64) 2025 Free Download</a></h3>
     <p class="sw-desc">Windows 11 is the latest generation of Microsoft’s operating system, designed with a fresh, modern interface a</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1152,14 +1216,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-11-x64-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 enterprise 2025 free download" data-listed="202509">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 enterprise 2025 free download" data-listed="202509" data-year="2025" data-date="Sep 2025">
   <a href="../../software/windows-11-enterprise-2025-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEgqQHLdTJ0c6lUYBY1Al3wAYaG45scogbGLBmR_LHePcnifoPGmWct6Nymym4NzH6zN65jMpKPMrsCcvvxLIWh7xC7H9H9O5COkQOIK0BUWauJbXS9D---4VTSFYkPtL17jLeGj6gHv3Cv9hx-e5ELS5jnDGyjPrGdkeWwQ1oPA0V4zRNxbK9P5yVT53cM=w264-h320" alt="Windows 11 Enterprise 2025 Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.0</span>
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-11-enterprise-2025-free-download.html">Windows 11 Enterprise 2025 Free Download</a></h3>
     <p class="sw-desc">Windows 11 Enterprise is built specifically for medium to large organizations that require advanced security, </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1168,14 +1234,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-11-enterprise-2025-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="windows 11 new release 2021" data-listed="202106">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="windows 11 new release 2021" data-listed="202106" data-year="2021" data-date="Jun 2021">
   <a href="../../software/windows-11-new-release-2021.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1dTVo26FjZnFviHW4hfv7evI1mRtd95Ny-Uxv8sslASkFjfdAGFsP02pDby7BbCUGTTQzhsDd_1dP9Lx8RQzcKgi7rURrB5e7ZTZ8cQCHULl9uwduMbaeqbChsZgb5TBIfKMNZElzXc8/s16000/1399_Panel01_Hero_WindowsSV.jpg" alt="Windows 11 New Release 2021" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2021</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-11-new-release-2021.html">Windows 11 New Release 2021</a></h3>
     <p class="sw-desc">Windows 11 is an upcoming major release of the Windows NT operating system, developed by Microsoft. Announced </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jun 2021</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1184,14 +1252,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-11-new-release-2021.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 pro (x64) free download" data-listed="202505">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 pro (x64) free download" data-listed="202505" data-year="" data-date="May 2025">
   <a href="../../software/windows-11-pro-x64-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhceIbklsAQk3vFP731z1wLmSOSjsHpxwbz0sSyEK_Unh0UvW-gudlOyAJEt7QuHzbroBJXmfgHXkiOXAR4bYgdzdgTT4zhA4VKLt0zZs23Plf9vc1Ou9BLaX0m1-6L341eJeaqXpCCvHcBl6g7iXTWgiwkvos-4c45uHbxQ0r5YM88bNJ0mwdojThOgVw=w200-h200" alt="Windows 11 Pro (X64) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-11-pro-x64-free-download.html">Windows 11 Pro (X64) Free Download</a></h3>
     <p class="sw-desc">Windows 11 Pro is Microsoft&#x27;s latest operating system designed specifically for professionals, businesses, and</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1200,14 +1270,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-11-pro-x64-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 pro free download" data-listed="202509">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 pro free download" data-listed="202509" data-year="" data-date="Sep 2025">
   <a href="../../software/windows-11-pro-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjFriqU3YChdsY1uCRoyWAmgNhbHHzvDNZvvUTJ2ul_KAzgw2ioFC-N-LYgaXUmHu6Kql4_ad74iwjiXnRlCIobEPhvtN1k6V4KAZhZGHz7bmGqzxI65rWSs_xdFeCpgWKbBYv8OZNGBx76z_tZUZ9omDGre0CkGn3NLuQ8XW8t5ENXOh00PygSJEz1J2k=w320-h320" alt="Windows 11 Pro Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.0</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-11-pro-free-download.html">Windows 11 Pro Free Download</a></h3>
     <p class="sw-desc">Windows 11 Pro is the professional-grade version of Windows 11, created for small businesses, professionals, a</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Sep 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1216,14 +1288,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-11-pro-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 pro free download" data-listed="202512">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 11 pro free download" data-listed="202512" data-year="" data-date="Dec 2025">
   <a href="../../software/windows-11-pro-free-download-3.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEhfJQBWW7L-X5jHb1Vgw1FndfVdJLvBrqv9DTdpKQyysxszR8JvS9owljZcg7skCiVj-Jk4CSeNKahaWxJ9UqsNQ6fh4rDn9f2dzaYmfty3nx-e9ze6g3HgOdO7SoARzDmqTf40vRch87wCLuGYnq7Jy06mT9r-xDXzgdvDH34xFf4gPHSiluI3GrtIYmM=w320-h320" alt="Windows 11 Pro Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v26200.7171</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-11-pro-free-download-3.html">Windows 11 Pro Free Download</a></h3>
     <p class="sw-desc">Windows 11 Pro 26200.7171 is a modern, feature-rich operating system built for professionals, businesses, and </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1232,14 +1306,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-11-pro-free-download-3.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 8 (x64) 2025 latest version free download" data-listed="202505">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 8 (x64) 2025 latest version free download" data-listed="202505" data-year="2025" data-date="May 2025">
   <a href="../../software/windows-8-x64-2025-latest-version-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhexEtHG9VzRFRxqNeyEB9m4isux9phpCjw71z0zVdDmsI3Mo0P2J5ZPUTcnGMRBDJK5tIUYNa-7-6vzRSs-j29a-LUMhtFibcPpC4lvjT_5XwrqltFxezOEQ0SWcUw_XjFSPdcykasoBsCTl2ZmMN0rLQVa8aw3-CpCC0ub8Sn8pfxSlnAvkgWxSim6nU/s320/windows%208%20Free%20Download.png" alt="Windows 8 (X64) 2025 Latest Version Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-8-x64-2025-latest-version-free-download.html">Windows 8 (X64) 2025 Latest Version Free Download</a></h3>
     <p class="sw-desc">Released by Microsoft as a bold step toward a more modern computing experience, introduced a new era with its </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1248,14 +1324,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-8-x64-2025-latest-version-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 8 (x86) 2025 latest version free download" data-listed="202505">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 8 (x86) 2025 latest version free download" data-listed="202505" data-year="2025" data-date="May 2025">
   <a href="../../software/windows-8-x86-2025-latest-version-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhexEtHG9VzRFRxqNeyEB9m4isux9phpCjw71z0zVdDmsI3Mo0P2J5ZPUTcnGMRBDJK5tIUYNa-7-6vzRSs-j29a-LUMhtFibcPpC4lvjT_5XwrqltFxezOEQ0SWcUw_XjFSPdcykasoBsCTl2ZmMN0rLQVa8aw3-CpCC0ub8Sn8pfxSlnAvkgWxSim6nU/s320/windows%208%20Free%20Download.png" alt="Windows 8 (X86) 2025 Latest Version Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     
+    <span class="sw-year">© 2025</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-8-x86-2025-latest-version-free-download.html">Windows 8 (X86) 2025 Latest Version Free Download</a></h3>
     <p class="sw-desc">Released by Microsoft as a bold step toward a more modern computing experience, introduced a new era with its </p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1264,14 +1342,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-8-x86-2025-latest-version-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 8.1 (x64) free download" data-listed="202505">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows 8.1 (x64) free download" data-listed="202505" data-year="" data-date="May 2025">
   <a href="../../software/windows-81-x64-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4sjpyAXOPReNGDpN_6MFO5ypRWfYjK0stHaC63g5tYcw2MBaTqlystCpV1MXzfw24F3wx_Eutjs77_90GKfCVns6vnx8QVPIxqCTauYimMcigGeXhti-yXq208gO6Bs4Fm38EPd7ALeU1gtK0pfVhui-iOErXQL5wZ2dDEa82r62dcB6d2m9ONWSs40w/w320-h242/Windows%208.1%20Logo%20Free%20Download.png" alt="Windows 8.1 (X64) Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v8.1</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-81-x64-free-download.html">Windows 8.1 (X64) Free Download</a></h3>
     <p class="sw-desc">While mainstream support for Windows 8.1 officially ended, the builds remain popular among users looking for a</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 May 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1280,14 +1360,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-81-x64-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="windows firewall control 6.12 multilingual free download" data-listed="202512">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="windows firewall control 6.12 multilingual free download" data-listed="202512" data-year="" data-date="Dec 2025">
   <a href="../../software/windows-firewall-control-612-multilingual-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/a/AVvXsEjiXEApOh6AJe0DAe6aVeeDfYpLQT33zkwaQtcDFSo8f4Svnk30YR4AXUUanMzY-c0KVDw_dmIHtKXwYv9nnhQhtkGqy0D3Fb4VYgOdjLfYZjwiB9Di4D3VHz7fIQd1ZsXT7jeTrxUeKCfdFyR4PzcWbqdhCqAmmLpbA5ve_sfS6OKKcKsopquHB0cWh_Y=w200-h186" alt="Windows Firewall Control 6.12 Multilingual Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.12 Multilingual</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-firewall-control-612-multilingual-free-download.html">Windows Firewall Control 6.12 Multilingual Free Download</a></h3>
     <p class="sw-desc">Windows Firewall Control 6.12 Multilingual is a powerful security utility designed to extend and enhance the b</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Dec 2025</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1296,14 +1378,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-firewall-control-612-multilingual-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="windows firewall control 6.9.9.6" data-listed="000000">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="windows firewall control 6.9.9.6" data-listed="202403" data-year="2024" data-date="Mar 4, 2024">
   <a href="../../software/windows-firewall-control-6996.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2020/08/Windows-Firewall-Control.avif" alt="Windows Firewall Control 6.9.9.6" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v6.9.9.6</span>
+    <span class="sw-year">© 2024</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-firewall-control-6996.html">Windows Firewall Control 6.9.9.6</a></h3>
     <p class="sw-desc">Windows Firewall Control is a powerful software that extends the functionality of the Windows Firewall and pro</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Mar 4, 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1312,14 +1396,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-firewall-control-6996.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows login unlocker 2.1 pro with crack" data-listed="000000">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows login unlocker 2.1 pro with crack" data-listed="202311" data-year="2023" data-date="Nov 2, 2023">
   <a href="../../software/windows-login-unlocker-21-pro-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2023/09/Windows-Login-Unlocker.avif" alt="Windows Login Unlocker 2.1 Pro with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.1</span>
+    <span class="sw-year">© 2023</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-login-unlocker-21-pro-with-crack.html">Windows Login Unlocker 2.1 Pro with Crack</a></h3>
     <p class="sw-desc">The program is designed to reset, change passwords, or unlock Windows accounts. With its help, you can restore</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Nov 2, 2023</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1328,14 +1414,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-login-unlocker-21-pro-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="windows usb/dvd download tool free" data-listed="201903">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="windows usb/dvd download tool free" data-listed="201903" data-year="" data-date="Mar 2019">
   <a href="../../software/windows-usbdvd-download-tool-free.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgH8apnFTEsrPl1nqODr7oRX6WXEBDT1QVqY1yMwt0K2VBL_dxk6YTJNSslZYKlubta7qK5olD-eOYVKsv3mEpYVwWOiC2wSK1YR4ioYEuMudFyTTbstG0mvlw-lCm1Mq0n-Pn-2ps-iB8/s400/Windows-7-USB.jpg" alt="Windows USB/DVD Download Tool Free" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-usbdvd-download-tool-free.html">Windows USB/DVD Download Tool Free</a></h3>
     <p class="sw-desc">The Windows USB/DVD Download tool free allows you to create a copy of your Windows 7/8 ISO file on a USB flash</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Mar 2019</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1344,14 +1432,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-usbdvd-download-tool-free.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows vista free download" data-listed="202408">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows vista free download" data-listed="202408" data-year="" data-date="Aug 2024">
   <a href="../../software/windows-vista-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTnSz15IVL_xEMvPSTyu7yF5XWZaN_aYpqvGD3tP90HNzkelI92KqcPvZyGu4zDGtMrvwqCFw5qUB4kisTY3fjm_Jte_8m8Bw5rgWMQksz3rtq9UdnuelBcNGRxMRYS2eAedM-Lpc665hHvlh62FFp5OrDc0ZkAF2LTU4qNU0wMi_Ijz9DQ2kYNinFSnI/s1600/windows-vista.png" alt="Windows Vista Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-vista-free-download.html">Windows Vista Free Download</a></h3>
     <p class="sw-desc">Windows 7, launched in October 2009, quickly became a fan favorite due to its reliability, performance improve</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1360,14 +1450,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-vista-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows xp pro free download" data-listed="202408">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="64-bit" data-title="windows xp pro free download" data-listed="202408" data-year="" data-date="Aug 2024">
   <a href="../../software/windows-xp-pro-free-download.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiurKJOYQCwfAf7NGMOPT-EdEx8MFfciroSyhEigiLQE_gBNAOnfv_a7Ve-V9vR0ZNDoYJX0WXPomrjVL4lBN_mY0mWaviUnOzSfuHNjuY-vnUc4cZuA6x_bSFnNYxyGB4qVUPgAssH1ab3AP0cKfHfyGEYqn7Exnn5BZ7PLrpd1gdG9yGY4BtrshITWg8/w400-h309/Windows%20XP%20Pro%20Free%20Download.jpg" alt="Windows XP Pro Free Download" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
+    
     
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/windows-xp-pro-free-download.html">Windows XP Pro Free Download</a></h3>
     <p class="sw-desc">Windows XP, released by Microsoft in October 2001, marked a significant leap forward in operating systems. Kno</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Aug 2024</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1376,14 +1468,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/windows-xp-pro-free-download.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="yamicsoft windows manager 2.4.0 with crack" data-listed="000000">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="yamicsoft windows manager 2.4.0 with crack" data-listed="202607" data-year="2026" data-date="Jul 23, 2026">
   <a href="../../software/yamicsoft-windows-manager-240-with-crack.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://haxpc.net/wp-content/uploads/2022/02/Yamicsoft-Windows-11-Manager-Cover.avif" alt="Yamicsoft Windows Manager 2.4.0 with Crack" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v2.4.0</span>
+    <span class="sw-year">© 2026</span>
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/yamicsoft-windows-manager-240-with-crack.html">Yamicsoft Windows Manager 2.4.0 with Crack</a></h3>
     <p class="sw-desc">Yamicsoft Windows 11 Manager is an all-in-one utility for Microsoft Windows 11, it includes over forty differe</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Jul 23, 2026</span><span class="sw-dl">⬇ 2 links</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-free">Free</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1392,14 +1486,16 @@ ul, ol { margin: 0; padding: 0; }
     <a class="btn btn-secondary btn-compact" href="../../software/yamicsoft-windows-manager-240-with-crack.html">View Details</a>
   </div>
 </article>
-<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="zipeg free download (windows)" data-listed="201802">
+<article class="sw-card" data-category="windows" data-license="free" data-arch="x64" data-title="zipeg free download (windows)" data-listed="201802" data-year="" data-date="Feb 2018">
   <a href="../../software/zipeg-free-download-windows.html" class="sw-thumb" data-ph="&lt;div class=&quot;placeholder&quot;&gt;🪟&lt;/div&gt;" tabindex="-1" aria-hidden="true">
     <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJN02PMWQoA9vLAnsOTIymrTcjuF4GcG4w9yCrgSMhqGkHCD7uY2EBO-beqgLO-kijuayw2k2yjP5PQ-EpIbMEVjsrkuamC5Z2j0Qu0ogSl1wMAgkxbNuKThjFmLMCMHeHRKpzHoYLdxo/s1600/zipeg-128x128.png" alt="Zipeg Free Download (Windows)" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute('data-ph')">
     <span class="badge-ver">v1.62</span>
+    
   </a>
   <div class="sw-body">
     <h3 class="sw-title"><a href="../../software/zipeg-free-download-windows.html">Zipeg Free Download (Windows)</a></h3>
     <p class="sw-desc">Zipeg is a free, open source extractor for popular archiving formats such as ZIP, RAR, 7Z, TAR, TGZ, BZIP2, IS</p>
+    <div class="sw-row"><span class="sw-date" title="Release / listing date">📅 Feb 2018</span><span class="sw-dl">⬇ 1 link</span></div>
     <div class="sw-meta">
       <span class="badge badge-license-opensource">Open Source</span>
       <span class="badge badge-primary">🪟 Windows Software</span>
@@ -1568,6 +1664,41 @@ ul, ol { margin: 0; padding: 0; }
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); go(); }
     });
+  }
+
+  /* ---------- Slideshow ---------- */
+  function initSlideshow() {
+    var ss = document.getElementById('latestSlideshow');
+    if (!ss) return;
+    var slides = ss.querySelectorAll('.slide');
+    var dots = ss.querySelectorAll('.dot');
+    if (!slides.length) return;
+    var cur = 0;
+    var timer = null;
+
+    function show(i) {
+      cur = (i + slides.length) % slides.length;
+      for (var j = 0; j < slides.length; j++) {
+        slides[j].classList.toggle('active', j === cur);
+        if (dots[j]) dots[j].classList.toggle('on', j === cur);
+      }
+    }
+    function next() { show(cur + 1); restart(); }
+    function prev() { show(cur - 1); restart(); }
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show(cur + 1); }, 6000);
+    }
+    var btnNext = ss.querySelector('#slideNext');
+    var btnPrev = ss.querySelector('#slidePrev');
+    if (btnNext) btnNext.addEventListener('click', next);
+    if (btnPrev) btnPrev.addEventListener('click', prev);
+    for (var i = 0; i < dots.length; i++) {
+      (function (idx) {
+        dots[idx].addEventListener('click', function () { show(idx); restart(); });
+      })(i);
+    }
+    restart();
   }
 
   /* ---------- Listing sort select ---------- */
@@ -2035,7 +2166,8 @@ ul, ol { margin: 0; padding: 0; }
       + (img || ph) + '</a>';
     var tier = TIER_LABELS[it.tier] || '';
     var meta = '<span>&#9989; Windows</span>';
-    if (it.year) meta += '<span>' + escapeHtml(it.year) + '</span>';
+    if (it.year) meta += '<span>&#169; ' + escapeHtml(it.year) + '</span>';
+    if (it.date) meta += '<span>&#128197; ' + escapeHtml(it.date) + '</span>';
     if (it.version) meta += '<span class="badge-ver">' + escapeHtml(it.version) + '</span>';
     return '<article class="sw-card">' + thumb
       + '<div class="sw-body">'
@@ -2125,6 +2257,7 @@ ul, ol { margin: 0; padding: 0; }
     initNavSearchBtn();
     initHeroSearchBtn();
     initSort();
+    initSlideshow();
     initToastLinks();
     initLightbox();
     initSearch('navSearch');
