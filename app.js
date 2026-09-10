@@ -671,6 +671,28 @@
     var m = new RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
     return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : '';
   }
+  function initSerialsFilter() {
+    var list = document.getElementById('serialsList');
+    var input = document.getElementById('serialsFilterInput');
+    var clear = document.getElementById('serialsFilterClear');
+    if (!list || !input) return;
+    var rows = Array.prototype.slice.call(list.querySelectorAll('.ss-row'));
+    function apply() {
+      var q = input.value.trim().toLowerCase();
+      var shown = 0;
+      rows.forEach(function (r) {
+        var hit = !q || (r.getAttribute('data-title') || '').indexOf(q) !== -1;
+        r.style.display = hit ? '' : 'none';
+        if (hit) shown++;
+      });
+      if (clear) clear.style.display = q ? '' : 'none';
+      var noteEl = document.getElementById('serialsCount');
+      if (noteEl) noteEl.textContent = q ? (shown + ' of ' + rows.length + ' entries') : (rows.length + ' entries');
+    }
+    input.addEventListener('input', apply);
+    if (clear) clear.addEventListener('click', function () { input.value = ''; apply(); input.focus(); });
+    apply();
+  }
   function escapeAttr(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -710,5 +732,6 @@
     initCompat();
     initChecker();
     initLiveSearch();
+    initSerialsFilter();
   });
 })();

@@ -630,6 +630,13 @@ ul, ol { margin: 0; padding: 0; }
 .req-item { background: var(--surface-raised); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px; }
 .req-item label { display: block; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); margin-bottom: 3px; }
 .req-item span { font-size: .89rem; font-weight: 600; color: var(--text); overflow-wrap: anywhere; }
+
+.ss-list { display: flex; flex-direction: column; gap: 10px; }
+.ss-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding: 13px 16px; background: var(--surface-raised); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+.ss-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ss-title { font-weight: 600; color: var(--text); overflow-wrap: anywhere; }
+.ss-meta { font-size: .8rem; color: var(--text-3); }
+.ss-row .btn { flex-shrink: 0; }
 .req-blank { color: var(--text-3); font-size: .9rem; }
 .compat-note { font-size: .8rem; color: var(--text-3); margin-top: 14px; padding: 12px 14px; background: var(--surface-raised); border-radius: var(--radius-sm); border: 1px solid var(--border); }
 
